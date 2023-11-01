@@ -12,22 +12,6 @@ namespace ARM_MedRegistrar
             ApplicationConfiguration.Initialize();
             Application.Run(new Entrance());
 
-            //офтальмолог
-            //    Traumatologist,    //травматолог
-            //    ObstetricianGynecologist,  //акушер-гинеколог
-            //    Urologist,      //уролог
-            //    Infectiologist,   //инфекционист
-            //    Oncologist,   //онколог
-            //    Gastroenterologist,  //гастроэнтеролог
-            //    Cardiologist,    //кардиолог
-            //    Endocrinologist   //эндокринолог
-
-
-
-
-            
-
-
         }
     }
 }

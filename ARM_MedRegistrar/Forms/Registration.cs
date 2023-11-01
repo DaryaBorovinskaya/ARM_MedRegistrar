@@ -12,16 +12,28 @@ namespace ARM_MedRegistrar
 {
     public partial class Registration : Form
     {
-        public Registration()
+        Form form;
+        public Registration(Form form)
         {
+            this.form = form;
+            form.Hide();
             InitializeComponent();
+            FormClosed += OnClosed;
         }
 
+        private void OnClosed(object? sender, FormClosedEventArgs e)
+        {
+            form.Visible = true;
+        }
 
 
         private void Registration_Load(object sender, EventArgs e)
         {
-            
+
+        }
+        private void Registration_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

@@ -1,5 +1,8 @@
-﻿namespace ARM_MedRegistrar
+﻿using System.Diagnostics;
+
+namespace ARM_MedRegistrar
 {
+    [DebuggerDisplay($"{{{nameof(GetDebuggerDisplay)}(),nq}}")]
     partial class Registration
     {
         /// <summary>
@@ -30,15 +33,20 @@
         {
             SuspendLayout();
             // 
-            // LogIn
+            // Registration
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(803, 491);
-            Name = "LogIn";
+            Name = "Registration";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "LogIn";
+            Text = "Registration";
             ResumeLayout(false);
+        }
+
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
 
         #endregion

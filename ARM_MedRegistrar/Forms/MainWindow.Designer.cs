@@ -31,6 +31,7 @@
             label1 = new Label();
             buttAddPatient = new Button();
             buttAddDoctor = new Button();
+            buttonExit = new Button();
             SuspendLayout();
             // 
             // label1
@@ -69,12 +70,25 @@
             buttAddDoctor.UseVisualStyleBackColor = true;
             buttAddDoctor.Click += buttAddDoctor_Click;
             // 
+            // buttonExit
+            // 
+            buttonExit.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonExit.ForeColor = Color.Red;
+            buttonExit.Location = new Point(1853, 12);
+            buttonExit.Name = "buttonExit";
+            buttonExit.Size = new Size(37, 37);
+            buttonExit.TabIndex = 8;
+            buttonExit.Text = "Х";
+            buttonExit.UseVisualStyleBackColor = true;
+            buttonExit.Click += buttonExit_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1902, 1033);
+            Controls.Add(buttonExit);
             Controls.Add(buttAddDoctor);
             Controls.Add(buttAddPatient);
             Controls.Add(label1);
@@ -91,5 +105,6 @@
         private Label label1;
         private Button buttAddPatient;
         private Button buttAddDoctor;
+        private Button buttonExit;
     }
 }

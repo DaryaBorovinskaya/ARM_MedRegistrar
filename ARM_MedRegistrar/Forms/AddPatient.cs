@@ -12,9 +12,29 @@ namespace ARM_MedRegistrar
 {
     public partial class AddPatient : Form
     {
-        public AddPatient()
+        Form form;
+        public AddPatient(Form form)
         {
+            this.form = form;
+            form.Hide();
+
             InitializeComponent();
+
+            FormClosed += OnClosed;
+        }
+
+        private void OnClosed(object? sender, FormClosedEventArgs e)
+        {
+            form.Visible = true;
+        }
+
+        private void AddPatient_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void AddPatient_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

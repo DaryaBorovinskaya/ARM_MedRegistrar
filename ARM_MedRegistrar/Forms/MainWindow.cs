@@ -12,11 +12,21 @@ namespace ARM_MedRegistrar
 {
     public partial class MainWindow : Form
     {
-        public MainWindow()
+        Form form;
+        public MainWindow(Form form)
         {
+            this.form = form;
+            form.Hide();
+
             InitializeComponent();
+
+            FormClosed += OnClosed;
         }
 
+        private void OnClosed(object? sender, FormClosedEventArgs e)
+        {
+            form.Visible = true;
+        }
         private void MainWindow_Load(object sender, EventArgs e)
         {
 
@@ -30,15 +40,26 @@ namespace ARM_MedRegistrar
         private void buttAddPatient_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            AddPatient newForm = new AddPatient();
-            newForm.Show();
+            AddPatient newForm = new AddPatient(this);
+            newForm.ShowDialog();
         }
 
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
             //this.Hide();
-            AddDoctor newForm = new AddDoctor();
+            AddDoctor newForm = new AddDoctor(this);
             newForm.Show();
+        }
+
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

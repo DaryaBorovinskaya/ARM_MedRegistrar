@@ -31,8 +31,8 @@ namespace ARM_MedRegistrar
         {
             login = textLog.Text;
             password = textPassword.Text;
-            this.Hide();
-            MainWindow newForm = new MainWindow();
+            
+            MainWindow newForm = new MainWindow(this);
             newForm.Show();
 
 
@@ -42,19 +42,26 @@ namespace ARM_MedRegistrar
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            
+
             Application.Exit();        //закрытие всех окон
 
         }
 
-        
+
         private void buttonRegistration_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Registration newForm = new Registration();
-            newForm.Show();
+            
+            Registration newForm = new Registration(this);
+            newForm.ShowDialog();
         }
 
+        private void Entrance_Load(object sender, EventArgs e)
+        {
 
+        }
+        private void Entrance_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+        }
     }
 }
