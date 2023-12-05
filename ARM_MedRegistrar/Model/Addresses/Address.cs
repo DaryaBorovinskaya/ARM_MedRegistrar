@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.Model.Addresses
 {
-    public abstract class Address : IAddress
+    public class Address : IAddress
     {
         private string _city;
         private string _region;

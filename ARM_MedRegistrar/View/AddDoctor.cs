@@ -68,7 +68,7 @@ namespace ARM_MedRegistrar
         {
             FullName _fullName;
             Doctor _newDoctor;
-            GroupOfDoctors _groupOfDoctors;
+            
 
             errorNoSurname.Clear();
             errorNoName.Clear();
@@ -83,8 +83,10 @@ namespace ARM_MedRegistrar
             {
                 _fullName = new(textSurname.Text, textName.Text, textName.Text);
                 _newDoctor = new(_fullName, (string)comboBoxSpecializations.SelectedItem, (int)numericPlotNumber.Value, (int)numericCabinet.Value);
-                _groupOfDoctors = new GroupOfDoctors();
-                _groupOfDoctors._doctors.Add(_newDoctor);
+                List<Doctor> _doctors = new()
+                {
+                    _newDoctor
+                };
                 MessageBox.Show("Добавление врача успешно выполнено!");
                 Close();
             }

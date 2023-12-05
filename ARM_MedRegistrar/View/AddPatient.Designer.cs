@@ -28,6 +28,7 @@ partial class AddPatient
     /// </summary>
     private void InitializeComponent()
     {
+        components = new System.ComponentModel.Container();
         label1 = new Label();
         buttAddPatient = new Button();
         label3 = new Label();
@@ -36,11 +37,10 @@ partial class AddPatient
         textSurname = new TextBox();
         textName = new TextBox();
         textPatr = new TextBox();
-        dateTimePicker1 = new DateTimePicker();
+        dateTimeDateOfBirth = new DateTimePicker();
         label5 = new Label();
         label6 = new Label();
         numericPlotNumber = new NumericUpDown();
-        numericNumbOfPatientCard = new NumericUpDown();
         label7 = new Label();
         label8 = new Label();
         comboBoxBloodType = new ComboBox();
@@ -63,11 +63,31 @@ partial class AddPatient
         numericPolicySeries = new NumericUpDown();
         label17 = new Label();
         label18 = new Label();
+        errorNoSurname = new ErrorProvider(components);
+        errorNoName = new ErrorProvider(components);
+        errorNoPolicySeries = new ErrorProvider(components);
+        errorNoPolicyNumber = new ErrorProvider(components);
+        errorWrongDate = new ErrorProvider(components);
+        errorNoStreet = new ErrorProvider(components);
+        errorNoNumbOfHouse = new ErrorProvider(components);
+        errorNoNumbOfFlat = new ErrorProvider(components);
+        errorNoBloodType = new ErrorProvider(components);
+        errorNoRhFactor = new ErrorProvider(components);
+        textNumbOfPatientCard = new TextBox();
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)numericNumbOfPatientCard).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericPolicySeries).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPolicySeries).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPolicyNumber).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorWrongDate).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoStreet).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoNumbOfHouse).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoNumbOfFlat).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoBloodType).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoRhFactor).BeginInit();
         SuspendLayout();
         // 
         // label1
@@ -163,15 +183,15 @@ partial class AddPatient
         textPatr.Size = new Size(422, 34);
         textPatr.TabIndex = 34;
         // 
-        // dateTimePicker1
+        // dateTimeDateOfBirth
         // 
-        dateTimePicker1.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker1.CalendarTitleBackColor = Color.White;
-        dateTimePicker1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker1.Location = new Point(486, 166);
-        dateTimePicker1.Name = "dateTimePicker1";
-        dateTimePicker1.Size = new Size(250, 34);
-        dateTimePicker1.TabIndex = 35;
+        dateTimeDateOfBirth.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        dateTimeDateOfBirth.CalendarTitleBackColor = Color.White;
+        dateTimeDateOfBirth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        dateTimeDateOfBirth.Location = new Point(486, 166);
+        dateTimeDateOfBirth.Name = "dateTimeDateOfBirth";
+        dateTimeDateOfBirth.Size = new Size(250, 34);
+        dateTimeDateOfBirth.TabIndex = 35;
         // 
         // label5
         // 
@@ -205,15 +225,6 @@ partial class AddPatient
         numericPlotNumber.Size = new Size(150, 34);
         numericPlotNumber.TabIndex = 39;
         numericPlotNumber.ValueChanged += numericUpDown1_ValueChanged;
-        // 
-        // numericNumbOfPatientCard
-        // 
-        numericNumbOfPatientCard.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericNumbOfPatientCard.Location = new Point(806, 575);
-        numericNumbOfPatientCard.Name = "numericNumbOfPatientCard";
-        numericNumbOfPatientCard.Size = new Size(209, 34);
-        numericNumbOfPatientCard.TabIndex = 40;
-        numericNumbOfPatientCard.ValueChanged += numericNumbOfPatientCard_ValueChanged;
         // 
         // label7
         // 
@@ -456,12 +467,63 @@ partial class AddPatient
         label18.TabIndex = 64;
         label18.Text = "Серия мед. полиса";
         // 
+        // errorNoSurname
+        // 
+        errorNoSurname.ContainerControl = this;
+        // 
+        // errorNoName
+        // 
+        errorNoName.ContainerControl = this;
+        // 
+        // errorNoPolicySeries
+        // 
+        errorNoPolicySeries.ContainerControl = this;
+        // 
+        // errorNoPolicyNumber
+        // 
+        errorNoPolicyNumber.ContainerControl = this;
+        // 
+        // errorWrongDate
+        // 
+        errorWrongDate.ContainerControl = this;
+        // 
+        // errorNoStreet
+        // 
+        errorNoStreet.ContainerControl = this;
+        // 
+        // errorNoNumbOfHouse
+        // 
+        errorNoNumbOfHouse.ContainerControl = this;
+        // 
+        // errorNoNumbOfFlat
+        // 
+        errorNoNumbOfFlat.ContainerControl = this;
+        // 
+        // errorNoBloodType
+        // 
+        errorNoBloodType.ContainerControl = this;
+        // 
+        // errorNoRhFactor
+        // 
+        errorNoRhFactor.ContainerControl = this;
+        // 
+        // textNumbOfPatientCard
+        // 
+        textNumbOfPatientCard.BackColor = Color.White;
+        textNumbOfPatientCard.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textNumbOfPatientCard.Location = new Point(805, 575);
+        textNumbOfPatientCard.Name = "textNumbOfPatientCard";
+        textNumbOfPatientCard.ReadOnly = true;
+        textNumbOfPatientCard.Size = new Size(125, 34);
+        textNumbOfPatientCard.TabIndex = 65;
+        // 
         // AddPatient
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
         ClientSize = new Size(1315, 788);
+        Controls.Add(textNumbOfPatientCard);
         Controls.Add(label18);
         Controls.Add(label17);
         Controls.Add(numericPolicySeries);
@@ -484,11 +546,10 @@ partial class AddPatient
         Controls.Add(comboBoxBloodType);
         Controls.Add(label8);
         Controls.Add(label7);
-        Controls.Add(numericNumbOfPatientCard);
         Controls.Add(numericPlotNumber);
         Controls.Add(label6);
         Controls.Add(label5);
-        Controls.Add(dateTimePicker1);
+        Controls.Add(dateTimeDateOfBirth);
         Controls.Add(textPatr);
         Controls.Add(textName);
         Controls.Add(textSurname);
@@ -502,10 +563,19 @@ partial class AddPatient
         Text = "AddPatient";
         Load += AddPatient_Load;
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
-        ((System.ComponentModel.ISupportInitialize)numericNumbOfPatientCard).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericPolicySeries).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPolicySeries).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPolicyNumber).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorWrongDate).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoStreet).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoNumbOfHouse).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoNumbOfFlat).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoBloodType).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoRhFactor).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -520,11 +590,10 @@ partial class AddPatient
     private TextBox textSurname;
     private TextBox textName;
     private TextBox textPatr;
-    private DateTimePicker dateTimePicker1;
+    private DateTimePicker dateTimeDateOfBirth;
     private Label label5;
     private Label label6;
     private NumericUpDown numericPlotNumber;
-    private NumericUpDown numericNumbOfPatientCard;
     private Label label7;
     private Label label8;
     private ComboBox comboBoxBloodType;
@@ -547,4 +616,15 @@ partial class AddPatient
     private NumericUpDown numericPolicySeries;
     private Label label17;
     private Label label18;
+    private ErrorProvider errorNoSurname;
+    private ErrorProvider errorNoName;
+    private ErrorProvider errorNoPolicySeries;
+    private ErrorProvider errorNoPolicyNumber;
+    private ErrorProvider errorWrongDate;
+    private ErrorProvider errorNoStreet;
+    private ErrorProvider errorNoNumbOfHouse;
+    private ErrorProvider errorNoNumbOfFlat;
+    private ErrorProvider errorNoBloodType;
+    private ErrorProvider errorNoRhFactor;
+    private TextBox textNumbOfPatientCard;
 }
