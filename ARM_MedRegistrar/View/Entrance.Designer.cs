@@ -39,6 +39,7 @@ partial class Entrance
         errorNoLog = new ErrorProvider(components);
         errorNoPassword = new ErrorProvider(components);
         checkViewPassword = new CheckBox();
+        buttChangeDataOfUser = new Button();
         ((System.ComponentModel.ISupportInitialize)errorNoLog).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPassword).BeginInit();
         SuspendLayout();
@@ -99,11 +100,11 @@ partial class Entrance
         // 
         // buttonRegistration
         // 
-        buttonRegistration.Font = new Font("Trebuchet MS", 12F, FontStyle.Underline, GraphicsUnit.Point);
+        buttonRegistration.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point);
         buttonRegistration.ForeColor = Color.Black;
-        buttonRegistration.Location = new Point(283, 413);
+        buttonRegistration.Location = new Point(115, 408);
         buttonRegistration.Name = "buttonRegistration";
-        buttonRegistration.Size = new Size(229, 34);
+        buttonRegistration.Size = new Size(238, 38);
         buttonRegistration.TabIndex = 5;
         buttonRegistration.Text = "Зарегистрироваться";
         buttonRegistration.UseVisualStyleBackColor = true;
@@ -141,12 +142,25 @@ partial class Entrance
         checkViewPassword.UseVisualStyleBackColor = true;
         checkViewPassword.CheckedChanged += checkViewPassword_CheckedChanged;
         // 
+        // buttChangeDataOfUser
+        // 
+        buttChangeDataOfUser.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point);
+        buttChangeDataOfUser.ForeColor = Color.Black;
+        buttChangeDataOfUser.Location = new Point(464, 408);
+        buttChangeDataOfUser.Name = "buttChangeDataOfUser";
+        buttChangeDataOfUser.Size = new Size(238, 38);
+        buttChangeDataOfUser.TabIndex = 8;
+        buttChangeDataOfUser.Text = "Сменить данные";
+        buttChangeDataOfUser.UseVisualStyleBackColor = true;
+        buttChangeDataOfUser.Click += buttChangeDataOfUser_Click;
+        // 
         // Entrance
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
         ClientSize = new Size(803, 491);
+        Controls.Add(buttChangeDataOfUser);
         Controls.Add(checkViewPassword);
         Controls.Add(labelName);
         Controls.Add(buttonRegistration);
@@ -177,4 +191,5 @@ partial class Entrance
     private ErrorProvider errorNoLog;
     private ErrorProvider errorNoPassword;
     private CheckBox checkViewPassword;
+    private Button buttChangeDataOfUser;
 }

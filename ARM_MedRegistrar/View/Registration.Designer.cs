@@ -118,7 +118,7 @@ namespace ARM_MedRegistrar
             buttRegistration.BackColor = Color.FromArgb(255, 192, 192);
             buttRegistration.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttRegistration.ForeColor = Color.Firebrick;
-            buttRegistration.Location = new Point(384, 675);
+            buttRegistration.Location = new Point(380, 672);
             buttRegistration.Name = "buttRegistration";
             buttRegistration.Size = new Size(224, 57);
             buttRegistration.TabIndex = 14;

@@ -12,7 +12,7 @@ namespace ARM_MedRegistrar
 {
     public partial class Entrance : Form
     {
-        private string _login, _password;
+        private string _oldLogin, _oldPassword;
 
 
         public Entrance()
@@ -25,16 +25,16 @@ namespace ARM_MedRegistrar
 
 
 
-        
+
 
         private void buttEntrance_Click(object sender, EventArgs e)
         {
             errorNoLog.Clear();
             errorNoPassword.Clear();
-            _login = textLog.Text;
-            _password = textPassword.Text;
+            _oldLogin = textLog.Text;
+            _oldPassword = textPassword.Text;
 
-            if (_login != string.Empty && _password != string.Empty)
+            if (_oldLogin != string.Empty && _oldPassword != string.Empty)
             {
 
                 MainWindow newForm = new MainWindow(this);
@@ -44,11 +44,11 @@ namespace ARM_MedRegistrar
 
             else
             {
-                if (_login == string.Empty)
+                if (_oldLogin == string.Empty)
                     errorNoLog.SetError(textLog, "Поле \"Логин\" не заполнено");
 
 
-                if (_password == string.Empty)
+                if (_oldPassword == string.Empty)
 
                     errorNoPassword.SetError(textPassword, "Поле \"Пароль\" не заполнено");
             }
@@ -81,6 +81,12 @@ namespace ARM_MedRegistrar
 
             else
                 textPassword.UseSystemPasswordChar = true;
+        }
+
+        private void buttChangeDataOfUser_Click(object sender, EventArgs e)
+        {
+             ChangeDataOfUser newForm = new ChangeDataOfUser(this);
+            if (newForm.ShowDialog() == DialogResult.OK) Close();
         }
     }
 }

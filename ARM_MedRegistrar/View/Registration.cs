@@ -66,7 +66,7 @@ namespace ARM_MedRegistrar
 
         private void buttRegistration_Click(object sender, EventArgs e)
         {
-            string _name, _surname, _patronymic, _login, _password;
+            string _name, _surname, _patronymic, _oldLogin, _oldPassword;
             FullName _fullName;
             User _newUser;
             GroupOfUsers _groupOfUsers;
@@ -81,12 +81,12 @@ namespace ARM_MedRegistrar
             _surname = textSurname.Text;
             _name = textName.Text;
             _patronymic = textPatr.Text;
-            _login = textLog.Text;
-            _password = textPassword.Text;
+            _oldLogin = textLog.Text;
+            _oldPassword = textPassword.Text;
 
 
-            if (_surname != string.Empty && _name != string.Empty && _login != string.Empty
-                && _password != string.Empty)
+            if (_surname != string.Empty && _name != string.Empty && _oldLogin != string.Empty
+                && _oldPassword != string.Empty)
             {
 
                 if (!checkHeadReg.Checked)
@@ -101,9 +101,9 @@ namespace ARM_MedRegistrar
                     MessageBox.Show("Вы успешно зарегистрированы\nкак заведующий регистратурой");
                 }
 
-                _fullName = new (_surname,_name, _patronymic);
-                _newUser = new (_fullName, _login, _password, _profession);
-                _groupOfUsers = new ();
+                _fullName = new(_surname, _name, _patronymic);
+                _newUser = new(_fullName, _oldLogin, _oldPassword, _profession);
+                _groupOfUsers = new();
                 _groupOfUsers.AddUser(_newUser);
 
 
@@ -124,17 +124,17 @@ namespace ARM_MedRegistrar
                 if (_name == String.Empty)
                     errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
 
-                if (_login == String.Empty)
+                if (_oldLogin == String.Empty)
                     errorNoLog.SetError(textLog, "Поле \"Логин\" не заполнено");
 
 
-                if (_password == String.Empty)
+                if (_oldPassword == String.Empty)
 
                     errorNoPassword.SetError(textPassword, "Поле \"Пароль\" не заполнено");
 
             }
 
-            
+
 
         }
 
