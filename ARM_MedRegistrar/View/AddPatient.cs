@@ -134,7 +134,7 @@ namespace ARM_MedRegistrar
             errorNoBloodType.Clear();
             errorNoRhFactor.Clear();
 
-            
+
             if (textSurname.Text != string.Empty && textName.Text != string.Empty
                 && numericPolicySeries.Value != 0 && textPolicyNumb.Text != string.Empty
                 && dateTimeDateOfBirth.Value.ToLongDateString() != DateTime.Now.ToLongDateString() && textStreet.Text != string.Empty
@@ -167,16 +167,28 @@ namespace ARM_MedRegistrar
                 _numbOfPatientCard = 1;                       //длина списка пациентов
                 textNumbOfPatientCard.Text = _numbOfPatientCard.ToString();
                 _newPatient = new(_fullName, dateTimeDateOfBirth.Value, _address, _plotNumber,
-                    _numbOfPatientCard, (int)numericPolicySeries.Value, textPolicyNumb.Text, (BloodType)comboBoxBloodType.SelectedItem,
-                    (RhFactor)comboBoxRhFactor.SelectedItem, textBoxAllergies.Text);
+                    _numbOfPatientCard, (int)numericPolicySeries.Value, textPolicyNumb.Text, comboBoxBloodType.SelectedItem.ToString(),
+                    comboBoxRhFactor.SelectedItem.ToString(), textBoxAllergies.Text);
 
                 List<Patient> _patients = new()
                 {
                     _newPatient
                 };
                 MessageBox.Show("Добавление пациента успешно выполнено!");
-                Close();
-
+                
+                if (!checkNoCloseWindow.Checked) 
+                    Close();
+                else
+                {
+                    textSurname.Clear();
+                    textName.Clear();
+                    numericPolicySeries.Value = 0;
+                    textPolicyNumb.Clear();
+                    textStreet.Clear();
+                    numericNumbOfHouse.Value = 0;
+                    numericNumbOfFlat.Value = 0;
+                    
+                }
             }
 
             else

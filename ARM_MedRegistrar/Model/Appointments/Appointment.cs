@@ -9,10 +9,10 @@ namespace ARM_MedRegistrar.Model.Appointments
 {
     public class Appointment : IAppointment
     {
-        private Patient _patient;
-        private Doctor _doctor;
+        private IPatient _patient;
+        private IDoctor _doctor;
         public DateTime DateAndTime { get; set; }
-        public Patient Patient
+        public IPatient Patient
         {
             get => _patient;
             set
@@ -23,7 +23,7 @@ namespace ARM_MedRegistrar.Model.Appointments
             }
         }
 
-        public Doctor Doctor
+        public IDoctor Doctor
         {
             get => _doctor;
             set
@@ -35,7 +35,7 @@ namespace ARM_MedRegistrar.Model.Appointments
         }
 
 
-        public Appointment(Patient patient, Doctor doctor, DateTime dateAndTime)
+        public Appointment(IPatient patient, IDoctor doctor, DateTime dateAndTime)
         {
             Patient = patient;
             Doctor = doctor;

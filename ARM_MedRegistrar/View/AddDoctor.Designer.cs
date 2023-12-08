@@ -48,6 +48,7 @@ partial class AddDoctor
         errorNoPlotNumber = new ErrorProvider(components);
         errorNoCabinet = new ErrorProvider(components);
         errorNoSpecial = new ErrorProvider(components);
+        checkNoCloseWindow = new CheckBox();
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericCabinet).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
@@ -241,12 +242,24 @@ partial class AddDoctor
         // 
         errorNoSpecial.ContainerControl = this;
         // 
+        // checkNoCloseWindow
+        // 
+        checkNoCloseWindow.AutoSize = true;
+        checkNoCloseWindow.ForeColor = Color.Black;
+        checkNoCloseWindow.Location = new Point(636, 462);
+        checkNoCloseWindow.Name = "checkNoCloseWindow";
+        checkNoCloseWindow.Size = new Size(213, 32);
+        checkNoCloseWindow.TabIndex = 34;
+        checkNoCloseWindow.Text = "Не закрывать окно ";
+        checkNoCloseWindow.UseVisualStyleBackColor = true;
+        // 
         // AddDoctor
         // 
         AutoScaleDimensions = new SizeF(11F, 28F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
         ClientSize = new Size(924, 540);
+        Controls.Add(checkNoCloseWindow);
         Controls.Add(label7);
         Controls.Add(label6);
         Controls.Add(label5);
@@ -305,4 +318,5 @@ partial class AddDoctor
     private ErrorProvider errorNoPlotNumber;
     private ErrorProvider errorNoCabinet;
     private ErrorProvider errorNoSpecial;
+    private CheckBox checkNoCloseWindow;
 }

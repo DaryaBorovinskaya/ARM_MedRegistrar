@@ -6,8 +6,8 @@ namespace ARM_MedRegistrar.Model.Appointments
     public interface IAppointment
     {
         public DateTime DateAndTime {  get; set; }
-        public Patient Patient { get; set; }
-        public Doctor Doctor { get; set; }
+        public IPatient Patient { get; set; }
+        public IDoctor Doctor { get; set; }
 
        
     }

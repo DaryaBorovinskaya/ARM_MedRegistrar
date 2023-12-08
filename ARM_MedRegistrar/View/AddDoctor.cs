@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ARM_MedRegistrar.Model.Lists;
 using ARM_MedRegistrar.Model.Persons;
+using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar
 {
@@ -66,9 +67,9 @@ namespace ARM_MedRegistrar
 
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
-            FullName _fullName;
+            //FullName _fullName;
             Doctor _newDoctor;
-            
+
 
             errorNoSurname.Clear();
             errorNoName.Clear();
@@ -81,14 +82,36 @@ namespace ARM_MedRegistrar
                 && numericCabinet.Value != 0)
 
             {
-                _fullName = new(textSurname.Text, textName.Text, textName.Text);
-                _newDoctor = new(_fullName, (string)comboBoxSpecializations.SelectedItem, (int)numericPlotNumber.Value, (int)numericCabinet.Value);
-                List<Doctor> _doctors = new()
-                {
-                    _newDoctor
-                };
+                //_fullName = new(textSurname.Text, textName.Text, textName.Text);
+                //_newDoctor = new(new(textSurname.Text, textName.Text, textName.Text), (string)comboBoxSpecializations.SelectedItem, (int)numericPlotNumber.Value, (int)numericCabinet.Value);
+                //List<Doctor> _doctors = new()
+                //{
+                //    _newDoctor
+                //};
                 MessageBox.Show("Добавление врача успешно выполнено!");
-                Close();
+
+                
+                //if (!File.Exists("Doctors.json"))
+                //    File.WriteAllText("Doctors.json", JsonConvert.SerializeObject(new List<Doctor> { _newDoctor }, Formatting.Indented));
+                //else
+                //{
+                //    List<Doctor>? _doctors = JsonConvert.DeserializeObject<List<Doctor>>(File.ReadAllText("Doctors.json"));
+                //    _doctors?.Add(_newDoctor);
+                //    File.WriteAllText("Doctors.json", JsonConvert.SerializeObject(_doctors, Formatting.Indented));
+                //}
+
+                if (!checkNoCloseWindow.Checked)
+                    Close();
+                else
+                {
+                    textSurname.Clear();
+                    textName.Clear();
+                    textPatr.Clear();
+                    numericPlotNumber.Value = 0;
+                    numericCabinet.Value = 0;
+                    
+                }
+                
             }
 
             else

@@ -8,7 +8,7 @@ namespace ARM_MedRegistrar.Model.Persons
 {
     public interface IDoctor
     {
-        public FullName FullName { get; set; }
+        public IFullName FullName { get; set; }
         public string Specialization { get; }
         public int PlotNumber { get; set; }
         public int Cabinet {  get; set; }

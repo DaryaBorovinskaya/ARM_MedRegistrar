@@ -13,7 +13,7 @@ namespace ARM_MedRegistrar.Model.Persons
     };
     public interface IUser 
     {
-        public FullName FullName { get; set; }
+        public IFullName FullName { get; set; }
         public string Login { get; }
         public string Password { get;  }
         public Profession Profession { get; }

@@ -9,10 +9,10 @@ namespace ARM_MedRegistrar.Model.Persons
     
     public class User : IUser
     {
-        private FullName _fullName;
+        private IFullName _fullName;
         
         
-        public FullName FullName
+        public IFullName FullName
         {
             get => _fullName;
             set
@@ -28,7 +28,7 @@ namespace ARM_MedRegistrar.Model.Persons
         public string Password { get; }  
         public Profession Profession { get; }
 
-        public User(FullName fullName, string login, string password, Profession profession) 
+        public User(IFullName fullName, string login, string password, Profession profession) 
         {
             if (login == "" || login == " " || login == null)
                 throw new ArgumentException("Логин не задан");

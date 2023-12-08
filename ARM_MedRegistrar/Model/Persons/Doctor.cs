@@ -8,12 +8,12 @@ namespace ARM_MedRegistrar.Model.Persons
 {
     public class Doctor : IDoctor
     {
-        private FullName _fullName;
+        private IFullName _fullName;
         private int _plotNumber;  //номер участка
         private int _cabinet; 
 
 
-        public FullName FullName
+        public IFullName FullName
         {
             get => _fullName;
             set
@@ -49,7 +49,7 @@ namespace ARM_MedRegistrar.Model.Persons
 
 
 
-        public Doctor(FullName fullName, string specialization, int plotNumber, int cabinet) 
+        public Doctor(IFullName fullName, string specialization, int plotNumber, int cabinet) 
         {
             if (specialization == "" || specialization == " " || specialization == null)
                 throw new ArgumentException("Специализация не задана");

@@ -14,17 +14,17 @@ namespace ARM_MedRegistrar.Model.Persons
 
     public class Patient : IPatient
     {
-        private FullName _fullName;
-        private Address _address;
+        private IFullName _fullName;
+        private IAddress _address;
         private int _plotNumber;  //номер участка
         private int _numbOfPatientCard; //номер амбулаторной карты
         private int _policySeries;
         private string _policyNumb;
-        private BloodType _bloodType;
-        private RhFactor _rhFactor;
+        private string _bloodType;
+        private string _rhFactor;
         
 
-        public FullName FullName
+        public IFullName FullName
         {
             get => _fullName;
             set
@@ -35,7 +35,7 @@ namespace ARM_MedRegistrar.Model.Persons
             }
         }
         public DateTime DateOfBirth { get; }
-        public Address Address
+        public IAddress Address
         {
             get => _address;
             set
@@ -87,33 +87,33 @@ namespace ARM_MedRegistrar.Model.Persons
                 if (value[0] == '-' || value[0] == '0')
                     throw new ArgumentException("Номер мед. полиса не может быть меньше или равным нулю");
                 
-                foreach (var item in value)
-                    if (value[item] < 48 || value[item] > 57)
-                        throw new ArgumentException("Номер мед. полиса должен состоять только из цифр");
+                //foreach (var item in value)
+                //    if (value[item] < 48 || value[item] > 57)
+                //        throw new ArgumentException("Номер мед. полиса должен состоять только из цифр");
 
                 _policyNumb = value;
             }
         }
-        public BloodType BloodType
+        public string BloodType
         {
             get => _bloodType;
             set
             {
-                if (!Enum.IsDefined(typeof(BloodType), value))
-                    throw new ArgumentOutOfRangeException(nameof(BloodType));
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Группа крови не задана");
 
                 _bloodType = value;
 
             }
         }
 
-        public RhFactor RhFactor
+        public string RhFactor
         {
             get => _rhFactor;
             set
             {
-                if (!Enum.IsDefined(typeof(RhFactor), value))
-                    throw new ArgumentOutOfRangeException(nameof(RhFactor));
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Резус-фактор не задан");
 
                 _rhFactor = value;
 
@@ -121,7 +121,7 @@ namespace ARM_MedRegistrar.Model.Persons
         }
 
         public string? Allergies { get; set; }
-        public Patient(FullName fullName, DateTime dateOfBirth, Address address, int plotNumber, int numbOfPatientCard, int policySeries, string policyNumb, BloodType bloodType, RhFactor rhFactor, string? allergies) 
+        public Patient(IFullName fullName, DateTime dateOfBirth, IAddress address, int plotNumber, int numbOfPatientCard, int policySeries, string policyNumb, string bloodType, string rhFactor, string? allergies) 
         {
             FullName = fullName;
             DateOfBirth = dateOfBirth;

@@ -24,7 +24,14 @@ namespace ARM_MedRegistrar
 
             FormClosed += OnClosed;
 
+            textFullNameOfRegistr.Text = "Aлимова Н П";         //из файла (данные User)
 
+
+            ListViewItem listViewDoctors = new();
+
+            listViewDoctors.SubItems.Add("Морская Д. Т.");
+            listViewDoctors.SubItems.Add("Неважная Д. Т.");
+            listViewDoctors.SubItems.Add("Нужная Д. Т.");
         }
 
 
@@ -49,6 +56,8 @@ namespace ARM_MedRegistrar
             //this.Hide();
             AddPatient newForm = new AddPatient();
             newForm.ShowDialog();
+
+
         }
 
         private void buttAddDoctor_Click(object sender, EventArgs e)
@@ -56,6 +65,8 @@ namespace ARM_MedRegistrar
             //this.Hide();
             AddDoctor newForm = new AddDoctor();
             newForm.ShowDialog();
+
+            
         }
 
 
@@ -64,6 +75,9 @@ namespace ARM_MedRegistrar
             Application.Exit();
         }
 
-        
+        private void listViewPatients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -74,6 +74,7 @@ partial class AddPatient
         errorNoBloodType = new ErrorProvider(components);
         errorNoRhFactor = new ErrorProvider(components);
         textNumbOfPatientCard = new TextBox();
+        checkNoCloseWindow = new CheckBox();
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
@@ -517,12 +518,25 @@ partial class AddPatient
         textNumbOfPatientCard.Size = new Size(125, 34);
         textNumbOfPatientCard.TabIndex = 65;
         // 
+        // checkNoCloseWindow
+        // 
+        checkNoCloseWindow.AutoSize = true;
+        checkNoCloseWindow.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        checkNoCloseWindow.ForeColor = Color.Black;
+        checkNoCloseWindow.Location = new Point(859, 722);
+        checkNoCloseWindow.Name = "checkNoCloseWindow";
+        checkNoCloseWindow.Size = new Size(213, 32);
+        checkNoCloseWindow.TabIndex = 66;
+        checkNoCloseWindow.Text = "Не закрывать окно ";
+        checkNoCloseWindow.UseVisualStyleBackColor = true;
+        // 
         // AddPatient
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
         ClientSize = new Size(1315, 788);
+        Controls.Add(checkNoCloseWindow);
         Controls.Add(textNumbOfPatientCard);
         Controls.Add(label18);
         Controls.Add(label17);
@@ -627,4 +641,5 @@ partial class AddPatient
     private ErrorProvider errorNoBloodType;
     private ErrorProvider errorNoRhFactor;
     private TextBox textNumbOfPatientCard;
+    private CheckBox checkNoCloseWindow;
 }
