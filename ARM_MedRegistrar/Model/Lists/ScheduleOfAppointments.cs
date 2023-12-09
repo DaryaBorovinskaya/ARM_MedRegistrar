@@ -9,11 +9,11 @@ namespace ARM_MedRegistrar.Model.Lists
 {
     public class ScheduleOfAppointments
     {
-        private List<Appointment> _appointments;
+        private List<Appointment> _doctors;
 
         public ScheduleOfAppointments() 
         { 
-            _appointments = new List<Appointment>();
+            _doctors = new List<Appointment>();
         }
     }
 }
