@@ -32,42 +32,42 @@ namespace ARM_MedRegistrar
         //    e.Cancel = true;
         //}
 
-        private void textSurname_TextChanged(object sender, EventArgs e)
-        {
+        //private void textSurname_TextChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
 
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
+        //private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void label9_Click(object sender, EventArgs e)
-        {
+        //private void label9_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void comboBoxBloodType_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        //private void comboBoxBloodType_SelectedIndexChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+        //private void textBox1_TextChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void label11_Click(object sender, EventArgs e)
-        {
+        //private void label11_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void listBoxAllergies_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        //private void listBoxAllergies_SelectedIndexChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void numericNumbOfHouse_ValueChanged(object sender, EventArgs e)
         {
@@ -81,37 +81,37 @@ namespace ARM_MedRegistrar
             numericNumbOfFlat.Maximum = 5000;
         }
 
-        private void label16_Click(object sender, EventArgs e)
-        {
+        //private void label16_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        //private void label1_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void numericPolicySeries_ValueChanged(object sender, EventArgs e)
         {
             numericPolicySeries.Maximum = 9999;
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
+        //private void label8_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
 
 
-        private void label17_Click(object sender, EventArgs e)
-        {
+        //private void label17_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void label10_Click(object sender, EventArgs e)
-        {
+        //private void label10_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void buttAddPatient_Click(object sender, EventArgs e)
         {

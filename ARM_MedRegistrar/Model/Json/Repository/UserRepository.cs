@@ -10,7 +10,7 @@ namespace ARM_MedRegistrar.Model.Json.Repository
 {
     public abstract class UserRepository : IBaseRepository<IUser>
     {
-        protected IList<IUser>? _users;
+        protected IList<IUser>? _users = new List<IUser>();
         public abstract void Add(IUser element);
 
 

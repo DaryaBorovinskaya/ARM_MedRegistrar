@@ -24,7 +24,11 @@ namespace ARM_MedRegistrar.Model.Json.JsonRepository
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 
             if (!File.Exists(_savePath))
+            {
+                _appointments?.Add(element);
                 File.WriteAllText(_savePath, JsonConvert.SerializeObject(_appointments, Formatting.Indented, settings));
+            }
+
             else
             {
                 _appointments = JsonConvert.DeserializeObject<IList<IAppointment>>(File.ReadAllText(_savePath), settings);
@@ -37,6 +41,8 @@ namespace ARM_MedRegistrar.Model.Json.JsonRepository
 
         public override IList<IAppointment>? GetAll()
         {
+            if (!File.Exists(_savePath)) return null;
+
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 
             _appointments = JsonConvert.DeserializeObject<IList<IAppointment>>(File.ReadAllText(_savePath), settings);

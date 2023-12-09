@@ -101,7 +101,7 @@ partial class AddPatientForm
         label1.Size = new Size(315, 37);
         label1.TabIndex = 0;
         label1.Text = "Добавление пациента\r\n";
-        label1.Click += label1_Click;
+     
         // 
         // buttAddPatient
         // 
@@ -162,7 +162,7 @@ partial class AddPatientForm
         textSurname.Name = "textSurname";
         textSurname.Size = new Size(422, 34);
         textSurname.TabIndex = 32;
-        textSurname.TextChanged += textSurname_TextChanged;
+        
         // 
         // textName
         // 
@@ -225,7 +225,7 @@ partial class AddPatientForm
         numericPlotNumber.Name = "numericPlotNumber";
         numericPlotNumber.Size = new Size(150, 34);
         numericPlotNumber.TabIndex = 39;
-        numericPlotNumber.ValueChanged += numericUpDown1_ValueChanged;
+        
         // 
         // label7
         // 
@@ -250,7 +250,7 @@ partial class AddPatientForm
         label8.Size = new Size(273, 28);
         label8.TabIndex = 42;
         label8.Text = "Номер амбулаторной карты";
-        label8.Click += label8_Click;
+       
         // 
         // comboBoxBloodType
         // 
@@ -262,7 +262,7 @@ partial class AddPatientForm
         comboBoxBloodType.Name = "comboBoxBloodType";
         comboBoxBloodType.Size = new Size(151, 36);
         comboBoxBloodType.TabIndex = 43;
-        comboBoxBloodType.SelectedIndexChanged += comboBoxBloodType_SelectedIndexChanged;
+       
         // 
         // comboBoxRhFactor
         // 
@@ -286,7 +286,7 @@ partial class AddPatientForm
         label9.Size = new Size(139, 28);
         label9.TabIndex = 45;
         label9.Text = "Группа крови";
-        label9.Click += label9_Click;
+        
         // 
         // label10
         // 
@@ -299,7 +299,7 @@ partial class AddPatientForm
         label10.Size = new Size(135, 28);
         label10.TabIndex = 46;
         label10.Text = "Резус-фактор";
-        label10.Click += label10_Click;
+        
         // 
         // label11
         // 
@@ -312,7 +312,7 @@ partial class AddPatientForm
         label11.Size = new Size(101, 28);
         label11.TabIndex = 48;
         label11.Text = "Аллергии";
-        label11.Click += label11_Click;
+        
         // 
         // textBoxAllergies
         // 
@@ -424,7 +424,7 @@ partial class AddPatientForm
         label16.Size = new Size(168, 28);
         label16.TabIndex = 59;
         label16.Text = "Номер квартиры";
-        label16.Click += label16_Click;
+        
         // 
         // textPolicyNumb
         // 
@@ -454,7 +454,7 @@ partial class AddPatientForm
         label17.Size = new Size(189, 28);
         label17.TabIndex = 63;
         label17.Text = "Номер мед. полиса";
-        label17.Click += label17_Click;
+        
         // 
         // label18
         // 

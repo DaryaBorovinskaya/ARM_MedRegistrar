@@ -70,8 +70,8 @@ partial class AddDoctorForm
         label2.Size = new Size(268, 37);
         label2.TabIndex = 2;
         label2.Text = "Добавление врача";
-        label2.Click += label2_Click;
-        // 
+       
+      
         // comboBoxSpecializations
         // 
         comboBoxSpecializations.BackColor = Color.White;
@@ -105,7 +105,7 @@ partial class AddDoctorForm
         textName.Name = "textName";
         textName.Size = new Size(451, 34);
         textName.TabIndex = 21;
-        textName.TextChanged += textName_TextChanged;
+        
         // 
         // textPatr
         // 

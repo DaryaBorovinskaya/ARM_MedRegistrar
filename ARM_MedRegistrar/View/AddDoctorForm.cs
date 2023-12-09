@@ -39,20 +39,20 @@ namespace ARM_MedRegistrar
         //    e.Cancel = true;
         //}
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+        //private void textBox1_TextChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void textName_TextChanged(object sender, EventArgs e)
-        {
+        //private void textName_TextChanged(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
-        private void label2_Click(object sender, EventArgs e)
-        {
+        //private void label2_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void numericPlotNumber_ValueChanged(object sender, EventArgs e)
         {
@@ -85,11 +85,8 @@ namespace ARM_MedRegistrar
             {
                 _fullName = new(textSurname.Text, textName.Text, textName.Text);
                 _newDoctor = new(_fullName, (string)comboBoxSpecializations.SelectedItem, (int)numericPlotNumber.Value, (int)numericCabinet.Value);
-                List<Doctor> _doctors = new()
-                {
-                    _newDoctor
-                };
-                MessageBox.Show("Добавление врача успешно выполнено!");
+                
+                
 
 
                 JsonDoctorRepository jsonDoctorRepository = new("doctors.json");
@@ -112,7 +109,7 @@ namespace ARM_MedRegistrar
 
                 }
 
-
+                MessageBox.Show("Добавление врача успешно выполнено!");
 
             }
 

@@ -189,7 +189,6 @@
             listViewPatients.Sorting = SortOrder.Ascending;
             listViewPatients.TabIndex = 14;
             listViewPatients.UseCompatibleStateImageBehavior = false;
-            
             // 
             // listViewDoctors
             // 
@@ -199,7 +198,6 @@
             listViewDoctors.Size = new Size(488, 241);
             listViewDoctors.TabIndex = 15;
             listViewDoctors.UseCompatibleStateImageBehavior = false;
-            
             // 
             // label2
             // 
@@ -229,13 +227,13 @@
             buttAddresses.ForeColor = Color.Firebrick;
             buttAddresses.Location = new Point(22, 58);
             buttAddresses.Name = "buttAddresses";
-            buttAddresses.Size = new Size(147, 39);
+            buttAddresses.Size = new Size(291, 37);
             buttAddresses.TabIndex = 18;
-            buttAddresses.Text = "Адреса";
+            buttAddresses.Text = "Прикреплённые улицы";
             buttAddresses.UseVisualStyleBackColor = true;
             buttAddresses.Click += buttAddresses_Click;
             // 
-            // MainWindow
+            // MainWindowForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -258,10 +256,9 @@
             Controls.Add(textFullNameOfRegistr);
             Controls.Add(buttAddDoctor);
             Controls.Add(buttAddPatient);
-            Name = "MainWindow";
+            Name = "MainWindowForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainWindow";
-           
             ResumeLayout(false);
             PerformLayout();
         }

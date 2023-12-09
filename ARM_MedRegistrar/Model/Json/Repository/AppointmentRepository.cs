@@ -10,7 +10,7 @@ namespace ARM_MedRegistrar.Model.Json.Repository
 {
     public abstract class AppointmentRepository : IBaseRepository<IAppointment>
     {
-        protected IList<IAppointment>? _appointments;
+        protected IList<IAppointment>? _appointments = new List<IAppointment>();
         public abstract void Add(IAppointment element);
 
 

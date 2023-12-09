@@ -58,8 +58,8 @@ namespace ARM_MedRegistrar
 
         private void buttAddPatient_Click(object sender, EventArgs e)
         {
-            
-            AddPatientForm newForm = new ();
+
+            AddPatientForm newForm = new();
             newForm.ShowDialog();
 
 
@@ -67,7 +67,7 @@ namespace ARM_MedRegistrar
 
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
-            
+
             AddDoctorForm newForm = new();
             newForm.ShowDialog();
 
@@ -80,7 +80,7 @@ namespace ARM_MedRegistrar
             Application.Exit();
         }
 
-        
+
         private void buttSearchDoctor_Click(object sender, EventArgs e)
         {
             //listViewDoctors.Columns.Add(new ColumnHeader());
@@ -100,11 +100,11 @@ namespace ARM_MedRegistrar
 
         private void buttAddresses_Click(object sender, EventArgs e)
         {
-           
-            AddressesForm newForm = new();
+
+            AttachedStreetsForm newForm = new();
             newForm.ShowDialog();
 
-             
+
         }
     }
 }

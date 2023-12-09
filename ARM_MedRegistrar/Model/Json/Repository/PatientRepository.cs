@@ -1,4 +1,5 @@
-﻿using ARM_MedRegistrar.Model.Persons;
+﻿using ARM_MedRegistrar.Model.Appointments;
+using ARM_MedRegistrar.Model.Persons;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +11,7 @@ namespace ARM_MedRegistrar.Model.Json.Repository
 {
     public abstract class PatientRepository : IBaseRepository<IPatient>
     {
-        protected IList<IPatient>? _patients;
+        protected IList<IPatient>? _patients = new List<IPatient>();
         public abstract void Add(IPatient element);
 
 

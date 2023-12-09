@@ -40,6 +40,8 @@ namespace ARM_MedRegistrar.Model.Json.JsonRepository
 
         public override IList<IDoctor>? GetAll()
         {
+            if (!File.Exists(_savePath)) return null;
+
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
             _doctors = JsonConvert.DeserializeObject<IList<IDoctor>>(File.ReadAllText(_savePath), settings);
             return _doctors;
