@@ -75,6 +75,9 @@ partial class AddPatientForm
         errorNoRhFactor = new ErrorProvider(components);
         textNumbOfPatientCard = new TextBox();
         checkNoCloseWindow = new CheckBox();
+        errorPolicyIsContainLetter = new ErrorProvider(components);
+        errorPatientCardIsContainLetter = new ErrorProvider(components);
+        errorNoNumbOfPatientCard = new ErrorProvider(components);
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
@@ -89,6 +92,9 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfFlat).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoBloodType).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoRhFactor).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorPolicyIsContainLetter).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorPatientCardIsContainLetter).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoNumbOfPatientCard).BeginInit();
         SuspendLayout();
         // 
         // label1
@@ -101,7 +107,6 @@ partial class AddPatientForm
         label1.Size = new Size(315, 37);
         label1.TabIndex = 0;
         label1.Text = "Добавление пациента\r\n";
-     
         // 
         // buttAddPatient
         // 
@@ -162,7 +167,7 @@ partial class AddPatientForm
         textSurname.Name = "textSurname";
         textSurname.Size = new Size(422, 34);
         textSurname.TabIndex = 32;
-        
+        textSurname.KeyPress += textSurname_KeyPress;
         // 
         // textName
         // 
@@ -173,6 +178,7 @@ partial class AddPatientForm
         textName.Name = "textName";
         textName.Size = new Size(422, 34);
         textName.TabIndex = 33;
+        textName.KeyPress += textName_KeyPress;
         // 
         // textPatr
         // 
@@ -183,6 +189,8 @@ partial class AddPatientForm
         textPatr.Name = "textPatr";
         textPatr.Size = new Size(422, 34);
         textPatr.TabIndex = 34;
+        textPatr.KeyPress += textPatr_KeyPress;
+
         // 
         // dateTimeDateOfBirth
         // 
@@ -225,7 +233,6 @@ partial class AddPatientForm
         numericPlotNumber.Name = "numericPlotNumber";
         numericPlotNumber.Size = new Size(150, 34);
         numericPlotNumber.TabIndex = 39;
-        
         // 
         // label7
         // 
@@ -250,26 +257,23 @@ partial class AddPatientForm
         label8.Size = new Size(273, 28);
         label8.TabIndex = 42;
         label8.Text = "Номер амбулаторной карты";
-       
         // 
         // comboBoxBloodType
         // 
         comboBoxBloodType.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxBloodType.ForeColor = Color.Firebrick;
         comboBoxBloodType.FormattingEnabled = true;
-        
         comboBoxBloodType.Location = new Point(721, 471);
         comboBoxBloodType.Name = "comboBoxBloodType";
         comboBoxBloodType.Size = new Size(151, 36);
         comboBoxBloodType.TabIndex = 43;
-       
         // 
         // comboBoxRhFactor
         // 
         comboBoxRhFactor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxRhFactor.ForeColor = Color.Firebrick;
         comboBoxRhFactor.FormattingEnabled = true;
-        comboBoxRhFactor.Items.AddRange(new object[] { "Неизвестно", "Положительный", "Отрицательный" });
+        
         comboBoxRhFactor.Location = new Point(909, 472);
         comboBoxRhFactor.Name = "comboBoxRhFactor";
         comboBoxRhFactor.Size = new Size(202, 36);
@@ -286,7 +290,6 @@ partial class AddPatientForm
         label9.Size = new Size(139, 28);
         label9.TabIndex = 45;
         label9.Text = "Группа крови";
-        
         // 
         // label10
         // 
@@ -299,7 +302,6 @@ partial class AddPatientForm
         label10.Size = new Size(135, 28);
         label10.TabIndex = 46;
         label10.Text = "Резус-фактор";
-        
         // 
         // label11
         // 
@@ -312,7 +314,6 @@ partial class AddPatientForm
         label11.Size = new Size(101, 28);
         label11.TabIndex = 48;
         label11.Text = "Аллергии";
-        
         // 
         // textBoxAllergies
         // 
@@ -330,6 +331,7 @@ partial class AddPatientForm
         textCity.Name = "textCity";
         textCity.Size = new Size(313, 34);
         textCity.TabIndex = 50;
+        textCity.KeyPress += textCity_KeyPress;
         // 
         // textRegion
         // 
@@ -338,6 +340,7 @@ partial class AddPatientForm
         textRegion.Name = "textRegion";
         textRegion.Size = new Size(313, 34);
         textRegion.TabIndex = 51;
+        textRegion.KeyPress += textRegion_KeyPress;
         // 
         // textStreet
         // 
@@ -346,6 +349,7 @@ partial class AddPatientForm
         textStreet.Name = "textStreet";
         textStreet.Size = new Size(313, 34);
         textStreet.TabIndex = 52;
+        textStreet.KeyPress += textStreet_KeyPress;
         // 
         // numericNumbOfHouse
         // 
@@ -424,7 +428,6 @@ partial class AddPatientForm
         label16.Size = new Size(168, 28);
         label16.TabIndex = 59;
         label16.Text = "Номер квартиры";
-        
         // 
         // textPolicyNumb
         // 
@@ -433,6 +436,7 @@ partial class AddPatientForm
         textPolicyNumb.Name = "textPolicyNumb";
         textPolicyNumb.Size = new Size(372, 34);
         textPolicyNumb.TabIndex = 61;
+        textPolicyNumb.KeyPress += textPolicyNumb_KeyPress;
         // 
         // numericPolicySeries
         // 
@@ -454,7 +458,6 @@ partial class AddPatientForm
         label17.Size = new Size(189, 28);
         label17.TabIndex = 63;
         label17.Text = "Номер мед. полиса";
-        
         // 
         // label18
         // 
@@ -514,9 +517,9 @@ partial class AddPatientForm
         textNumbOfPatientCard.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         textNumbOfPatientCard.Location = new Point(805, 575);
         textNumbOfPatientCard.Name = "textNumbOfPatientCard";
-        textNumbOfPatientCard.ReadOnly = true;
-        textNumbOfPatientCard.Size = new Size(125, 34);
+        textNumbOfPatientCard.Size = new Size(267, 34);
         textNumbOfPatientCard.TabIndex = 65;
+        textNumbOfPatientCard.KeyPress += textNumbOfPatientCard_KeyPress;
         // 
         // checkNoCloseWindow
         // 
@@ -530,7 +533,19 @@ partial class AddPatientForm
         checkNoCloseWindow.Text = "Не закрывать окно ";
         checkNoCloseWindow.UseVisualStyleBackColor = true;
         // 
-        // AddPatient
+        // errorPolicyIsContainLetter
+        // 
+        errorPolicyIsContainLetter.ContainerControl = this;
+        // 
+        // errorPatientCardIsContainLetter
+        // 
+        errorPatientCardIsContainLetter.ContainerControl = this;
+        // 
+        // errorNoNumbOfPatientCard
+        // 
+        errorNoNumbOfPatientCard.ContainerControl = this;
+        // 
+        // AddPatientForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -572,10 +587,9 @@ partial class AddPatientForm
         Controls.Add(label3);
         Controls.Add(buttAddPatient);
         Controls.Add(label1);
-        Name = "AddPatient";
+        Name = "AddPatientForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "AddPatient";
-      
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).EndInit();
@@ -590,8 +604,46 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfFlat).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoBloodType).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoRhFactor).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorPolicyIsContainLetter).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorPatientCardIsContainLetter).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoNumbOfPatientCard).EndInit();
         ResumeLayout(false);
         PerformLayout();
+    }
+
+    private void TextNumbOfPatientCard_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void TextStreet_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void TextRegion_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void TextCity_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void TextPatr_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void TextName_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void TextSurname_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
     }
 
     #endregion
@@ -642,4 +694,7 @@ partial class AddPatientForm
     private ErrorProvider errorNoRhFactor;
     private TextBox textNumbOfPatientCard;
     private CheckBox checkNoCloseWindow;
+    private ErrorProvider errorPolicyIsContainLetter;
+    private ErrorProvider errorPatientCardIsContainLetter;
+    private ErrorProvider errorNoNumbOfPatientCard;
 }

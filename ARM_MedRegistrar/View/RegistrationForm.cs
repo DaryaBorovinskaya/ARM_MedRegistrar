@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Model.Lists;
+using ARM_MedRegistrar.Model.Json.JsonRepository;
 
 namespace ARM_MedRegistrar
 {
@@ -25,6 +26,9 @@ namespace ARM_MedRegistrar
             InitializeComponent();
             DialogResult = DialogResult.Cancel;
             FormClosed += OnClosed;
+
+
+            comboBoxPost.Items.AddRange(new string[] { "медицинский регистратор", "заведующий регистратурой", "главный врач" });
         }
 
         private void OnClosed(object? sender, FormClosedEventArgs e)
@@ -32,7 +36,31 @@ namespace ARM_MedRegistrar
             DialogResult = DialogResult.OK;
         }
 
-
+        private void textLog_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+        private void textPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+        private void textSurname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+        private void textName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+        private void textPatr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
         //private void Registration_Load(object sender, EventArgs e)
         //{
 
@@ -66,57 +94,76 @@ namespace ARM_MedRegistrar
 
         private void buttRegistration_Click(object sender, EventArgs e)
         {
-            string _name, _surname, _patronymic, _oldLogin, _oldPassword;
+            string _name, _surname, _patronymic, _login, _password, _post;
             FullName _fullName;
             User _newUser;
-            GroupOfUsers _groupOfUsers;
-            Profession _profession;
+            bool IsSuccess = true;
+            JsonUserRepository jsonUserRepository = new("users.json");
+            IList<IUser>? _users = jsonUserRepository.GetAll();
 
-            errorNoChoice.Clear();
             errorNoSurname.Clear();
             errorNoName.Clear();
             errorNoLog.Clear();
             errorNoPassword.Clear();
+            errorNoPost.Clear();
+            errorMatchedLog.Clear();
+            errorMatchedPassword.Clear();
+            errorNoOneHeadDoctor.Clear();
 
             _surname = textSurname.Text;
             _name = textName.Text;
             _patronymic = textPatr.Text;
-            _oldLogin = textLog.Text;
-            _oldPassword = textPassword.Text;
+            _login = textLog.Text;
+            _password = textPassword.Text;
 
-
-            if (_surname != string.Empty && _name != string.Empty && _oldLogin != string.Empty
-                && _oldPassword != string.Empty)
+            if (_surname != string.Empty && _name != string.Empty && _login != string.Empty
+            && _password != string.Empty && comboBoxPost.SelectedIndex != -1)
             {
-
-                if (!checkHeadReg.Checked)
+                _post = comboBoxPost.SelectedItem.ToString();
+                if (_users != null)
                 {
-                    _profession = Profession.MedRegistrar;
-                    MessageBox.Show("Вы успешно зарегистрированы\nкак медицинский регистратор");
+                    for (int index = 0; index < _users.Count; index++)
+                    {
+                        if (_users[index].Post == "главный врач" && _post == "главный врач")
+                        {
+                            errorNoOneHeadDoctor.SetError(comboBoxPost, "Пользователь с должностью \"главный врач\" уже есть");
+                            IsSuccess = false;
+                            break;
+                        }
 
+                        if (_users[index].Login == _login)
+                        {
+                            errorMatchedLog.SetError(textLog, "Такой логин уже используется");
+                            IsSuccess = false;
+                            break;
+                        }
+
+                        if (_users[index].Password == _password)
+                        {
+                            errorMatchedPassword.SetError(textPassword, "Такой пароль уже используется");
+                            IsSuccess = false;
+                            break;
+                        }
+                    }
                 }
-                else
+
+                if (IsSuccess)
                 {
-                    _profession = Profession.HeadOfRegistry;
-                    MessageBox.Show("Вы успешно зарегистрированы\nкак заведующий регистратурой");
+                    _fullName = new(_surname, _name, _patronymic);
+                    _newUser = new(_fullName, _login, _password, _post);
+                    jsonUserRepository.Add(_newUser);
+
+                    MessageBox.Show($"Вы успешно зарегистрированы (должность {_post})");
+                    MainWindowForm newForm = new MainWindowForm(this);
+                    if (newForm.ShowDialog() == DialogResult.OK)
+                        Close();
                 }
-
-                _fullName = new(_surname, _name, _patronymic);
-                _newUser = new(_fullName, _oldLogin, _oldPassword, _profession);
-                _groupOfUsers = new();
-                _groupOfUsers.AddUser(_newUser);
-
-
-
-                MainWindowForm newForm = new MainWindowForm(this);
-                if (newForm.ShowDialog() == DialogResult.OK)
-                    Close();
             }
 
             else
             {
-                //if (!radioMedReg.Checked && !radioHeadReg.Checked)
-                //    errorNoChoice.SetError(radioMedReg, "Не выбрана занимаемая дожность");
+                if (comboBoxPost.SelectedIndex == -1)
+                    errorNoPost.SetError(comboBoxPost, "Поле \"Должность\" не заполнено");
 
                 if (_surname == String.Empty)
                     errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
@@ -124,15 +171,21 @@ namespace ARM_MedRegistrar
                 if (_name == String.Empty)
                     errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
 
-                if (_oldLogin == String.Empty)
+                if (_login == String.Empty)
                     errorNoLog.SetError(textLog, "Поле \"Логин\" не заполнено");
 
 
-                if (_oldPassword == String.Empty)
-
+                if (_password == String.Empty)
                     errorNoPassword.SetError(textPassword, "Поле \"Пароль\" не заполнено");
 
             }
+
+
+
+
+
+
+
 
 
 

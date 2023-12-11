@@ -26,9 +26,9 @@ namespace ARM_MedRegistrar.Model.Persons
         public string Login { get; }
         
         public string Password { get; }  
-        public Profession Profession { get; }
+        public string Post { get; }
 
-        public User(IFullName fullName, string login, string password, Profession profession) 
+        public User(IFullName fullName, string login, string password, string post) 
         {
             if (login == "" || login == " " || login == null)
                 throw new ArgumentException("Логин не задан");
@@ -36,13 +36,15 @@ namespace ARM_MedRegistrar.Model.Persons
             if (password == "" || password == " " || password == null)
                 throw new ArgumentException("Пароль не задан");
 
-            if (!Enum.IsDefined(typeof(Profession), profession))
-                throw new ArgumentOutOfRangeException(nameof(Profession));
+
+            if (post == "" || post == " " || post == null)
+                throw new ArgumentException("Должность не задана");
+
 
             FullName = fullName;
             Login = login;
             Password = password;
-            Profession = profession;
+            Post = post;
         }
     }
 }

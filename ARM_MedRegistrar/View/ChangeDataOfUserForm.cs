@@ -33,6 +33,49 @@ namespace ARM_MedRegistrar
         }
 
 
+        private void textSurname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
+        private void textName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
+        private void textPatr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
+
+        private void textOldLog_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
+        private void textOldPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
+        private void textNewLog_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
+        private void textNewPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
         //private void ChangeDataOfUser_Load(object sender, EventArgs e)
         //{
 
@@ -66,13 +109,13 @@ namespace ARM_MedRegistrar
 
         private void buttRegistration_Click(object sender, EventArgs e)
         {
-            string _name, _surname, _patronymic, _oldLogin, _oldPassword, _newLogin, _newPassword;
+            string _name, _surname, _patronymic, _oldLogin, _oldPassword, _newLogin, _newPassword, _post;
             FullName _fullName;
             User _newUser;
-            GroupOfUsers _groupOfUsers;
-            Profession _profession;
 
-            errorNoChoice.Clear();
+
+
+            errorNoPost.Clear();
             errorNoSurname.Clear();
             errorNoName.Clear();
             errorNoOldLog.Clear();
@@ -93,22 +136,11 @@ namespace ARM_MedRegistrar
             {
                 //поиск и удаление пользователя со старыми данными
 
-                if (!checkHeadReg.Checked)
-                {
-                    _profession = Profession.MedRegistrar;
-                    MessageBox.Show("Вы успешно обновили свои данные\n(медицинский регистратор)");
 
-                }
-                else
-                {
-                    _profession = Profession.HeadOfRegistry;
-                    MessageBox.Show("Вы успешно обновили свои данные\n(заведующий регистратурой)");
-                }
 
                 _fullName = new(_surname, _name, _patronymic);
-                _newUser = new(_fullName, _newLogin, _newPassword, _profession);
-                _groupOfUsers = new();
-                _groupOfUsers.AddUser(_newUser);
+                //_newUser = new(_fullName, _newLogin, _newPassword, _profession);
+
 
 
 
@@ -165,7 +197,7 @@ namespace ARM_MedRegistrar
 
         }
 
-       
+
 
         private void checkViewNewPassword_CheckedChanged(object sender, EventArgs e)
         {
@@ -183,6 +215,25 @@ namespace ARM_MedRegistrar
 
             else
                 textOldPassword.UseSystemPasswordChar = true;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textOldPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,19 +1,12 @@
 ﻿using ARM_MedRegistrar.View;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Presenter;
+using ARM_MedRegistrar.Model.Json.JsonRepository;
 
 
 namespace ARM_MedRegistrar
 {
-    public partial class EntranceForm : Form , IEntranceForm
+    public partial class EntranceForm : Form, IEntranceForm
     {
         private EntrancePresenter presenter;
         public string Login => throw new NotImplementedException();
@@ -27,22 +20,55 @@ namespace ARM_MedRegistrar
             presenter = new();
         }
 
+        private void textLog_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
 
+        private void textPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
 
         private void buttEntrance_Click(object sender, EventArgs e)
         {
             string _login, _password;
+            JsonUserRepository jsonUserRepository = new("users.json");
+            IList<IUser>? _users = jsonUserRepository.GetAll();
 
             errorNoLog.Clear();
             errorNoPassword.Clear();
+
+
             _login = textLog.Text;
             _password = textPassword.Text;
 
             if (_login != string.Empty && _password != string.Empty)
             {
+                if (_users != null)
+                {
+                    for (int index = 0; index < _users.Count; index++)
+                    {
+                        if (_users[index].Login == _login && _users[index].Password == _password)
+                        {
+                            MainWindowForm newForm = new(this);
+                            if (newForm.ShowDialog() == DialogResult.OK)
+                                Close();
+                            break;
+                        }
+                    }
 
-                MainWindowForm newForm = new MainWindowForm(this);
-                if (newForm.ShowDialog() == DialogResult.OK) Close();
+                    labelWrongLogOrPassword.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Пожалуйста, пройдите регистрацию");
+                    RegistrationForm newForm = new RegistrationForm(this);
+                    if (newForm.ShowDialog() == DialogResult.OK) Close();
+                }
+
 
             }
 
@@ -69,7 +95,7 @@ namespace ARM_MedRegistrar
             if (newForm.ShowDialog() == DialogResult.OK) Close();
         }
 
-        
+
 
         private void checkViewPassword_CheckedChanged(object sender, EventArgs e)
         {
@@ -82,7 +108,7 @@ namespace ARM_MedRegistrar
 
         private void buttChangeDataOfUser_Click(object sender, EventArgs e)
         {
-             ChangeDataOfUserForm newForm = new ChangeDataOfUserForm(this);
+            ChangeDataOfUserForm newForm = new ChangeDataOfUserForm(this);
             if (newForm.ShowDialog() == DialogResult.OK) Close();
         }
     }

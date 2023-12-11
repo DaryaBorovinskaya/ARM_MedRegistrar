@@ -22,10 +22,27 @@ namespace ARM_MedRegistrar
         {
 
             InitializeComponent();
-
+            comboBoxSpecializations.Items.AddRange(new string[] { "терапевт", "педиатр", "врач общей практики", "хирург", "невролог", "оториноларинголог", "офтальмолог", "травматолог", "акушер-гинеколог", "уролог", "инфекционист", "онколог", "гастроэнтеролог", "кардиолог", "эндокринолог" });
         }
 
 
+        private void textSurname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
+        private void textName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
+
+        private void textPatr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
 
 
         //private void AddDoctor_Load(object sender, EventArgs e)
@@ -84,9 +101,7 @@ namespace ARM_MedRegistrar
 
             {
                 _fullName = new(textSurname.Text, textName.Text, textName.Text);
-                _newDoctor = new(_fullName, (string)comboBoxSpecializations.SelectedItem, (int)numericPlotNumber.Value, (int)numericCabinet.Value);
-                
-                
+                _newDoctor = new(_fullName, comboBoxSpecializations.SelectedItem.ToString(), (int)numericPlotNumber.Value, (int)numericCabinet.Value);
 
 
                 JsonDoctorRepository jsonDoctorRepository = new("doctors.json");
@@ -94,7 +109,7 @@ namespace ARM_MedRegistrar
 
                 IList<IDoctor>? _printDoctors = jsonDoctorRepository.GetAll();
                 foreach (var item in _printDoctors)
-                    listBox1.Items.Add(item.FullName.Name); 
+                    listBox1.Items.Add(item.FullName.Name);
 
 
                 if (!checkNoCloseWindow.Checked)
@@ -140,6 +155,11 @@ namespace ARM_MedRegistrar
         }
 
         private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxSpecializations_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

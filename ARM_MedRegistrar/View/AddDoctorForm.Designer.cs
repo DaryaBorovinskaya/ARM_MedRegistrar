@@ -70,8 +70,7 @@ partial class AddDoctorForm
         label2.Size = new Size(268, 37);
         label2.TabIndex = 2;
         label2.Text = "Добавление врача";
-       
-      
+        // 
         // comboBoxSpecializations
         // 
         comboBoxSpecializations.BackColor = Color.White;
@@ -79,12 +78,13 @@ partial class AddDoctorForm
         comboBoxSpecializations.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxSpecializations.ForeColor = Color.Firebrick;
         comboBoxSpecializations.FormattingEnabled = true;
-        comboBoxSpecializations.Items.AddRange(new object[] { "терапевт", "педиатр", "врач общей практики", "хирург", "невролог", "оториноларинголог", "офтальмолог", "травматолог", "акушер-гинеколог", "уролог", "инфекционист", "онколог", "гастроэнтеролог", "кардиолог", "эндокринолог" });
+        
         comboBoxSpecializations.Location = new Point(570, 144);
         comboBoxSpecializations.Margin = new Padding(4);
         comboBoxSpecializations.Name = "comboBoxSpecializations";
         comboBoxSpecializations.Size = new Size(252, 36);
         comboBoxSpecializations.TabIndex = 3;
+        comboBoxSpecializations.SelectedIndexChanged += comboBoxSpecializations_SelectedIndexChanged;
         // 
         // textSurname
         // 
@@ -95,6 +95,7 @@ partial class AddDoctorForm
         textSurname.Name = "textSurname";
         textSurname.Size = new Size(451, 34);
         textSurname.TabIndex = 20;
+        textSurname.KeyPress += textSurname_KeyPress;
         // 
         // textName
         // 
@@ -105,7 +106,7 @@ partial class AddDoctorForm
         textName.Name = "textName";
         textName.Size = new Size(451, 34);
         textName.TabIndex = 21;
-        
+        textName.KeyPress += textName_KeyPress;
         // 
         // textPatr
         // 
@@ -116,6 +117,7 @@ partial class AddDoctorForm
         textPatr.Name = "textPatr";
         textPatr.Size = new Size(451, 34);
         textPatr.TabIndex = 22;
+        textPatr.KeyPress += textPatr_KeyPress;
         // 
         // buttAddDoctor
         // 
@@ -263,7 +265,7 @@ partial class AddDoctorForm
         listBox1.Size = new Size(435, 452);
         listBox1.TabIndex = 35;
         // 
-        // AddDoctor
+        // AddDoctorForm
         // 
         AutoScaleDimensions = new SizeF(11F, 28F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -287,10 +289,9 @@ partial class AddDoctorForm
         Controls.Add(label2);
         Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         Margin = new Padding(4);
-        Name = "AddDoctor";
+        Name = "AddDoctorForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "AddDoctor";
-        
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericCabinet).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();

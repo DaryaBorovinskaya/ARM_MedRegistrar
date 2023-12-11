@@ -46,18 +46,25 @@ namespace ARM_MedRegistrar
             label3 = new Label();
             errorNoLog = new ErrorProvider(components);
             errorNoPassword = new ErrorProvider(components);
-            errorNoChoice = new ErrorProvider(components);
             errorNoSurname = new ErrorProvider(components);
             errorNoName = new ErrorProvider(components);
             label4 = new Label();
-            checkHeadReg = new CheckBox();
             checkBox1 = new CheckBox();
             checkViewPassword = new CheckBox();
+            comboBoxPost = new ComboBox();
+            label5 = new Label();
+            errorNoPost = new ErrorProvider(components);
+            errorMatchedLog = new ErrorProvider(components);
+            errorMatchedPassword = new ErrorProvider(components);
+            errorNoOneHeadDoctor = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)errorNoLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPassword).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorNoChoice).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoPost).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorMatchedLog).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorMatchedPassword).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoOneHeadDoctor).BeginInit();
             SuspendLayout();
             // 
             // labelName
@@ -65,7 +72,7 @@ namespace ARM_MedRegistrar
             labelName.AutoSize = true;
             labelName.Font = new Font("Arial Rounded MT Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             labelName.ForeColor = Color.Brown;
-            labelName.Location = new Point(409, 32);
+            labelName.Location = new Point(415, 40);
             labelName.Name = "labelName";
             labelName.Size = new Size(182, 32);
             labelName.TabIndex = 7;
@@ -76,7 +83,7 @@ namespace ARM_MedRegistrar
             labelLog.AutoSize = true;
             labelLog.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelLog.ForeColor = Color.Firebrick;
-            labelLog.Location = new Point(454, 385);
+            labelLog.Location = new Point(469, 394);
             labelLog.Name = "labelLog";
             labelLog.Size = new Size(69, 28);
             labelLog.TabIndex = 8;
@@ -88,7 +95,7 @@ namespace ARM_MedRegistrar
             labelPassword.AutoSize = true;
             labelPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelPassword.ForeColor = Color.Firebrick;
-            labelPassword.Location = new Point(454, 483);
+            labelPassword.Location = new Point(469, 487);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(81, 28);
             labelPassword.TabIndex = 9;
@@ -98,27 +105,29 @@ namespace ARM_MedRegistrar
             // 
             textLog.BackColor = Color.White;
             textLog.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textLog.Location = new Point(327, 430);
+            textLog.Location = new Point(337, 434);
             textLog.Name = "textLog";
             textLog.Size = new Size(329, 34);
             textLog.TabIndex = 10;
+            textLog.KeyPress += textLog_KeyPress;
             // 
             // textPassword
             // 
             textPassword.BackColor = Color.White;
             textPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPassword.Location = new Point(327, 525);
+            textPassword.Location = new Point(337, 525);
             textPassword.Name = "textPassword";
             textPassword.Size = new Size(329, 34);
             textPassword.TabIndex = 11;
             textPassword.UseSystemPasswordChar = true;
+            textPassword.KeyPress += textPassword_KeyPress;
             // 
             // buttRegistration
             // 
             buttRegistration.BackColor = Color.FromArgb(255, 192, 192);
             buttRegistration.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttRegistration.ForeColor = Color.Firebrick;
-            buttRegistration.Location = new Point(380, 672);
+            buttRegistration.Location = new Point(393, 682);
             buttRegistration.Name = "buttRegistration";
             buttRegistration.Size = new Size(224, 57);
             buttRegistration.TabIndex = 14;
@@ -130,29 +139,31 @@ namespace ARM_MedRegistrar
             // 
             textPatr.BackColor = Color.White;
             textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPatr.Location = new Point(327, 333);
+            textPatr.Location = new Point(337, 334);
             textPatr.Name = "textPatr";
             textPatr.Size = new Size(329, 34);
             textPatr.TabIndex = 17;
+            textPatr.KeyPress += textPatr_KeyPress;
             // 
             // textName
             // 
             textName.BackColor = Color.White;
             textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textName.Location = new Point(327, 239);
+            textName.Location = new Point(337, 240);
             textName.Name = "textName";
             textName.Size = new Size(329, 34);
             textName.TabIndex = 18;
+            textName.KeyPress += textName_KeyPress;
             // 
             // textSurname
             // 
             textSurname.BackColor = Color.White;
             textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textSurname.Location = new Point(327, 143);
+            textSurname.Location = new Point(337, 143);
             textSurname.Name = "textSurname";
             textSurname.Size = new Size(329, 34);
             textSurname.TabIndex = 19;
-            
+            textSurname.KeyPress += textSurname_KeyPress;
             // 
             // label1
             // 
@@ -170,7 +181,7 @@ namespace ARM_MedRegistrar
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(466, 191);
+            label2.Location = new Point(479, 206);
             label2.Name = "label2";
             label2.Size = new Size(51, 28);
             label2.TabIndex = 21;
@@ -181,7 +192,7 @@ namespace ARM_MedRegistrar
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(454, 91);
+            label3.Location = new Point(454, 102);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
             label3.TabIndex = 22;
@@ -194,10 +205,6 @@ namespace ARM_MedRegistrar
             // errorNoPassword
             // 
             errorNoPassword.ContainerControl = this;
-            // 
-            // errorNoChoice
-            // 
-            errorNoChoice.ContainerControl = this;
             // 
             // errorNoSurname
             // 
@@ -218,18 +225,6 @@ namespace ARM_MedRegistrar
             label4.TabIndex = 24;
             label4.Click += label4_Click;
             // 
-            // checkHeadReg
-            // 
-            checkHeadReg.AutoSize = true;
-            checkHeadReg.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            checkHeadReg.ForeColor = Color.Firebrick;
-            checkHeadReg.Location = new Point(327, 596);
-            checkHeadReg.Name = "checkHeadReg";
-            checkHeadReg.Size = new Size(345, 32);
-            checkHeadReg.TabIndex = 25;
-            checkHeadReg.Text = "Я - заведующий регистратурой";
-            checkHeadReg.UseVisualStyleBackColor = true;
-            // 
             // checkBox1
             // 
             checkBox1.Location = new Point(0, 0);
@@ -242,7 +237,7 @@ namespace ARM_MedRegistrar
             checkViewPassword.AutoSize = true;
             checkViewPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             checkViewPassword.ForeColor = Color.Firebrick;
-            checkViewPassword.Location = new Point(675, 525);
+            checkViewPassword.Location = new Point(706, 527);
             checkViewPassword.Name = "checkViewPassword";
             checkViewPassword.Size = new Size(189, 32);
             checkViewPassword.TabIndex = 26;
@@ -250,16 +245,54 @@ namespace ARM_MedRegistrar
             checkViewPassword.UseVisualStyleBackColor = true;
             checkViewPassword.CheckedChanged += checkViewPassword_CheckedChanged;
             // 
-            // Registration
+            // comboBoxPost
+            // 
+            comboBoxPost.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxPost.ForeColor = Color.Firebrick;
+            comboBoxPost.FormattingEnabled = true;
+            comboBoxPost.Location = new Point(337, 624);
+            comboBoxPost.Name = "comboBoxPost";
+            comboBoxPost.Size = new Size(329, 36);
+            comboBoxPost.TabIndex = 27;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.Firebrick;
+            label5.Location = new Point(454, 582);
+            label5.Name = "label5";
+            label5.Size = new Size(115, 28);
+            label5.TabIndex = 28;
+            label5.Text = "Должность";
+            // 
+            // errorNoPost
+            // 
+            errorNoPost.ContainerControl = this;
+            // 
+            // errorMatchedLog
+            // 
+            errorMatchedLog.ContainerControl = this;
+            // 
+            // errorMatchedPassword
+            // 
+            errorMatchedPassword.ContainerControl = this;
+            // 
+            // errorNoOneHeadDoctor
+            // 
+            errorNoOneHeadDoctor.ContainerControl = this;
+            // 
+            // RegistrationForm
             // 
             AllowDrop = true;
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(1051, 780);
+            ClientSize = new Size(1033, 780);
+            Controls.Add(label5);
+            Controls.Add(comboBoxPost);
             Controls.Add(checkViewPassword);
             Controls.Add(checkBox1);
-            Controls.Add(checkHeadReg);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -273,15 +306,18 @@ namespace ARM_MedRegistrar
             Controls.Add(labelPassword);
             Controls.Add(labelLog);
             Controls.Add(labelName);
-            Name = "Registration";
+            Name = "RegistrationForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registration";
             Load += Registration_Load_1;
             ((System.ComponentModel.ISupportInitialize)errorNoLog).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPassword).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorNoChoice).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoPost).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorMatchedLog).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorMatchedPassword).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoOneHeadDoctor).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -307,12 +343,16 @@ namespace ARM_MedRegistrar
         private Label label3;
         private ErrorProvider errorNoLog;
         private ErrorProvider errorNoPassword;
-        private ErrorProvider errorNoChoice;
         private ErrorProvider errorNoSurname;
         private ErrorProvider errorNoName;
         private Label label4;
-        private CheckBox checkHeadReg;
         private CheckBox checkBox1;
         private CheckBox checkViewPassword;
+        private Label label5;
+        private ComboBox comboBoxPost;
+        private ErrorProvider errorNoPost;
+        private ErrorProvider errorMatchedLog;
+        private ErrorProvider errorMatchedPassword;
+        private ErrorProvider errorNoOneHeadDoctor;
     }
 }

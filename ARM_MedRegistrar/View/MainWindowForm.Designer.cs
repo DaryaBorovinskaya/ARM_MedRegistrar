@@ -40,18 +40,15 @@
             buttAddAppointment = new Button();
             buttSearchAppointment = new Button();
             buttRemoveAppointment = new Button();
-            listViewPatients = new ListView();
-            listViewDoctors = new ListView();
-            label2 = new Label();
-            label3 = new Label();
             buttAddresses = new Button();
+            buttInfoAboutUser = new Button();
             SuspendLayout();
             // 
             // buttAddPatient
             // 
             buttAddPatient.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttAddPatient.ForeColor = Color.Firebrick;
-            buttAddPatient.Location = new Point(743, 135);
+            buttAddPatient.Location = new Point(1443, 135);
             buttAddPatient.Name = "buttAddPatient";
             buttAddPatient.Size = new Size(147, 65);
             buttAddPatient.TabIndex = 1;
@@ -79,7 +76,7 @@
             textFullNameOfRegistr.Location = new Point(12, 12);
             textFullNameOfRegistr.Name = "textFullNameOfRegistr";
             textFullNameOfRegistr.ReadOnly = true;
-            textFullNameOfRegistr.Size = new Size(317, 34);
+            textFullNameOfRegistr.Size = new Size(400, 34);
             textFullNameOfRegistr.TabIndex = 4;
             // 
             // label1
@@ -106,7 +103,7 @@
             // 
             buttRemovePatient.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttRemovePatient.ForeColor = Color.Firebrick;
-            buttRemovePatient.Location = new Point(743, 311);
+            buttRemovePatient.Location = new Point(1472, 311);
             buttRemovePatient.Name = "buttRemovePatient";
             buttRemovePatient.Size = new Size(147, 65);
             buttRemovePatient.TabIndex = 7;
@@ -128,7 +125,7 @@
             // 
             buttSearchPatient.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttSearchPatient.ForeColor = Color.Firebrick;
-            buttSearchPatient.Location = new Point(743, 222);
+            buttSearchPatient.Location = new Point(1460, 222);
             buttSearchPatient.Name = "buttSearchPatient";
             buttSearchPatient.Size = new Size(147, 65);
             buttSearchPatient.TabIndex = 9;
@@ -180,52 +177,11 @@
             buttRemoveAppointment.Text = "Удалить запись\r\n";
             buttRemoveAppointment.UseVisualStyleBackColor = true;
             // 
-            // listViewPatients
-            // 
-            listViewPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewPatients.Location = new Point(239, 135);
-            listViewPatients.Name = "listViewPatients";
-            listViewPatients.Size = new Size(488, 241);
-            listViewPatients.Sorting = SortOrder.Ascending;
-            listViewPatients.TabIndex = 14;
-            listViewPatients.UseCompatibleStateImageBehavior = false;
-            // 
-            // listViewDoctors
-            // 
-            listViewDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewDoctors.Location = new Point(1119, 135);
-            listViewDoctors.Name = "listViewDoctors";
-            listViewDoctors.Size = new Size(488, 241);
-            listViewDoctors.TabIndex = 15;
-            listViewDoctors.UseCompatibleStateImageBehavior = false;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(388, 95);
-            label2.Name = "label2";
-            label2.Size = new Size(193, 28);
-            label2.TabIndex = 16;
-            label2.Text = "Список пациентов";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(1313, 95);
-            label3.Name = "label3";
-            label3.Size = new Size(159, 28);
-            label3.TabIndex = 17;
-            label3.Text = "Список врачей";
-            // 
             // buttAddresses
             // 
             buttAddresses.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttAddresses.ForeColor = Color.Firebrick;
-            buttAddresses.Location = new Point(22, 58);
+            buttAddresses.Location = new Point(80, 483);
             buttAddresses.Name = "buttAddresses";
             buttAddresses.Size = new Size(291, 37);
             buttAddresses.TabIndex = 18;
@@ -233,17 +189,26 @@
             buttAddresses.UseVisualStyleBackColor = true;
             buttAddresses.Click += buttAddresses_Click;
             // 
+            // buttInfoAboutUser
+            // 
+            buttInfoAboutUser.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttInfoAboutUser.ForeColor = Color.Firebrick;
+            buttInfoAboutUser.Location = new Point(12, 69);
+            buttInfoAboutUser.Name = "buttInfoAboutUser";
+            buttInfoAboutUser.Size = new Size(291, 37);
+            buttInfoAboutUser.TabIndex = 19;
+            buttInfoAboutUser.Text = "Пользователь";
+            buttInfoAboutUser.UseVisualStyleBackColor = true;
+            buttInfoAboutUser.Click += buttInfoAboutUser_Click;
+            // 
             // MainWindowForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1902, 1033);
+            Controls.Add(buttInfoAboutUser);
             Controls.Add(buttAddresses);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(listViewDoctors);
-            Controls.Add(listViewPatients);
             Controls.Add(buttRemoveAppointment);
             Controls.Add(buttSearchAppointment);
             Controls.Add(buttAddAppointment);
@@ -259,6 +224,7 @@
             Name = "MainWindowForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainWindow";
+            Load += MainWindowForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -276,10 +242,7 @@
         private Button buttAddAppointment;
         private Button buttSearchAppointment;
         private Button buttRemoveAppointment;
-        private ListView listViewPatients;
-        private ListView listViewDoctors;
-        private Label label2;
-        private Label label3;
         private Button buttAddresses;
+        private Button buttInfoAboutUser;
     }
 }

@@ -32,7 +32,7 @@ namespace ARM_MedRegistrar
 
 
 
-            
+
         }
 
 
@@ -42,7 +42,7 @@ namespace ARM_MedRegistrar
         }
 
 
-        
+
 
         private void buttAddPatient_Click(object sender, EventArgs e)
         {
@@ -71,7 +71,7 @@ namespace ARM_MedRegistrar
 
         private void buttSearchDoctor_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttAddresses_Click(object sender, EventArgs e)
@@ -81,6 +81,17 @@ namespace ARM_MedRegistrar
             newForm.ShowDialog();
 
 
+        }
+
+        private void MainWindowForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttInfoAboutUser_Click(object sender, EventArgs e)
+        {
+            InfoAboutUserForm newForm = new();
+            newForm.ShowDialog();
         }
     }
 }

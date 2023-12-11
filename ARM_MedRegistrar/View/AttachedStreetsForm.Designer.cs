@@ -112,6 +112,7 @@
             textCity.Name = "textCity";
             textCity.Size = new Size(313, 34);
             textCity.TabIndex = 51;
+            textCity.KeyPress += textCity_KeyPress;
             // 
             // textRegion
             // 
@@ -120,6 +121,7 @@
             textRegion.Name = "textRegion";
             textRegion.Size = new Size(313, 34);
             textRegion.TabIndex = 52;
+            textRegion.KeyPress += textRegion_KeyPress;
             // 
             // label14
             // 
@@ -153,6 +155,7 @@
             textStreet.Name = "textStreet";
             textStreet.Size = new Size(313, 34);
             textStreet.TabIndex = 60;
+            textStreet.KeyPress += textStreet_KeyPress;
             // 
             // label12
             // 

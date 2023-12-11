@@ -40,8 +40,13 @@ partial class EntranceForm
         errorNoPassword = new ErrorProvider(components);
         checkViewPassword = new CheckBox();
         buttChangeDataOfUser = new Button();
+        errorWrongLogOrPassword = new ErrorProvider(components);
+        errorWrongPassword = new ErrorProvider(components);
+        labelWrongLogOrPassword = new Label();
         ((System.ComponentModel.ISupportInitialize)errorNoLog).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPassword).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorWrongLogOrPassword).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorWrongPassword).BeginInit();
         SuspendLayout();
         // 
         // buttEntrance
@@ -49,7 +54,7 @@ partial class EntranceForm
         buttEntrance.BackColor = Color.FromArgb(255, 192, 192);
         buttEntrance.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
         buttEntrance.ForeColor = Color.Firebrick;
-        buttEntrance.Location = new Point(312, 328);
+        buttEntrance.Location = new Point(313, 327);
         buttEntrance.Name = "buttEntrance";
         buttEntrance.Size = new Size(177, 65);
         buttEntrance.TabIndex = 0;
@@ -61,27 +66,29 @@ partial class EntranceForm
         // 
         textLog.BackColor = Color.Snow;
         textLog.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textLog.Location = new Point(239, 174);
+        textLog.Location = new Point(239, 170);
         textLog.Name = "textLog";
         textLog.Size = new Size(329, 34);
         textLog.TabIndex = 1;
+        textLog.KeyPress += textPassword_KeyPress;
         // 
         // textPassword
         // 
         textPassword.BackColor = Color.Snow;
         textPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textPassword.Location = new Point(239, 263);
+        textPassword.Location = new Point(239, 264);
         textPassword.Name = "textPassword";
         textPassword.Size = new Size(329, 34);
         textPassword.TabIndex = 2;
         textPassword.UseSystemPasswordChar = true;
+        textPassword.KeyPress += textPassword_KeyPress;
         // 
         // labelLog
         // 
         labelLog.AutoSize = true;
         labelLog.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         labelLog.ForeColor = Color.Firebrick;
-        labelLog.Location = new Point(357, 122);
+        labelLog.Location = new Point(357, 125);
         labelLog.Name = "labelLog";
         labelLog.Size = new Size(69, 28);
         labelLog.TabIndex = 3;
@@ -102,7 +109,7 @@ partial class EntranceForm
         // 
         buttonRegistration.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point);
         buttonRegistration.ForeColor = Color.Black;
-        buttonRegistration.Location = new Point(115, 408);
+        buttonRegistration.Location = new Point(113, 450);
         buttonRegistration.Name = "buttonRegistration";
         buttonRegistration.Size = new Size(238, 38);
         buttonRegistration.TabIndex = 5;
@@ -115,7 +122,7 @@ partial class EntranceForm
         labelName.AutoSize = true;
         labelName.Font = new Font("Arial Rounded MT Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
         labelName.ForeColor = Color.Brown;
-        labelName.Location = new Point(255, 46);
+        labelName.Location = new Point(255, 51);
         labelName.Name = "labelName";
         labelName.Size = new Size(313, 32);
         labelName.TabIndex = 6;
@@ -134,7 +141,7 @@ partial class EntranceForm
         checkViewPassword.AutoSize = true;
         checkViewPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         checkViewPassword.ForeColor = Color.Firebrick;
-        checkViewPassword.Location = new Point(607, 263);
+        checkViewPassword.Location = new Point(588, 264);
         checkViewPassword.Name = "checkViewPassword";
         checkViewPassword.Size = new Size(189, 32);
         checkViewPassword.TabIndex = 7;
@@ -146,7 +153,7 @@ partial class EntranceForm
         // 
         buttChangeDataOfUser.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point);
         buttChangeDataOfUser.ForeColor = Color.Black;
-        buttChangeDataOfUser.Location = new Point(464, 408);
+        buttChangeDataOfUser.Location = new Point(464, 450);
         buttChangeDataOfUser.Name = "buttChangeDataOfUser";
         buttChangeDataOfUser.Size = new Size(238, 38);
         buttChangeDataOfUser.TabIndex = 8;
@@ -154,12 +161,33 @@ partial class EntranceForm
         buttChangeDataOfUser.UseVisualStyleBackColor = true;
         buttChangeDataOfUser.Click += buttChangeDataOfUser_Click;
         // 
-        // Entrance
+        // errorWrongLogOrPassword
+        // 
+        errorWrongLogOrPassword.ContainerControl = this;
+        // 
+        // errorWrongPassword
+        // 
+        errorWrongPassword.ContainerControl = this;
+        // 
+        // labelWrongLogOrPassword
+        // 
+        labelWrongLogOrPassword.AutoSize = true;
+        labelWrongLogOrPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        labelWrongLogOrPassword.ForeColor = Color.Red;
+        labelWrongLogOrPassword.Location = new Point(268, 408);
+        labelWrongLogOrPassword.Name = "labelWrongLogOrPassword";
+        labelWrongLogOrPassword.Size = new Size(279, 28);
+        labelWrongLogOrPassword.TabIndex = 9;
+        labelWrongLogOrPassword.Text = "Неверный логин или пароль";
+        labelWrongLogOrPassword.Visible = false;
+        // 
+        // EntranceForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
-        ClientSize = new Size(803, 491);
+        ClientSize = new Size(830, 523);
+        Controls.Add(labelWrongLogOrPassword);
         Controls.Add(buttChangeDataOfUser);
         Controls.Add(checkViewPassword);
         Controls.Add(labelName);
@@ -169,12 +197,13 @@ partial class EntranceForm
         Controls.Add(textPassword);
         Controls.Add(textLog);
         Controls.Add(buttEntrance);
-        Name = "Entrance";
+        Name = "EntranceForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Entrance";
-        
         ((System.ComponentModel.ISupportInitialize)errorNoLog).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPassword).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorWrongLogOrPassword).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorWrongPassword).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -192,4 +221,7 @@ partial class EntranceForm
     private ErrorProvider errorNoPassword;
     private CheckBox checkViewPassword;
     private Button buttChangeDataOfUser;
+    private ErrorProvider errorWrongLogOrPassword;
+    private ErrorProvider errorWrongPassword;
+    private Label labelWrongLogOrPassword;
 }

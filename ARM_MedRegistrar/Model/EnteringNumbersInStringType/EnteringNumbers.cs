@@ -10,7 +10,7 @@ namespace ARM_MedRegistrar.Model.EnteringNumbersInStringType
     {
         public static bool IsContainLetter(string line)
         {
-            foreach (var item in line)
+            for (int item = 0; item < line.Length; item++)
                 if (line[item] < 48 || line[item] > 57)
                     return true;
             
