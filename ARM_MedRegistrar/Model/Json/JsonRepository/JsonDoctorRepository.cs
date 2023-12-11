@@ -1,5 +1,5 @@
 ﻿
-using ARM_MedRegistrar.Model.Appointments;
+
 using ARM_MedRegistrar.Model.Json.Repository;
 using ARM_MedRegistrar.Model.Persons;
 using Newtonsoft.Json;

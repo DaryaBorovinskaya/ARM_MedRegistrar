@@ -87,10 +87,7 @@ namespace ARM_MedRegistrar.Model.Persons
                 if (value[0] == '-' || value[0] == '0')
                     throw new ArgumentException("Номер мед. полиса не может быть меньше или равным нулю");
                 
-                //foreach (var item in value)
-                //    if (value[item] < 48 || value[item] > 57)
-                //        throw new ArgumentException("Номер мед. полиса должен состоять только из цифр");
-
+                
                 _policyNumb = value;
             }
         }
@@ -134,5 +131,7 @@ namespace ARM_MedRegistrar.Model.Persons
             RhFactor = rhFactor;
             Allergies = allergies;
         }
+
+        
     }
 }

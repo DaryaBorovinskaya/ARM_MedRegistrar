@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARM_MedRegistrar.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,26 +8,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ARM_MedRegistrar.Presenter;
+
 
 namespace ARM_MedRegistrar
 {
-    public partial class EntranceForm : Form
+    public partial class EntranceForm : Form , IEntranceForm
     {
-        private string _login, _password;
+        private EntrancePresenter presenter;
+        public string Login => throw new NotImplementedException();
 
+        public string Password => throw new NotImplementedException();
 
         public EntranceForm()
         {
-
             InitializeComponent();
 
-
+            presenter = new();
         }
 
 
 
         private void buttEntrance_Click(object sender, EventArgs e)
         {
+            string _login, _password;
+
             errorNoLog.Clear();
             errorNoPassword.Clear();
             _login = textLog.Text;
@@ -63,14 +69,7 @@ namespace ARM_MedRegistrar
             if (newForm.ShowDialog() == DialogResult.OK) Close();
         }
 
-        //private void Entrance_Load(object sender, EventArgs e)
-        //{
-
-        //}
-        //private void Entrance_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    e.Cancel = true;
-        //}
+        
 
         private void checkViewPassword_CheckedChanged(object sender, EventArgs e)
         {

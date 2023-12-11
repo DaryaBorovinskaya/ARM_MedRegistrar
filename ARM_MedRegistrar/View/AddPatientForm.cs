@@ -1,16 +1,7 @@
-﻿using ARM_MedRegistrar.View;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 using ARM_MedRegistrar.Model.Addresses;
-using ARM_MedRegistrar.Model.Lists;
 using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.EnteringNumbersInStringType;
 
 namespace ARM_MedRegistrar
 {
@@ -18,56 +9,12 @@ namespace ARM_MedRegistrar
     {
         public AddPatientForm()
         {
-
+            
             InitializeComponent();
-
+            comboBoxBloodType.Items.AddRange(new object[] { "Неизвестно", "I", "II", "III", "IV" });
         }
 
-        //private void AddPatient_Load(object sender, EventArgs e)
-        //{
-
-        //}
-        //private void AddPatient_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    e.Cancel = true;
-        //}
-
-        //private void textSurname_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-
-
-        //private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void label9_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void comboBoxBloodType_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void textBox1_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void label11_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void listBoxAllergies_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
+        
 
         private void numericNumbOfHouse_ValueChanged(object sender, EventArgs e)
         {
@@ -81,37 +28,18 @@ namespace ARM_MedRegistrar
             numericNumbOfFlat.Maximum = 5000;
         }
 
-        //private void label16_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void label1_Click(object sender, EventArgs e)
-        //{
-
-        //}
+        
 
         private void numericPolicySeries_ValueChanged(object sender, EventArgs e)
         {
             numericPolicySeries.Maximum = 9999;
         }
 
-        //private void label8_Click(object sender, EventArgs e)
-        //{
-
-        //}
+        
 
 
 
-        //private void label17_Click(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void label10_Click(object sender, EventArgs e)
-        //{
-
-        //}
+        
 
         private void buttAddPatient_Click(object sender, EventArgs e)
         {
@@ -136,10 +64,12 @@ namespace ARM_MedRegistrar
 
 
             if (textSurname.Text != string.Empty && textName.Text != string.Empty
-                && numericPolicySeries.Value != 0 && textPolicyNumb.Text != string.Empty
+                && numericPolicySeries.Value != 0 && textPolicyNumb.Text != string.Empty 
+                && !EnteringNumbers.IsContainLetter(textPolicyNumb.Text)
                 && dateTimeDateOfBirth.Value.ToLongDateString() != DateTime.Now.ToLongDateString() && textStreet.Text != string.Empty
                 && numericNumbOfHouse.Value != 0 && numericNumbOfFlat.Value != 0
-                && comboBoxBloodType.SelectedIndex != -1 && comboBoxRhFactor.SelectedIndex != -1)
+                && comboBoxBloodType.SelectedIndex != -1 && comboBoxRhFactor.SelectedIndex != -1
+                && textNumbOfPatientCard.Text != string.Empty && !EnteringNumbers.IsContainLetter(textNumbOfPatientCard.Text))
             {
                 _fullName = new(textSurname.Text, textName.Text, textName.Text);
                 if (textCity.Text == string.Empty)
@@ -164,10 +94,10 @@ namespace ARM_MedRegistrar
                 _address = new(_city, _region, textStreet.Text, (int)numericNumbOfHouse.Value, (int)numericNumbOfFlat.Value);
                 _plotNumber = 1;       //потом выгружать данные из файла
                 numericPlotNumber.Value = _plotNumber;
-                _numbOfPatientCard = 1;                       //длина списка пациентов
-                textNumbOfPatientCard.Text = _numbOfPatientCard.ToString();
+                                      
+               
                 _newPatient = new(_fullName, dateTimeDateOfBirth.Value, _address, _plotNumber,
-                    _numbOfPatientCard, (int)numericPolicySeries.Value, textPolicyNumb.Text, comboBoxBloodType.SelectedItem.ToString(),
+                    Convert.ToInt32(textNumbOfPatientCard), (int)numericPolicySeries.Value, textPolicyNumb.Text, comboBoxBloodType.SelectedItem.ToString(),
                     comboBoxRhFactor.SelectedItem.ToString(), textBoxAllergies.Text);
 
                 List<Patient> _patients = new()

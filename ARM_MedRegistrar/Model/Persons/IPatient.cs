@@ -21,5 +21,7 @@ namespace ARM_MedRegistrar.Model.Persons
         public string RhFactor { get; set; }
         public string? Allergies { get; set; }
 
+        
+
     }
 }

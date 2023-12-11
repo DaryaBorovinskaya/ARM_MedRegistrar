@@ -257,7 +257,7 @@ partial class AddPatientForm
         comboBoxBloodType.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxBloodType.ForeColor = Color.Firebrick;
         comboBoxBloodType.FormattingEnabled = true;
-        comboBoxBloodType.Items.AddRange(new object[] { "Неизвестно", "I", "II", "III", "IV" });
+        
         comboBoxBloodType.Location = new Point(721, 471);
         comboBoxBloodType.Name = "comboBoxBloodType";
         comboBoxBloodType.Size = new Size(151, 36);

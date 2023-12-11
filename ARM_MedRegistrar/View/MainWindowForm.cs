@@ -32,11 +32,7 @@ namespace ARM_MedRegistrar
 
 
 
-            //ListViewItem listViewDoctors = new();
-
-            //listViewDoctors.SubItems.Add("Морская Д. Т.");
-            //listViewDoctors.SubItems.Add("Неважная Д. Т.");
-            //listViewDoctors.SubItems.Add("Нужная Д. Т.");
+            
         }
 
 
@@ -46,15 +42,7 @@ namespace ARM_MedRegistrar
         }
 
 
-        //private void MainWindow_Load(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void label1_Click(object sender, EventArgs e)
-        //{
-
-        //}
+        
 
         private void buttAddPatient_Click(object sender, EventArgs e)
         {
@@ -83,19 +71,7 @@ namespace ARM_MedRegistrar
 
         private void buttSearchDoctor_Click(object sender, EventArgs e)
         {
-            //listViewDoctors.Columns.Add(new ColumnHeader());
-            //listViewDoctors.Columns[0].Text = "Column 1";
-            //listViewDoctors.Columns.Add(new ColumnHeader());
-            //listViewDoctors.Columns[1].Text = "Column 2";
-            //listViewDoctors.Columns.Add(new ColumnHeader());
-            //listViewDoctors.Columns[2].Text = "Column 3";
-
-            //ListViewItem listViewItem1 = new(new string[] { "Banana", "a", "b" });
-            //ListViewItem listViewItem2 = new(new string[] { "Apple", "c", "d" });
-            //ListViewItem listViewItem3 = new(new string[] { "Grape", "e", "f" });
-            //listViewDoctors.Items.AddRange(new ListViewItem[] {listViewItem1,
-            //    listViewItem2,
-            //    listViewItem3 });
+            
         }
 
         private void buttAddresses_Click(object sender, EventArgs e)

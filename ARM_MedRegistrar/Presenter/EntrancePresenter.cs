@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//namespace ARM_MedRegistrar.Presenter
-//{
-//    internal event Class1
-//    {
-//    }
-//}
+namespace ARM_MedRegistrar.Presenter
+{
+    public class EntrancePresenter
+    {
+
+    }
+}
