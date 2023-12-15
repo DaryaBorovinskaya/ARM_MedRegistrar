@@ -1,5 +1,6 @@
 ﻿
-using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.Doctors;
+using ARM_MedRegistrar.Model.Patients;
 
 namespace ARM_MedRegistrar.Model.Appointments
 {

@@ -1,5 +1,6 @@
-﻿using ARM_MedRegistrar.Model.Json.UserRepository;
-using ARM_MedRegistrar.Model.Persons;
+﻿using ARM_MedRegistrar.Model.FullNames;
+using ARM_MedRegistrar.Model.Json.UserRepository;
+using ARM_MedRegistrar.Model.Users;
 using ARM_MedRegistrar.View.Registration;
 using System;
 using System.Collections.Generic;

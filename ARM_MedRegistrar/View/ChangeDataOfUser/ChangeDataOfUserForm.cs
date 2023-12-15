@@ -8,8 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Model.Lists;
+using ARM_MedRegistrar.Model.Users;
+using ARM_MedRegistrar.Model.FullNames;
 
 namespace ARM_MedRegistrar
 {

@@ -1,7 +1,8 @@
 ﻿using ARM_MedRegistrar.Model.Json.DoctorRepository;
-using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View.AddDoctor;
 using ARM_MedRegistrar.Model.Json.DoctorRepository;
+using ARM_MedRegistrar.Model.Doctors;
+using ARM_MedRegistrar.Model.FullNames;
 
 namespace ARM_MedRegistrar.Presenter
 {

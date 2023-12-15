@@ -1,25 +1,17 @@
 ﻿using ARM_MedRegistrar.View;
 using ARM_MedRegistrar.View.MainWindow;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ARM_MedRegistrar.Model.Users;
 
 namespace ARM_MedRegistrar
 {
     public partial class MainWindowForm : Form, IMainWindowForm
     {
-        Form form;
-        public MainWindowForm(Form form)
+        Form _form;
+        IUserEmployee _employee;
+        public MainWindowForm(Form form, IUserEmployee employee)
         {
 
-            this.form = form;
+            _form = form;
             form.Hide();
 
             InitializeComponent();
@@ -27,11 +19,8 @@ namespace ARM_MedRegistrar
 
             FormClosed += OnClosed;
 
-            textFullNameOfRegistr.Text = "Aлимова Н П";         //из файла (данные User)
-
-
-
-
+            _employee = employee;
+            textFullNameOfRegistr.Text = _employee.FullName.Surname;         //из файла (данные User)
 
 
         }
@@ -85,10 +74,7 @@ namespace ARM_MedRegistrar
         }
 
 
-        private void buttSearchDoctor_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void buttAddresses_Click(object sender, EventArgs e)
         {
@@ -106,7 +92,7 @@ namespace ARM_MedRegistrar
 
         private void buttInfoAboutUser_Click(object sender, EventArgs e)
         {
-            InfoAboutUserForm newForm = new();
+            InfoAboutUserForm newForm = new(_employee);
             newForm.ShowDialog();
         }
     }

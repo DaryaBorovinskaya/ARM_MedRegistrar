@@ -1,8 +1,8 @@
-﻿using ARM_MedRegistrar.Model.Persons;
-using ARM_MedRegistrar.Presenter;
+﻿using ARM_MedRegistrar.Presenter;
 using ARM_MedRegistrar.Model.Json.UserRepository;
 using System.Windows.Forms;
 using ARM_MedRegistrar.View.LogIn;
+using ARM_MedRegistrar.Model.Users;
 
 namespace ARM_MedRegistrar
 {
@@ -39,7 +39,7 @@ namespace ARM_MedRegistrar
         }
         private void buttEntrance_Click(object sender, EventArgs e)
         {
-           
+            IUser? _newUser;
             errorNoLog.Clear();
             errorNoPassword.Clear();
 
@@ -62,9 +62,10 @@ namespace ARM_MedRegistrar
 
             if (!_isError)
             {
-                if (_presenter.LogIn() != null)
+                _newUser = _presenter.LogIn();
+                if ( _newUser!= null)
                 {
-                    MainWindowForm newForm = new(this);
+                    MainWindowForm newForm = new(this, _newUser);
                     if (newForm.ShowDialog() == DialogResult.OK)
                         Close();
                 }

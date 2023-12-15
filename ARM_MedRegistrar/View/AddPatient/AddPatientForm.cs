@@ -1,8 +1,7 @@
 ﻿
 using ARM_MedRegistrar.Model.Addresses;
 using ARM_MedRegistrar.Model.Persons;
-using ARM_MedRegistrar.Model.EnteringNumbersInStringType;
-using ARM_MedRegistrar.Model.AttachedStreets;
+using ARM_MedRegistrar.Model.Patients;
 
 namespace ARM_MedRegistrar
 {
@@ -55,7 +54,7 @@ namespace ARM_MedRegistrar
 
 
 
-        
+
 
 
 
@@ -68,10 +67,10 @@ namespace ARM_MedRegistrar
             int _plotNumber, _numbOfPatientCard;
 
             bool _isError = false;
-            //JsonAttachedStreetsRepository jsonAttachedStreetsRepository = new("attachedStreets.json");
-            //IList<IAttachedStreets>? _attStreets = jsonAttachedStreetsRepository.GetAll();
+            JsonAttachedStreetsRepository jsonAttachedStreetsRepository = new("attachedStreets.json");
+            IList<IAttachedStreets>? _attStreets = jsonAttachedStreetsRepository.GetAll();
 
-            //JsonPatientRepository jsonPatientRepository = new("patients.json");
+            JsonPatientRepository jsonPatientRepository = new("patients.json");
 
             errorNoSurname.Clear();
             errorNoName.Clear();
@@ -86,15 +85,15 @@ namespace ARM_MedRegistrar
             errorNoNumbOfPatientCard.Clear();
 
             if (textSurname.Text == string.Empty)
-            { 
+            {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено"); 
+                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
             }
 
             if (textName.Text == string.Empty)
-            { 
+            {
                 _isError = true;
-                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено"); 
+                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
             }
 
             if (numericPolicySeries.Value == 0)
@@ -159,8 +158,8 @@ namespace ARM_MedRegistrar
 
                 if (textCity.Text == string.Empty)
                 {
-                    //_city = _attStreets[0].City;
-                    //textCity.Text = _city;
+                    _city = _attStreets[0].City;
+                    textCity.Text = _city;
 
                 }
                 else
@@ -168,26 +167,26 @@ namespace ARM_MedRegistrar
 
 
 
-                //if (textRegion.Text == string.Empty)
-                //{
-                //    _region = _attStreets[0].Region;
-                //    textRegion.Text = _region;
-                //}
-                //else
-                //    _region = textRegion.Text;
+                if (textRegion.Text == string.Empty)
+                {
+                    _region = _attStreets[0].Region;
+                    textRegion.Text = _region;
+                }
+                else
+                    _region = textRegion.Text;
 
 
-                //_address = new(_city, _region, textStreet.Text, (int)numericNumbOfHouse.Value, (int)numericNumbOfFlat.Value);
-                //_plotNumber = 1;       //потом выгружать данные из файла
-                //numericPlotNumber.Value = _plotNumber;
+                _address = new(_city, _region, textStreet.Text, (int)numericNumbOfHouse.Value, (int)numericNumbOfFlat.Value);
+                _plotNumber = 1;       //потом выгружать данные из файла
+                numericPlotNumber.Value = _plotNumber;
 
 
-                //_newPatient = new(_fullName, dateTimeDateOfBirth.Value, _address, _plotNumber,
-                //    textNumbOfPatientCard.Text, (int)numericPolicySeries.Value, textPolicyNumb.Text, comboBoxBloodType.SelectedItem.ToString(),
-                //    comboBoxRhFactor.SelectedItem.ToString(), textBoxAllergies.Text);
+                _newPatient = new(_fullName, dateTimeDateOfBirth.Value, _address, _plotNumber,
+                    textNumbOfPatientCard.Text, (int)numericPolicySeries.Value, textPolicyNumb.Text, comboBoxBloodType.SelectedItem.ToString(),
+                    comboBoxRhFactor.SelectedItem.ToString(), textBoxAllergies.Text);
 
-                //jsonPatientRepository.Add(_newPatient);
-                //MessageBox.Show("Добавление пациента успешно выполнено!");
+                jsonPatientRepository.Add(_newPatient);
+                MessageBox.Show("Добавление пациента успешно выполнено!");
 
                 if (!checkNoCloseWindow.Checked)
                     Close();
@@ -207,6 +206,14 @@ namespace ARM_MedRegistrar
 
         }
 
-        
+        private void AddPatientForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -142,7 +142,7 @@
             buttSearchDoctor.TabIndex = 10;
             buttSearchDoctor.Text = "Поиск врача";
             buttSearchDoctor.UseVisualStyleBackColor = true;
-            buttSearchDoctor.Click += buttSearchDoctor_Click;
+            
             // 
             // buttAddAppointment
             // 

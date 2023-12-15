@@ -36,6 +36,10 @@
             textName = new TextBox();
             textPatr = new TextBox();
             buttExit = new Button();
+            textPost = new TextBox();
+            textPhoneNumber = new TextBox();
+            label5 = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -43,7 +47,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Firebrick;
-            label1.Location = new Point(12, 24);
+            label1.Location = new Point(12, 12);
             label1.Name = "label1";
             label1.Size = new Size(249, 28);
             label1.TabIndex = 0;
@@ -53,7 +57,7 @@
             // 
             textSurname.BackColor = Color.White;
             textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textSurname.Location = new Point(12, 111);
+            textSurname.Location = new Point(12, 92);
             textSurname.Name = "textSurname";
             textSurname.ReadOnly = true;
             textSurname.Size = new Size(375, 34);
@@ -64,7 +68,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(12, 80);
+            label3.Location = new Point(12, 61);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
             label3.TabIndex = 23;
@@ -75,7 +79,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(12, 173);
+            label2.Location = new Point(12, 139);
             label2.Name = "label2";
             label2.Size = new Size(51, 28);
             label2.TabIndex = 24;
@@ -86,7 +90,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Firebrick;
-            label4.Location = new Point(12, 274);
+            label4.Location = new Point(12, 221);
             label4.Name = "label4";
             label4.Size = new Size(234, 28);
             label4.TabIndex = 25;
@@ -96,7 +100,7 @@
             // 
             textName.BackColor = Color.White;
             textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textName.Location = new Point(12, 204);
+            textName.Location = new Point(12, 170);
             textName.Name = "textName";
             textName.ReadOnly = true;
             textName.Size = new Size(375, 34);
@@ -106,30 +110,78 @@
             // 
             textPatr.BackColor = Color.White;
             textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPatr.Location = new Point(12, 305);
+            textPatr.Location = new Point(12, 255);
             textPatr.Name = "textPatr";
             textPatr.ReadOnly = true;
             textPatr.Size = new Size(375, 34);
             textPatr.TabIndex = 27;
+            
             // 
             // buttExit
             // 
             buttExit.BackColor = Color.FromArgb(255, 192, 192);
             buttExit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttExit.ForeColor = Color.Firebrick;
-            buttExit.Location = new Point(12, 372);
+            buttExit.Location = new Point(332, 326);
             buttExit.Name = "buttExit";
-            buttExit.Size = new Size(164, 53);
+            buttExit.Size = new Size(165, 54);
             buttExit.TabIndex = 28;
             buttExit.Text = "Выйти";
             buttExit.UseVisualStyleBackColor = false;
+            // 
+            // textPost
+            // 
+            textPost.BackColor = Color.White;
+            textPost.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textPost.Location = new Point(431, 92);
+            textPost.Name = "textPost";
+            textPost.ReadOnly = true;
+            textPost.Size = new Size(375, 34);
+            textPost.TabIndex = 29;
+            
+            // 
+            // textPhoneNumber
+            // 
+            textPhoneNumber.BackColor = Color.White;
+            textPhoneNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textPhoneNumber.Location = new Point(431, 170);
+            textPhoneNumber.Name = "textPhoneNumber";
+            textPhoneNumber.ReadOnly = true;
+            textPhoneNumber.Size = new Size(375, 34);
+            textPhoneNumber.TabIndex = 30;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.Firebrick;
+            label5.Location = new Point(573, 61);
+            label5.Name = "label5";
+            label5.Size = new Size(115, 28);
+            label5.TabIndex = 31;
+            label5.Text = "Должность";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.Firebrick;
+            label6.Location = new Point(551, 139);
+            label6.Name = "label6";
+            label6.Size = new Size(166, 28);
+            label6.TabIndex = 32;
+            label6.Text = "Номер телефона";
             // 
             // InfoAboutUserForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(452, 450);
+            ClientSize = new Size(819, 406);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(textPhoneNumber);
+            Controls.Add(textPost);
             Controls.Add(buttExit);
             Controls.Add(textPatr);
             Controls.Add(textName);
@@ -142,6 +194,7 @@
             Name = "InfoAboutUserForm";
             StartPosition = FormStartPosition.Manual;
             Text = "InfoAboutUserForm";
+            
             ResumeLayout(false);
             PerformLayout();
         }
@@ -156,5 +209,9 @@
         private TextBox textName;
         private TextBox textPatr;
         private Button buttExit;
+        private TextBox textPost;
+        private TextBox textPhoneNumber;
+        private Label label5;
+        private Label label6;
     }
 }

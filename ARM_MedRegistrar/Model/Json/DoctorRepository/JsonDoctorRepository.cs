@@ -1,5 +1,5 @@
 ﻿
-using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.Doctors;
 using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar.Model.Json.DoctorRepository

@@ -1,18 +1,19 @@
-﻿using Microsoft.VisualBasic.Logging;
+﻿using ARM_MedRegistrar.Model.FullNames;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ARM_MedRegistrar.Model.Persons
+namespace ARM_MedRegistrar.Model.Users
 {
-    
+
     public class User : IUser
     {
         private IFullName _fullName;
         private string _phoneNumber;
-        
+
         public IFullName FullName
         {
             get => _fullName;
@@ -23,13 +24,13 @@ namespace ARM_MedRegistrar.Model.Persons
                 _fullName = value;
             }
         }
-        
+
         public string Login { get; }
-        
-        public string Password { get; }  
+
+        public string Password { get; }
         public string Post { get; }
-        public string PhoneNumber 
-        { 
+        public string PhoneNumber
+        {
             get => _phoneNumber;
             set
             {
@@ -40,7 +41,7 @@ namespace ARM_MedRegistrar.Model.Persons
             }
         }
 
-        public User(IFullName fullName, string login, string password, string post, string phoneNumber) 
+        public User(IFullName fullName, string login, string password, string post, string phoneNumber)
         {
             if (login == "" || login == " " || login == null)
                 throw new ArgumentException("Логин не задан");

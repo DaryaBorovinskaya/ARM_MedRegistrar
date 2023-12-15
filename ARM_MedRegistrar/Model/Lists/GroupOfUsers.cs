@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.Users;
 
 namespace ARM_MedRegistrar.Model.Lists
 {

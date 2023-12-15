@@ -1,4 +1,5 @@
-﻿using ARM_MedRegistrar.Model.Persons;
+﻿using ARM_MedRegistrar.Model.Doctors;
+using ARM_MedRegistrar.Model.Patients;
 using System;
 using System.Collections.Generic;
 using System.Linq;

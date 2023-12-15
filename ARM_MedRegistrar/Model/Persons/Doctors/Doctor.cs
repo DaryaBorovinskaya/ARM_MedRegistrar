@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ARM_MedRegistrar.Model.FullNames;
 
-namespace ARM_MedRegistrar.Model.Persons
+namespace ARM_MedRegistrar.Model.Doctors
 {
     public class Doctor : IDoctor
     {
@@ -12,8 +13,8 @@ namespace ARM_MedRegistrar.Model.Persons
         private string _phoneNumber;
         private string _specialization;
         private int _plotNumber;  //номер участка
-        private int _cabinet; 
-        
+        private int _cabinet;
+
 
 
         public IFullName FullName
@@ -45,8 +46,8 @@ namespace ARM_MedRegistrar.Model.Persons
                 _specialization = value;
             }
         }
-        
-        public int PlotNumber 
+
+        public int PlotNumber
         {
             get => _plotNumber;
             set
@@ -70,7 +71,7 @@ namespace ARM_MedRegistrar.Model.Persons
 
 
 
-        public Doctor(IFullName fullName, string phoneNumber, string specialization, int plotNumber, int cabinet) 
+        public Doctor(IFullName fullName, string phoneNumber, string specialization, int plotNumber, int cabinet)
         {
             FullName = fullName;
             PhoneNumber = phoneNumber;

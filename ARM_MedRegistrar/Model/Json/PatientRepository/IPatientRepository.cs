@@ -1,5 +1,5 @@
 ﻿using ARM_MedRegistrar.Model.Appointments;
-using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.Patients;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

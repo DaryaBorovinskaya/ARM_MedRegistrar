@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ARM_MedRegistrar.Model.Addresses;
+using ARM_MedRegistrar.Model.Persons;
 using Microsoft.VisualBasic.Logging;
 
 
-namespace ARM_MedRegistrar.Model.Persons
+namespace ARM_MedRegistrar.Model.Patients
 {
-    
+
 
 
     public class Patient : IPatient
@@ -20,9 +21,11 @@ namespace ARM_MedRegistrar.Model.Persons
         private string _numbOfPatientCard; //номер амбулаторной карты
         private int _policySeries;
         private string _policyNumb;
+        private string _documentSeries;
+        private string _documentNumber;
         private string _bloodType;
         private string _rhFactor;
-        
+
 
         public IFullName FullName
         {
@@ -64,7 +67,7 @@ namespace ARM_MedRegistrar.Model.Persons
                     throw new ArgumentException("Номер амбулаторной карты не задан");
                 if (value[0] == '0')
                     throw new ArgumentException("Номер амбулаторной карты не может начинаться с нуля");
-                
+
                 _numbOfPatientCard = value;
             }
         }
@@ -89,9 +92,37 @@ namespace ARM_MedRegistrar.Model.Persons
                     throw new ArgumentException("Номер мед. полиса не задан");
                 if (value[0] == '0')
                     throw new ArgumentException("Номер мед. полиса не может начинаться с нуля");
-                
-                
+
+
                 _policyNumb = value;
+            }
+        }
+        public string DocumentSeries
+        {
+            get => _documentSeries;
+            set
+            {
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Серия документа не задана");
+                if (value[0] == '0')
+                    throw new ArgumentException("Серия документа не может начинаться с нуля");
+
+
+                _documentSeries = value;
+            }
+        }
+        public string DocumentNumber
+        {
+            get => _documentNumber;
+            set
+            {
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Номер документа не задан");
+                if (value[0] == '0')
+                    throw new ArgumentException("Номер документа не может начинаться с нуля");
+
+
+                _documentNumber = value;
             }
         }
         public string BloodType
@@ -121,7 +152,8 @@ namespace ARM_MedRegistrar.Model.Persons
         }
 
         public string? Allergies { get; set; }
-        public Patient(IFullName fullName, DateTime dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, string bloodType, string rhFactor, string? allergies) 
+        public Patient(IFullName fullName, DateTime dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
+            string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies)
         {
             FullName = fullName;
             DateOfBirth = dateOfBirth;
@@ -130,11 +162,13 @@ namespace ARM_MedRegistrar.Model.Persons
             NumbOfPatientCard = numbOfPatientCard;
             PolicySeries = policySeries;
             PolicyNumb = policyNumb;
+            DocumentSeries = documentSeries;
+            DocumentNumber = documentNumber;
             BloodType = bloodType;
             RhFactor = rhFactor;
             Allergies = allergies;
         }
 
-        
+
     }
 }

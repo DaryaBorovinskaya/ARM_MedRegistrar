@@ -75,9 +75,13 @@ partial class AddPatientForm
         errorNoRhFactor = new ErrorProvider(components);
         textNumbOfPatientCard = new TextBox();
         checkNoCloseWindow = new CheckBox();
-        errorPolicyIsContainLetter = new ErrorProvider(components);
-        errorPatientCardIsContainLetter = new ErrorProvider(components);
         errorNoNumbOfPatientCard = new ErrorProvider(components);
+        textDocumentSeries = new TextBox();
+        textDocumentNumber = new TextBox();
+        label19 = new Label();
+        label20 = new Label();
+        label21 = new Label();
+        label22 = new Label();
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
@@ -92,8 +96,6 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfFlat).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoBloodType).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoRhFactor).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)errorPolicyIsContainLetter).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)errorPatientCardIsContainLetter).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfPatientCard).BeginInit();
         SuspendLayout();
         // 
@@ -127,7 +129,7 @@ partial class AddPatientForm
         label3.AutoSize = true;
         label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label3.ForeColor = Color.Firebrick;
-        label3.Location = new Point(137, 75);
+        label3.Location = new Point(13, 75);
         label3.Margin = new Padding(4, 0, 4, 0);
         label3.Name = "label3";
         label3.Size = new Size(96, 28);
@@ -139,7 +141,7 @@ partial class AddPatientForm
         label2.AutoSize = true;
         label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label2.ForeColor = Color.Firebrick;
-        label2.Location = new Point(163, 166);
+        label2.Location = new Point(13, 154);
         label2.Margin = new Padding(4, 0, 4, 0);
         label2.Name = "label2";
         label2.Size = new Size(51, 28);
@@ -151,7 +153,7 @@ partial class AddPatientForm
         label4.AutoSize = true;
         label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label4.ForeColor = Color.Firebrick;
-        label4.Location = new Point(85, 242);
+        label4.Location = new Point(13, 233);
         label4.Margin = new Padding(4, 0, 4, 0);
         label4.Name = "label4";
         label4.Size = new Size(234, 28);
@@ -167,14 +169,13 @@ partial class AddPatientForm
         textSurname.Name = "textSurname";
         textSurname.Size = new Size(422, 34);
         textSurname.TabIndex = 32;
-        
         textSurname.KeyPress += textBox_SpacePress;
         // 
         // textName
         // 
         textName.BackColor = Color.White;
         textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textName.Location = new Point(13, 198);
+        textName.Location = new Point(13, 186);
         textName.Margin = new Padding(4);
         textName.Name = "textName";
         textName.Size = new Size(422, 34);
@@ -185,7 +186,7 @@ partial class AddPatientForm
         // 
         textPatr.BackColor = Color.White;
         textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textPatr.Location = new Point(13, 274);
+        textPatr.Location = new Point(13, 265);
         textPatr.Margin = new Padding(4);
         textPatr.Name = "textPatr";
         textPatr.Size = new Size(422, 34);
@@ -431,17 +432,16 @@ partial class AddPatientForm
         // textPolicyNumb
         // 
         textPolicyNumb.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textPolicyNumb.Location = new Point(13, 502);
+        textPolicyNumb.Location = new Point(12, 706);
         textPolicyNumb.Name = "textPolicyNumb";
         textPolicyNumb.Size = new Size(372, 34);
         textPolicyNumb.TabIndex = 61;
-        
         textPolicyNumb.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // numericPolicySeries
         // 
         numericPolicySeries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericPolicySeries.Location = new Point(25, 381);
+        numericPolicySeries.Location = new Point(13, 628);
         numericPolicySeries.Name = "numericPolicySeries";
         numericPolicySeries.Size = new Size(162, 34);
         numericPolicySeries.TabIndex = 62;
@@ -452,7 +452,7 @@ partial class AddPatientForm
         label17.AutoSize = true;
         label17.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label17.ForeColor = Color.Firebrick;
-        label17.Location = new Point(13, 464);
+        label17.Location = new Point(13, 675);
         label17.Margin = new Padding(4, 0, 4, 0);
         label17.Name = "label17";
         label17.Size = new Size(189, 28);
@@ -464,7 +464,7 @@ partial class AddPatientForm
         label18.AutoSize = true;
         label18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label18.ForeColor = Color.Firebrick;
-        label18.Location = new Point(13, 340);
+        label18.Location = new Point(12, 581);
         label18.Margin = new Padding(4, 0, 4, 0);
         label18.Name = "label18";
         label18.Size = new Size(183, 28);
@@ -519,7 +519,6 @@ partial class AddPatientForm
         textNumbOfPatientCard.Name = "textNumbOfPatientCard";
         textNumbOfPatientCard.Size = new Size(267, 34);
         textNumbOfPatientCard.TabIndex = 65;
-        
         textNumbOfPatientCard.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // checkNoCloseWindow
@@ -534,17 +533,74 @@ partial class AddPatientForm
         checkNoCloseWindow.Text = "Не закрывать окно ";
         checkNoCloseWindow.UseVisualStyleBackColor = true;
         // 
-        // errorPolicyIsContainLetter
-        // 
-        errorPolicyIsContainLetter.ContainerControl = this;
-        // 
-        // errorPatientCardIsContainLetter
-        // 
-        errorPatientCardIsContainLetter.ContainerControl = this;
-        // 
         // errorNoNumbOfPatientCard
         // 
         errorNoNumbOfPatientCard.ContainerControl = this;
+        // 
+        // textDocumentSeries
+        // 
+        textDocumentSeries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textDocumentSeries.Location = new Point(13, 415);
+        textDocumentSeries.Name = "textDocumentSeries";
+        textDocumentSeries.Size = new Size(372, 34);
+        textDocumentSeries.TabIndex = 68;
+        // 
+        // textDocumentNumber
+        // 
+        textDocumentNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textDocumentNumber.Location = new Point(12, 483);
+        textDocumentNumber.Name = "textDocumentNumber";
+        textDocumentNumber.Size = new Size(372, 34);
+        textDocumentNumber.TabIndex = 69;
+        // 
+        // label19
+        // 
+        label19.AutoSize = true;
+        label19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label19.ForeColor = Color.Firebrick;
+        label19.Location = new Point(12, 384);
+        label19.Margin = new Padding(4, 0, 4, 0);
+        label19.Name = "label19";
+        label19.Size = new Size(170, 28);
+        label19.TabIndex = 70;
+        label19.Text = "Серия документа";
+        // 
+        // label20
+        // 
+        label20.AutoSize = true;
+        label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label20.ForeColor = Color.Firebrick;
+        label20.Location = new Point(12, 452);
+        label20.Margin = new Padding(4, 0, 4, 0);
+        label20.Name = "label20";
+        label20.Size = new Size(176, 28);
+        label20.TabIndex = 71;
+        label20.Text = "Номер документа";
+        // 
+        // label21
+        // 
+        label21.AutoSize = true;
+        label21.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+        label21.ForeColor = Color.Firebrick;
+        label21.Location = new Point(13, 324);
+        label21.Margin = new Padding(4, 0, 4, 0);
+        label21.Name = "label21";
+        label21.Size = new Size(386, 28);
+        label21.TabIndex = 72;
+        label21.Text = "Документ, подтверждающий личность";
+        label21.Click += label21_Click;
+        // 
+        // label22
+        // 
+        label22.AutoSize = true;
+        label22.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+        label22.ForeColor = Color.Firebrick;
+        label22.Location = new Point(130, 538);
+        label22.Margin = new Padding(4, 0, 4, 0);
+        label22.Name = "label22";
+        label22.Size = new Size(122, 28);
+        label22.TabIndex = 73;
+        label22.Text = "Полис ОМС";
         // 
         // AddPatientForm
         // 
@@ -552,6 +608,12 @@ partial class AddPatientForm
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
         ClientSize = new Size(1315, 788);
+        Controls.Add(label22);
+        Controls.Add(label21);
+        Controls.Add(label20);
+        Controls.Add(label19);
+        Controls.Add(textDocumentNumber);
+        Controls.Add(textDocumentSeries);
         Controls.Add(checkNoCloseWindow);
         Controls.Add(textNumbOfPatientCard);
         Controls.Add(label18);
@@ -591,6 +653,7 @@ partial class AddPatientForm
         Name = "AddPatientForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "AddPatient";
+        Load += AddPatientForm_Load;
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).EndInit();
@@ -605,14 +668,12 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfFlat).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoBloodType).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoRhFactor).EndInit();
-        ((System.ComponentModel.ISupportInitialize)errorPolicyIsContainLetter).EndInit();
-        ((System.ComponentModel.ISupportInitialize)errorPatientCardIsContainLetter).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfPatientCard).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
 
-    
+
 
     #endregion
 
@@ -662,7 +723,11 @@ partial class AddPatientForm
     private ErrorProvider errorNoRhFactor;
     private TextBox textNumbOfPatientCard;
     private CheckBox checkNoCloseWindow;
-    private ErrorProvider errorPolicyIsContainLetter;
-    private ErrorProvider errorPatientCardIsContainLetter;
     private ErrorProvider errorNoNumbOfPatientCard;
+    private Label label21;
+    private Label label20;
+    private Label label19;
+    private TextBox textDocumentNumber;
+    private TextBox textDocumentSeries;
+    private Label label22;
 }
