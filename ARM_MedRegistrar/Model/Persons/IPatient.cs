@@ -14,7 +14,7 @@ namespace ARM_MedRegistrar.Model.Persons
         public DateTime DateOfBirth { get;  }
         public IAddress Address { get; set; }
         public int PlotNumber { get; set; }
-        public int NumbOfPatientCard {  get; set; }
+        public string NumbOfPatientCard {  get; set; }
         public int PolicySeries {  get; set; }
         public string PolicyNumb { get; set; }
         public string BloodType { get; set; }

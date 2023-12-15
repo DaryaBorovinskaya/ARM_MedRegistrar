@@ -17,7 +17,7 @@ namespace ARM_MedRegistrar.Model.Persons
         private IFullName _fullName;
         private IAddress _address;
         private int _plotNumber;  //номер участка
-        private int _numbOfPatientCard; //номер амбулаторной карты
+        private string _numbOfPatientCard; //номер амбулаторной карты
         private int _policySeries;
         private string _policyNumb;
         private string _bloodType;
@@ -51,17 +51,20 @@ namespace ARM_MedRegistrar.Model.Persons
             set
             {
                 if (value <= 0)
-                    throw new ArgumentException("Номер участка не может быть меньше или равным нулю");
+                    throw new ArgumentException("Номер участка не может быть меньше нуля или начинаться с него");
                 _plotNumber = value;
             }
         }
-        public int NumbOfPatientCard
+        public string NumbOfPatientCard
         {
             get => _numbOfPatientCard;
             set
             {
-                if (value <= 0)
-                    throw new ArgumentException("Номер амбулаторной карты не может быть меньше или равным нулю");
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Номер амбулаторной карты не задан");
+                if (value[0] == '-' || value[0] == '0')
+                    throw new ArgumentException("Номер амбулаторной карты не может быть меньше нуля или начинаться с него");
+                
                 _numbOfPatientCard = value;
             }
         }
@@ -72,7 +75,7 @@ namespace ARM_MedRegistrar.Model.Persons
             set
             {
                 if (value <= 0)
-                    throw new ArgumentException("Серия мед. полиса не может быть меньше или равной нулю");
+                    throw new ArgumentException("Серия мед. полиса не может быть меньше нуля или начинаться с него");
                 _policySeries = value;
             }
         }
@@ -85,7 +88,7 @@ namespace ARM_MedRegistrar.Model.Persons
                 if (value == "" || value == " " || value == null)
                     throw new ArgumentException("Номер мед. полиса не задан");
                 if (value[0] == '-' || value[0] == '0')
-                    throw new ArgumentException("Номер мед. полиса не может быть меньше или равным нулю");
+                    throw new ArgumentException("Номер мед. полиса не может быть меньше нуля или начинаться с него");
                 
                 
                 _policyNumb = value;
@@ -118,7 +121,7 @@ namespace ARM_MedRegistrar.Model.Persons
         }
 
         public string? Allergies { get; set; }
-        public Patient(IFullName fullName, DateTime dateOfBirth, IAddress address, int plotNumber, int numbOfPatientCard, int policySeries, string policyNumb, string bloodType, string rhFactor, string? allergies) 
+        public Patient(IFullName fullName, DateTime dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, string bloodType, string rhFactor, string? allergies) 
         {
             FullName = fullName;
             DateOfBirth = dateOfBirth;

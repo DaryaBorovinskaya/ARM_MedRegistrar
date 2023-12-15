@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.Model.Json
 {
-    public interface IBaseRepository<T> where T : class
+    public interface IBaseRepository<T,U> where U : class 
     {
-        public void Add(T element);
-        public void Remove(T element);
-        public IList<T>? GetAll();
+        public void Add(T key, U value);
+        public void Remove(T key);
+        public IDictionary<T, U>? GetAll();
     }
 }

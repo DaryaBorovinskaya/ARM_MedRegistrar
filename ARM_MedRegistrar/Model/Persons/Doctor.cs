@@ -9,8 +9,11 @@ namespace ARM_MedRegistrar.Model.Persons
     public class Doctor : IDoctor
     {
         private IFullName _fullName;
+        private string _phoneNumber;
+        private string _specialization;
         private int _plotNumber;  //номер участка
         private int _cabinet; 
+        
 
 
         public IFullName FullName
@@ -23,7 +26,25 @@ namespace ARM_MedRegistrar.Model.Persons
                 _fullName = value;
             }
         }
-        public string Specialization { get; }
+
+        public string PhoneNumber
+        {
+            get => _phoneNumber; set
+            {
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Номер телефона не задана");
+                _phoneNumber = value;
+            }
+        }
+        public string Specialization
+        {
+            get => _specialization; set
+            {
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Специализация не задана");
+                _specialization = value;
+            }
+        }
         
         public int PlotNumber 
         {
@@ -49,12 +70,10 @@ namespace ARM_MedRegistrar.Model.Persons
 
 
 
-        public Doctor(IFullName fullName, string specialization, int plotNumber, int cabinet) 
+        public Doctor(IFullName fullName, string phoneNumber, string specialization, int plotNumber, int cabinet) 
         {
-            if (specialization == "" || specialization == " " || specialization == null)
-                throw new ArgumentException("Специализация не задана");
-            
             FullName = fullName;
+            PhoneNumber = phoneNumber;
             Specialization = specialization;
             PlotNumber = plotNumber;
             Cabinet = cabinet;

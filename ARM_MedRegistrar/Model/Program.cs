@@ -10,7 +10,7 @@
         {
 
             ApplicationConfiguration.Initialize();
-            Application.Run(new EntranceForm());
+            Application.Run(new LogInForm());
 
         }
     }

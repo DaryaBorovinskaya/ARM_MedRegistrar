@@ -11,6 +11,7 @@ namespace ARM_MedRegistrar.Model.AttachedStreets
         private string _city;
         private string _region;
         private string _street;
+        private int _numbOfHouse;
 
         public string City
         {
@@ -40,11 +41,24 @@ namespace ARM_MedRegistrar.Model.AttachedStreets
             }
         }
 
-        public AttachedStreets(string city, string region, string street) 
+
+        public int NumbOfHouse
+        {
+            get => _numbOfHouse;
+            set
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Номер дома не может быть меньше или равным нулю");
+                _numbOfHouse = value;
+            }
+        }
+
+        public AttachedStreets(string city, string region, string street, int numbOfHouse) 
         {
             City = city;
             Region = region;
             Street = street;
+            NumbOfHouse = numbOfHouse;
         }
     }
 }
