@@ -1,20 +1,36 @@
 ﻿
-using ARM_MedRegistrar.Model.EnteringNumbersInStringType;
 using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.View.AddDoctor;
+using ARM_MedRegistrar.Presenter;
 using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar
 {
-    public partial class AddDoctorForm : Form
+    public partial class AddDoctorForm : Form, IAddDoctorForm
     {
+        AddDoctorPresenter _presenter;
+        string IAddDoctorForm.Surname => textSurname.Text;
 
+        string IAddDoctorForm.Name => textName.Text;
+
+        string IAddDoctorForm.Patronymic => textPatr.Text;
+
+        string IAddDoctorForm.Specializations => comboBoxSpecializations.SelectedItem.ToString();
+
+        string IAddDoctorForm.PhoneNumber => textPhoneNumber.Text;
+
+        int IAddDoctorForm.PlotNumber =>  (int)numericPlotNumber.Value ;
+
+        int IAddDoctorForm.Cabinet =>  (int)numericCabinet.Value ;
 
         public AddDoctorForm()
         {
-
             InitializeComponent();
             comboBoxSpecializations.Items.AddRange(new string[] { "терапевт", "педиатр", "врач общей практики", "хирург", "невролог", "оториноларинголог", "офтальмолог", "травматолог", "акушер-гинеколог", "уролог", "инфекционист", "онколог", "гастроэнтеролог", "кардиолог", "эндокринолог" });
             toolEnterPhoneNumb.SetToolTip(textPhoneNumber, "Ввод цифр без иных символов");
+
+            _presenter = new(this);
+
         }
 
 
@@ -51,8 +67,7 @@ namespace ARM_MedRegistrar
 
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
-            FullName _fullName;
-            Doctor _newDoctor;
+            
 
             bool _isError = false;
 
@@ -103,17 +118,8 @@ namespace ARM_MedRegistrar
 
             if (!_isError)
             {
-                _fullName = new(textSurname.Text, textName.Text, textName.Text);
-                _newDoctor = new(_fullName, textPhoneNumber.Text, comboBoxSpecializations.SelectedItem.ToString(), (int)numericPlotNumber.Value, (int)numericCabinet.Value);
 
-
-                //JsonDoctorRepository jsonDoctorRepository = new("doctors.json");
-                //jsonDoctorRepository.Add(_newDoctor);
-
-                //IList<IDoctor>? _printDoctors = jsonDoctorRepository.GetAll();
-                //foreach (var item in _printDoctors)
-                //    listBox1.Items.Add(item.FullName.Name);
-
+                _presenter.AddDoctor();
 
                 if (!checkNoCloseWindow.Checked)
                     Close();

@@ -12,11 +12,10 @@ namespace ARM_MedRegistrar.Model.Persons
     //    HeadOfRegistry,
     //    HeadDoctor       
     //};
-    public interface IUser 
+    public interface IUser : IUserEmployee
     {
-        public IFullName FullName { get; set; }
         public string Login { get; }
         public string Password { get;  }
-        public string Post { get; }
+        
     }
 }

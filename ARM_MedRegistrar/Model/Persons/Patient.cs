@@ -62,8 +62,8 @@ namespace ARM_MedRegistrar.Model.Persons
             {
                 if (value == "" || value == " " || value == null)
                     throw new ArgumentException("Номер амбулаторной карты не задан");
-                if (value[0] == '-' || value[0] == '0')
-                    throw new ArgumentException("Номер амбулаторной карты не может быть меньше нуля или начинаться с него");
+                if (value[0] == '0')
+                    throw new ArgumentException("Номер амбулаторной карты не может начинаться с нуля");
                 
                 _numbOfPatientCard = value;
             }
@@ -87,8 +87,8 @@ namespace ARM_MedRegistrar.Model.Persons
             {
                 if (value == "" || value == " " || value == null)
                     throw new ArgumentException("Номер мед. полиса не задан");
-                if (value[0] == '-' || value[0] == '0')
-                    throw new ArgumentException("Номер мед. полиса не может быть меньше нуля или начинаться с него");
+                if (value[0] == '0')
+                    throw new ArgumentException("Номер мед. полиса не может начинаться с нуля");
                 
                 
                 _policyNumb = value;

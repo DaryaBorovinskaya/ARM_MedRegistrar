@@ -1,4 +1,5 @@
 ﻿using ARM_MedRegistrar.View;
+using ARM_MedRegistrar.View.MainWindow;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ARM_MedRegistrar
 {
-    public partial class MainWindowForm : Form
+    public partial class MainWindowForm : Form, IMainWindowForm
     {
         Form form;
         public MainWindowForm(Form form)
