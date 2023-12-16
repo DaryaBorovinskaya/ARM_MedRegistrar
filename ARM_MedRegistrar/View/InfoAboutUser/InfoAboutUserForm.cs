@@ -17,6 +17,9 @@ namespace ARM_MedRegistrar.View
             textPhoneNumber.Text = _employee.PhoneNumber;
         }
 
-        
+        private void textSurname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -153,8 +153,9 @@ namespace ARM_MedRegistrar.Model.Patients
         }
 
         public string? Allergies { get; set; }
+        public uint Id { get; }
         public Patient(IFullName fullName, string dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
-            string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies)
+            string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies, uint id)
         {
             if (dateOfBirth == "" || dateOfBirth == " " || dateOfBirth == null)
                 throw new ArgumentException("Дата рождения не задана");
@@ -171,6 +172,7 @@ namespace ARM_MedRegistrar.Model.Patients
             BloodType = bloodType;
             RhFactor = rhFactor;
             Allergies = allergies;
+            Id = id;
         }
 
 

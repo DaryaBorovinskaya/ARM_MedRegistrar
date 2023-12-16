@@ -185,7 +185,7 @@ namespace ARM_MedRegistrar
 
             if (!_isError)
             {
-                
+
 
                 //if (textCity.Text == string.Empty)
                 //{
@@ -207,7 +207,7 @@ namespace ARM_MedRegistrar
                 //    _region = textRegion.Text;
 
 
-                
+
                 MessageBox.Show("Добавление пациента успешно выполнено!");
 
                 if (!checkNoCloseWindow.Checked)

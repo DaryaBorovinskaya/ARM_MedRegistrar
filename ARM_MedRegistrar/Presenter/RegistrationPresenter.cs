@@ -37,34 +37,39 @@ namespace ARM_MedRegistrar.Presenter
         public bool IsSuccessRegistration()
         {
             bool _isSuccess = true;
-            foreach (string key in _users.Keys)
+            if (_users != null)
             {
-                if (_users[key].Post == "главный врач" && _view.Post == "главный врач")
+                foreach (string key in _users.Keys)
                 {
-                    
-                    NoOneHeadDoctorEvent?.Invoke(this, EventArgs.Empty);
-                    _isSuccess = false;
-                    
-                }
+                    if (_users[key].Post == "главный врач" && _view.Post == "главный врач")
+                    {
 
-                if (key == _view.Login)
-                {
-                    
-                    MatchedLogEvent?.Invoke(this, EventArgs.Empty);
-                    _isSuccess = false;
-                }
+                        NoOneHeadDoctorEvent?.Invoke(this, EventArgs.Empty);
+                        _isSuccess = false;
 
+                    }
+
+                    if (key == _view.Login)
+                    {
+
+                        MatchedLogEvent?.Invoke(this, EventArgs.Empty);
+                        _isSuccess = false;
+                    }
+
+
+                }
                 
             }
-
             if (_isSuccess)
             {
                 _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
                 _newUser = new User(_fullName, _view.Login, _view.Password, _view.Post, _view.PhoneNumber);
-                _jsonUserRepository.Add(_view.Login, _newUser);
+                _jsonUserRepository.Add( _newUser);
+                _jsonUserRepository.WriteToFile();
                 return true;
             }
             return false;
+
         }
     }
 }

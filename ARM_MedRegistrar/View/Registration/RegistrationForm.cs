@@ -14,7 +14,7 @@ namespace ARM_MedRegistrar
 
         string IRegistrationForm.Name => textName.Text;
 
-        string IRegistrationForm.Patronymic => textPatr.Text;
+        string? IRegistrationForm.Patronymic => textPatr.Text;
 
         string IRegistrationForm.Login => textLog.Text;
 
@@ -24,7 +24,7 @@ namespace ARM_MedRegistrar
 
         string IRegistrationForm.PhoneNumber => textPhoneNumber.Text;
 
-        string IRegistrationForm.TIN => textTIN.Text;
+
 
         public RegistrationForm(Form form)
         {

@@ -4,7 +4,7 @@ using ARM_MedRegistrar.Model.Patients;
 
 namespace ARM_MedRegistrar.Model.Appointments
 {
-    public interface IAppointment
+    public interface IAppointment : IIdentification
     {
         public DateTime DateAndTime {  get; set; }
         public IPatient Patient { get; set; }

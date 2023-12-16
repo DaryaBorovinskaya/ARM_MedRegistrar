@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace ARM_MedRegistrar.Model.Json.PatientRepository
 {
-    public class JsonPatientRepository : IPatientRepository
+    public class JsonPatientRepository : IBaseRepository<uint, IPatient>
     {
         private readonly string _savePath;
         private IList<IPatient>? _patients = new List< IPatient>();

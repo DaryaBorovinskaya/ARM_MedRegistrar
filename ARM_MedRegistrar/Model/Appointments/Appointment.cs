@@ -35,12 +35,13 @@ namespace ARM_MedRegistrar.Model.Appointments
             }
         }
 
-
-        public Appointment(IPatient patient, IDoctor doctor, DateTime dateAndTime)
+        public uint Id { get; }
+        public Appointment(IPatient patient, IDoctor doctor, DateTime dateAndTime, uint id)
         {
             Patient = patient;
             Doctor = doctor;
             DateAndTime = dateAndTime;
+            Id = id;
         }
 
     }

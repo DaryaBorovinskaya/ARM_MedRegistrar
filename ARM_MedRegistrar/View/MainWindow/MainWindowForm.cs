@@ -1,6 +1,9 @@
-﻿using ARM_MedRegistrar.View;
+﻿using ARM_MedRegistrar.View.Doctors;
 using ARM_MedRegistrar.View.MainWindow;
 using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.View;
+using ARM_MedRegistrar.View.InfoAboutUser;
+using ARM_MedRegistrar.View.AttachedToTheClinicStreets;
 
 namespace ARM_MedRegistrar
 {
@@ -61,8 +64,7 @@ namespace ARM_MedRegistrar
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
 
-            AddDoctorForm newForm = new();
-            newForm.ShowDialog();
+            
 
 
         }
@@ -74,7 +76,7 @@ namespace ARM_MedRegistrar
         }
 
 
-        
+
 
         private void buttAddresses_Click(object sender, EventArgs e)
         {
@@ -94,6 +96,52 @@ namespace ARM_MedRegistrar
         {
             InfoAboutUserForm newForm = new(_employee);
             newForm.ShowDialog();
+        }
+
+        private void textFullNameOfRegistr_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttRemoveDoctor_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewSchedule_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttSearchAppointment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttDoctors_Click(object sender, EventArgs e)
+        {
+            DoctorsForm doctorForm = new(this);
+            doctorForm.ShowDialog();
         }
     }
 }

@@ -23,12 +23,17 @@ namespace ARM_MedRegistrar.Presenter
 
         public IUser? LogIn()
         {
-            foreach (string key in _users.Keys)
+            if (_users == null) return null;
+            else
             {
-                if (key == _view.Login && _users[key].Password == _view.Password)
-                    return _users[key];
+                foreach (string key in _users.Keys)
+                {
+                    if (key == _view.Login && _users[key].Password == _view.Password)
+                        return _users[key];
+                }
+                return null;
             }
-            return null;
+            
             
         }
     }

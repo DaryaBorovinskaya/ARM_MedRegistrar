@@ -12,8 +12,11 @@ namespace ARM_MedRegistrar.Model.Json
 {
     public interface IBaseRepository<T,U> where U : class 
     {
-        public void Add(T key, U value);
-        public void Remove(T key);
+        protected void LoadFromFile();
+        public void Add(U value);
         public IDictionary<T, U>? GetAll();
+        public void Remove(T key);
+        public void WriteToFile();
+
     }
 }

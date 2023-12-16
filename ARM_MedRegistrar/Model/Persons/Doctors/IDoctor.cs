@@ -7,7 +7,7 @@ using ARM_MedRegistrar.Model.Persons;
 
 namespace ARM_MedRegistrar.Model.Doctors
 {
-    public interface IDoctor
+    public interface IDoctor: IIdentification
     {
         public IFullName FullName { get; set; }
         public string PhoneNumber { get; set; }

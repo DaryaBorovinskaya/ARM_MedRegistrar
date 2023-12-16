@@ -4,7 +4,7 @@ using ARM_MedRegistrar.Model.Persons;
 namespace ARM_MedRegistrar.Model.Patients
 {
 
-    public interface IPatient
+    public interface IPatient : IIdentification
     {
         public IFullName FullName { get; set; }
         public string DateOfBirth { get; }

@@ -49,7 +49,6 @@ partial class AddDoctorForm
         errorNoCabinet = new ErrorProvider(components);
         errorNoSpecial = new ErrorProvider(components);
         checkNoCloseWindow = new CheckBox();
-        listBox1 = new ListBox();
         textPhoneNumber = new TextBox();
         label8 = new Label();
         errorNoPhoneNumber = new ErrorProvider(components);
@@ -71,7 +70,7 @@ partial class AddDoctorForm
         label2.AutoSize = true;
         label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
         label2.ForeColor = Color.Firebrick;
-        label2.Location = new Point(336, 51);
+        label2.Location = new Point(274, 37);
         label2.Margin = new Padding(4, 0, 4, 0);
         label2.Name = "label2";
         label2.Size = new Size(268, 37);
@@ -85,12 +84,11 @@ partial class AddDoctorForm
         comboBoxSpecializations.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxSpecializations.ForeColor = Color.Firebrick;
         comboBoxSpecializations.FormattingEnabled = true;
-        comboBoxSpecializations.Location = new Point(570, 144);
+        comboBoxSpecializations.Location = new Point(509, 144);
         comboBoxSpecializations.Margin = new Padding(4);
         comboBoxSpecializations.Name = "comboBoxSpecializations";
         comboBoxSpecializations.Size = new Size(252, 36);
         comboBoxSpecializations.TabIndex = 3;
-        
         // 
         // textSurname
         // 
@@ -123,7 +121,6 @@ partial class AddDoctorForm
         textPatr.Name = "textPatr";
         textPatr.Size = new Size(451, 34);
         textPatr.TabIndex = 22;
-        
         textPatr.KeyPress += textBox_SpacePress;
         // 
         // buttAddDoctor
@@ -131,10 +128,10 @@ partial class AddDoctorForm
         buttAddDoctor.BackColor = Color.FromArgb(255, 192, 192);
         buttAddDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
         buttAddDoctor.ForeColor = Color.Firebrick;
-        buttAddDoctor.Location = new Point(321, 558);
+        buttAddDoctor.Location = new Point(317, 572);
         buttAddDoctor.Margin = new Padding(4);
         buttAddDoctor.Name = "buttAddDoctor";
-        buttAddDoctor.Size = new Size(308, 78);
+        buttAddDoctor.Size = new Size(172, 53);
         buttAddDoctor.TabIndex = 25;
         buttAddDoctor.Text = "Добавить";
         buttAddDoctor.UseVisualStyleBackColor = false;
@@ -143,7 +140,7 @@ partial class AddDoctorForm
         // numericPlotNumber
         // 
         numericPlotNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericPlotNumber.Location = new Point(687, 261);
+        numericPlotNumber.Location = new Point(509, 261);
         numericPlotNumber.Name = "numericPlotNumber";
         numericPlotNumber.Size = new Size(113, 34);
         numericPlotNumber.TabIndex = 26;
@@ -152,7 +149,7 @@ partial class AddDoctorForm
         // numericCabinet
         // 
         numericCabinet.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericCabinet.Location = new Point(687, 370);
+        numericCabinet.Location = new Point(509, 370);
         numericCabinet.Name = "numericCabinet";
         numericCabinet.Size = new Size(113, 34);
         numericCabinet.TabIndex = 27;
@@ -163,7 +160,7 @@ partial class AddDoctorForm
         label3.AutoSize = true;
         label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label3.ForeColor = Color.Firebrick;
-        label3.Location = new Point(185, 103);
+        label3.Location = new Point(16, 112);
         label3.Margin = new Padding(4, 0, 4, 0);
         label3.Name = "label3";
         label3.Size = new Size(96, 28);
@@ -175,7 +172,7 @@ partial class AddDoctorForm
         label1.AutoSize = true;
         label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label1.ForeColor = Color.Firebrick;
-        label1.Location = new Point(200, 218);
+        label1.Location = new Point(16, 229);
         label1.Margin = new Padding(4, 0, 4, 0);
         label1.Name = "label1";
         label1.Size = new Size(51, 28);
@@ -187,7 +184,7 @@ partial class AddDoctorForm
         label4.AutoSize = true;
         label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label4.ForeColor = Color.Firebrick;
-        label4.Location = new Point(128, 334);
+        label4.Location = new Point(13, 338);
         label4.Margin = new Padding(4, 0, 4, 0);
         label4.Name = "label4";
         label4.Size = new Size(234, 28);
@@ -199,33 +196,32 @@ partial class AddDoctorForm
         label5.AutoSize = true;
         label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label5.ForeColor = Color.Firebrick;
-        label5.Location = new Point(629, 103);
+        label5.Location = new Point(509, 112);
         label5.Margin = new Padding(4, 0, 4, 0);
         label5.Name = "label5";
         label5.Size = new Size(156, 28);
         label5.TabIndex = 31;
         label5.Text = "Специализация";
-        
+        label5.Click += label5_Click;
         // 
         // label6
         // 
         label6.AutoSize = true;
         label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label6.ForeColor = Color.Firebrick;
-        label6.Location = new Point(666, 218);
+        label6.Location = new Point(509, 229);
         label6.Margin = new Padding(4, 0, 4, 0);
         label6.Name = "label6";
         label6.Size = new Size(147, 28);
         label6.TabIndex = 32;
         label6.Text = "Номер участка";
-        
         // 
         // label7
         // 
         label7.AutoSize = true;
         label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label7.ForeColor = Color.Firebrick;
-        label7.Location = new Point(659, 334);
+        label7.Location = new Point(509, 338);
         label7.Margin = new Padding(4, 0, 4, 0);
         label7.Name = "label7";
         label7.Size = new Size(163, 28);
@@ -256,32 +252,22 @@ partial class AddDoctorForm
         // 
         checkNoCloseWindow.AutoSize = true;
         checkNoCloseWindow.ForeColor = Color.Black;
-        checkNoCloseWindow.Location = new Point(645, 583);
+        checkNoCloseWindow.Location = new Point(496, 584);
         checkNoCloseWindow.Name = "checkNoCloseWindow";
         checkNoCloseWindow.Size = new Size(213, 32);
         checkNoCloseWindow.TabIndex = 34;
         checkNoCloseWindow.Text = "Не закрывать окно ";
         checkNoCloseWindow.UseVisualStyleBackColor = true;
         // 
-        // listBox1
-        // 
-        listBox1.FormattingEnabled = true;
-        listBox1.ItemHeight = 28;
-        listBox1.Location = new Point(888, 32);
-        listBox1.Name = "listBox1";
-        listBox1.Size = new Size(435, 452);
-        listBox1.TabIndex = 35;
-        // 
         // textPhoneNumber
         // 
         textPhoneNumber.BackColor = Color.White;
         textPhoneNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textPhoneNumber.Location = new Point(251, 475);
+        textPhoneNumber.Location = new Point(13, 475);
         textPhoneNumber.Margin = new Padding(4);
         textPhoneNumber.Name = "textPhoneNumber";
         textPhoneNumber.Size = new Size(451, 34);
         textPhoneNumber.TabIndex = 36;
-        
         textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // label8
@@ -289,7 +275,7 @@ partial class AddDoctorForm
         label8.AutoSize = true;
         label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label8.ForeColor = Color.Firebrick;
-        label8.Location = new Point(401, 443);
+        label8.Location = new Point(13, 443);
         label8.Margin = new Padding(4, 0, 4, 0);
         label8.Name = "label8";
         label8.Size = new Size(166, 28);
@@ -309,10 +295,9 @@ partial class AddDoctorForm
         AutoScaleDimensions = new SizeF(11F, 28F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
-        ClientSize = new Size(1356, 658);
+        ClientSize = new Size(808, 658);
         Controls.Add(label8);
         Controls.Add(textPhoneNumber);
-        Controls.Add(listBox1);
         Controls.Add(checkNoCloseWindow);
         Controls.Add(label7);
         Controls.Add(label6);
@@ -374,7 +359,6 @@ partial class AddDoctorForm
     private ErrorProvider errorNoCabinet;
     private ErrorProvider errorNoSpecial;
     private CheckBox checkNoCloseWindow;
-    private ListBox listBox1;
     private Label label8;
     private TextBox textPhoneNumber;
     private ErrorProvider errorNoPhoneNumber;

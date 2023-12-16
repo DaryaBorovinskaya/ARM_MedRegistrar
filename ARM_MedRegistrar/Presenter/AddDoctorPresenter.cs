@@ -21,11 +21,11 @@ namespace ARM_MedRegistrar.Presenter
 
         public void AddDoctor()
         {
-            _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
-            _newDoctor = new Doctor(_fullName, _view.PhoneNumber, _view.Specializations, _view.PlotNumber, _view.Cabinet);
+            //_fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
+            //_newDoctor = new Doctor(_fullName, _view.PhoneNumber, _view.Specializations, _view.PlotNumber, _view.Cabinet);
 
-            _jsonDoctorRepository = new JsonDoctorRepository("doctors.json");
-            _jsonDoctorRepository.Add(_newDoctor);
+            //_jsonDoctorRepository = new JsonDoctorRepository("doctors.json");
+            //_jsonDoctorRepository.Add(_newDoctor);
         }
     }
 }

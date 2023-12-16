@@ -265,6 +265,7 @@ partial class AddPatientForm
         // 
         // comboBoxBloodType
         // 
+        comboBoxBloodType.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBoxBloodType.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxBloodType.ForeColor = Color.Firebrick;
         comboBoxBloodType.FormattingEnabled = true;
@@ -275,6 +276,7 @@ partial class AddPatientForm
         // 
         // comboBoxRhFactor
         // 
+        comboBoxRhFactor.DropDownStyle = ComboBoxStyle.DropDownList;
         comboBoxRhFactor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxRhFactor.ForeColor = Color.Firebrick;
         comboBoxRhFactor.FormattingEnabled = true;

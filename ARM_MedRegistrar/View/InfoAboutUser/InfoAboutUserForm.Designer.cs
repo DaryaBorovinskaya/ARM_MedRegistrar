@@ -62,6 +62,7 @@
             textSurname.ReadOnly = true;
             textSurname.Size = new Size(375, 34);
             textSurname.TabIndex = 1;
+            textSurname.TextChanged += textSurname_TextChanged;
             // 
             // label3
             // 
@@ -115,7 +116,6 @@
             textPatr.ReadOnly = true;
             textPatr.Size = new Size(375, 34);
             textPatr.TabIndex = 27;
-            
             // 
             // buttExit
             // 
@@ -138,7 +138,6 @@
             textPost.ReadOnly = true;
             textPost.Size = new Size(375, 34);
             textPost.TabIndex = 29;
-            
             // 
             // textPhoneNumber
             // 
@@ -194,7 +193,6 @@
             Name = "InfoAboutUserForm";
             StartPosition = FormStartPosition.Manual;
             Text = "InfoAboutUserForm";
-            
             ResumeLayout(false);
             PerformLayout();
         }

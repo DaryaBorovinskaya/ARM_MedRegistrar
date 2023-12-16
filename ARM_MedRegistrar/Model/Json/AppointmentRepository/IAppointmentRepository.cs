@@ -12,13 +12,13 @@ namespace ARM_MedRegistrar.Model.Json.AppointmentRepository
     public interface IAppointmentRepository
     {
         
-        public abstract void Add(IAppointment value);
+        public  void Add(uint key, IAppointment value);
 
 
-        public abstract IList<IAppointment>? GetAll();
+        public  IDictionary<uint, IAppointment>? GetAll();
 
 
-        public abstract void Remove(IAppointment value);
+        public void Remove(uint key);
 
     }
 }

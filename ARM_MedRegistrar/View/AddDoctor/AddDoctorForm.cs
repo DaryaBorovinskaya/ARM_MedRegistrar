@@ -13,15 +13,15 @@ namespace ARM_MedRegistrar
 
         string IAddDoctorForm.Name => textName.Text;
 
-        string IAddDoctorForm.Patronymic => textPatr.Text;
+        string? IAddDoctorForm.Patronymic => textPatr.Text;
 
         string IAddDoctorForm.Specializations => comboBoxSpecializations.SelectedItem.ToString();
 
         string IAddDoctorForm.PhoneNumber => textPhoneNumber.Text;
 
-        int IAddDoctorForm.PlotNumber =>  (int)numericPlotNumber.Value ;
+        int IAddDoctorForm.PlotNumber => (int)numericPlotNumber.Value;
 
-        int IAddDoctorForm.Cabinet =>  (int)numericCabinet.Value ;
+        int IAddDoctorForm.Cabinet => (int)numericCabinet.Value;
 
         public AddDoctorForm()
         {
@@ -67,11 +67,10 @@ namespace ARM_MedRegistrar
 
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
-            
+
 
             bool _isError = false;
 
-            listBox1.Items.Clear();
             errorNoSurname.Clear();
             errorNoName.Clear();
             errorNoSpecial.Clear();
@@ -81,27 +80,27 @@ namespace ARM_MedRegistrar
 
 
             if (textSurname.Text == string.Empty)
-            { 
+            {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено"); 
+                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
             }
 
             if (textName.Text == string.Empty)
-            { 
+            {
                 _isError = true;
-                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено"); 
+                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
             }
 
             if (comboBoxSpecializations.SelectedIndex == -1)
             {
                 _isError = true;
-                errorNoSpecial.SetError(comboBoxSpecializations, "Поле \"Специализация\" не заполнено"); 
+                errorNoSpecial.SetError(comboBoxSpecializations, "Поле \"Специализация\" не заполнено");
             }
 
             if (numericPlotNumber.Value == 0)
             {
                 _isError = true;
-                errorNoPlotNumber.SetError(numericPlotNumber, "Поле \"Номер участка\" не заполнено"); 
+                errorNoPlotNumber.SetError(numericPlotNumber, "Поле \"Номер участка\" не заполнено");
             }
 
             if (numericCabinet.Value == 0)
@@ -113,7 +112,7 @@ namespace ARM_MedRegistrar
             if (textPhoneNumber.Text != string.Empty)
             {
                 _isError = true;
-                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено"); 
+                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
             if (!_isError)
@@ -140,6 +139,24 @@ namespace ARM_MedRegistrar
 
         }
 
-        
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

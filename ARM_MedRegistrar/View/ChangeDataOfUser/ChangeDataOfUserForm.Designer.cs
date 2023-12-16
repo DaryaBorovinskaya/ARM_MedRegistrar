@@ -335,6 +335,7 @@ namespace ARM_MedRegistrar
             // 
             // comboBoxPost
             // 
+            comboBoxPost.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPost.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxPost.ForeColor = Color.Firebrick;
             comboBoxPost.FormattingEnabled = true;
