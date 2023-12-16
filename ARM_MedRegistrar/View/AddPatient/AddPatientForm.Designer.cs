@@ -48,7 +48,7 @@ partial class AddPatientForm
         label9 = new Label();
         label10 = new Label();
         label11 = new Label();
-        textBoxAllergies = new TextBox();
+        textAllergies = new TextBox();
         textCity = new TextBox();
         textRegion = new TextBox();
         textStreet = new TextBox();
@@ -82,6 +82,8 @@ partial class AddPatientForm
         label20 = new Label();
         label21 = new Label();
         label22 = new Label();
+        errorNoDocumentSeries = new ErrorProvider(components);
+        errorNoDocumentNumber = new ErrorProvider(components);
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
@@ -97,6 +99,8 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoBloodType).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoRhFactor).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfPatientCard).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoDocumentNumber).BeginInit();
         SuspendLayout();
         // 
         // label1
@@ -315,14 +319,14 @@ partial class AddPatientForm
         label11.TabIndex = 48;
         label11.Text = "Аллергии";
         // 
-        // textBoxAllergies
+        // textAllergies
         // 
-        textBoxAllergies.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textBoxAllergies.Location = new Point(1125, 471);
-        textBoxAllergies.Multiline = true;
-        textBoxAllergies.Name = "textBoxAllergies";
-        textBoxAllergies.Size = new Size(178, 138);
-        textBoxAllergies.TabIndex = 49;
+        textAllergies.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textAllergies.Location = new Point(1125, 471);
+        textAllergies.Multiline = true;
+        textAllergies.Name = "textAllergies";
+        textAllergies.Size = new Size(178, 138);
+        textAllergies.TabIndex = 49;
         // 
         // textCity
         // 
@@ -602,6 +606,14 @@ partial class AddPatientForm
         label22.TabIndex = 73;
         label22.Text = "Полис ОМС";
         // 
+        // errorNoDocumentSeries
+        // 
+        errorNoDocumentSeries.ContainerControl = this;
+        // 
+        // errorNoDocumentNumber
+        // 
+        errorNoDocumentNumber.ContainerControl = this;
+        // 
         // AddPatientForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
@@ -630,7 +642,7 @@ partial class AddPatientForm
         Controls.Add(textStreet);
         Controls.Add(textRegion);
         Controls.Add(textCity);
-        Controls.Add(textBoxAllergies);
+        Controls.Add(textAllergies);
         Controls.Add(label11);
         Controls.Add(label10);
         Controls.Add(label9);
@@ -669,6 +681,8 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoBloodType).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoRhFactor).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfPatientCard).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoDocumentNumber).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -696,7 +710,7 @@ partial class AddPatientForm
     private Label label9;
     private Label label10;
     private Label label11;
-    private TextBox textBoxAllergies;
+    private TextBox textAllergies;
     private TextBox textCity;
     private TextBox textRegion;
     private TextBox textStreet;
@@ -730,4 +744,6 @@ partial class AddPatientForm
     private TextBox textDocumentNumber;
     private TextBox textDocumentSeries;
     private Label label22;
+    private ErrorProvider errorNoDocumentSeries;
+    private ErrorProvider errorNoDocumentNumber;
 }

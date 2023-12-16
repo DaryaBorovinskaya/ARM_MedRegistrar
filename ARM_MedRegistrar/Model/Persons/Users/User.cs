@@ -1,4 +1,4 @@
-﻿using ARM_MedRegistrar.Model.FullNames;
+﻿using ARM_MedRegistrar.Model.Persons;
 using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,6 @@ namespace ARM_MedRegistrar.Model.Users
         }
 
         public string Login { get; }
-
         public string Password { get; }
         public string Post { get; }
         public string PhoneNumber

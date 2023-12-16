@@ -1,4 +1,4 @@
-﻿using ARM_MedRegistrar.Model.Users;
+﻿using ARM_MedRegistrar.Model.Persons;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

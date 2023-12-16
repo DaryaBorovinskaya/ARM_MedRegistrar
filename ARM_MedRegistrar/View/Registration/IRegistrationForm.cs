@@ -14,5 +14,6 @@ namespace ARM_MedRegistrar.View.Registration
         public string Login { get; }
         public string Password { get; }
         public string Post { get; }
+        public string PhoneNumber {  get; }
     }
 }

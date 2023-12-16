@@ -2,17 +2,45 @@
 using ARM_MedRegistrar.Model.Addresses;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Model.Patients;
+using ARM_MedRegistrar.View.AddPatient;
+using ARM_MedRegistrar.Presenter;
 
 namespace ARM_MedRegistrar
 {
-    public partial class AddPatientForm : Form
+    public partial class AddPatientForm : Form, IAddPatientForm
     {
+        private AddPatientPresenter _presenter;
+        string IAddPatientForm.Surname => textSurname.Text;
+
+        string IAddPatientForm.Name => textName.Text;
+
+        string? IAddPatientForm.Patronymic => textPatr.Text;
+
+        string IAddPatientForm.DateOfBirth => dateTimeDateOfBirth.Value.ToShortDateString();
+
+        string IAddPatientForm.City => textCity.Text;
+        string IAddPatientForm.Region => textRegion.Text;
+        string IAddPatientForm.Street => textStreet.Text;
+        int IAddPatientForm.NumbOfHouse => (int)numericNumbOfHouse.Value;
+        int IAddPatientForm.NumbOfFlat => (int)numericNumbOfFlat.Value;
+        int IAddPatientForm.PlotNumber => (int)numericPlotNumber.Value;
+        string IAddPatientForm.NumbOfPatientCard => textNumbOfPatientCard.Text;
+        int IAddPatientForm.PolicySeries => (int)numericPolicySeries.Value;
+        string IAddPatientForm.PolicyNumb => textPolicyNumb.Text;
+        string IAddPatientForm.DocumentSeries => textDocumentSeries.Text;
+        string IAddPatientForm.DocumentNumber => textDocumentNumber.Text;
+        string IAddPatientForm.BloodType => comboBoxBloodType.SelectedItem.ToString();
+        string IAddPatientForm.RhFactor => comboBoxRhFactor.SelectedItem.ToString();
+        string? IAddPatientForm.Allergies => textAllergies.Text;
+
         public AddPatientForm()
         {
 
             InitializeComponent();
             comboBoxBloodType.Items.AddRange(new string[] { "Неизвестно", "I", "II", "III", "IV" });
             comboBoxRhFactor.Items.AddRange(new string[] { "Неизвестно", "Положительный", "Отрицательный" });
+
+            _presenter = new(this);
         }
 
 
@@ -60,17 +88,7 @@ namespace ARM_MedRegistrar
 
         private void buttAddPatient_Click(object sender, EventArgs e)
         {
-            FullName _fullName;
-            Patient _newPatient;
-            Address _address;
-            string _city, _region;
-            int _plotNumber, _numbOfPatientCard;
-
             bool _isError = false;
-            JsonAttachedStreetsRepository jsonAttachedStreetsRepository = new("attachedStreets.json");
-            IList<IAttachedStreets>? _attStreets = jsonAttachedStreetsRepository.GetAll();
-
-            JsonPatientRepository jsonPatientRepository = new("patients.json");
 
             errorNoSurname.Clear();
             errorNoName.Clear();
@@ -83,6 +101,8 @@ namespace ARM_MedRegistrar
             errorNoBloodType.Clear();
             errorNoRhFactor.Clear();
             errorNoNumbOfPatientCard.Clear();
+            errorNoDocumentSeries.Clear();
+            errorNoDocumentNumber.Clear();
 
             if (textSurname.Text == string.Empty)
             {
@@ -108,7 +128,7 @@ namespace ARM_MedRegistrar
                 errorNoPolicyNumber.SetError(textPolicyNumb, "Поле \"Номер полиса\" не заполнено");
             }
 
-            if (dateTimeDateOfBirth.Value.ToLongDateString() == DateTime.Now.ToLongDateString())
+            if (dateTimeDateOfBirth.Value.ToShortDateString() == DateTime.Now.ToLongDateString())
             {
                 _isError = true;
                 errorWrongDate.SetError(dateTimeDateOfBirth, "Поле \"Дата рождения\" заполнено неверно");
@@ -150,11 +170,22 @@ namespace ARM_MedRegistrar
                 errorNoNumbOfPatientCard.SetError(textNumbOfPatientCard, "Поле \"Номер амбулаторной карты\" не заполнено");
             }
 
+            if (textDocumentSeries.Text == string.Empty)
+            {
+                _isError = true;
+                errorNoDocumentSeries.SetError(textDocumentSeries, "Поле \"Серия документа\" не заполнено");
+            }
+
+            if (textDocumentNumber.Text == string.Empty)
+            {
+                _isError = true;
+                errorNoDocumentNumber.SetError(textDocumentNumber, "Поле \"Номер документа\" не заполнено");
+            }
 
 
             if (!_isError)
             {
-                _fullName = new(textSurname.Text, textName.Text, textName.Text);
+                
 
                 if (textCity.Text == string.Empty)
                 {
@@ -176,16 +207,7 @@ namespace ARM_MedRegistrar
                     _region = textRegion.Text;
 
 
-                _address = new(_city, _region, textStreet.Text, (int)numericNumbOfHouse.Value, (int)numericNumbOfFlat.Value);
-                _plotNumber = 1;       //потом выгружать данные из файла
-                numericPlotNumber.Value = _plotNumber;
-
-
-                _newPatient = new(_fullName, dateTimeDateOfBirth.Value, _address, _plotNumber,
-                    textNumbOfPatientCard.Text, (int)numericPolicySeries.Value, textPolicyNumb.Text, comboBoxBloodType.SelectedItem.ToString(),
-                    comboBoxRhFactor.SelectedItem.ToString(), textBoxAllergies.Text);
-
-                jsonPatientRepository.Add(_newPatient);
+                
                 MessageBox.Show("Добавление пациента успешно выполнено!");
 
                 if (!checkNoCloseWindow.Checked)
@@ -200,6 +222,8 @@ namespace ARM_MedRegistrar
                     numericNumbOfHouse.Value = 0;
                     numericNumbOfFlat.Value = 0;
                     textNumbOfPatientCard.Clear();
+                    textDocumentSeries.Clear();
+                    textDocumentNumber.Clear();
 
                 }
             }

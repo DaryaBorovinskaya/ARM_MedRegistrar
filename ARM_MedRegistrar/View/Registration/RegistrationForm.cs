@@ -22,6 +22,8 @@ namespace ARM_MedRegistrar
 
         string IRegistrationForm.Post => comboBoxPost.SelectedItem.ToString();
 
+        string IRegistrationForm.PhoneNumber => textPhoneNumber.Text;
+
         public RegistrationForm(Form form)
         {
             this.form = form;
@@ -37,10 +39,10 @@ namespace ARM_MedRegistrar
 
             _presenter.NoOneHeadDoctorEvent += NoOneHeadDoctorSet;
             _presenter.MatchedLogEvent += MatchedLogSet;
-            
+
         }
 
-       
+
         private void MatchedLogSet(object? sender, EventArgs e)
         {
             errorMatchedLog.SetError(textLog, "Такой логин уже используется");
@@ -58,19 +60,18 @@ namespace ARM_MedRegistrar
             DialogResult = DialogResult.OK;
         }
 
-        private void textBox_SpacePress(object sender, KeyPressEventArgs e)
+        
+        private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
 
-            if (ch == (int)Keys.Space)
+            if (!char.IsDigit(ch) && ch != 8)     //(8 - это Backspace)
                 ch = '\0';
-        }
 
-        
-        
+        }
         private void buttRegistration_Click(object sender, EventArgs e)
         {
-            
+
 
             errorNoSurname.Clear();
             errorNoName.Clear();
@@ -80,22 +81,21 @@ namespace ARM_MedRegistrar
             errorMatchedLog.Clear();
             errorMatchedPassword.Clear();
             errorNoOneHeadDoctor.Clear();
+            errorNoPhoneNumber.Clear();
 
-            
             bool _isError = false;
 
 
-
             if (comboBoxPost.SelectedIndex == -1)
-            { 
+            {
                 _isError = true;
-                errorNoPost.SetError(comboBoxPost, "Поле \"Должность\" не заполнено"); 
+                errorNoPost.SetError(comboBoxPost, "Поле \"Должность\" не заполнено");
             }
 
             if (textSurname.Text == string.Empty)
             {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено"); 
+                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
             }
 
             if (textName.Text == string.Empty)
@@ -117,48 +117,21 @@ namespace ARM_MedRegistrar
                 errorNoPassword.SetError(textPassword, "Поле \"Пароль\" не заполнено");
             }
 
-
+            if (textPhoneNumber.Text == string.Empty)
+            {
+                _isError = true;
+                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
+            }
 
             if (!_isError)
             {
                 if (_presenter.IsSuccessRegistration())
                 {
                     MessageBox.Show($"Вы успешно зарегистрированы (должность {comboBoxPost.SelectedItem})");
-                    MainWindowForm newForm = new (this);
-                    if (newForm.ShowDialog() == DialogResult.OK)
-                        Close();
+
+                    Close();
                 }
             }
-
-
-
-
-
-
-
-
-
-
-        }
-
-        private void comboProfess_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Registration_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelLog_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void checkViewPassword_CheckedChanged(object sender, EventArgs e)
@@ -168,6 +141,22 @@ namespace ARM_MedRegistrar
 
             else
                 textPassword.UseSystemPasswordChar = true;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void RegistrationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

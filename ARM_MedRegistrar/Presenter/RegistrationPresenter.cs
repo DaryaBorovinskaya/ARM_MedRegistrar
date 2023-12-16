@@ -1,4 +1,4 @@
-﻿using ARM_MedRegistrar.Model.FullNames;
+﻿using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Model.Json.UserRepository;
 using ARM_MedRegistrar.Model.Users;
 using ARM_MedRegistrar.View.Registration;
@@ -13,8 +13,8 @@ namespace ARM_MedRegistrar.Presenter
 {
     public class RegistrationPresenter
     {
-        FullName _fullName;
-        User _newUser;
+        IFullName _fullName;
+        IUser _newUser;
         IRegistrationForm _view;
         IUserRepository _jsonUserRepository;
         IDictionary<string, IUser>? _users;
@@ -59,8 +59,8 @@ namespace ARM_MedRegistrar.Presenter
 
             if (_isSuccess)
             {
-                _fullName = new(_view.Surname, _view.Name, _view.Patronymic);
-                _newUser = new(_fullName, _view.Login, _view.Password, _view.Post);
+                _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
+                _newUser = new User(_fullName, _view.Login, _view.Password, _view.Post, _view.PhoneNumber);
                 _jsonUserRepository.Add(_view.Login, _newUser);
                 return true;
             }

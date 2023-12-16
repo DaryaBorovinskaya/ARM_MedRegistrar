@@ -39,7 +39,7 @@ namespace ARM_MedRegistrar
         }
         private void buttEntrance_Click(object sender, EventArgs e)
         {
-            IUser? _newUser;
+            
             errorNoLog.Clear();
             errorNoPassword.Clear();
 
@@ -62,10 +62,10 @@ namespace ARM_MedRegistrar
 
             if (!_isError)
             {
-                _newUser = _presenter.LogIn();
-                if ( _newUser!= null)
+                
+                if (_presenter.LogIn() != null)
                 {
-                    MainWindowForm newForm = new(this, _newUser);
+                    MainWindowForm newForm = new(this, );
                     if (newForm.ShowDialog() == DialogResult.OK)
                         Close();
                 }

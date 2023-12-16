@@ -1,6 +1,6 @@
 ﻿using ARM_MedRegistrar.View;
 using ARM_MedRegistrar.View.MainWindow;
-using ARM_MedRegistrar.Model.Users;
+using ARM_MedRegistrar.Model.Persons;
 
 namespace ARM_MedRegistrar
 {

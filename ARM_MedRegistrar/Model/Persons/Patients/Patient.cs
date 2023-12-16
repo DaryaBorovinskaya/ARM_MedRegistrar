@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ARM_MedRegistrar.Model.Addresses;
 using ARM_MedRegistrar.Model.Persons;
 using Microsoft.VisualBasic.Logging;
+using Newtonsoft.Json.Linq;
 
 
 namespace ARM_MedRegistrar.Model.Patients
@@ -37,7 +38,7 @@ namespace ARM_MedRegistrar.Model.Patients
                 _fullName = value;
             }
         }
-        public DateTime DateOfBirth { get; }
+        public string DateOfBirth { get; }
         public IAddress Address
         {
             get => _address;
@@ -152,9 +153,12 @@ namespace ARM_MedRegistrar.Model.Patients
         }
 
         public string? Allergies { get; set; }
-        public Patient(IFullName fullName, DateTime dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
+        public Patient(IFullName fullName, string dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
             string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies)
         {
+            if (dateOfBirth == "" || dateOfBirth == " " || dateOfBirth == null)
+                throw new ArgumentException("Дата рождения не задана");
+
             FullName = fullName;
             DateOfBirth = dateOfBirth;
             Address = address;

@@ -1,4 +1,4 @@
-﻿using ARM_MedRegistrar.Model.Users;
+﻿using ARM_MedRegistrar.Model.Persons;
 
 namespace ARM_MedRegistrar.Model.Json.UserRepository
 {

@@ -7,7 +7,7 @@ namespace ARM_MedRegistrar.Model.Patients
     public interface IPatient
     {
         public IFullName FullName { get; set; }
-        public DateTime DateOfBirth { get; }
+        public string DateOfBirth { get; }
         public IAddress Address { get; set; }
         public int PlotNumber { get; set; }
         public string NumbOfPatientCard { get; set; }
