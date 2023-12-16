@@ -36,18 +36,18 @@ namespace ARM_MedRegistrar
 
         private void textBox_SpacePress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
+            //char ch = e.KeyChar;
 
-            if (ch == (int)Keys.Space)
-                ch = '\0';
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
         }
 
         private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
+            //char ch = e.KeyChar;
 
-            if (!char.IsDigit(ch) && ch != 8)     //(8 - это Backspace)
-                ch = '\0';
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
+                e.KeyChar = '\0';
 
         }
 

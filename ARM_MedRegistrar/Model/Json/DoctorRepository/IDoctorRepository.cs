@@ -5,12 +5,12 @@ namespace ARM_MedRegistrar.Model.Json.DoctorRepository
     public interface IDoctorRepository
     {
 
-        public  void Add(IDoctor element);
+        public  void Add(IDoctor value);
 
 
-        public  IDictionary<int, IDoctor>? GetAll();
+        public  IList< IDoctor>? GetAll();
 
 
-        public void Remove(IDoctor element);
+        public void Remove(IDoctor value);
     }
 }

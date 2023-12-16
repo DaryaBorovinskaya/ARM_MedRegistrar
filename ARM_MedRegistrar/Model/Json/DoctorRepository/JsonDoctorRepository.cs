@@ -1,5 +1,6 @@
 ﻿
 using ARM_MedRegistrar.Model.Doctors;
+using ARM_MedRegistrar.Model.Patients;
 using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar.Model.Json.DoctorRepository
@@ -7,16 +8,15 @@ namespace ARM_MedRegistrar.Model.Json.DoctorRepository
     public class JsonDoctorRepository : IDoctorRepository
     {
         private readonly string _savePath;
-        private IDictionary<int, IDoctor>? _doctors = new Dictionary<int, IDoctor>();
+        private IList<IDoctor>? _doctors = new List< IDoctor>();
         public JsonDoctorRepository(string savePath)
         {
             _savePath = savePath;
         }
 
-        public  void Add(IDoctor element)
+        public  void Add(IDoctor value)
         {
-            if (element == null)
-                throw new ArgumentNullException(nameof(element));
+           
 
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
@@ -26,14 +26,14 @@ namespace ARM_MedRegistrar.Model.Json.DoctorRepository
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
             if (!File.Exists(_savePath))
             {
-                _doctors?.Add(element);
+                _doctors?.Add(value);
                 File.WriteAllText(_savePath, JsonConvert.SerializeObject(_doctors, Formatting.Indented, settings));
             }
 
             else
             {
                 _doctors = JsonConvert.DeserializeObject<IList<IDoctor>>(File.ReadAllText(_savePath), settings);
-                _doctors?.Add(element);
+                _doctors?.Add(value);
                 File.WriteAllText(_savePath, JsonConvert.SerializeObject(_doctors, Formatting.Indented, settings));
             }
 
@@ -41,26 +41,26 @@ namespace ARM_MedRegistrar.Model.Json.DoctorRepository
 
         public  IList<IDoctor>? GetAll()
         {
-            if (!File.Exists(_savePath)) return null;
+            if (!File.Exists(_savePath)) return new List<IDoctor>();
 
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
             _doctors = JsonConvert.DeserializeObject<IList<IDoctor>>(File.ReadAllText(_savePath), settings);
             return _doctors;
         }
 
-        public  void Remove(IDoctor element)
+        public  void Remove(IDoctor value)
         {
-            if (element == null)
-                throw new ArgumentNullException(nameof(element));
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
             if (_doctors == null)
                 throw new ArgumentNullException(nameof(_doctors));
-            if (!_doctors.Contains(element) || !File.Exists(_savePath))
+            if (!_doctors.Contains(value) || !File.Exists(_savePath))
                 throw new Exception("Не удалось удалить объект из файла: удаляемый элемент или/и файл не найдены");
 
 
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
             _doctors = JsonConvert.DeserializeObject<IList<IDoctor>>(File.ReadAllText(_savePath), settings);
-            _doctors.Remove(element);
+            _doctors?.Remove(value);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_doctors, Formatting.Indented, settings));
 
 

@@ -46,7 +46,7 @@ namespace ARM_MedRegistrar.Model.Json.UserRepository
 
         public IDictionary<string, IUser>? GetAll()
         {
-            if (!File.Exists(_savePath)) return new List<IUser>();
+            if (!File.Exists(_savePath)) return new Dictionary<string, IUser>();
 
             JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 

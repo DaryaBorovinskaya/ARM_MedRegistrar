@@ -36,7 +36,7 @@ namespace ARM_MedRegistrar.Presenter
 
             _address = new Address(_view.City, _view.Region, _view.Street, _view.NumbOfHouse, _view.NumbOfFlat);
                  
-             numericPlotNumber.Value = _plotNumber;    // выгружать данные из файла
+             //numericPlotNumber.Value = _plotNumber;    // выгружать данные из файла
 
 
             _newPatient = new Patient(_fullName, _view.DateOfBirth, _address, _view.PlotNumber, 

@@ -46,18 +46,18 @@ namespace ARM_MedRegistrar
 
         private void textBox_SpacePress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
+            //char ch = e.KeyChar;
 
-            if (ch == (int)Keys.Space)
-                ch = '\0';
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
         }
 
         private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
+            //char ch = e.KeyChar;
 
-            if (!char.IsDigit(ch) && ch != 8)     //(8 - это Backspace)
-                ch = '\0';
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
+                e.KeyChar = '\0';
 
         }
 
@@ -187,24 +187,24 @@ namespace ARM_MedRegistrar
             {
                 
 
-                if (textCity.Text == string.Empty)
-                {
-                    _city = _attStreets[0].City;
-                    textCity.Text = _city;
+                //if (textCity.Text == string.Empty)
+                //{
+                //    _city = _attStreets[0].City;
+                //    textCity.Text = _city;
 
-                }
-                else
-                    _city = textCity.Text;
+                //}
+                //else
+                //    _city = textCity.Text;
 
 
 
-                if (textRegion.Text == string.Empty)
-                {
-                    _region = _attStreets[0].Region;
-                    textRegion.Text = _region;
-                }
-                else
-                    _region = textRegion.Text;
+                //if (textRegion.Text == string.Empty)
+                //{
+                //    _region = _attStreets[0].Region;
+                //    textRegion.Text = _region;
+                //}
+                //else
+                //    _region = textRegion.Text;
 
 
                 

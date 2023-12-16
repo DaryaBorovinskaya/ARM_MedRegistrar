@@ -7,9 +7,9 @@ namespace ARM_MedRegistrar
 {
     public partial class RegistrationForm : Form, IRegistrationForm
     {
-        Form form;
+        private Form _form;
 
-        RegistrationPresenter _presenter;
+        private RegistrationPresenter _presenter;
         string IRegistrationForm.Surname => textSurname.Text;
 
         string IRegistrationForm.Name => textName.Text;
@@ -24,12 +24,14 @@ namespace ARM_MedRegistrar
 
         string IRegistrationForm.PhoneNumber => textPhoneNumber.Text;
 
+        string IRegistrationForm.TIN => textTIN.Text;
+
         public RegistrationForm(Form form)
         {
-            this.form = form;
-            form.Hide();
+            _form = form;
+            _form.Hide();
             InitializeComponent();
-            DialogResult = DialogResult.Cancel;
+            //DialogResult = DialogResult.Cancel;
             FormClosed += OnClosed;
 
 
@@ -57,16 +59,23 @@ namespace ARM_MedRegistrar
 
         private void OnClosed(object? sender, FormClosedEventArgs e)
         {
-            DialogResult = DialogResult.OK;
+            _form.Visible = true;
+            //DialogResult = DialogResult.OK;
         }
 
-        
+        private void textBox_SpacePress(object sender, KeyPressEventArgs e)
+        {
+            //char ch = e.KeyChar;
+
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
+        }
         private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
+            //char ch = e.KeyChar;
 
-            if (!char.IsDigit(ch) && ch != 8)     //(8 - это Backspace)
-                ch = '\0';
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
+                e.KeyChar = '\0';
 
         }
         private void buttRegistration_Click(object sender, EventArgs e)
@@ -82,6 +91,7 @@ namespace ARM_MedRegistrar
             errorMatchedPassword.Clear();
             errorNoOneHeadDoctor.Clear();
             errorNoPhoneNumber.Clear();
+
 
             bool _isError = false;
 
@@ -122,6 +132,9 @@ namespace ARM_MedRegistrar
                 _isError = true;
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
+
+
+
 
             if (!_isError)
             {

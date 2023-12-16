@@ -75,7 +75,7 @@ namespace ARM_MedRegistrar
             labelName.AutoSize = true;
             labelName.Font = new Font("Arial Rounded MT Bold", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
             labelName.ForeColor = Color.Brown;
-            labelName.Location = new Point(280, 49);
+            labelName.Location = new Point(280, 33);
             labelName.Name = "labelName";
             labelName.Size = new Size(182, 32);
             labelName.TabIndex = 7;
@@ -86,7 +86,7 @@ namespace ARM_MedRegistrar
             labelLog.AutoSize = true;
             labelLog.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelLog.ForeColor = Color.Firebrick;
-            labelLog.Location = new Point(415, 99);
+            labelLog.Location = new Point(413, 90);
             labelLog.Name = "labelLog";
             labelLog.Size = new Size(69, 28);
             labelLog.TabIndex = 8;
@@ -97,7 +97,7 @@ namespace ARM_MedRegistrar
             labelPassword.AutoSize = true;
             labelPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             labelPassword.ForeColor = Color.Firebrick;
-            labelPassword.Location = new Point(415, 215);
+            labelPassword.Location = new Point(413, 215);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(81, 28);
             labelPassword.TabIndex = 9;
@@ -107,7 +107,7 @@ namespace ARM_MedRegistrar
             // 
             textLog.BackColor = Color.White;
             textLog.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textLog.Location = new Point(415, 130);
+            textLog.Location = new Point(409, 130);
             textLog.Name = "textLog";
             textLog.Size = new Size(329, 34);
             textLog.TabIndex = 10;
@@ -117,7 +117,7 @@ namespace ARM_MedRegistrar
             // 
             textPassword.BackColor = Color.White;
             textPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPassword.Location = new Point(415, 246);
+            textPassword.Location = new Point(409, 246);
             textPassword.Name = "textPassword";
             textPassword.Size = new Size(329, 34);
             textPassword.TabIndex = 11;
@@ -141,7 +141,7 @@ namespace ARM_MedRegistrar
             // 
             textPatr.BackColor = Color.White;
             textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPatr.Location = new Point(12, 350);
+            textPatr.Location = new Point(22, 350);
             textPatr.Name = "textPatr";
             textPatr.Size = new Size(329, 34);
             textPatr.TabIndex = 17;
@@ -151,7 +151,7 @@ namespace ARM_MedRegistrar
             // 
             textName.BackColor = Color.White;
             textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textName.Location = new Point(12, 246);
+            textName.Location = new Point(22, 246);
             textName.Name = "textName";
             textName.Size = new Size(329, 34);
             textName.TabIndex = 18;
@@ -161,7 +161,7 @@ namespace ARM_MedRegistrar
             // 
             textSurname.BackColor = Color.White;
             textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textSurname.Location = new Point(12, 130);
+            textSurname.Location = new Point(22, 130);
             textSurname.Name = "textSurname";
             textSurname.Size = new Size(329, 34);
             textSurname.TabIndex = 19;
@@ -172,7 +172,7 @@ namespace ARM_MedRegistrar
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Firebrick;
-            label1.Location = new Point(12, 308);
+            label1.Location = new Point(22, 319);
             label1.Name = "label1";
             label1.Size = new Size(234, 28);
             label1.TabIndex = 20;
@@ -183,7 +183,7 @@ namespace ARM_MedRegistrar
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(12, 201);
+            label2.Location = new Point(22, 215);
             label2.Name = "label2";
             label2.Size = new Size(51, 28);
             label2.TabIndex = 21;
@@ -195,7 +195,7 @@ namespace ARM_MedRegistrar
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(12, 99);
+            label3.Location = new Point(22, 99);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
             label3.TabIndex = 22;
@@ -245,7 +245,7 @@ namespace ARM_MedRegistrar
             comboBoxPost.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxPost.ForeColor = Color.Firebrick;
             comboBoxPost.FormattingEnabled = true;
-            comboBoxPost.Location = new Point(415, 415);
+            comboBoxPost.Location = new Point(409, 403);
             comboBoxPost.Name = "comboBoxPost";
             comboBoxPost.Size = new Size(329, 36);
             comboBoxPost.TabIndex = 27;
@@ -255,7 +255,7 @@ namespace ARM_MedRegistrar
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Firebrick;
-            label5.Location = new Point(415, 384);
+            label5.Location = new Point(415, 372);
             label5.Name = "label5";
             label5.Size = new Size(115, 28);
             label5.TabIndex = 28;
@@ -280,20 +280,19 @@ namespace ARM_MedRegistrar
             // textPhoneNumber
             // 
             textPhoneNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPhoneNumber.Location = new Point(12, 461);
+            textPhoneNumber.Location = new Point(22, 461);
             textPhoneNumber.Name = "textPhoneNumber";
             textPhoneNumber.Size = new Size(329, 34);
             textPhoneNumber.TabIndex = 29;
             textPhoneNumber.TextChanged += textBox1_TextChanged;
             textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
-            
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Firebrick;
-            label6.Location = new Point(12, 423);
+            label6.Location = new Point(22, 430);
             label6.Name = "label6";
             label6.Size = new Size(166, 28);
             label6.TabIndex = 30;

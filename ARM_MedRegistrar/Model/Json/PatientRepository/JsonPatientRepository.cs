@@ -12,33 +12,32 @@ namespace ARM_MedRegistrar.Model.Json.PatientRepository
     public class JsonPatientRepository : IPatientRepository
     {
         private readonly string _savePath;
-        private IDictionary<int, IPatient>? _patients = new Dictionary<int, IPatient>();
+        private IList<IPatient>? _patients = new List< IPatient>();
 
         public JsonPatientRepository(string savePath)
         {
             _savePath = savePath;
         }
 
-        public  void Add(IPatient element)
+        public  void Add(IPatient value)
         {
-            if (element == null)
-                throw new ArgumentNullException(nameof(element));
-
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
+
+            
 
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 
             if (!File.Exists(_savePath))
             {
-                _patients?.Add(element);
+                _patients?.Add(value);
                 File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, settings));
             }
 
             else
             {
                 _patients = JsonConvert.DeserializeObject<List<IPatient>>(File.ReadAllText(_savePath), settings);
-                _patients?.Add(element);
+                _patients?.Add(value);
                 File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, settings));
             }
 
@@ -47,7 +46,7 @@ namespace ARM_MedRegistrar.Model.Json.PatientRepository
 
         public  IList<IPatient>? GetAll()
         {
-            if (!File.Exists(_savePath)) return null;
+            if (!File.Exists(_savePath)) return new List<IPatient>();
 
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 
@@ -55,20 +54,20 @@ namespace ARM_MedRegistrar.Model.Json.PatientRepository
             return _patients;
         }
 
-        public  void Remove(IPatient element)
+        public  void Remove(IPatient value)
         {
-            if (element == null)
-                throw new ArgumentNullException(nameof(element));
+            if (value == null)
+                throw new ArgumentNullException(nameof(value));
             if (_patients == null)
                 throw new ArgumentNullException(nameof(_patients));
-            if (!_patients.Contains(element) || !File.Exists(_savePath))
+            if (!_patients.Contains(value) || !File.Exists(_savePath))
                 throw new Exception("Не удалось удалить объект из файла: удаляемый элемент или/и файл не найдены");
 
 
             var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto };
 
             _patients = JsonConvert.DeserializeObject<List<IPatient>>(File.ReadAllText(_savePath), settings);
-            _patients.Remove(element);
+            _patients?.Remove(value);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, settings));
 
 

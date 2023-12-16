@@ -1,8 +1,5 @@
 ﻿using ARM_MedRegistrar.Presenter;
-using ARM_MedRegistrar.Model.Json.UserRepository;
-using System.Windows.Forms;
 using ARM_MedRegistrar.View.LogIn;
-using ARM_MedRegistrar.Model.Users;
 
 namespace ARM_MedRegistrar
 {
@@ -21,22 +18,15 @@ namespace ARM_MedRegistrar
 
         }
 
-        private void textBox_SpacePress(object sender, KeyPressEventArgs e)
+        private void TextBox_SpacePress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
+            //char ch = e.KeyChar;
 
-            if (ch == (int)Keys.Space)
-                ch = '\0';
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
         }
 
-        private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
-        {
-            char ch = e.KeyChar;
-
-            if (!char.IsDigit(ch) && ch != 8)     //(8 - это Backspace)
-                ch = '\0';
-
-        }
+        
         private void buttEntrance_Click(object sender, EventArgs e)
         {
             
@@ -65,7 +55,7 @@ namespace ARM_MedRegistrar
                 
                 if (_presenter.LogIn() != null)
                 {
-                    MainWindowForm newForm = new(this, );
+                    MainWindowForm newForm = new(this, _presenter.LogIn());
                     if (newForm.ShowDialog() == DialogResult.OK)
                         Close();
                 }
@@ -80,9 +70,9 @@ namespace ARM_MedRegistrar
 
         private void buttonRegistration_Click(object sender, EventArgs e)
         {
-
-            RegistrationForm newForm = new RegistrationForm(this);
-            if (newForm.ShowDialog() == DialogResult.OK) Close();
+            RegistrationForm registrationForm = new(this);
+            registrationForm.ShowDialog();
+            //if (newForm.ShowDialog() == DialogResult.OK) Close();
         }
 
 
@@ -98,8 +88,9 @@ namespace ARM_MedRegistrar
 
         private void buttChangeDataOfUser_Click(object sender, EventArgs e)
         {
-            ChangeDataOfUserForm newForm = new ChangeDataOfUserForm(this);
-            if (newForm.ShowDialog() == DialogResult.OK) Close();
+            ChangeDataOfUserForm changeDataOfUserForm = new (this);
+            changeDataOfUserForm.ShowDialog();
+            //if (newForm.ShowDialog() == DialogResult.OK) Close();
         }
     }
 }

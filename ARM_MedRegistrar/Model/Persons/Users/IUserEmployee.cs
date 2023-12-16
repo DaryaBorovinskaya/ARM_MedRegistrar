@@ -11,5 +11,6 @@ namespace ARM_MedRegistrar.Model.Persons
         public IFullName FullName { get; set; }
         public string Post { get; set; }
         public string PhoneNumber { get; set; }
+        
     }
 }

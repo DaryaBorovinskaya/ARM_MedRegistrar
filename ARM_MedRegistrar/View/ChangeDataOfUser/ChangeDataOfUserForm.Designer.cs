@@ -37,7 +37,7 @@ namespace ARM_MedRegistrar
             labelPassword = new Label();
             textOldLog = new TextBox();
             textOldPassword = new TextBox();
-            buttRegistration = new Button();
+            buttChangeData = new Button();
             textPatr = new TextBox();
             textName = new TextBox();
             textSurname = new TextBox();
@@ -92,7 +92,6 @@ namespace ARM_MedRegistrar
             labelLog.Size = new Size(140, 28);
             labelLog.TabIndex = 8;
             labelLog.Text = "Старый логин\r\n";
-            
             // 
             // labelPassword
             // 
@@ -126,18 +125,18 @@ namespace ARM_MedRegistrar
             textOldPassword.UseSystemPasswordChar = true;
             textOldPassword.KeyPress += textBox_SpacePress;
             // 
-            // buttRegistration
+            // buttChangeData
             // 
-            buttRegistration.BackColor = Color.FromArgb(255, 192, 192);
-            buttRegistration.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttRegistration.ForeColor = Color.Firebrick;
-            buttRegistration.Location = new Point(84, 545);
-            buttRegistration.Name = "buttRegistration";
-            buttRegistration.Size = new Size(214, 76);
-            buttRegistration.TabIndex = 14;
-            buttRegistration.Text = "Обновить данные";
-            buttRegistration.UseVisualStyleBackColor = false;
-            buttRegistration.Click += buttRegistration_Click;
+            buttChangeData.BackColor = Color.FromArgb(255, 192, 192);
+            buttChangeData.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttChangeData.ForeColor = Color.Firebrick;
+            buttChangeData.Location = new Point(84, 545);
+            buttChangeData.Name = "buttChangeData";
+            buttChangeData.Size = new Size(214, 76);
+            buttChangeData.TabIndex = 14;
+            buttChangeData.Text = "Обновить данные";
+            buttChangeData.UseVisualStyleBackColor = false;
+            buttChangeData.Click += buttChangeData_Click;
             // 
             // textPatr
             // 
@@ -379,7 +378,7 @@ namespace ARM_MedRegistrar
             Controls.Add(textSurname);
             Controls.Add(textName);
             Controls.Add(textPatr);
-            Controls.Add(buttRegistration);
+            Controls.Add(buttChangeData);
             Controls.Add(textOldPassword);
             Controls.Add(textOldLog);
             Controls.Add(labelPassword);
@@ -412,7 +411,7 @@ namespace ARM_MedRegistrar
         private Label labelPassword;
         private TextBox textOldLog;
         private TextBox textOldPassword;
-        private Button buttRegistration;
+        private Button buttChangeData;
         private TextBox textPatr;
         private TextBox textName;
         private TextBox textSurname;

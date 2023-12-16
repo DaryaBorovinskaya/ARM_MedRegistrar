@@ -12,12 +12,12 @@ namespace ARM_MedRegistrar.Model.Json.PatientRepository
     public interface IPatientRepository
     {
         
-        public void Add(IPatient element);
+        public void Add(IPatient value);
 
 
-        public IDictionary<int, IPatient>? GetAll();
+        public IList<IPatient>? GetAll();
 
 
-        public void Remove(IPatient element);
+        public void Remove(IPatient value);
     }
 }

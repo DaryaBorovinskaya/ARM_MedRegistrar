@@ -13,6 +13,7 @@ namespace ARM_MedRegistrar.Model.Users
     {
         private IFullName _fullName;
         private string _phoneNumber;
+        private string _post;
 
         public IFullName FullName
         {
@@ -27,7 +28,17 @@ namespace ARM_MedRegistrar.Model.Users
 
         public string Login { get; }
         public string Password { get; }
-        public string Post { get; }
+        public string Post
+        {
+            get => _post;
+            set
+            {
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Должность не задана");
+
+                _post = value;
+            }
+        }
         public string PhoneNumber
         {
             get => _phoneNumber;
@@ -40,6 +51,7 @@ namespace ARM_MedRegistrar.Model.Users
             }
         }
 
+        
         public User(IFullName fullName, string login, string password, string post, string phoneNumber)
         {
             if (login == "" || login == " " || login == null)
@@ -49,8 +61,7 @@ namespace ARM_MedRegistrar.Model.Users
                 throw new ArgumentException("Пароль не задан");
 
 
-            if (post == "" || post == " " || post == null)
-                throw new ArgumentException("Должность не задана");
+            
 
 
             FullName = fullName;
@@ -58,6 +69,7 @@ namespace ARM_MedRegistrar.Model.Users
             Password = password;
             Post = post;
             PhoneNumber = phoneNumber;
+            
         }
     }
 }

@@ -12,8 +12,9 @@ namespace ARM_MedRegistrar.Model.Json.AttachedStreets
     public interface IAttachedStreetsRepository 
     {
         
-        public abstract void Add(IAttachedStreets element);
-        public abstract void Remove(IAttachedStreets element);
-        public abstract IDictionary<int, IAttachedStreets>? GetAll();
+        public abstract void Add(IAttachedStreets value);
+        public abstract IList<IAttachedStreets>? GetAll();
+        public abstract void Remove(IAttachedStreets value);
+        
     }
 }

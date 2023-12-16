@@ -1,6 +1,6 @@
 ﻿
 using ARM_MedRegistrar.Model.AttachedStreets;
-
+using ARM_MedRegistrar.Model.Json.AttachedStreets;
 
 namespace ARM_MedRegistrar.View
 {
@@ -14,10 +14,10 @@ namespace ARM_MedRegistrar.View
 
         private void textBox_SpacePress(object sender, KeyPressEventArgs e)
         {
-            char ch = e.KeyChar;
+            //char ch = e.KeyChar;
 
-            if (ch == (int)Keys.Space)
-                ch = '\0';
+            if (e.KeyChar == (int)Keys.Space)
+                e.KeyChar = '\0';
         }
 
        
@@ -27,7 +27,7 @@ namespace ARM_MedRegistrar.View
         private void buttAddDataToFile_Click(object sender, EventArgs e)
         {
             AttachedStreets _newAttachedStreet;
-            JsonAttachedStreetsRepository jsonAttachedStreetsRepository = new("attachedStreets.json");
+            IAttachedStreetsRepository jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository("attachedStreets.json");
             IList<IAttachedStreets>? _attachedStreets;
 
             bool _isError = false;
