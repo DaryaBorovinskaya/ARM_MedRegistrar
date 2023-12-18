@@ -75,7 +75,6 @@
             buttOpenFile.TabIndex = 1;
             buttOpenFile.Text = "Просмотреть файл";
             buttOpenFile.UseVisualStyleBackColor = true;
-            
             // 
             // listBoxAttachedStreets
             // 
@@ -243,6 +242,8 @@
             Controls.Add(buttOpenFile);
             Controls.Add(label1);
             ForeColor = SystemColors.ControlDarkDark;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "AttachedStreetsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AttachedStreetsForm";

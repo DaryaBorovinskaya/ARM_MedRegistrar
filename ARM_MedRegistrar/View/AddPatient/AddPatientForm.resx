@@ -156,4 +156,13 @@
   <metadata name="errorNoDocumentNumber.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>13, 35</value>
   </metadata>
+  <metadata name="errorNoPlotNumber.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>541, 38</value>
+  </metadata>
+  <metadata name="errorNoCity.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>719, 49</value>
+  </metadata>
+  <metadata name="errorNoRegion.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>884, 48</value>
+  </metadata>
 </root>

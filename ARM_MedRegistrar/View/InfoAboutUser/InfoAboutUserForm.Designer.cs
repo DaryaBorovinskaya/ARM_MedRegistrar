@@ -189,7 +189,9 @@
             Controls.Add(label3);
             Controls.Add(textSurname);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Location = new Point(12, 12);
+            MaximizeBox = false;
             Name = "InfoAboutUserForm";
             StartPosition = FormStartPosition.Manual;
             Text = "InfoAboutUserForm";

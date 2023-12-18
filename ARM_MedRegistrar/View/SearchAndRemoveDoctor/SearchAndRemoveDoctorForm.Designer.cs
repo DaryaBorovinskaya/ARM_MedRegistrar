@@ -66,6 +66,8 @@
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
             Controls.Add(button2);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "SearchAndRemoveDoctorForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SearchAndRemoveDoctorForm";

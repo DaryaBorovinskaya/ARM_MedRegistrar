@@ -154,12 +154,13 @@ namespace ARM_MedRegistrar.Model.Patients
 
         public string? Allergies { get; set; }
         public uint Id { get; }
-        public Patient(IFullName fullName, string dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
-            string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies, uint id)
+        public Patient(uint id, IFullName fullName, string dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
+            string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies )
         {
             if (dateOfBirth == "" || dateOfBirth == " " || dateOfBirth == null)
                 throw new ArgumentException("Дата рождения не задана");
 
+            Id = id;
             FullName = fullName;
             DateOfBirth = dateOfBirth;
             Address = address;
@@ -172,9 +173,6 @@ namespace ARM_MedRegistrar.Model.Patients
             BloodType = bloodType;
             RhFactor = rhFactor;
             Allergies = allergies;
-            Id = id;
         }
-
-
     }
 }

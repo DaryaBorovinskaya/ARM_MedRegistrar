@@ -7,17 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ARM_MedRegistrar.Model.Json.PatientRepository
+namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
 {
-    public interface IPatientRepository
+    public interface IPatientRepository : IBaseRepository<uint, IPatient>, ICreateId
     {
-        
-        public void Add(IPatient value);
-
-
-        public IList<IPatient>? GetAll();
-
-
-        public void Remove(IPatient value);
+               
     }
 }

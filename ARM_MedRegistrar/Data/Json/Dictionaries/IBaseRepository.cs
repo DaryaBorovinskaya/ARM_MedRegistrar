@@ -8,15 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ARM_MedRegistrar.Model.Json
+namespace ARM_MedRegistrar.Data.Json.Dictionaries
 {
-    public interface IBaseRepository<T,U> where U : class 
+    public interface IBaseRepository<T, U> where U : class
     {
-        protected void LoadFromFile();
+
         public void Add(U value);
-        public IDictionary<T, U>? GetAll();
+        public SortedDictionary<T, U>? GetAll();
         public void Remove(T key);
-        public void WriteToFile();
+
+
 
     }
 }

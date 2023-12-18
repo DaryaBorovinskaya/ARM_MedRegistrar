@@ -32,13 +32,21 @@
             textFullNameOfRegistr = new TextBox();
             label1 = new Label();
             listViewSchedule = new ListView();
-            buttRemovePatient = new Button();
+            columnHeader7 = new ColumnHeader();
+            columnHeader8 = new ColumnHeader();
+            columnHeader9 = new ColumnHeader();
+            columnHeader10 = new ColumnHeader();
+            columnHeader11 = new ColumnHeader();
+            columnHeader16 = new ColumnHeader();
+            columnHeader17 = new ColumnHeader();
+            columnHeader18 = new ColumnHeader();
             buttSearchPatient = new Button();
             buttAddAppointment = new Button();
             buttRemoveAppointment = new Button();
             buttAddresses = new Button();
             buttInfoAboutUser = new Button();
             listView1 = new ListView();
+            columnHeader12 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
@@ -58,25 +66,19 @@
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader9 = new ColumnHeader();
-            columnHeader10 = new ColumnHeader();
-            columnHeader11 = new ColumnHeader();
-            columnHeader16 = new ColumnHeader();
-            columnHeader17 = new ColumnHeader();
-            columnHeader18 = new ColumnHeader();
-            columnHeader12 = new ColumnHeader();
             buttDoctors = new Button();
+            button1 = new Button();
+            columnHeader13 = new ColumnHeader();
+            columnHeader14 = new ColumnHeader();
             SuspendLayout();
             // 
             // buttAddPatient
             // 
-            buttAddPatient.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttAddPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAddPatient.ForeColor = Color.Firebrick;
-            buttAddPatient.Location = new Point(1431, 202);
+            buttAddPatient.Location = new Point(215, 79);
             buttAddPatient.Name = "buttAddPatient";
-            buttAddPatient.Size = new Size(147, 65);
+            buttAddPatient.Size = new Size(413, 40);
             buttAddPatient.TabIndex = 1;
             buttAddPatient.Text = "Добавить пациента";
             buttAddPatient.UseVisualStyleBackColor = true;
@@ -107,7 +109,7 @@
             // 
             // listViewSchedule
             // 
-            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader8, columnHeader9, columnHeader10, columnHeader11, columnHeader16, columnHeader17, columnHeader18 });
+            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader8, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
             listViewSchedule.Location = new Point(12, 652);
             listViewSchedule.Name = "listViewSchedule";
             listViewSchedule.Size = new Size(1878, 369);
@@ -117,22 +119,51 @@
             listViewSchedule.View = System.Windows.Forms.View.Details;
             listViewSchedule.SelectedIndexChanged += listViewSchedule_SelectedIndexChanged;
             // 
-            // buttRemovePatient
+            // columnHeader7
             // 
-            buttRemovePatient.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttRemovePatient.ForeColor = Color.Firebrick;
-            buttRemovePatient.Location = new Point(1614, 204);
-            buttRemovePatient.Name = "buttRemovePatient";
-            buttRemovePatient.Size = new Size(147, 65);
-            buttRemovePatient.TabIndex = 7;
-            buttRemovePatient.Text = " Удалить пациента";
-            buttRemovePatient.UseVisualStyleBackColor = true;
+            columnHeader7.Text = "Дата и время";
+            columnHeader7.Width = 250;
+            // 
+            // columnHeader8
+            // 
+            columnHeader8.Text = "Номер кабинета или адрес";
+            columnHeader8.Width = 300;
+            // 
+            // columnHeader9
+            // 
+            columnHeader9.Text = "Фамилия врача";
+            columnHeader9.Width = 200;
+            // 
+            // columnHeader10
+            // 
+            columnHeader10.Text = "Имя врача";
+            columnHeader10.Width = 100;
+            // 
+            // columnHeader11
+            // 
+            columnHeader11.Text = "Отчество врача";
+            columnHeader11.Width = 200;
+            // 
+            // columnHeader16
+            // 
+            columnHeader16.Text = "Фамилия пациента";
+            columnHeader16.Width = 200;
+            // 
+            // columnHeader17
+            // 
+            columnHeader17.Text = "Имя пациента";
+            columnHeader17.Width = 100;
+            // 
+            // columnHeader18
+            // 
+            columnHeader18.Text = "Отчество пациента";
+            columnHeader18.Width = 200;
             // 
             // buttSearchPatient
             // 
             buttSearchPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttSearchPatient.ForeColor = Color.Firebrick;
-            buttSearchPatient.Location = new Point(1181, 166);
+            buttSearchPatient.Location = new Point(1196, 166);
             buttSearchPatient.Name = "buttSearchPatient";
             buttSearchPatient.Size = new Size(186, 101);
             buttSearchPatient.TabIndex = 9;
@@ -189,7 +220,7 @@
             // 
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
             listView1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listView1.Location = new Point(12, 293);
+            listView1.Location = new Point(12, 315);
             listView1.Name = "listView1";
             listView1.Size = new Size(1466, 235);
             listView1.Sorting = SortOrder.Ascending;
@@ -197,6 +228,11 @@
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = System.Windows.Forms.View.Details;
             listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            // 
+            // columnHeader12
+            // 
+            columnHeader12.Text = "ID";
+            columnHeader12.Width = 100;
             // 
             // columnHeader1
             // 
@@ -231,7 +267,7 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(12, 166);
+            textBox1.Location = new Point(12, 196);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(328, 34);
             textBox1.TabIndex = 21;
@@ -239,7 +275,7 @@
             // textBox2
             // 
             textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(12, 235);
+            textBox2.Location = new Point(12, 264);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(328, 34);
             textBox2.TabIndex = 23;
@@ -247,7 +283,7 @@
             // textBox3
             // 
             textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(387, 166);
+            textBox3.Location = new Point(387, 196);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(328, 34);
             textBox3.TabIndex = 24;
@@ -255,7 +291,7 @@
             // textBox4
             // 
             textBox4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(760, 166);
+            textBox4.Location = new Point(760, 196);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(375, 34);
             textBox4.TabIndex = 25;
@@ -263,7 +299,7 @@
             // textBox5
             // 
             textBox5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox5.Location = new Point(760, 235);
+            textBox5.Location = new Point(760, 264);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(375, 34);
             textBox5.TabIndex = 26;
@@ -273,7 +309,7 @@
             dateTimeDateOfBirth.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimeDateOfBirth.CalendarTitleBackColor = Color.White;
             dateTimeDateOfBirth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimeDateOfBirth.Location = new Point(387, 233);
+            dateTimeDateOfBirth.Location = new Point(387, 265);
             dateTimeDateOfBirth.Name = "dateTimeDateOfBirth";
             dateTimeDateOfBirth.Size = new Size(328, 34);
             dateTimeDateOfBirth.TabIndex = 36;
@@ -283,7 +319,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Firebrick;
-            label5.Location = new Point(387, 204);
+            label5.Location = new Point(387, 233);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(153, 28);
@@ -295,7 +331,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(12, 135);
+            label3.Location = new Point(12, 165);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
@@ -308,7 +344,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Firebrick;
-            label4.Location = new Point(12, 204);
+            label4.Location = new Point(12, 233);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(51, 28);
@@ -320,7 +356,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Firebrick;
-            label6.Location = new Point(387, 135);
+            label6.Location = new Point(387, 165);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(96, 28);
@@ -332,7 +368,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.Firebrick;
-            label7.Location = new Point(760, 135);
+            label7.Location = new Point(760, 166);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(375, 28);
@@ -344,7 +380,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label8.ForeColor = Color.Firebrick;
-            label8.Location = new Point(760, 204);
+            label8.Location = new Point(760, 233);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(381, 28);
@@ -362,56 +398,11 @@
             label9.TabIndex = 43;
             label9.Text = "Пациенты";
             // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "Дата и время";
-            columnHeader7.Width = 250;
-            // 
-            // columnHeader8
-            // 
-            columnHeader8.Text = "Номер кабинета или адрес";
-            columnHeader8.Width = 300;
-            // 
-            // columnHeader9
-            // 
-            columnHeader9.Text = "Фамилия врача";
-            columnHeader9.Width = 200;
-            // 
-            // columnHeader10
-            // 
-            columnHeader10.Text = "Имя врача";
-            columnHeader10.Width = 100;
-            // 
-            // columnHeader11
-            // 
-            columnHeader11.Text = "Отчество врача";
-            columnHeader11.Width = 200;
-            // 
-            // columnHeader16
-            // 
-            columnHeader16.Text = "Фамилия пациента";
-            columnHeader16.Width = 200;
-            // 
-            // columnHeader17
-            // 
-            columnHeader17.Text = "Имя пациента";
-            columnHeader17.Width = 100;
-            // 
-            // columnHeader18
-            // 
-            columnHeader18.Text = "Отчество пациента";
-            columnHeader18.Width = 200;
-            // 
-            // columnHeader12
-            // 
-            columnHeader12.Text = "ID";
-            columnHeader12.Width = 100;
-            // 
             // buttDoctors
             // 
             buttDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttDoctors.ForeColor = Color.Firebrick;
-            buttDoctors.Location = new Point(1704, 39);
+            buttDoctors.Location = new Point(1711, 37);
             buttDoctors.Name = "buttDoctors";
             buttDoctors.Size = new Size(147, 65);
             buttDoctors.TabIndex = 44;
@@ -419,12 +410,34 @@
             buttDoctors.UseVisualStyleBackColor = true;
             buttDoctors.Click += buttDoctors_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = Color.Firebrick;
+            button1.Location = new Point(1484, 376);
+            button1.Name = "button1";
+            button1.Size = new Size(186, 101);
+            button1.TabIndex = 45;
+            button1.Text = "Удалить пациента";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // columnHeader13
+            // 
+            columnHeader13.Text = "ID врача";
+            columnHeader13.Width = 100;
+            // 
+            // columnHeader14
+            // 
+            columnHeader14.Text = "ID пациента";
+            columnHeader14.Width = 100;
+            // 
             // MainWindowForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1902, 1033);
+            Controls.Add(button1);
             Controls.Add(buttDoctors);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -445,11 +458,11 @@
             Controls.Add(buttRemoveAppointment);
             Controls.Add(buttAddAppointment);
             Controls.Add(buttSearchPatient);
-            Controls.Add(buttRemovePatient);
             Controls.Add(listViewSchedule);
             Controls.Add(label1);
             Controls.Add(textFullNameOfRegistr);
             Controls.Add(buttAddPatient);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainWindowForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainWindow";
@@ -463,7 +476,6 @@
         private TextBox textFullNameOfRegistr;
         private Label label1;
         private ListView listViewSchedule;
-        private Button buttRemovePatient;
         private Button buttSearchPatient;
         private Button buttAddAppointment;
         private Button buttRemoveAppointment;
@@ -499,5 +511,8 @@
         private ColumnHeader columnHeader18;
         private ColumnHeader columnHeader12;
         private Button buttDoctors;
+        private Button button1;
+        private ColumnHeader columnHeader13;
+        private ColumnHeader columnHeader14;
     }
 }

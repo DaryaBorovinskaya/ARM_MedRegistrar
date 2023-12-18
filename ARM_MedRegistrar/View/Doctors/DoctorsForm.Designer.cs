@@ -133,6 +133,8 @@
             Controls.Add(buttAddDoctor);
             Controls.Add(label2);
             Controls.Add(listViewDoctors);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "DoctorsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DoctorsForm";

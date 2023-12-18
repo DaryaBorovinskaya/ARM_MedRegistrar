@@ -181,7 +181,7 @@ partial class LogInForm
         labelWrongLogOrPassword.Text = "Неверный логин или пароль";
         labelWrongLogOrPassword.Visible = false;
         // 
-        // EntranceForm
+        // LogInForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -197,7 +197,9 @@ partial class LogInForm
         Controls.Add(textPassword);
         Controls.Add(textLog);
         Controls.Add(buttEntrance);
-        Name = "EntranceForm";
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
+        Name = "LogInForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Entrance";
         ((System.ComponentModel.ISupportInitialize)errorNoLog).EndInit();

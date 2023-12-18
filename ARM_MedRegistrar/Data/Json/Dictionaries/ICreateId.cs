@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ARM_MedRegistrar.Model
+namespace ARM_MedRegistrar.Data.Json.Dictionaries
 {
-    public interface IIdentification
+    public interface ICreateId
     {
-        uint Id { get; }
+        public uint CreateId();
     }
 }

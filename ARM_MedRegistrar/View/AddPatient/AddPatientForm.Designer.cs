@@ -84,6 +84,9 @@ partial class AddPatientForm
         label22 = new Label();
         errorNoDocumentSeries = new ErrorProvider(components);
         errorNoDocumentNumber = new ErrorProvider(components);
+        errorNoPlotNumber = new ErrorProvider(components);
+        errorNoCity = new ErrorProvider(components);
+        errorNoRegion = new ErrorProvider(components);
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
@@ -101,6 +104,9 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfPatientCard).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoDocumentNumber).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCity).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoRegion).BeginInit();
         SuspendLayout();
         // 
         // label1
@@ -594,7 +600,7 @@ partial class AddPatientForm
         label21.Size = new Size(386, 28);
         label21.TabIndex = 72;
         label21.Text = "Документ, подтверждающий личность";
-        label21.Click += label21_Click;
+        
         // 
         // label22
         // 
@@ -615,6 +621,18 @@ partial class AddPatientForm
         // errorNoDocumentNumber
         // 
         errorNoDocumentNumber.ContainerControl = this;
+        // 
+        // errorNoPlotNumber
+        // 
+        errorNoPlotNumber.ContainerControl = this;
+        // 
+        // errorNoCity
+        // 
+        errorNoCity.ContainerControl = this;
+        // 
+        // errorNoRegion
+        // 
+        errorNoRegion.ContainerControl = this;
         // 
         // AddPatientForm
         // 
@@ -664,10 +682,12 @@ partial class AddPatientForm
         Controls.Add(label3);
         Controls.Add(buttAddPatient);
         Controls.Add(label1);
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        MaximizeBox = false;
         Name = "AddPatientForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "AddPatient";
-        Load += AddPatientForm_Load;
+        
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).EndInit();
@@ -685,6 +705,9 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoNumbOfPatientCard).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoDocumentNumber).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCity).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoRegion).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -748,4 +771,7 @@ partial class AddPatientForm
     private Label label22;
     private ErrorProvider errorNoDocumentSeries;
     private ErrorProvider errorNoDocumentNumber;
+    private ErrorProvider errorNoPlotNumber;
+    private ErrorProvider errorNoCity;
+    private ErrorProvider errorNoRegion;
 }

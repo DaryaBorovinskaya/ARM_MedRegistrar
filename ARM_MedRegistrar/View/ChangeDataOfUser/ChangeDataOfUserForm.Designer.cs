@@ -385,6 +385,8 @@ namespace ARM_MedRegistrar
             Controls.Add(labelPassword);
             Controls.Add(labelLog);
             Controls.Add(labelName);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ChangeDataOfUserForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Registration";

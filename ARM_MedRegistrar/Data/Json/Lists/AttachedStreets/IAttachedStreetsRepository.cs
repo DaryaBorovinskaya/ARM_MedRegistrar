@@ -7,14 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ARM_MedRegistrar.Model.Json.AttachedStreets
+namespace ARM_MedRegistrar.Data.Json.Lists.AttachedStreets
 {
-    public interface IAttachedStreetsRepository 
+    public interface IAttachedStreetsRepository
     {
-        
+
         public abstract void Add(IAttachedStreets value);
         public abstract IList<IAttachedStreets>? GetAll();
         public abstract void Remove(IAttachedStreets value);
-        
+
     }
 }

@@ -314,7 +314,9 @@ partial class AddDoctorForm
         Controls.Add(comboBoxSpecializations);
         Controls.Add(label2);
         Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        FormBorderStyle = FormBorderStyle.FixedSingle;
         Margin = new Padding(4);
+        MaximizeBox = false;
         Name = "AddDoctorForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "AddDoctor";

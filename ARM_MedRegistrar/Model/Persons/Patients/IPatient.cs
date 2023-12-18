@@ -1,4 +1,5 @@
 ﻿using ARM_MedRegistrar.Model.Addresses;
+using ARM_MedRegistrar.Model.Identifications;
 using ARM_MedRegistrar.Model.Persons;
 
 namespace ARM_MedRegistrar.Model.Patients

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ARM_MedRegistrar.Model.Json.UserRepository;
+using ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository;
 using ARM_MedRegistrar.View.LogIn;
 using ARM_MedRegistrar.Model.Persons;
 
@@ -13,7 +13,7 @@ namespace ARM_MedRegistrar.Presenter
     {
         ILogInForm _view;
         IUserRepository _userRepository;
-        IDictionary<string, IUser>? _users;
+        SortedDictionary<string, IUser>? _users;
         public LogInPresenter(ILogInForm view)
         {
             _view = view;
@@ -33,8 +33,8 @@ namespace ARM_MedRegistrar.Presenter
                 }
                 return null;
             }
-            
-            
+
+
         }
     }
 }

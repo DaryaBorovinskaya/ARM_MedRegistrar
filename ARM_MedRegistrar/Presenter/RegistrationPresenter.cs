@@ -1,13 +1,7 @@
 ﻿using ARM_MedRegistrar.Model.Persons;
-using ARM_MedRegistrar.Model.Json.UserRepository;
 using ARM_MedRegistrar.Model.Users;
 using ARM_MedRegistrar.View.Registration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+using ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -17,7 +11,7 @@ namespace ARM_MedRegistrar.Presenter
         IUser _newUser;
         IRegistrationForm _view;
         IUserRepository _jsonUserRepository;
-        IDictionary<string, IUser>? _users;
+        SortedDictionary<string, IUser>? _users;
         public RegistrationPresenter(IRegistrationForm view)
         { 
             _view = view;
@@ -25,14 +19,8 @@ namespace ARM_MedRegistrar.Presenter
             _users = _jsonUserRepository.GetAll();
         }
 
-
-
         public event EventHandler? NoOneHeadDoctorEvent;
         public event EventHandler? MatchedLogEvent;
-
-
-
-
 
         public bool IsSuccessRegistration()
         {
@@ -56,7 +44,6 @@ namespace ARM_MedRegistrar.Presenter
                         _isSuccess = false;
                     }
 
-
                 }
                 
             }
@@ -65,7 +52,7 @@ namespace ARM_MedRegistrar.Presenter
                 _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
                 _newUser = new User(_fullName, _view.Login, _view.Password, _view.Post, _view.PhoneNumber);
                 _jsonUserRepository.Add( _newUser);
-                _jsonUserRepository.WriteToFile();
+                
                 return true;
             }
             return false;

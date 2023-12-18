@@ -8,42 +8,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ARM_MedRegistrar.Model.Json.UserRepository
+namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
 {
-    public class JsonUserRepository : IBaseRepository<string,IUser>
+    public class JsonUserRepository : IUserRepository
     {
         private readonly string _savePath;
+        private SortedDictionary<string, IUser>? _users;
+        private JsonSerializerSettings _settings;
 
-        private IDictionary<string, IUser>? _users;
-
-        void IBaseRepository<string, IUser>.LoadFromFile()
+        private void LoadFromFile()
         {
-            
-            if (File.Exists(_savePath))
-            {
-                JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-                _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), settings);
 
-            }
+            if (!File.Exists(_savePath))
+                _users = new ();
+
+            else
+                _users = JsonConvert.DeserializeObject<SortedDictionary<string, IUser>>(File.ReadAllText(_savePath), _settings);
         }
+
+        private void WriteToFile()
+        {
+            File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, _settings));
+        }
+
+
         public JsonUserRepository(string savePath)
         {
             _savePath = savePath;
-            _users = new Dictionary<string, IUser>();
+            _users = new ();
+            _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
             LoadFromFile();
         }
 
-        public void Add( IUser value)
+        public void Add(IUser value)
         {
-            
+
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
+            if (_users != null && _users.ContainsKey(value.Login)) 
+                throw new ArgumentException("Логин занят");
 
-            if (_users.ContainsKey(value.Login)) throw new ArgumentException("Логин занят");
-                
-                    
+
             _users?.Add(value.Login, value);
+            WriteToFile();
             //JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 
             //if (!File.Exists(_savePath))
@@ -62,16 +70,16 @@ namespace ARM_MedRegistrar.Model.Json.UserRepository
 
         }
 
-        public IDictionary<string, IUser>? GetAll() => _users;
-        
-            //if (!File.Exists(_savePath)) return new Dictionary<string, IUser>();
+        public SortedDictionary<string, IUser>? GetAll() => _users;
 
-            //JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
+        //if (!File.Exists(_savePath)) return new Dictionary<string, IUser>();
 
-            //_users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), settings);
+        //JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 
-            //return _users;
-        
+        //_users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), settings);
+
+        //return _users;
+
 
         public void Remove(string key)
         {
@@ -86,16 +94,13 @@ namespace ARM_MedRegistrar.Model.Json.UserRepository
 
             //_users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), settings);
             _users?.Remove(key);
+            WriteToFile();
             //File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, settings));
 
 
         }
 
 
-        public void WriteToFile()
-        {
-            JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-            File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, settings));
-        }
+
     }
 }

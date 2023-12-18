@@ -71,14 +71,17 @@ namespace ARM_MedRegistrar.Model.Doctors
 
 
         public uint Id { get; }
-        public Doctor(IFullName fullName, string phoneNumber, string specialization, int plotNumber, int cabinet, uint id)
+        public Doctor(uint id, IFullName fullName, string phoneNumber, string specialization, int plotNumber, int cabinet)
         {
+            Id = id;
             FullName = fullName;
             PhoneNumber = phoneNumber;
             Specialization = specialization;
             PlotNumber = plotNumber;
             Cabinet = cabinet;
-            Id = id;
+            
         }
+
+       
     }
 }

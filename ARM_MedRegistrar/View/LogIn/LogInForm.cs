@@ -26,33 +26,33 @@ namespace ARM_MedRegistrar
                 e.KeyChar = '\0';
         }
 
-        
+
         private void buttEntrance_Click(object sender, EventArgs e)
         {
-            
+
             errorNoLog.Clear();
             errorNoPassword.Clear();
 
             bool _isError = false;
 
-            
+
 
             if (textLog.Text == string.Empty)
-            { 
+            {
                 _isError = true;
-                errorNoLog.SetError(textLog, "Поле \"Логин\" не заполнено"); 
+                errorNoLog.SetError(textLog, "Поле \"Логин\" не заполнено");
             }
 
 
             if (textPassword.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPassword.SetError(textPassword, "Поле \"Пароль\" не заполнено"); 
+                errorNoPassword.SetError(textPassword, "Поле \"Пароль\" не заполнено");
             }
 
             if (!_isError)
             {
-                
+
                 if (_presenter.LogIn() != null)
                 {
                     MainWindowForm newForm = new(this, _presenter.LogIn());
@@ -88,7 +88,7 @@ namespace ARM_MedRegistrar
 
         private void buttChangeDataOfUser_Click(object sender, EventArgs e)
         {
-            ChangeDataOfUserForm changeDataOfUserForm = new (this);
+            ChangeDataOfUserForm changeDataOfUserForm = new(this);
             changeDataOfUserForm.ShowDialog();
             //if (newForm.ShowDialog() == DialogResult.OK) Close();
         }

@@ -1,6 +1,8 @@
 ﻿
+
+using ARM_MedRegistrar.Data.Json.Lists.AttachedStreets;
 using ARM_MedRegistrar.Model.AttachedStreets;
-using ARM_MedRegistrar.Model.Json.AttachedStreets;
+
 
 namespace ARM_MedRegistrar.View
 {
@@ -20,10 +22,10 @@ namespace ARM_MedRegistrar.View
                 e.KeyChar = '\0';
         }
 
-       
 
 
-       
+
+
         private void buttAddDataToFile_Click(object sender, EventArgs e)
         {
             AttachedStreets _newAttachedStreet;
@@ -45,15 +47,15 @@ namespace ARM_MedRegistrar.View
 
 
                 if (textCity.Text == string.Empty)
-                { 
+                {
                     _isError = true;
-                    errorNoCity.SetError(textCity, "Поле \"Город\" не заполнено"); 
+                    errorNoCity.SetError(textCity, "Поле \"Город\" не заполнено");
                 }
 
                 if (textRegion.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoRegion.SetError(textRegion, "Поле \"Регион\" не заполнено"); 
+                    errorNoRegion.SetError(textRegion, "Поле \"Регион\" не заполнено");
                 }
 
                 if (textStreet.Text == string.Empty)
@@ -110,7 +112,7 @@ namespace ARM_MedRegistrar.View
 
                     MessageBox.Show("Успешно добавлено");
                 }
-                
+
             }
 
         }

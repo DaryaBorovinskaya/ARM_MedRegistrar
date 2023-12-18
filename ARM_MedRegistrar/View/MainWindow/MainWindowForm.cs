@@ -64,7 +64,7 @@ namespace ARM_MedRegistrar
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
 
-            
+
 
 
         }
@@ -143,5 +143,7 @@ namespace ARM_MedRegistrar
             DoctorsForm doctorForm = new(this);
             doctorForm.ShowDialog();
         }
+
+
     }
 }

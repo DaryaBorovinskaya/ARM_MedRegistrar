@@ -1,5 +1,5 @@
 ﻿using ARM_MedRegistrar.Model.Persons;
-using ARM_MedRegistrar.Model.Json.UserRepository;
+using ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository;
 using ARM_MedRegistrar.View.Registration;
 using ARM_MedRegistrar.Presenter;
 
@@ -48,7 +48,6 @@ namespace ARM_MedRegistrar
         private void MatchedLogSet(object? sender, EventArgs e)
         {
             errorMatchedLog.SetError(textLog, "Такой логин уже используется");
-
         }
 
         private void NoOneHeadDoctorSet(object? sender, EventArgs e)
@@ -132,8 +131,6 @@ namespace ARM_MedRegistrar
                 _isError = true;
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
-
-
 
 
             if (!_isError)
