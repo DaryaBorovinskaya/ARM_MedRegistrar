@@ -8,5 +8,6 @@ namespace ARM_MedRegistrar.View.MainWindow
 {
     public interface IMainWindowForm
     {
+        public uint SelectedId { get; }
     }
 }

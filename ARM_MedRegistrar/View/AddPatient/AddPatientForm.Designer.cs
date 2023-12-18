@@ -556,6 +556,7 @@ partial class AddPatientForm
         textDocumentSeries.Name = "textDocumentSeries";
         textDocumentSeries.Size = new Size(372, 34);
         textDocumentSeries.TabIndex = 68;
+        textDocumentSeries.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // textDocumentNumber
         // 
@@ -564,6 +565,7 @@ partial class AddPatientForm
         textDocumentNumber.Name = "textDocumentNumber";
         textDocumentNumber.Size = new Size(372, 34);
         textDocumentNumber.TabIndex = 69;
+        textDocumentNumber.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // label19
         // 
@@ -710,6 +712,16 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoRegion).EndInit();
         ResumeLayout(false);
         PerformLayout();
+    }
+
+    private void TextDocumentNumber_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void TextDocumentSeries_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        throw new NotImplementedException();
     }
 
 

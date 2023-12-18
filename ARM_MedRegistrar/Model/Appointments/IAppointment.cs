@@ -10,6 +10,6 @@ namespace ARM_MedRegistrar.Model.Appointments
         public IPatient Patient { get; set; }
         public IDoctor Doctor { get; set; }
 
-       
+        public string Place {  get; set; }   //место, где будет приём врача - дома или в кабинете
     }
 }

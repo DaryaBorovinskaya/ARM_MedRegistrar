@@ -12,6 +12,7 @@ namespace ARM_MedRegistrar.Model.Appointments
     {
         private IPatient _patient;
         private IDoctor _doctor;
+        private string _place;
         public DateTime DateAndTime { get; set; }
         public IPatient Patient
         {
@@ -35,13 +36,23 @@ namespace ARM_MedRegistrar.Model.Appointments
             }
         }
 
+        public string Place
+        {
+            get => _place;
+            set
+            {
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Место приёма врача не задано");
+            }
+        }
         public uint Id { get; }
-        public Appointment(uint id, IPatient patient, IDoctor doctor, DateTime dateAndTime)
+        public Appointment(uint id, IPatient patient, IDoctor doctor, DateTime dateAndTime, string place)
         {
             Id = id;
             Patient = patient;
             Doctor = doctor;
             DateAndTime = dateAndTime;
+            Place = place;
         }
 
     }

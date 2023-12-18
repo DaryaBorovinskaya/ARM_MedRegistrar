@@ -78,6 +78,13 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
 
         public uint CreateId()
         {
+            if (!File.Exists(_savePath))
+                _patients = new();
+
+            else
+                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
+
+
             if (_patients == null)
                 throw new ArgumentNullException(nameof(_patients));
             else if (_patients?.Count == 0) 
