@@ -23,7 +23,7 @@ namespace ARM_MedRegistrar.Presenter
         { 
             _view = view;
             _jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository("attachedStreets.json");
-            _attStreets = _jsonAttachedStreetsRepository.GetAll();
+            
             _jsonPatientRepository = new JsonPatientRepository("patients.json");
         }
 
@@ -33,6 +33,7 @@ namespace ARM_MedRegistrar.Presenter
         public event EventHandler? NoRegionEvent;
         public bool AddPatient()
         {
+            _attStreets = _jsonAttachedStreetsRepository.GetAll();
             _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
 
             if (_attStreets != null && _attStreets.Count != 0)

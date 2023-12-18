@@ -18,12 +18,13 @@ namespace ARM_MedRegistrar.Presenter
         {
             _view = view;
             _userRepository = new JsonUserRepository("users.json");
-            _users = _userRepository.GetAll();
+            
         }
 
         public IUser? LogIn()
         {
-            if (_users == null) return null;
+            _users = _userRepository.GetAll();
+            if (_users == null || _users.Count == 0) return null;
             else
             {
                 foreach (string key in _users.Keys)

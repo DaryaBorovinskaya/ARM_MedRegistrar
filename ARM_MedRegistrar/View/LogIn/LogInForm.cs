@@ -27,15 +27,13 @@ namespace ARM_MedRegistrar
         }
 
 
-        private void buttEntrance_Click(object sender, EventArgs e)
+        private void buttLogIn_Click(object sender, EventArgs e)
         {
 
             errorNoLog.Clear();
             errorNoPassword.Clear();
 
             bool _isError = false;
-
-
 
             if (textLog.Text == string.Empty)
             {

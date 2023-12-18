@@ -16,32 +16,12 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
         private readonly string _savePath;
         private SortedDictionary<uint, IPatient>? _patients;
         private JsonSerializerSettings _settings;
-
-
-        private void LoadFromFile()
-        {
-            if (!File.Exists(_savePath))
-                _patients = new();
-            
-            else
-                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
-
-
-        }
-
-        private void WriteToFile()
-        {
-            File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, _settings));
-        }
-
-
-
         public JsonPatientRepository(string savePath)
         {
             _savePath = savePath;
             _patients = new ();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-            LoadFromFile();
+            
         }
 
         public void Add(IPatient value)
@@ -52,11 +32,28 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
             if (_patients != null && _patients.ContainsKey(value.Id))
                 throw new ArgumentException("Логин занят");
 
+            if (!File.Exists(_savePath))
+                _patients = new();
+
+            else
+                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
+
+
             _patients?.Add(value.Id, value);
-            WriteToFile();
+            File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, _settings));
+
         }
 
-        public SortedDictionary<uint, IPatient>? GetAll() => _patients;
+        public SortedDictionary<uint, IPatient>? GetAll()
+        {
+            if (!File.Exists(_savePath))
+                _patients = new();
+
+            else
+                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
+
+            return _patients;
+        }
 
 
         public void Remove(uint key)
@@ -67,8 +64,16 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
             if (!_patients.ContainsKey(key) || !File.Exists(_savePath))
                 throw new Exception("Не удалось удалить объект из файла: удаляемый элемент или/и файл не найдены");
 
+            if (!File.Exists(_savePath))
+                _patients = new();
+
+            else
+                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
+
+
             _patients?.Remove(key);
-            WriteToFile();
+            File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, _settings));
+
         }
 
         public uint CreateId()

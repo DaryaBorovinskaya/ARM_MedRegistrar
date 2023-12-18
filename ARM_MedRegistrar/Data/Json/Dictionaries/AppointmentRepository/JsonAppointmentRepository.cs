@@ -16,26 +16,18 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 
         private void LoadFromFile()
         {
-            if (!File.Exists(_savePath))
-            {
-                File.Create(_savePath);
-                _appointments = new SortedDictionary<uint, IAppointment>();
-            }
-            else
-                _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
-
+            
         }
 
         private void WriteToFile()
         {
-            File.WriteAllText(_savePath, JsonConvert.SerializeObject(_appointments, Formatting.Indented, _settings));
-        }
+            }
         public JsonAppointmentRepository(string savePath)
         {
             _savePath = savePath;
             _appointments = new SortedDictionary<uint, IAppointment>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-            LoadFromFile();
+          
         }
 
         public void Add(IAppointment value)
@@ -46,9 +38,17 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
                 throw new ArgumentException("Логин занят");
             //JsonSerializerOptions options = new JsonSerializerOptions {WriteIndented = true};
 
+            if (!File.Exists(_savePath))
+            {
+                File.Create(_savePath);
+                _appointments = new SortedDictionary<uint, IAppointment>();
+            }
+            else
+                _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
 
             _appointments?.Add(value.Id, value);
-            WriteToFile();
+            File.WriteAllText(_savePath, JsonConvert.SerializeObject(_appointments, Formatting.Indented, _settings));
+
             //File.WriteAllText(_savePath, JsonConvert.SerializeObject(_appointments, Formatting.Indented, settings));
             //File.WriteAllText(_savePath, JsonSerializer.Serialize(_appointments, options));
 
@@ -61,7 +61,17 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 
         }
 
-        public SortedDictionary<uint, IAppointment>? GetAll() => _appointments;
+        public SortedDictionary<uint, IAppointment>? GetAll()
+        {
+            if (!File.Exists(_savePath))
+            {
+                File.Create(_savePath);
+                _appointments = new SortedDictionary<uint, IAppointment>();
+            }
+            else
+                _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
+            return _appointments;
+        }
 
         public void Remove(uint key)
         {
@@ -70,15 +80,19 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
             if (!_appointments.ContainsKey(key) || !File.Exists(_savePath))
                 throw new Exception("Не удалось удалить объект из файла: удаляемый элемент или/и файл не найдены");
 
-            //JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-            //JsonSerializerOptions options = new JsonSerializerOptions { WriteIndented = true };
 
-            //_appointments = JsonSerializer.Deserialize<List<IAppointment>>(File.ReadAllText(_savePath), options);
-            //_appointments = JsonConvert.DeserializeObject<IDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), settings);
+            if (!File.Exists(_savePath))
+            {
+                File.Create(_savePath);
+                _appointments = new SortedDictionary<uint, IAppointment>();
+            }
+            else
+                _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
+
+
             _appointments?.Remove(key);
-            WriteToFile();
-            //File.WriteAllText(_savePath, JsonConvert.SerializeObject(_appointments, Formatting.Indented, settings));
-            //File.WriteAllText(_savePath, JsonSerializer.Serialize(key));
+            File.WriteAllText(_savePath, JsonConvert.SerializeObject(_appointments, Formatting.Indented, _settings));
+
 
         }
 

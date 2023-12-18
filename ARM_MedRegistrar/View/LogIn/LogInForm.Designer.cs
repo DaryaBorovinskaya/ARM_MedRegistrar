@@ -29,7 +29,7 @@ partial class LogInForm
     private void InitializeComponent()
     {
         components = new System.ComponentModel.Container();
-        buttEntrance = new Button();
+        buttLogIn = new Button();
         textLog = new TextBox();
         textPassword = new TextBox();
         labelLog = new Label();
@@ -49,18 +49,18 @@ partial class LogInForm
         ((System.ComponentModel.ISupportInitialize)errorWrongPassword).BeginInit();
         SuspendLayout();
         // 
-        // buttEntrance
+        // buttLogIn
         // 
-        buttEntrance.BackColor = Color.FromArgb(255, 192, 192);
-        buttEntrance.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-        buttEntrance.ForeColor = Color.Firebrick;
-        buttEntrance.Location = new Point(313, 327);
-        buttEntrance.Name = "buttEntrance";
-        buttEntrance.Size = new Size(177, 65);
-        buttEntrance.TabIndex = 0;
-        buttEntrance.Text = "Войти";
-        buttEntrance.UseVisualStyleBackColor = false;
-        buttEntrance.Click += buttEntrance_Click;
+        buttLogIn.BackColor = Color.FromArgb(255, 192, 192);
+        buttLogIn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+        buttLogIn.ForeColor = Color.Firebrick;
+        buttLogIn.Location = new Point(313, 327);
+        buttLogIn.Name = "buttLogIn";
+        buttLogIn.Size = new Size(177, 65);
+        buttLogIn.TabIndex = 0;
+        buttLogIn.Text = "Войти";
+        buttLogIn.UseVisualStyleBackColor = false;
+        buttLogIn.Click += buttLogIn_Click;
         // 
         // textLog
         // 
@@ -196,7 +196,7 @@ partial class LogInForm
         Controls.Add(labelLog);
         Controls.Add(textPassword);
         Controls.Add(textLog);
-        Controls.Add(buttEntrance);
+        Controls.Add(buttLogIn);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MaximizeBox = false;
         Name = "LogInForm";
@@ -212,7 +212,7 @@ partial class LogInForm
 
     #endregion
 
-    private Button buttEntrance;
+    private Button buttLogIn;
     private TextBox textLog;
     private TextBox textPassword;
     private Label labelLog;
