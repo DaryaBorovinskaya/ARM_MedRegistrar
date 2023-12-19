@@ -65,8 +65,21 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
 
         public uint CreateId()
         {
-            if (_doctors == null) return 1;
-            else return _doctors[_doctors.Keys.Max()].Id + 1;
+            if (!File.Exists(_savePath))
+                _doctors = new();
+
+            else
+                _doctors = JsonConvert.DeserializeObject<SortedDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
+
+
+            if (_doctors == null)
+                throw new ArgumentNullException(nameof(_doctors));
+            else if (_doctors?.Count == 0)
+                return 1;
+            else if (_doctors != null && _doctors?.Count != 0)
+                return _doctors[_doctors.Keys.Max()].Id + 1;
+
+            return 0;
         }
     }
 }

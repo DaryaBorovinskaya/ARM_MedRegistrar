@@ -13,15 +13,6 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
         private readonly string _savePath;
         private SortedDictionary<uint, IAppointment>? _appointments;
         private JsonSerializerSettings _settings;
-
-        private void LoadFromFile()
-        {
-            
-        }
-
-        private void WriteToFile()
-        {
-            }
         public JsonAppointmentRepository(string savePath)
         {
             _savePath = savePath;
@@ -98,8 +89,21 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 
         public uint CreateId()
         {
-            if (_appointments == null) return 1;
-            else return _appointments[_appointments.Keys.Max()].Id + 1;
+            if (!File.Exists(_savePath))
+                _appointments = new();
+
+            else
+                _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
+
+
+            if (_appointments == null)
+                throw new ArgumentNullException(nameof(_appointments));
+            else if (_appointments?.Count == 0)
+                return 1;
+            else if (_appointments != null && _appointments?.Count != 0)
+                return _appointments[_appointments.Keys.Max()].Id + 1;
+
+            return 0;
         }
     }
 }
