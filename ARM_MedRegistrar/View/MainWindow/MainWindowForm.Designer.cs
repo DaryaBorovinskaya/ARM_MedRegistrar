@@ -54,13 +54,15 @@
             columnHeader2 = new ColumnHeader();
             columnHeader3 = new ColumnHeader();
             columnHeader4 = new ColumnHeader();
+            columnHeader15 = new ColumnHeader();
+            columnHeader19 = new ColumnHeader();
             columnHeader5 = new ColumnHeader();
             columnHeader6 = new ColumnHeader();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            textSurname = new TextBox();
+            textName = new TextBox();
+            textPatr = new TextBox();
+            textDocumentSeries = new TextBox();
+            textDocumentNumber = new TextBox();
             dateTimeDateOfBirth = new DateTimePicker();
             label5 = new Label();
             label3 = new Label();
@@ -70,11 +72,23 @@
             label8 = new Label();
             label9 = new Label();
             buttDoctors = new Button();
-            button1 = new Button();
+            buttRemovePatient = new Button();
             buttAllPatients = new Button();
             buttAllDataAboutPatient = new Button();
-            richTextBox1 = new RichTextBox();
+            richTextBoxInfoAboutPatient = new RichTextBox();
             toolTipAllDataAboutPatients = new ToolTip(components);
+            errorNoName = new ErrorProvider(components);
+            errorNoSurname = new ErrorProvider(components);
+            errorNoDocumentSeries = new ErrorProvider(components);
+            errorNoDocumentNumber = new ErrorProvider(components);
+            errorWrongDate = new ErrorProvider(components);
+            toolTipRemovePatient = new ToolTip(components);
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoDocumentNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorWrongDate).BeginInit();
             SuspendLayout();
             // 
             // buttAddPatient
@@ -182,6 +196,7 @@
             buttSearchPatient.TabIndex = 9;
             buttSearchPatient.Text = "Найти пациента";
             buttSearchPatient.UseVisualStyleBackColor = true;
+            buttSearchPatient.Click += buttSearchPatient_Click;
             // 
             // buttAddAppointment
             // 
@@ -231,7 +246,7 @@
             // 
             // listViewPatients
             // 
-            listViewPatients.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5, columnHeader6 });
+            listViewPatients.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader15, columnHeader19, columnHeader5, columnHeader6 });
             listViewPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             listViewPatients.Location = new Point(12, 315);
             listViewPatients.MultiSelect = false;
@@ -250,12 +265,12 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Фамилия";
-            columnHeader1.Width = 250;
+            columnHeader1.Width = 200;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Имя";
-            columnHeader2.Width = 200;
+            columnHeader2.Width = 150;
             // 
             // columnHeader3
             // 
@@ -267,6 +282,16 @@
             columnHeader4.Text = "Дата рождения";
             columnHeader4.Width = 200;
             // 
+            // columnHeader15
+            // 
+            columnHeader15.Text = "Серия докум.";
+            columnHeader15.Width = 140;
+            // 
+            // columnHeader19
+            // 
+            columnHeader19.Text = "Номер докум.";
+            columnHeader19.Width = 250;
+            // 
             // columnHeader5
             // 
             columnHeader5.Text = "Участок";
@@ -274,48 +299,53 @@
             // 
             // columnHeader6
             // 
-            columnHeader6.Text = "Амбулат. карта";
+            columnHeader6.Text = "Амбул. карта";
             columnHeader6.Width = 200;
             // 
-            // textBox1
+            // textSurname
             // 
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(12, 196);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(328, 34);
-            textBox1.TabIndex = 21;
+            textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textSurname.Location = new Point(12, 196);
+            textSurname.Name = "textSurname";
+            textSurname.Size = new Size(328, 34);
+            textSurname.TabIndex = 21;
+            textSurname.KeyPress += textBox_SpacePress;
             // 
-            // textBox2
+            // textName
             // 
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(12, 264);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(328, 34);
-            textBox2.TabIndex = 23;
+            textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textName.Location = new Point(12, 264);
+            textName.Name = "textName";
+            textName.Size = new Size(328, 34);
+            textName.TabIndex = 23;
+            textName.KeyPress += textBox_SpacePress;
             // 
-            // textBox3
+            // textPatr
             // 
-            textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(387, 196);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(328, 34);
-            textBox3.TabIndex = 24;
+            textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textPatr.Location = new Point(387, 196);
+            textPatr.Name = "textPatr";
+            textPatr.Size = new Size(328, 34);
+            textPatr.TabIndex = 24;
+            textPatr.KeyPress += textBox_SpacePress;
             // 
-            // textBox4
+            // textDocumentSeries
             // 
-            textBox4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(760, 196);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(375, 34);
-            textBox4.TabIndex = 25;
+            textDocumentSeries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textDocumentSeries.Location = new Point(760, 196);
+            textDocumentSeries.Name = "textDocumentSeries";
+            textDocumentSeries.Size = new Size(375, 34);
+            textDocumentSeries.TabIndex = 25;
+            textDocumentSeries.KeyPress += textBox_ContainsExceptNumbers;
             // 
-            // textBox5
+            // textDocumentNumber
             // 
-            textBox5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox5.Location = new Point(760, 264);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(375, 34);
-            textBox5.TabIndex = 26;
+            textDocumentNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textDocumentNumber.Location = new Point(760, 264);
+            textDocumentNumber.Name = "textDocumentNumber";
+            textDocumentNumber.Size = new Size(375, 34);
+            textDocumentNumber.TabIndex = 26;
+            textDocumentNumber.KeyPress += textBox_ContainsExceptNumbers;
             // 
             // dateTimeDateOfBirth
             // 
@@ -414,35 +444,36 @@
             // 
             buttDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttDoctors.ForeColor = Color.Firebrick;
-            buttDoctors.Location = new Point(1711, 37);
+            buttDoctors.Location = new Point(1573, 51);
             buttDoctors.Name = "buttDoctors";
-            buttDoctors.Size = new Size(147, 65);
+            buttDoctors.Size = new Size(266, 65);
             buttDoctors.TabIndex = 44;
             buttDoctors.Text = "Врачи";
             buttDoctors.UseVisualStyleBackColor = true;
             buttDoctors.Click += buttDoctors_Click;
             // 
-            // button1
+            // buttRemovePatient
             // 
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = Color.Firebrick;
-            button1.Location = new Point(12, 558);
-            button1.Name = "button1";
-            button1.Size = new Size(186, 45);
-            button1.TabIndex = 45;
-            button1.Text = "Удалить пациента";
-            button1.UseVisualStyleBackColor = true;
+            buttRemovePatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttRemovePatient.ForeColor = Color.Firebrick;
+            buttRemovePatient.Location = new Point(12, 558);
+            buttRemovePatient.Name = "buttRemovePatient";
+            buttRemovePatient.Size = new Size(186, 45);
+            buttRemovePatient.TabIndex = 45;
+            buttRemovePatient.Text = "Удалить пациента";
+            buttRemovePatient.UseVisualStyleBackColor = true;
+            buttRemovePatient.Click += buttRemovePatient_Click;
             // 
             // buttAllPatients
             // 
             buttAllPatients.BackColor = Color.MistyRose;
             buttAllPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAllPatients.ForeColor = Color.Firebrick;
-            buttAllPatients.Location = new Point(1250, 556);
+            buttAllPatients.Location = new Point(1175, 556);
             buttAllPatients.Name = "buttAllPatients";
-            buttAllPatients.Size = new Size(228, 36);
+            buttAllPatients.Size = new Size(303, 36);
             buttAllPatients.TabIndex = 46;
-            buttAllPatients.Text = "Список пациентов";
+            buttAllPatients.Text = "Обновить список пациентов\r\n";
             buttAllPatients.UseVisualStyleBackColor = false;
             buttAllPatients.Click += buttAllPatients_Click;
             // 
@@ -455,18 +486,48 @@
             buttAllDataAboutPatient.TabIndex = 47;
             buttAllDataAboutPatient.Text = "Все данные о выбранном пациенте";
             buttAllDataAboutPatient.UseVisualStyleBackColor = true;
-            buttAllDataAboutPatient.Click += button2_Click;
+            buttAllDataAboutPatient.Click += buttAllDataAboutPatient_Click;
             // 
-            // richTextBox1
+            // richTextBoxInfoAboutPatient
             // 
-            richTextBox1.BackColor = SystemColors.Window;
-            richTextBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            richTextBox1.Location = new Point(1500, 315);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new Size(379, 235);
-            richTextBox1.TabIndex = 48;
-            richTextBox1.Text = "";
+            richTextBoxInfoAboutPatient.BackColor = SystemColors.Window;
+            richTextBoxInfoAboutPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxInfoAboutPatient.Location = new Point(1500, 315);
+            richTextBoxInfoAboutPatient.Name = "richTextBoxInfoAboutPatient";
+            richTextBoxInfoAboutPatient.ReadOnly = true;
+            richTextBoxInfoAboutPatient.Size = new Size(379, 235);
+            richTextBoxInfoAboutPatient.TabIndex = 48;
+            richTextBoxInfoAboutPatient.Text = "";
+            // 
+            // errorNoName
+            // 
+            errorNoName.ContainerControl = this;
+            // 
+            // errorNoSurname
+            // 
+            errorNoSurname.ContainerControl = this;
+            // 
+            // errorNoDocumentSeries
+            // 
+            errorNoDocumentSeries.ContainerControl = this;
+            // 
+            // errorNoDocumentNumber
+            // 
+            errorNoDocumentNumber.ContainerControl = this;
+            // 
+            // errorWrongDate
+            // 
+            errorWrongDate.ContainerControl = this;
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Location = new Point(1590, 556);
+            button1.Name = "button1";
+            button1.Size = new Size(289, 36);
+            button1.TabIndex = 49;
+            button1.Text = "Сохранить изменения";
+            button1.UseVisualStyleBackColor = true;
             // 
             // MainWindowForm
             // 
@@ -474,10 +535,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1902, 1033);
-            Controls.Add(richTextBox1);
+            Controls.Add(button1);
+            Controls.Add(richTextBoxInfoAboutPatient);
             Controls.Add(buttAllDataAboutPatient);
             Controls.Add(buttAllPatients);
-            Controls.Add(button1);
+            Controls.Add(buttRemovePatient);
             Controls.Add(buttDoctors);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -487,11 +549,11 @@
             Controls.Add(label3);
             Controls.Add(label5);
             Controls.Add(dateTimeDateOfBirth);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(textDocumentNumber);
+            Controls.Add(textDocumentSeries);
+            Controls.Add(textPatr);
+            Controls.Add(textName);
+            Controls.Add(textSurname);
             Controls.Add(listViewPatients);
             Controls.Add(buttInfoAboutUser);
             Controls.Add(buttAddresses);
@@ -506,9 +568,18 @@
             Name = "MainWindowForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainWindow";
-            Load += MainWindowForm_Load;
+            ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoDocumentNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorWrongDate).EndInit();
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void TextName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -522,11 +593,11 @@
         private Button buttAddresses;
         private Button buttInfoAboutUser;
         private ListView listViewPatients;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox textSurname;
+        private TextBox textName;
+        private TextBox textPatr;
+        private TextBox textDocumentSeries;
+        private TextBox textDocumentNumber;
         private DateTimePicker dateTimeDateOfBirth;
         private Label label5;
         private Label label3;
@@ -551,12 +622,21 @@
         private ColumnHeader columnHeader18;
         private ColumnHeader columnHeader12;
         private Button buttDoctors;
-        private Button button1;
+        private Button buttRemovePatient;
         private ColumnHeader columnHeader13;
         private ColumnHeader columnHeader14;
         private Button buttAllPatients;
         private Button buttAllDataAboutPatient;
-        private RichTextBox richTextBox1;
+        private RichTextBox richTextBoxInfoAboutPatient;
         private ToolTip toolTipAllDataAboutPatients;
+        private ErrorProvider errorNoName;
+        private ErrorProvider errorNoSurname;
+        private ErrorProvider errorNoDocumentSeries;
+        private ErrorProvider errorNoDocumentNumber;
+        private ColumnHeader columnHeader15;
+        private ColumnHeader columnHeader19;
+        private ErrorProvider errorWrongDate;
+        private ToolTip toolTipRemovePatient;
+        private Button button1;
     }
 }

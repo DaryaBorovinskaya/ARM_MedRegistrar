@@ -14,7 +14,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries
     {
 
         public void Add(U value);
-        public SortedDictionary<T, U>? GetAll();
+        public IDictionary<T, U>? GetAll();
         public void Remove(T key);
 
 

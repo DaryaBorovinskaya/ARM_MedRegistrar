@@ -13,12 +13,11 @@ namespace ARM_MedRegistrar.Presenter
     {
         ILogInForm _view;
         IUserRepository _userRepository;
-        SortedDictionary<string, IUser>? _users;
+        IDictionary<string, IUser>? _users;
         public LogInPresenter(ILogInForm view)
         {
             _view = view;
             _userRepository = new JsonUserRepository("users.json");
-            
         }
 
         public IUser? LogIn()

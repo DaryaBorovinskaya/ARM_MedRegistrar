@@ -11,7 +11,7 @@ namespace ARM_MedRegistrar.Presenter
         IUser _newUser;
         IRegistrationForm _view;
         IUserRepository _jsonUserRepository;
-        SortedDictionary<string, IUser>? _users;
+        IDictionary<string, IUser>? _users;
         public RegistrationPresenter(IRegistrationForm view)
         { 
             _view = view;

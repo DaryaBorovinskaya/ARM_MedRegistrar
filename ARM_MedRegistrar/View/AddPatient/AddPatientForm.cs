@@ -38,7 +38,7 @@ namespace ARM_MedRegistrar
 
             InitializeComponent();
             comboBoxBloodType.Items.AddRange(new string[] { "Неизвестно", "I", "II", "III", "IV" });
-            comboBoxRhFactor.Items.AddRange(new string[] { "Неизвестно", "Положительный", "Отрицательный" });
+            comboBoxRhFactor.Items.AddRange(new string[] { "Неизвестно", "Положит.", "Отрицат." });
 
             _presenter = new(this);
 
@@ -144,7 +144,7 @@ namespace ARM_MedRegistrar
             }
 
             if (dateTimeDateOfBirth.Value.Day >= DateTime.Today.Day && dateTimeDateOfBirth.Value.Month >= DateTime.Today.Month
-                && dateTimeDateOfBirth.Value.Year >= DateTime.Today.Year)
+                && dateTimeDateOfBirth.Value.Year >= DateTime.Today.Year || dateTimeDateOfBirth.Value.Year > DateTime.Today.Year)
             {
                 _isError = true;
                 errorWrongDate.SetError(dateTimeDateOfBirth, "Поле \"Дата рождения\" заполнено неверно");

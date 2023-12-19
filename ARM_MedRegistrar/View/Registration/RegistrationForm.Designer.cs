@@ -56,9 +56,9 @@ namespace ARM_MedRegistrar
             errorMatchedLog = new ErrorProvider(components);
             errorMatchedPassword = new ErrorProvider(components);
             errorNoOneHeadDoctor = new ErrorProvider(components);
-            textPhoneNumber = new TextBox();
             label6 = new Label();
             errorNoPhoneNumber = new ErrorProvider(components);
+            textPhoneNumber = new TextBox();
             ((System.ComponentModel.ISupportInitialize)errorNoLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPassword).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
@@ -278,16 +278,6 @@ namespace ARM_MedRegistrar
             // 
             errorNoOneHeadDoctor.ContainerControl = this;
             // 
-            // textPhoneNumber
-            // 
-            textPhoneNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPhoneNumber.Location = new Point(22, 461);
-            textPhoneNumber.Name = "textPhoneNumber";
-            textPhoneNumber.Size = new Size(329, 34);
-            textPhoneNumber.TabIndex = 29;
-            textPhoneNumber.TextChanged += textBox1_TextChanged;
-            textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -302,6 +292,16 @@ namespace ARM_MedRegistrar
             // errorNoPhoneNumber
             // 
             errorNoPhoneNumber.ContainerControl = this;
+            // 
+            // textPhoneNumber
+            // 
+            textPhoneNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textPhoneNumber.Location = new Point(22, 477);
+            textPhoneNumber.Name = "textPhoneNumber";
+            textPhoneNumber.Size = new Size(329, 34);
+            textPhoneNumber.TabIndex = 29;
+            textPhoneNumber.TextChanged += textBox1_TextChanged;
+            textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
             // 
             // RegistrationForm
             // 
@@ -378,8 +378,9 @@ namespace ARM_MedRegistrar
         private ErrorProvider errorMatchedLog;
         private ErrorProvider errorMatchedPassword;
         private ErrorProvider errorNoOneHeadDoctor;
-        private TextBox textPhoneNumber;
+        private TextBox text1;
         private Label label6;
         private ErrorProvider errorNoPhoneNumber;
+        private TextBox textPhoneNumber;
     }
 }

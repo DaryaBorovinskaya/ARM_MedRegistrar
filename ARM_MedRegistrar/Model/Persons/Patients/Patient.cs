@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using ARM_MedRegistrar.Model.Addresses;
 using ARM_MedRegistrar.Model.Persons;
 using Microsoft.VisualBasic.Logging;
@@ -173,6 +174,17 @@ namespace ARM_MedRegistrar.Model.Patients
             BloodType = bloodType;
             RhFactor = rhFactor;
             Allergies = allergies;
+        }
+
+        public string Format()
+        {
+            return "ID: " + Id.ToString() + "\nФамилия: " + FullName.Surname + "\nИмя: " + FullName.Name
+            + "\nОтчество: " + FullName.Patronymic + "\nДата рождения: " + DateOfBirth + "\nСерия документа: " + DocumentSeries
+            + "\nНомер документа: " + DocumentNumber + "\nНомер участка: " + PlotNumber + "\nНомер амбул. карты: " + NumbOfPatientCard + "\nГород: " + Address.City
+            + "\nРайон: " + Address.Region + "\nУлица: " + Address.Street + "\nНомер дома: " + Address.NumbOfHouse.ToString() + "\nНомер квартиры: " + Address.NumbOfFlat.ToString() 
+            + "\nСерия мед. полиса: " + PolicySeries.ToString() + "\nНомер мед. полиса: " + PolicyNumb + "\nГруппа крови: " + BloodType + "\nРезус-фактор: " + RhFactor
+            + "\nАллергии: " + Allergies;
+
         }
     }
 }

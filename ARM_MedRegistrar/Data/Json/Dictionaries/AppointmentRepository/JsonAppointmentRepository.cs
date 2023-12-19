@@ -11,7 +11,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
     public class JsonAppointmentRepository : IAppointmentRepository
     {
         private readonly string _savePath;
-        private SortedDictionary<uint, IAppointment>? _appointments;
+        private IDictionary<uint, IAppointment>? _appointments;
         private JsonSerializerSettings _settings;
         public JsonAppointmentRepository(string savePath)
         {
@@ -52,7 +52,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 
         }
 
-        public SortedDictionary<uint, IAppointment>? GetAll()
+        public IDictionary<uint, IAppointment>? GetAll()
         {
             if (!File.Exists(_savePath))
             {
@@ -90,7 +90,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
         public uint CreateId()
         {
             if (!File.Exists(_savePath))
-                _appointments = new();
+                _appointments = new SortedDictionary<uint,IAppointment>();
 
             else
                 _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
