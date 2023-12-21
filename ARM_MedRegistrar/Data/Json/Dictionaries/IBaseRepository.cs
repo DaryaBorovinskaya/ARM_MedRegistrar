@@ -15,6 +15,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries
 
         public void Add(U value);
         public IDictionary<T, U>? GetAll();
+        public bool SaveChangedData(U changedValue);
         public void Remove(T key);
 
 

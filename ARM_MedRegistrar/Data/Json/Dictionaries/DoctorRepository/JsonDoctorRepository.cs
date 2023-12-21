@@ -45,7 +45,23 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
             return _doctors;
         }
 
+        public bool SaveChangedData(IDoctor changedValue)
+        {
 
+            if (!File.Exists(_savePath))
+                _doctors = new SortedDictionary<uint, IDoctor>();
+
+            else
+                _doctors = JsonConvert.DeserializeObject<SortedDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
+
+            if (_doctors != null && _doctors.Count != 0)
+            {
+                _doctors[changedValue.Id] = changedValue;
+                File.WriteAllText(_savePath, JsonConvert.SerializeObject(_doctors, Formatting.Indented, _settings));
+                return true;
+            }
+            return false;
+        }
         public void Remove(uint key)
         {
             if (!File.Exists(_savePath))

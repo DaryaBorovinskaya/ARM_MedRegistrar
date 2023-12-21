@@ -222,6 +222,7 @@ namespace ARM_MedRegistrar
                     {
                         textSurname.Clear();
                         textName.Clear();
+                        textPatr.Clear();
                         numericPolicySeries.Value = 0;
                         textPolicyNumb.Clear();
                         textStreet.Clear();

@@ -523,11 +523,11 @@
             // buttChangeData
             // 
             buttChangeData.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttChangeData.Location = new Point(1590, 556);
+            buttChangeData.Location = new Point(1602, 556);
             buttChangeData.Name = "buttChangeData";
-            buttChangeData.Size = new Size(289, 36);
+            buttChangeData.Size = new Size(277, 36);
             buttChangeData.TabIndex = 49;
-            buttChangeData.Text = "Изменить данные";
+            buttChangeData.Text = "Изменить данные пациента\r\n";
             buttChangeData.UseVisualStyleBackColor = true;
             buttChangeData.Click += buttChangeData_Click;
             // 

@@ -265,8 +265,6 @@ namespace ARM_MedRegistrar
                 if (!_presenter.SearchPatient())
                     MessageBox.Show("Пациент не найден");
             }
-
-
         }
 
         private void buttRemovePatient_Click(object sender, EventArgs e)

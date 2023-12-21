@@ -72,7 +72,23 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
 
         //return _users;
 
+        public bool SaveChangedData(IUser changedValue)
+        {
 
+            if (!File.Exists(_savePath))
+                _users = new Dictionary<string, IUser>();
+
+            else
+                _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), _settings);
+
+            if (_users != null && _users.Count != 0)
+            {
+                _users[changedValue.Login] = changedValue;
+                File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, _settings));
+                return true;
+            }
+            return false;
+        }
         public void Remove(string key)
         {
             if (!File.Exists(_savePath))
@@ -100,7 +116,6 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
 
         }
 
-
-
+        
     }
 }

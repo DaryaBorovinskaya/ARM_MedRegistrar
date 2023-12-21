@@ -171,7 +171,8 @@ namespace ARM_MedRegistrar.Model.Patients
 
         public string? Allergies { get; set; }
         public uint Id { get; }
-        public Patient(uint id, IFullName fullName, string dateOfBirth, IAddress address, string phoneNumber, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
+        public Patient(uint id, IFullName fullName, string dateOfBirth, IAddress address, string phoneNumber, int plotNumber, 
+            string numbOfPatientCard, int policySeries, string policyNumb, 
             string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies )
         {
             if (dateOfBirth == "" || dateOfBirth == " " || dateOfBirth == null)

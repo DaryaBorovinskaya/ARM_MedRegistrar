@@ -1,5 +1,6 @@
 ﻿using ARM_MedRegistrar.Model.Addresses;
 using ARM_MedRegistrar.Model.Appointments;
+using ARM_MedRegistrar.Model.Doctors;
 using ARM_MedRegistrar.Model.Patients;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -62,6 +63,25 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
             else
                 _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
             return _appointments;
+        }
+
+
+        public bool SaveChangedData(IAppointment changedValue)
+        {
+
+            if (!File.Exists(_savePath))
+                _appointments = new SortedDictionary<uint, IAppointment>();
+
+            else
+                _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
+
+            if (_appointments != null && _appointments.Count != 0)
+            {
+                _appointments[changedValue.Id] = changedValue;
+                File.WriteAllText(_savePath, JsonConvert.SerializeObject(_appointments, Formatting.Indented, _settings));
+                return true;
+            }
+            return false;
         }
 
         public void Remove(uint key)

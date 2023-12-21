@@ -1,4 +1,5 @@
 ﻿using ARM_MedRegistrar.Model.Patients;
+using ARM_MedRegistrar.Model.Persons;
 using Newtonsoft.Json;
 
 
@@ -49,7 +50,23 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
             return _patients;
         }
 
+        public bool SaveChangedData(IPatient changedValue)
+        {
 
+            if (!File.Exists(_savePath))
+                _patients = new SortedDictionary<uint, IPatient>();
+
+            else
+                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
+
+            if (_patients != null && _patients.Count != 0)
+            {
+                _patients[changedValue.Id] = changedValue;
+                File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, _settings));
+                return true;
+            }
+            return false;
+        }
         public void Remove(uint key)
         {
             if (!File.Exists(_savePath))
