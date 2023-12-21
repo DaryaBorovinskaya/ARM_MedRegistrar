@@ -4,10 +4,11 @@ using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View;
 using ARM_MedRegistrar.View.InfoAboutUser;
 using ARM_MedRegistrar.View.AttachedToTheClinicStreets;
-using ARM_MedRegistrar.Model.Patients;
+using ARM_MedRegistrar.Model.Persons.Patients;
 using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
 using ARM_MedRegistrar.Presenter;
 using ARM_MedRegistrar.View.ChangeDataOfPatient;
+using ARM_MedRegistrar.View.AddAppointment;
 
 namespace ARM_MedRegistrar
 {
@@ -54,7 +55,6 @@ namespace ARM_MedRegistrar
 
         string? IMainWindowForm.Patronymic
         {
-            get => textPatr.Text;
             set
             {
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
@@ -72,7 +72,7 @@ namespace ARM_MedRegistrar
 
         string IMainWindowForm.DocumentSeries
         {
-            get => textDocumentSeries.Text;
+
             set
             {
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
@@ -81,7 +81,7 @@ namespace ARM_MedRegistrar
 
         string IMainWindowForm.DocumentNumber
         {
-            get => textDocumentNumber.Text;
+
             set
             {
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
@@ -139,8 +139,7 @@ namespace ARM_MedRegistrar
 
             toolTipAllDataAboutPatients.SetToolTip(buttAllDataAboutPatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
             toolTipRemovePatient.SetToolTip(buttRemovePatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
-            toolTipSaveData.SetToolTip(buttChangeData, "Нажмите, чтобы ");
-
+            
             _presenter = new(this);
 
         }
@@ -166,34 +165,24 @@ namespace ARM_MedRegistrar
 
         }
 
-
-
-
-
         private void buttAddPatient_Click(object sender, EventArgs e)
         {
             AddPatientForm newForm = new();
             newForm.ShowDialog();
         }
 
-
-
-
-
-
-        private void buttAddresses_Click(object sender, EventArgs e)
+        private void buttAttachedStreets_Click(object sender, EventArgs e)
         {
-
-            AttachedStreetsForm newForm = new();
-            newForm.ShowDialog();
+            AttachedStreetsForm attachedStreetsForm = new();
+            attachedStreetsForm.ShowDialog();
 
 
         }
 
         private void buttInfoAboutUser_Click(object sender, EventArgs e)
         {
-            InfoAboutUserForm newForm = new(_employee);
-            newForm.ShowDialog();
+            InfoAboutUserForm infoAboutUserForm = new(_employee);
+            infoAboutUserForm.ShowDialog();
         }
 
 
@@ -226,8 +215,6 @@ namespace ARM_MedRegistrar
             errorNoSurname.Clear();
             errorNoName.Clear();
             errorWrongDate.Clear();
-            errorNoDocumentSeries.Clear();
-            errorNoDocumentNumber.Clear();
 
             if (textSurname.Text == string.Empty)
             {
@@ -248,22 +235,14 @@ namespace ARM_MedRegistrar
                 errorWrongDate.SetError(dateTimeDateOfBirth, "Поле \"Дата рождения\" заполнено неверно");
             }
 
-            if (textDocumentSeries.Text == string.Empty)
-            {
-                _isError = true;
-                errorNoDocumentSeries.SetError(textDocumentSeries, "Поле \"Серия документа\" не заполнено");
-            }
-
-            if (textDocumentNumber.Text == string.Empty)
-            {
-                _isError = true;
-                errorNoDocumentNumber.SetError(textDocumentNumber, "Поле \"Номер документа\" не заполнено");
-            }
-
             if (!_isError)
             {
                 if (!_presenter.SearchPatient())
                     MessageBox.Show("Пациент не найден");
+                textSurname.Clear();
+                textName.Clear();
+                textPatr.Clear();
+                dateTimeDateOfBirth.Value = DateTime.Today;
             }
         }
 
@@ -287,6 +266,12 @@ namespace ARM_MedRegistrar
             ChangeDataOfPatientForm changeDataOfPatientForm = new();
             changeDataOfPatientForm.ShowDialog();
 
+        }
+
+        private void buttAddAppointment_Click(object sender, EventArgs e)
+        {
+            AddAppointmentForm addAppointmentForm = new();
+            addAppointmentForm.ShowDialog();
         }
     }
 }

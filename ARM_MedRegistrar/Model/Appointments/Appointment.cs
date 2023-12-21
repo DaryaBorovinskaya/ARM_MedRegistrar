@@ -1,5 +1,5 @@
-﻿using ARM_MedRegistrar.Model.Doctors;
-using ARM_MedRegistrar.Model.Patients;
+﻿using ARM_MedRegistrar.Model.Persons.Doctors;
+using ARM_MedRegistrar.Model.Persons.Patients;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,5 +55,9 @@ namespace ARM_MedRegistrar.Model.Appointments
             Place = place;
         }
 
+        public string Format()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

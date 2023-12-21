@@ -1,5 +1,5 @@
 ﻿using ARM_MedRegistrar.View.AddDoctor;
-using ARM_MedRegistrar.Model.Doctors;
+using ARM_MedRegistrar.Model.Persons.Doctors;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
 

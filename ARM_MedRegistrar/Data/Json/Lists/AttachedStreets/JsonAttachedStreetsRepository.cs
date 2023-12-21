@@ -2,10 +2,6 @@
 using Newtonsoft.Json;
 
 using ARM_MedRegistrar.Model.AttachedStreets;
-using Newtonsoft.Json.Linq;
-using ARM_MedRegistrar.Model.Patients;
-using ARM_MedRegistrar.Model.Doctors;
-using System.Runtime;
 
 namespace ARM_MedRegistrar.Data.Json.Lists.AttachedStreets
 {

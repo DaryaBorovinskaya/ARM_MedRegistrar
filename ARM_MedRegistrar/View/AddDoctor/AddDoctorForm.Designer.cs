@@ -35,8 +35,6 @@ partial class AddDoctorForm
         textName = new TextBox();
         textPatr = new TextBox();
         buttAddDoctor = new Button();
-        numericPlotNumber = new NumericUpDown();
-        numericCabinet = new NumericUpDown();
         label3 = new Label();
         label1 = new Label();
         label4 = new Label();
@@ -45,24 +43,22 @@ partial class AddDoctorForm
         label7 = new Label();
         errorNoSurname = new ErrorProvider(components);
         errorNoName = new ErrorProvider(components);
-        errorNoPlotNumber = new ErrorProvider(components);
         errorNoCabinet = new ErrorProvider(components);
         errorNoSpecial = new ErrorProvider(components);
         checkNoCloseWindow = new CheckBox();
         textPhoneNumber = new TextBox();
         label8 = new Label();
         errorNoPhoneNumber = new ErrorProvider(components);
-        errorPhoneNumbContainLetter = new ErrorProvider(components);
         toolEnterPhoneNumb = new ToolTip(components);
-        ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)numericCabinet).BeginInit();
+        textPlotNumber = new TextBox();
+        textCabinet = new TextBox();
+        errorNoPlotNumber = new ErrorProvider(components);
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoCabinet).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSpecial).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)errorPhoneNumbContainLetter).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).BeginInit();
         SuspendLayout();
         // 
         // label2
@@ -70,7 +66,7 @@ partial class AddDoctorForm
         label2.AutoSize = true;
         label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
         label2.ForeColor = Color.Firebrick;
-        label2.Location = new Point(274, 37);
+        label2.Location = new Point(207, 50);
         label2.Margin = new Padding(4, 0, 4, 0);
         label2.Name = "label2";
         label2.Size = new Size(268, 37);
@@ -84,7 +80,7 @@ partial class AddDoctorForm
         comboBoxSpecializations.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxSpecializations.ForeColor = Color.Firebrick;
         comboBoxSpecializations.FormattingEnabled = true;
-        comboBoxSpecializations.Location = new Point(509, 144);
+        comboBoxSpecializations.Location = new Point(413, 142);
         comboBoxSpecializations.Margin = new Padding(4);
         comboBoxSpecializations.Name = "comboBoxSpecializations";
         comboBoxSpecializations.Size = new Size(252, 36);
@@ -97,7 +93,7 @@ partial class AddDoctorForm
         textSurname.Location = new Point(16, 144);
         textSurname.Margin = new Padding(4);
         textSurname.Name = "textSurname";
-        textSurname.Size = new Size(451, 34);
+        textSurname.Size = new Size(312, 34);
         textSurname.TabIndex = 20;
         textSurname.KeyPress += textBox_SpacePress;
         // 
@@ -108,7 +104,7 @@ partial class AddDoctorForm
         textName.Location = new Point(16, 261);
         textName.Margin = new Padding(4);
         textName.Name = "textName";
-        textName.Size = new Size(451, 34);
+        textName.Size = new Size(312, 34);
         textName.TabIndex = 21;
         textName.KeyPress += textBox_SpacePress;
         // 
@@ -119,7 +115,7 @@ partial class AddDoctorForm
         textPatr.Location = new Point(13, 370);
         textPatr.Margin = new Padding(4);
         textPatr.Name = "textPatr";
-        textPatr.Size = new Size(451, 34);
+        textPatr.Size = new Size(315, 34);
         textPatr.TabIndex = 22;
         textPatr.KeyPress += textBox_SpacePress;
         // 
@@ -128,7 +124,7 @@ partial class AddDoctorForm
         buttAddDoctor.BackColor = Color.FromArgb(255, 192, 192);
         buttAddDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
         buttAddDoctor.ForeColor = Color.Firebrick;
-        buttAddDoctor.Location = new Point(317, 572);
+        buttAddDoctor.Location = new Point(263, 572);
         buttAddDoctor.Margin = new Padding(4);
         buttAddDoctor.Name = "buttAddDoctor";
         buttAddDoctor.Size = new Size(172, 53);
@@ -136,24 +132,6 @@ partial class AddDoctorForm
         buttAddDoctor.Text = "Добавить";
         buttAddDoctor.UseVisualStyleBackColor = false;
         buttAddDoctor.Click += buttAddDoctor_Click;
-        // 
-        // numericPlotNumber
-        // 
-        numericPlotNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericPlotNumber.Location = new Point(509, 261);
-        numericPlotNumber.Name = "numericPlotNumber";
-        numericPlotNumber.Size = new Size(113, 34);
-        numericPlotNumber.TabIndex = 26;
-        numericPlotNumber.ValueChanged += numericPlotNumber_ValueChanged;
-        // 
-        // numericCabinet
-        // 
-        numericCabinet.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericCabinet.Location = new Point(509, 370);
-        numericCabinet.Name = "numericCabinet";
-        numericCabinet.Size = new Size(113, 34);
-        numericCabinet.TabIndex = 27;
-        numericCabinet.ValueChanged += numericCabinet_ValueChanged;
         // 
         // label3
         // 
@@ -196,7 +174,7 @@ partial class AddDoctorForm
         label5.AutoSize = true;
         label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label5.ForeColor = Color.Firebrick;
-        label5.Location = new Point(509, 112);
+        label5.Location = new Point(413, 110);
         label5.Margin = new Padding(4, 0, 4, 0);
         label5.Name = "label5";
         label5.Size = new Size(156, 28);
@@ -209,7 +187,7 @@ partial class AddDoctorForm
         label6.AutoSize = true;
         label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label6.ForeColor = Color.Firebrick;
-        label6.Location = new Point(509, 229);
+        label6.Location = new Point(413, 229);
         label6.Margin = new Padding(4, 0, 4, 0);
         label6.Name = "label6";
         label6.Size = new Size(147, 28);
@@ -221,7 +199,7 @@ partial class AddDoctorForm
         label7.AutoSize = true;
         label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label7.ForeColor = Color.Firebrick;
-        label7.Location = new Point(509, 338);
+        label7.Location = new Point(413, 338);
         label7.Margin = new Padding(4, 0, 4, 0);
         label7.Name = "label7";
         label7.Size = new Size(163, 28);
@@ -236,10 +214,6 @@ partial class AddDoctorForm
         // 
         errorNoName.ContainerControl = this;
         // 
-        // errorNoPlotNumber
-        // 
-        errorNoPlotNumber.ContainerControl = this;
-        // 
         // errorNoCabinet
         // 
         errorNoCabinet.ContainerControl = this;
@@ -252,7 +226,7 @@ partial class AddDoctorForm
         // 
         checkNoCloseWindow.AutoSize = true;
         checkNoCloseWindow.ForeColor = Color.Black;
-        checkNoCloseWindow.Location = new Point(496, 584);
+        checkNoCloseWindow.Location = new Point(465, 584);
         checkNoCloseWindow.Name = "checkNoCloseWindow";
         checkNoCloseWindow.Size = new Size(213, 32);
         checkNoCloseWindow.TabIndex = 34;
@@ -266,7 +240,7 @@ partial class AddDoctorForm
         textPhoneNumber.Location = new Point(13, 475);
         textPhoneNumber.Margin = new Padding(4);
         textPhoneNumber.Name = "textPhoneNumber";
-        textPhoneNumber.Size = new Size(451, 34);
+        textPhoneNumber.Size = new Size(315, 34);
         textPhoneNumber.TabIndex = 36;
         textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
         // 
@@ -286,16 +260,40 @@ partial class AddDoctorForm
         // 
         errorNoPhoneNumber.ContainerControl = this;
         // 
-        // errorPhoneNumbContainLetter
+        // textPlotNumber
         // 
-        errorPhoneNumbContainLetter.ContainerControl = this;
+        textPlotNumber.BackColor = Color.White;
+        textPlotNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textPlotNumber.Location = new Point(413, 282);
+        textPlotNumber.Margin = new Padding(4);
+        textPlotNumber.Name = "textPlotNumber";
+        textPlotNumber.Size = new Size(198, 34);
+        textPlotNumber.TabIndex = 38;
+        textPlotNumber.KeyPress += textBox_ContainsExceptNumbers;
+        // 
+        // textCabinet
+        // 
+        textCabinet.BackColor = Color.White;
+        textCabinet.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textCabinet.Location = new Point(413, 396);
+        textCabinet.Margin = new Padding(4);
+        textCabinet.Name = "textCabinet";
+        textCabinet.Size = new Size(198, 34);
+        textCabinet.TabIndex = 39;
+        textCabinet.KeyPress += textBox_ContainsExceptNumbers;
+        // 
+        // errorNoPlotNumber
+        // 
+        errorNoPlotNumber.ContainerControl = this;
         // 
         // AddDoctorForm
         // 
         AutoScaleDimensions = new SizeF(11F, 28F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
-        ClientSize = new Size(808, 658);
+        ClientSize = new Size(704, 658);
+        Controls.Add(textCabinet);
+        Controls.Add(textPlotNumber);
         Controls.Add(label8);
         Controls.Add(textPhoneNumber);
         Controls.Add(checkNoCloseWindow);
@@ -305,8 +303,6 @@ partial class AddDoctorForm
         Controls.Add(label4);
         Controls.Add(label1);
         Controls.Add(label3);
-        Controls.Add(numericCabinet);
-        Controls.Add(numericPlotNumber);
         Controls.Add(buttAddDoctor);
         Controls.Add(textPatr);
         Controls.Add(textName);
@@ -320,15 +316,12 @@ partial class AddDoctorForm
         Name = "AddDoctorForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "AddDoctor";
-        ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
-        ((System.ComponentModel.ISupportInitialize)numericCabinet).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
-        ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoCabinet).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSpecial).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).EndInit();
-        ((System.ComponentModel.ISupportInitialize)errorPhoneNumbContainLetter).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -347,8 +340,6 @@ partial class AddDoctorForm
     private TextBox textName;
     private TextBox textPatr;
     private Button buttAddDoctor;
-    private NumericUpDown numericPlotNumber;
-    private NumericUpDown numericCabinet;
     private Label label3;
     private Label label1;
     private Label label4;
@@ -357,13 +348,14 @@ partial class AddDoctorForm
     private Label label7;
     private ErrorProvider errorNoSurname;
     private ErrorProvider errorNoName;
-    private ErrorProvider errorNoPlotNumber;
     private ErrorProvider errorNoCabinet;
     private ErrorProvider errorNoSpecial;
     private CheckBox checkNoCloseWindow;
     private Label label8;
     private TextBox textPhoneNumber;
     private ErrorProvider errorNoPhoneNumber;
-    private ErrorProvider errorPhoneNumbContainLetter;
     private ToolTip toolEnterPhoneNumb;
+    private TextBox textCabinet;
+    private TextBox textPlotNumber;
+    private ErrorProvider errorNoPlotNumber;
 }

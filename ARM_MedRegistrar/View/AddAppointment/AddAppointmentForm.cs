@@ -8,13 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ARM_MedRegistrar.View.SearchAndRemoveDoctor
+namespace ARM_MedRegistrar.View.AddAppointment
 {
-    public partial class SearchAndRemoveDoctorForm : Form
+    public partial class AddAppointmentForm : Form
     {
-        public SearchAndRemoveDoctorForm()
+        public AddAppointmentForm()
         {
             InitializeComponent();
+
+            comboBoxCabinetOrHome.Items.AddRange(new string[] { "Приём у врача", "Вызов на дом" });
         }
+
+
     }
 }

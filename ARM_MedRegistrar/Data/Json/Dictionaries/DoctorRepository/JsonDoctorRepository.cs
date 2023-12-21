@@ -1,5 +1,4 @@
-﻿using ARM_MedRegistrar.Model.Doctors;
-using ARM_MedRegistrar.Model.Patients;
+﻿using ARM_MedRegistrar.Model.Persons.Doctors;
 using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository

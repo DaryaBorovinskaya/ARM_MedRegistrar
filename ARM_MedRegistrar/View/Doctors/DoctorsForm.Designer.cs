@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             listViewDoctors = new ListView();
             columnHeader7 = new ColumnHeader();
             columnHeader1 = new ColumnHeader();
@@ -38,14 +39,35 @@
             columnHeader5 = new ColumnHeader();
             label2 = new Label();
             buttAddDoctor = new Button();
-            buttSearchAndRemoveDoctor = new Button();
+            buttSearchDoctor = new Button();
+            buttAllDataAboutDoctor = new Button();
+            richTextBoxInfoAboutDoctor = new RichTextBox();
+            buttRemoveDoctor = new Button();
+            buttAllDoctors = new Button();
+            buttChangeData = new Button();
+            textSurname = new TextBox();
+            textName = new TextBox();
+            textPatr = new TextBox();
+            label6 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            comboBoxSpecializations = new ComboBox();
+            label5 = new Label();
+            toolTipAllDataAboutDoctors = new ToolTip(components);
+            toolTipRemoveDoctor = new ToolTip(components);
+            errorNoName = new ErrorProvider(components);
+            errorNoSurname = new ErrorProvider(components);
+            errorNoSpecialization = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoSpecialization).BeginInit();
             SuspendLayout();
             // 
             // listViewDoctors
             // 
             listViewDoctors.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader1, columnHeader2, columnHeader3, columnHeader6, columnHeader4, columnHeader5 });
-            listViewDoctors.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewDoctors.Location = new Point(12, 70);
+            listViewDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            listViewDoctors.Location = new Point(12, 228);
             listViewDoctors.MultiSelect = false;
             listViewDoctors.Name = "listViewDoctors";
             listViewDoctors.Size = new Size(1056, 377);
@@ -66,7 +88,7 @@
             // columnHeader2
             // 
             columnHeader2.Text = "Имя";
-            columnHeader2.Width = 100;
+            columnHeader2.Width = 150;
             // 
             // columnHeader3
             // 
@@ -91,11 +113,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(12, 9);
+            label2.Location = new Point(12, 18);
             label2.Name = "label2";
-            label2.Size = new Size(83, 31);
+            label2.Size = new Size(99, 37);
             label2.TabIndex = 40;
             label2.Text = "Врачи";
             // 
@@ -103,33 +125,204 @@
             // 
             buttAddDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAddDoctor.ForeColor = Color.Firebrick;
-            buttAddDoctor.Location = new Point(100, 501);
+            buttAddDoctor.Location = new Point(123, 20);
             buttAddDoctor.Name = "buttAddDoctor";
-            buttAddDoctor.Size = new Size(147, 65);
+            buttAddDoctor.Size = new Size(240, 39);
             buttAddDoctor.TabIndex = 41;
             buttAddDoctor.Text = "Добавить врача";
             buttAddDoctor.UseVisualStyleBackColor = true;
             buttAddDoctor.Click += buttAddDoctor_Click;
             // 
-            // buttSearchAndRemoveDoctor
+            // buttSearchDoctor
             // 
-            buttSearchAndRemoveDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttSearchAndRemoveDoctor.ForeColor = Color.Firebrick;
-            buttSearchAndRemoveDoctor.Location = new Point(662, 501);
-            buttSearchAndRemoveDoctor.Name = "buttSearchAndRemoveDoctor";
-            buttSearchAndRemoveDoctor.Size = new Size(158, 65);
-            buttSearchAndRemoveDoctor.TabIndex = 42;
-            buttSearchAndRemoveDoctor.Text = "Найти +\r\n удалить врача\r\n";
-            buttSearchAndRemoveDoctor.UseVisualStyleBackColor = true;
-            buttSearchAndRemoveDoctor.Click += buttSearchAndRemoveDoctor_Click;
+            buttSearchDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttSearchDoctor.ForeColor = Color.Firebrick;
+            buttSearchDoctor.Location = new Point(765, 117);
+            buttSearchDoctor.Name = "buttSearchDoctor";
+            buttSearchDoctor.Size = new Size(174, 99);
+            buttSearchDoctor.TabIndex = 42;
+            buttSearchDoctor.Text = "Найти врача\r\n";
+            buttSearchDoctor.UseVisualStyleBackColor = true;
+            buttSearchDoctor.Click += buttSearchDoctor_Click;
+            // 
+            // buttAllDataAboutDoctor
+            // 
+            buttAllDataAboutDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllDataAboutDoctor.Location = new Point(1174, 177);
+            buttAllDataAboutDoctor.Name = "buttAllDataAboutDoctor";
+            buttAllDataAboutDoctor.Size = new Size(355, 45);
+            buttAllDataAboutDoctor.TabIndex = 48;
+            buttAllDataAboutDoctor.Text = "Все данные о выбранном враче";
+            buttAllDataAboutDoctor.UseVisualStyleBackColor = true;
+            buttAllDataAboutDoctor.Click += buttAllDataAboutDoctor_Click;
+            // 
+            // richTextBoxInfoAboutDoctor
+            // 
+            richTextBoxInfoAboutDoctor.BackColor = SystemColors.Window;
+            richTextBoxInfoAboutDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxInfoAboutDoctor.Location = new Point(1094, 228);
+            richTextBoxInfoAboutDoctor.Name = "richTextBoxInfoAboutDoctor";
+            richTextBoxInfoAboutDoctor.ReadOnly = true;
+            richTextBoxInfoAboutDoctor.Size = new Size(435, 376);
+            richTextBoxInfoAboutDoctor.TabIndex = 49;
+            richTextBoxInfoAboutDoctor.Text = "";
+            // 
+            // buttRemoveDoctor
+            // 
+            buttRemoveDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttRemoveDoctor.ForeColor = Color.Firebrick;
+            buttRemoveDoctor.Location = new Point(12, 611);
+            buttRemoveDoctor.Name = "buttRemoveDoctor";
+            buttRemoveDoctor.Size = new Size(186, 36);
+            buttRemoveDoctor.TabIndex = 50;
+            buttRemoveDoctor.Text = "Удалить врача";
+            buttRemoveDoctor.UseVisualStyleBackColor = true;
+            buttRemoveDoctor.Click += buttRemovePatient_Click;
+            // 
+            // buttAllDoctors
+            // 
+            buttAllDoctors.BackColor = Color.MistyRose;
+            buttAllDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllDoctors.ForeColor = Color.Firebrick;
+            buttAllDoctors.Location = new Point(765, 611);
+            buttAllDoctors.Name = "buttAllDoctors";
+            buttAllDoctors.Size = new Size(303, 36);
+            buttAllDoctors.TabIndex = 51;
+            buttAllDoctors.Text = "Обновить список врачей\r\n";
+            buttAllDoctors.UseVisualStyleBackColor = false;
+            buttAllDoctors.Click += buttAllDoctors_Click;
+            // 
+            // buttChangeData
+            // 
+            buttChangeData.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttChangeData.Location = new Point(1252, 611);
+            buttChangeData.Name = "buttChangeData";
+            buttChangeData.Size = new Size(277, 36);
+            buttChangeData.TabIndex = 52;
+            buttChangeData.Text = "Изменить данные врача\r\n";
+            buttChangeData.UseVisualStyleBackColor = true;
+            buttChangeData.Click += buttChangeData_Click;
+            // 
+            // textSurname
+            // 
+            textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textSurname.Location = new Point(12, 117);
+            textSurname.Name = "textSurname";
+            textSurname.Size = new Size(328, 34);
+            textSurname.TabIndex = 53;
+            textSurname.KeyPress += textBox_SpacePress;
+            // 
+            // textName
+            // 
+            textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textName.Location = new Point(12, 182);
+            textName.Name = "textName";
+            textName.Size = new Size(328, 34);
+            textName.TabIndex = 54;
+            textName.KeyPress += textBox_SpacePress;
+            // 
+            // textPatr
+            // 
+            textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textPatr.Location = new Point(392, 117);
+            textPatr.Name = "textPatr";
+            textPatr.Size = new Size(328, 34);
+            textPatr.TabIndex = 55;
+            textPatr.KeyPress += textBox_SpacePress;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.ForeColor = Color.Firebrick;
+            label6.Location = new Point(392, 86);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(96, 28);
+            label6.TabIndex = 60;
+            label6.Text = "Отчество";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.Firebrick;
+            label3.Location = new Point(12, 86);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(96, 28);
+            label3.TabIndex = 58;
+            label3.Text = "Фамилия";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.Firebrick;
+            label4.Location = new Point(13, 154);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(51, 28);
+            label4.TabIndex = 59;
+            label4.Text = "Имя";
+            // 
+            // comboBoxSpecializations
+            // 
+            comboBoxSpecializations.BackColor = Color.White;
+            comboBoxSpecializations.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSpecializations.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxSpecializations.ForeColor = Color.Firebrick;
+            comboBoxSpecializations.FormattingEnabled = true;
+            comboBoxSpecializations.Location = new Point(392, 182);
+            comboBoxSpecializations.Margin = new Padding(4);
+            comboBoxSpecializations.Name = "comboBoxSpecializations";
+            comboBoxSpecializations.Size = new Size(328, 36);
+            comboBoxSpecializations.TabIndex = 61;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.Firebrick;
+            label5.Location = new Point(392, 154);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(156, 28);
+            label5.TabIndex = 62;
+            label5.Text = "Специализация";
+            // 
+            // errorNoName
+            // 
+            errorNoName.ContainerControl = this;
+            // 
+            // errorNoSurname
+            // 
+            errorNoSurname.ContainerControl = this;
+            // 
+            // errorNoSpecialization
+            // 
+            errorNoSpecialization.ContainerControl = this;
             // 
             // DoctorsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(1080, 641);
-            Controls.Add(buttSearchAndRemoveDoctor);
+            ClientSize = new Size(1541, 674);
+            Controls.Add(label5);
+            Controls.Add(comboBoxSpecializations);
+            Controls.Add(label6);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(textPatr);
+            Controls.Add(textName);
+            Controls.Add(textSurname);
+            Controls.Add(buttChangeData);
+            Controls.Add(buttAllDoctors);
+            Controls.Add(buttRemoveDoctor);
+            Controls.Add(richTextBoxInfoAboutDoctor);
+            Controls.Add(buttAllDataAboutDoctor);
+            Controls.Add(buttSearchDoctor);
             Controls.Add(buttAddDoctor);
             Controls.Add(label2);
             Controls.Add(listViewDoctors);
@@ -138,7 +331,9 @@
             Name = "DoctorsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "DoctorsForm";
-            Load += DoctorsForm_Load;
+            ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoSpecialization).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -155,6 +350,24 @@
         private ColumnHeader columnHeader5;
         private Label label2;
         private Button buttAddDoctor;
-        private Button buttSearchAndRemoveDoctor;
+        private Button buttSearchDoctor;
+        private Button buttAllDataAboutDoctor;
+        private RichTextBox richTextBoxInfoAboutDoctor;
+        private Button buttRemoveDoctor;
+        private Button buttAllDoctors;
+        private Button buttChangeData;
+        private TextBox textSurname;
+        private TextBox textName;
+        private TextBox textPatr;
+        private Label label6;
+        private Label label3;
+        private Label label4;
+        private ComboBox comboBoxSpecializations;
+        private Label label5;
+        private ToolTip toolTipAllDataAboutDoctors;
+        private ToolTip toolTipRemoveDoctor;
+        private ErrorProvider errorNoName;
+        private ErrorProvider errorNoSurname;
+        private ErrorProvider errorNoSpecialization;
     }
 }

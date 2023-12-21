@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ARM_MedRegistrar.Model.Persons;
 
-namespace ARM_MedRegistrar.Model.Doctors
+namespace ARM_MedRegistrar.Model.Persons.Doctors
 {
     public class Doctor : IDoctor
     {
@@ -82,6 +82,11 @@ namespace ARM_MedRegistrar.Model.Doctors
             
         }
 
-       
+        public string Format()
+        {
+            return "ID: " + Id.ToString() + "\nФамилия: " + FullName.Surname + "\nИмя: " + FullName.Name
+            + "\nОтчество: " + FullName.Patronymic + "\nСпециализация: " + Specialization + "\nНомер телефона: " + PhoneNumber
+            + "\nНомер участка: " + PlotNumber + "\nНомер кабинета: " + Cabinet;
+        }
     }
 }

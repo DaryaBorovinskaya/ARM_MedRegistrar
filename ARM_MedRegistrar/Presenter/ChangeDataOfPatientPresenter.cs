@@ -1,6 +1,6 @@
 ﻿using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
 using ARM_MedRegistrar.Model.Addresses;
-using ARM_MedRegistrar.Model.Patients;
+using ARM_MedRegistrar.Model.Persons.Patients;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View.ChangeDataOfPatient;
 using System.Windows.Forms;

@@ -33,6 +33,7 @@
             textFullNameOfRegistr = new TextBox();
             label1 = new Label();
             listViewSchedule = new ListView();
+            columnHeader20 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader13 = new ColumnHeader();
@@ -46,7 +47,7 @@
             buttSearchPatient = new Button();
             buttAddAppointment = new Button();
             buttRemoveAppointment = new Button();
-            buttAddresses = new Button();
+            buttAttachedStreets = new Button();
             buttInfoAboutUser = new Button();
             listViewPatients = new ListView();
             columnHeader12 = new ColumnHeader();
@@ -61,15 +62,11 @@
             textSurname = new TextBox();
             textName = new TextBox();
             textPatr = new TextBox();
-            textDocumentSeries = new TextBox();
-            textDocumentNumber = new TextBox();
             dateTimeDateOfBirth = new DateTimePicker();
             label5 = new Label();
             label3 = new Label();
             label4 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
             label9 = new Label();
             buttDoctors = new Button();
             buttRemovePatient = new Button();
@@ -79,16 +76,15 @@
             toolTipAllDataAboutPatients = new ToolTip(components);
             errorNoName = new ErrorProvider(components);
             errorNoSurname = new ErrorProvider(components);
-            errorNoDocumentSeries = new ErrorProvider(components);
-            errorNoDocumentNumber = new ErrorProvider(components);
             errorWrongDate = new ErrorProvider(components);
             toolTipRemovePatient = new ToolTip(components);
             buttChangeData = new Button();
             toolTipSaveData = new ToolTip(components);
+            buttAllDataAboutAppointment = new Button();
+            buttAllAppointments = new Button();
+            buttSearchAppointment = new Button();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorNoDocumentNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).BeginInit();
             SuspendLayout();
             // 
@@ -96,7 +92,7 @@
             // 
             buttAddPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAddPatient.ForeColor = Color.Firebrick;
-            buttAddPatient.Location = new Point(215, 79);
+            buttAddPatient.Location = new Point(214, 89);
             buttAddPatient.Name = "buttAddPatient";
             buttAddPatient.Size = new Size(413, 40);
             buttAddPatient.TabIndex = 1;
@@ -120,7 +116,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Firebrick;
-            label1.Location = new Point(760, 623);
+            label1.Location = new Point(12, 627);
             label1.Name = "label1";
             label1.Size = new Size(309, 41);
             label1.TabIndex = 5;
@@ -128,14 +124,20 @@
             // 
             // listViewSchedule
             // 
-            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader8, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
-            listViewSchedule.Location = new Point(12, 686);
+            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader20, columnHeader7, columnHeader8, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
+            listViewSchedule.Location = new Point(12, 680);
+            listViewSchedule.MultiSelect = false;
             listViewSchedule.Name = "listViewSchedule";
-            listViewSchedule.Size = new Size(1878, 328);
+            listViewSchedule.Size = new Size(1878, 341);
             listViewSchedule.Sorting = SortOrder.Ascending;
             listViewSchedule.TabIndex = 6;
             listViewSchedule.UseCompatibleStateImageBehavior = false;
             listViewSchedule.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader20
+            // 
+            columnHeader20.Text = "ID";
+            columnHeader20.Width = 100;
             // 
             // columnHeader7
             // 
@@ -191,9 +193,9 @@
             // 
             buttSearchPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttSearchPatient.ForeColor = Color.Firebrick;
-            buttSearchPatient.Location = new Point(1196, 196);
+            buttSearchPatient.Location = new Point(1292, 189);
             buttSearchPatient.Name = "buttSearchPatient";
-            buttSearchPatient.Size = new Size(186, 101);
+            buttSearchPatient.Size = new Size(186, 73);
             buttSearchPatient.TabIndex = 9;
             buttSearchPatient.Text = "Найти пациента";
             buttSearchPatient.UseVisualStyleBackColor = true;
@@ -201,37 +203,38 @@
             // 
             // buttAddAppointment
             // 
-            buttAddAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttAddAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAddAppointment.ForeColor = Color.Firebrick;
-            buttAddAppointment.Location = new Point(1590, 615);
+            buttAddAppointment.Location = new Point(448, 636);
             buttAddAppointment.Name = "buttAddAppointment";
-            buttAddAppointment.Size = new Size(147, 65);
+            buttAddAppointment.Size = new Size(267, 37);
             buttAddAppointment.TabIndex = 11;
             buttAddAppointment.Text = "Добавить запись";
             buttAddAppointment.UseVisualStyleBackColor = true;
+            buttAddAppointment.Click += buttAddAppointment_Click;
             // 
             // buttRemoveAppointment
             // 
-            buttRemoveAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttRemoveAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttRemoveAppointment.ForeColor = Color.Firebrick;
-            buttRemoveAppointment.Location = new Point(1743, 615);
+            buttRemoveAppointment.Location = new Point(1714, 637);
             buttRemoveAppointment.Name = "buttRemoveAppointment";
-            buttRemoveAppointment.Size = new Size(147, 65);
+            buttRemoveAppointment.Size = new Size(176, 37);
             buttRemoveAppointment.TabIndex = 13;
             buttRemoveAppointment.Text = "Удалить запись\r\n";
             buttRemoveAppointment.UseVisualStyleBackColor = true;
             // 
-            // buttAddresses
+            // buttAttachedStreets
             // 
-            buttAddresses.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            buttAddresses.ForeColor = Color.Firebrick;
-            buttAddresses.Location = new Point(1237, 643);
-            buttAddresses.Name = "buttAddresses";
-            buttAddresses.Size = new Size(300, 37);
-            buttAddresses.TabIndex = 18;
-            buttAddresses.Text = "Прикреплённые улицы";
-            buttAddresses.UseVisualStyleBackColor = true;
-            buttAddresses.Click += buttAddresses_Click;
+            buttAttachedStreets.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAttachedStreets.ForeColor = Color.Firebrick;
+            buttAttachedStreets.Location = new Point(1287, 51);
+            buttAttachedStreets.Name = "buttAttachedStreets";
+            buttAttachedStreets.Size = new Size(300, 65);
+            buttAttachedStreets.TabIndex = 18;
+            buttAttachedStreets.Text = "Прикреплённые улицы";
+            buttAttachedStreets.UseVisualStyleBackColor = true;
+            buttAttachedStreets.Click += buttAttachedStreets_Click;
             // 
             // buttInfoAboutUser
             // 
@@ -248,11 +251,11 @@
             // listViewPatients
             // 
             listViewPatients.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader15, columnHeader19, columnHeader5, columnHeader6 });
-            listViewPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewPatients.Location = new Point(12, 315);
+            listViewPatients.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            listViewPatients.Location = new Point(12, 284);
             listViewPatients.MultiSelect = false;
             listViewPatients.Name = "listViewPatients";
-            listViewPatients.Size = new Size(1466, 235);
+            listViewPatients.Size = new Size(1466, 262);
             listViewPatients.Sorting = SortOrder.Ascending;
             listViewPatients.TabIndex = 20;
             listViewPatients.UseCompatibleStateImageBehavior = false;
@@ -306,54 +309,36 @@
             // textSurname
             // 
             textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textSurname.Location = new Point(12, 196);
+            textSurname.Location = new Point(13, 228);
             textSurname.Name = "textSurname";
-            textSurname.Size = new Size(328, 34);
+            textSurname.Size = new Size(271, 34);
             textSurname.TabIndex = 21;
             textSurname.KeyPress += textBox_SpacePress;
             // 
             // textName
             // 
             textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textName.Location = new Point(12, 264);
+            textName.Location = new Point(318, 228);
             textName.Name = "textName";
-            textName.Size = new Size(328, 34);
+            textName.Size = new Size(225, 34);
             textName.TabIndex = 23;
             textName.KeyPress += textBox_SpacePress;
             // 
             // textPatr
             // 
             textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPatr.Location = new Point(387, 196);
+            textPatr.Location = new Point(586, 228);
             textPatr.Name = "textPatr";
             textPatr.Size = new Size(328, 34);
             textPatr.TabIndex = 24;
             textPatr.KeyPress += textBox_SpacePress;
-            // 
-            // textDocumentSeries
-            // 
-            textDocumentSeries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textDocumentSeries.Location = new Point(760, 196);
-            textDocumentSeries.Name = "textDocumentSeries";
-            textDocumentSeries.Size = new Size(375, 34);
-            textDocumentSeries.TabIndex = 25;
-            textDocumentSeries.KeyPress += textBox_ContainsExceptNumbers;
-            // 
-            // textDocumentNumber
-            // 
-            textDocumentNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textDocumentNumber.Location = new Point(760, 264);
-            textDocumentNumber.Name = "textDocumentNumber";
-            textDocumentNumber.Size = new Size(375, 34);
-            textDocumentNumber.TabIndex = 26;
-            textDocumentNumber.KeyPress += textBox_ContainsExceptNumbers;
             // 
             // dateTimeDateOfBirth
             // 
             dateTimeDateOfBirth.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimeDateOfBirth.CalendarTitleBackColor = Color.White;
             dateTimeDateOfBirth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimeDateOfBirth.Location = new Point(387, 265);
+            dateTimeDateOfBirth.Location = new Point(938, 226);
             dateTimeDateOfBirth.Name = "dateTimeDateOfBirth";
             dateTimeDateOfBirth.Size = new Size(328, 34);
             dateTimeDateOfBirth.TabIndex = 36;
@@ -363,7 +348,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Firebrick;
-            label5.Location = new Point(387, 233);
+            label5.Location = new Point(938, 177);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(153, 28);
@@ -375,7 +360,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(12, 165);
+            label3.Location = new Point(13, 177);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
@@ -387,7 +372,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Firebrick;
-            label4.Location = new Point(12, 233);
+            label4.Location = new Point(318, 177);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(51, 28);
@@ -399,43 +384,19 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Firebrick;
-            label6.Location = new Point(387, 165);
+            label6.Location = new Point(586, 177);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(96, 28);
             label6.TabIndex = 40;
             label6.Text = "Отчество";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = Color.Firebrick;
-            label7.Location = new Point(760, 166);
-            label7.Margin = new Padding(4, 0, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(375, 28);
-            label7.TabIndex = 41;
-            label7.Text = "Серия документа, подтвержд. личность";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.ForeColor = Color.Firebrick;
-            label8.Location = new Point(760, 233);
-            label8.Margin = new Padding(4, 0, 4, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(381, 28);
-            label8.TabIndex = 42;
-            label8.Text = "Номер документа, подтвержд. личность";
-            // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = Color.Firebrick;
-            label9.Location = new Point(12, 75);
+            label9.Location = new Point(12, 89);
             label9.Name = "label9";
             label9.Size = new Size(168, 41);
             label9.TabIndex = 43;
@@ -445,7 +406,7 @@
             // 
             buttDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttDoctors.ForeColor = Color.Firebrick;
-            buttDoctors.Location = new Point(1573, 51);
+            buttDoctors.Location = new Point(1613, 51);
             buttDoctors.Name = "buttDoctors";
             buttDoctors.Size = new Size(266, 65);
             buttDoctors.TabIndex = 44;
@@ -457,9 +418,9 @@
             // 
             buttRemovePatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttRemovePatient.ForeColor = Color.Firebrick;
-            buttRemovePatient.Location = new Point(12, 558);
+            buttRemovePatient.Location = new Point(12, 556);
             buttRemovePatient.Name = "buttRemovePatient";
-            buttRemovePatient.Size = new Size(186, 45);
+            buttRemovePatient.Size = new Size(186, 36);
             buttRemovePatient.TabIndex = 45;
             buttRemovePatient.Text = "Удалить пациента";
             buttRemovePatient.UseVisualStyleBackColor = true;
@@ -481,7 +442,7 @@
             // buttAllDataAboutPatient
             // 
             buttAllDataAboutPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttAllDataAboutPatient.Location = new Point(1513, 264);
+            buttAllDataAboutPatient.Location = new Point(1513, 233);
             buttAllDataAboutPatient.Name = "buttAllDataAboutPatient";
             buttAllDataAboutPatient.Size = new Size(355, 45);
             buttAllDataAboutPatient.TabIndex = 47;
@@ -493,10 +454,10 @@
             // 
             richTextBoxInfoAboutPatient.BackColor = SystemColors.Window;
             richTextBoxInfoAboutPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            richTextBoxInfoAboutPatient.Location = new Point(1500, 315);
+            richTextBoxInfoAboutPatient.Location = new Point(1500, 284);
             richTextBoxInfoAboutPatient.Name = "richTextBoxInfoAboutPatient";
             richTextBoxInfoAboutPatient.ReadOnly = true;
-            richTextBoxInfoAboutPatient.Size = new Size(379, 235);
+            richTextBoxInfoAboutPatient.Size = new Size(379, 262);
             richTextBoxInfoAboutPatient.TabIndex = 48;
             richTextBoxInfoAboutPatient.Text = "";
             // 
@@ -507,14 +468,6 @@
             // errorNoSurname
             // 
             errorNoSurname.ContainerControl = this;
-            // 
-            // errorNoDocumentSeries
-            // 
-            errorNoDocumentSeries.ContainerControl = this;
-            // 
-            // errorNoDocumentNumber
-            // 
-            errorNoDocumentNumber.ContainerControl = this;
             // 
             // errorWrongDate
             // 
@@ -531,12 +484,49 @@
             buttChangeData.UseVisualStyleBackColor = true;
             buttChangeData.Click += buttChangeData_Click;
             // 
+            // buttAllDataAboutAppointment
+            // 
+            buttAllDataAboutAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllDataAboutAppointment.ForeColor = Color.Firebrick;
+            buttAllDataAboutAppointment.Location = new Point(1366, 637);
+            buttAllDataAboutAppointment.Name = "buttAllDataAboutAppointment";
+            buttAllDataAboutAppointment.Size = new Size(325, 37);
+            buttAllDataAboutAppointment.TabIndex = 50;
+            buttAllDataAboutAppointment.Text = "Все данные о выбранной записи";
+            buttAllDataAboutAppointment.UseVisualStyleBackColor = true;
+            // 
+            // buttAllAppointments
+            // 
+            buttAllAppointments.BackColor = SystemColors.Window;
+            buttAllAppointments.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllAppointments.ForeColor = Color.Firebrick;
+            buttAllAppointments.Location = new Point(760, 638);
+            buttAllAppointments.Name = "buttAllAppointments";
+            buttAllAppointments.Size = new Size(267, 36);
+            buttAllAppointments.TabIndex = 51;
+            buttAllAppointments.Text = "Обновить список записей\r\n\r\n";
+            buttAllAppointments.UseVisualStyleBackColor = false;
+            // 
+            // buttSearchAppointment
+            // 
+            buttSearchAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttSearchAppointment.ForeColor = Color.Firebrick;
+            buttSearchAppointment.Location = new Point(1062, 638);
+            buttSearchAppointment.Name = "buttSearchAppointment";
+            buttSearchAppointment.Size = new Size(267, 37);
+            buttSearchAppointment.TabIndex = 52;
+            buttSearchAppointment.Text = "Найти запись";
+            buttSearchAppointment.UseVisualStyleBackColor = true;
+            // 
             // MainWindowForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1902, 1033);
+            Controls.Add(buttSearchAppointment);
+            Controls.Add(buttAllAppointments);
+            Controls.Add(buttAllDataAboutAppointment);
             Controls.Add(buttChangeData);
             Controls.Add(richTextBoxInfoAboutPatient);
             Controls.Add(buttAllDataAboutPatient);
@@ -544,21 +534,17 @@
             Controls.Add(buttRemovePatient);
             Controls.Add(buttDoctors);
             Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label5);
             Controls.Add(dateTimeDateOfBirth);
-            Controls.Add(textDocumentNumber);
-            Controls.Add(textDocumentSeries);
             Controls.Add(textPatr);
             Controls.Add(textName);
             Controls.Add(textSurname);
             Controls.Add(listViewPatients);
             Controls.Add(buttInfoAboutUser);
-            Controls.Add(buttAddresses);
+            Controls.Add(buttAttachedStreets);
             Controls.Add(buttRemoveAppointment);
             Controls.Add(buttAddAppointment);
             Controls.Add(buttSearchPatient);
@@ -572,8 +558,6 @@
             Text = "MainWindow";
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorNoDocumentNumber).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -592,21 +576,17 @@
         private Button buttSearchPatient;
         private Button buttAddAppointment;
         private Button buttRemoveAppointment;
-        private Button buttAddresses;
+        private Button buttAttachedStreets;
         private Button buttInfoAboutUser;
         private ListView listViewPatients;
         private TextBox textSurname;
         private TextBox textName;
         private TextBox textPatr;
-        private TextBox textDocumentSeries;
-        private TextBox textDocumentNumber;
         private DateTimePicker dateTimeDateOfBirth;
         private Label label5;
         private Label label3;
         private Label label4;
         private Label label6;
-        private Label label7;
-        private Label label8;
         private Label label9;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
@@ -633,13 +613,15 @@
         private ToolTip toolTipAllDataAboutPatients;
         private ErrorProvider errorNoName;
         private ErrorProvider errorNoSurname;
-        private ErrorProvider errorNoDocumentSeries;
-        private ErrorProvider errorNoDocumentNumber;
         private ColumnHeader columnHeader15;
         private ColumnHeader columnHeader19;
         private ErrorProvider errorWrongDate;
         private ToolTip toolTipRemovePatient;
         private Button buttChangeData;
         private ToolTip toolTipSaveData;
+        private ColumnHeader columnHeader20;
+        private Button buttAllDataAboutAppointment;
+        private Button buttAllAppointments;
+        private Button buttSearchAppointment;
     }
 }

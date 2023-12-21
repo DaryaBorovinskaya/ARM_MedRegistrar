@@ -1,11 +1,12 @@
 ﻿using ARM_MedRegistrar.Model.Addresses;
+using ARM_MedRegistrar.Model.Formatter;
 using ARM_MedRegistrar.Model.Identifications;
 using ARM_MedRegistrar.Model.Persons;
 
-namespace ARM_MedRegistrar.Model.Patients
+namespace ARM_MedRegistrar.Model.Persons.Patients
 {
 
-    public interface IPatient : IIdentification
+    public interface IPatient : IIdentification, IFormatter
     {
         public IFullName FullName { get; set; }
         public string DateOfBirth { get; }

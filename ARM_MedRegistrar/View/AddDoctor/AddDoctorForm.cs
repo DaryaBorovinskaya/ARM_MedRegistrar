@@ -19,9 +19,9 @@ namespace ARM_MedRegistrar
 
         string IAddDoctorForm.PhoneNumber => textPhoneNumber.Text;
 
-        int IAddDoctorForm.PlotNumber => (int)numericPlotNumber.Value;
+        int IAddDoctorForm.PlotNumber => int.Parse(textPlotNumber.Text);
 
-        int IAddDoctorForm.Cabinet => (int)numericCabinet.Value;
+        int IAddDoctorForm.Cabinet => int.Parse(textCabinet.Text);
 
         public AddDoctorForm()
         {
@@ -52,19 +52,6 @@ namespace ARM_MedRegistrar
         }
 
 
-
-        private void numericPlotNumber_ValueChanged(object sender, EventArgs e)
-        {
-            numericPlotNumber.Maximum = 5000;
-
-        }
-
-        private void numericCabinet_ValueChanged(object sender, EventArgs e)
-        {
-            numericCabinet.Maximum = 5000;
-
-        }
-
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
 
@@ -74,9 +61,9 @@ namespace ARM_MedRegistrar
             errorNoSurname.Clear();
             errorNoName.Clear();
             errorNoSpecial.Clear();
-            errorNoPlotNumber.Clear();
             errorNoCabinet.Clear();
             errorNoPhoneNumber.Clear();
+            errorNoPlotNumber.Clear();
 
 
             if (textSurname.Text == string.Empty)
@@ -97,19 +84,19 @@ namespace ARM_MedRegistrar
                 errorNoSpecial.SetError(comboBoxSpecializations, "Поле \"Специализация\" не заполнено");
             }
 
-            if (numericPlotNumber.Value == 0)
+
+            if (textCabinet.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPlotNumber.SetError(numericPlotNumber, "Поле \"Номер участка\" не заполнено");
+                errorNoCabinet.SetError(textCabinet, "Поле \"Номер кабинета\" не заполнено");
             }
-
-            if (numericCabinet.Value == 0)
+            if (textPlotNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoCabinet.SetError(numericCabinet, "Поле \"Номер кабинета\" не заполнено");
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле \"Номер участка\" не заполнено");
             }
 
-            if (textPhoneNumber.Text != string.Empty)
+            if (textPhoneNumber.Text == string.Empty)
             {
                 _isError = true;
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
@@ -127,8 +114,8 @@ namespace ARM_MedRegistrar
                     textSurname.Clear();
                     textName.Clear();
                     textPatr.Clear();
-                    numericPlotNumber.Value = 0;
-                    numericCabinet.Value = 0;
+                    textCabinet.Clear();
+                    textPlotNumber.Clear();
                     textPhoneNumber.Clear();
 
                 }

@@ -1,5 +1,5 @@
 ﻿using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
-using ARM_MedRegistrar.Model.Patients;
+using ARM_MedRegistrar.Model.Persons.Patients;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View.MainWindow;
 using System;
@@ -15,7 +15,6 @@ namespace ARM_MedRegistrar.Presenter
         IMainWindowForm _view;
         IPatientRepository _jsonPatientRepository;
         IDictionary<uint, IPatient>? _patients;
-        IFullName _fullName;
         int _countOfLine = -1;
         bool _isSuccess;
         public MainWindowPresenter(IMainWindowForm view)
@@ -29,7 +28,6 @@ namespace ARM_MedRegistrar.Presenter
         {
             _countOfLine = -1;
             _isSuccess = false;
-            _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
             _patients = _jsonPatientRepository.GetAll();
             if (_patients == null || _patients.Count == 0) 
                 return false;
@@ -38,7 +36,8 @@ namespace ARM_MedRegistrar.Presenter
             {
                 foreach(IPatient patient in _patients.Values)
                 {
-                    if (patient.DocumentSeries == _view.DocumentSeries && patient.DocumentNumber == _view.DocumentNumber)
+                    if (patient.DateOfBirth == _view.DateOfBirth && patient.FullName.Surname == _view.Surname 
+                        && patient.FullName.Name == _view.Name )
                     {
                         _isSuccess = true;
                         _countOfLine++;

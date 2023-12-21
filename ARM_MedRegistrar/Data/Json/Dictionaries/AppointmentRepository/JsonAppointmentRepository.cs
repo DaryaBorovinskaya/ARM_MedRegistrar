@@ -1,7 +1,5 @@
 ﻿using ARM_MedRegistrar.Model.Addresses;
 using ARM_MedRegistrar.Model.Appointments;
-using ARM_MedRegistrar.Model.Doctors;
-using ARM_MedRegistrar.Model.Patients;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 //using System.Text.Json;

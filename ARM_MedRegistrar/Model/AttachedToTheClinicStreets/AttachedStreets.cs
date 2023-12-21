@@ -60,5 +60,10 @@ namespace ARM_MedRegistrar.Model.AttachedStreets
             Street = street;
             NumbOfHouse = numbOfHouse;
         }
+
+        public string Format()
+        {
+            return $"ул. {Street}, д. {NumbOfHouse}, район {Region}, город {City}";
+        }
     }
 }

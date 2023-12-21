@@ -207,7 +207,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
 
             else
             {
-               
+
                 if (!_presenter.ShowDataAboutPatient())
                 {
                     textId.ReadOnly = false;
@@ -370,7 +370,6 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                         numericNumbOfFlat.Value = 0;
                         numericPlotNumber.Value = 0;
                         textNumbOfPatientCard.Clear();
-                        numericPlotNumber.Value = 0;
                         comboBoxBloodType.SelectedIndex = -1;
                         comboBoxRhFactor.SelectedIndex = -1;
                         textAllergies.Clear();

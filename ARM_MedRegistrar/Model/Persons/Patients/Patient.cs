@@ -10,7 +10,7 @@ using Microsoft.VisualBasic.Logging;
 using Newtonsoft.Json.Linq;
 
 
-namespace ARM_MedRegistrar.Model.Patients
+namespace ARM_MedRegistrar.Model.Persons.Patients
 {
 
 

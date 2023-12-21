@@ -71,6 +71,9 @@ namespace ARM_MedRegistrar.Model.Addresses
             NumbOfFlat = numbOfFlat;
         }
 
-        
+        public string Format()
+        {
+            return $"г. {City}, район {Region}, ул. {Street}, д. {NumbOfHouse}, кв. {NumbOfFlat}";
+        }
     }
 }
