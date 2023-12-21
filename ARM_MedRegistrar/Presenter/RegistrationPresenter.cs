@@ -1,5 +1,5 @@
 ﻿using ARM_MedRegistrar.Model.Persons;
-using ARM_MedRegistrar.Model.Users;
+using ARM_MedRegistrar.Model.Persons.Users;
 using ARM_MedRegistrar.View.Registration;
 using ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository;
 
@@ -15,7 +15,7 @@ namespace ARM_MedRegistrar.Presenter
         public RegistrationPresenter(IRegistrationForm view)
         { 
             _view = view;
-            _jsonUserRepository = new JsonUserRepository("users.json");
+            _jsonUserRepository = new JsonUserRepository();
             _users = _jsonUserRepository.GetAll();
         }
 

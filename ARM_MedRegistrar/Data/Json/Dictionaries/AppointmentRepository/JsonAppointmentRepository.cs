@@ -13,9 +13,9 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
         private readonly string _savePath;
         private IDictionary<uint, IAppointment>? _appointments;
         private JsonSerializerSettings _settings;
-        public JsonAppointmentRepository(string savePath)
+        public JsonAppointmentRepository()
         {
-            _savePath = savePath;
+            _savePath = "appointments.json";
             _appointments = new SortedDictionary<uint, IAppointment>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
           

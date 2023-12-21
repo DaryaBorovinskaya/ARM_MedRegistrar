@@ -15,7 +15,7 @@ namespace ARM_MedRegistrar.Presenter
         public AddDoctorPresenter(IAddDoctorForm view)
         {
             _view = view;
-            _jsonDoctorRepository = new JsonDoctorRepository("doctors.json");
+            _jsonDoctorRepository = new JsonDoctorRepository();
         }
 
         

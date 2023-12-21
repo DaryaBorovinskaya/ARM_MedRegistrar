@@ -15,9 +15,9 @@ namespace ARM_MedRegistrar.Data.Json.Lists.AttachedStreets
         private IList<IAttachedStreets>? _attachedStreets = new List<IAttachedStreets>();
         private JsonSerializerSettings _settings;
 
-        public JsonAttachedStreetsRepository(string savePath)
+        public JsonAttachedStreetsRepository()
         {
-            _savePath = savePath;
+            _savePath = "attachedStreets.json";
             _attachedStreets = new List<IAttachedStreets>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
             

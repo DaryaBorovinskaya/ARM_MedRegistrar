@@ -7,6 +7,7 @@ namespace ARM_MedRegistrar.View.AddPatient
         public string Name { get; }
         public string? Patronymic { get; }
         public string DateOfBirth { get; }
+        public string PhoneNumber {  get; }
         public string? City { get;  }
         public string? Region { get;  }
         public string Street { get; }

@@ -9,9 +9,9 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
         private readonly string _savePath;
         private IDictionary<uint, IPatient>? _patients;
         private JsonSerializerSettings _settings;
-        public JsonPatientRepository(string savePath)
+        public JsonPatientRepository()
         {
-            _savePath = savePath;
+            _savePath = "patients.json";
             _patients = new SortedDictionary<uint, IPatient>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
             

@@ -9,9 +9,9 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
         private IDictionary<string, IUser>? _users;
         private JsonSerializerSettings _settings;
 
-        public JsonUserRepository(string savePath)
+        public JsonUserRepository()
         {
-            _savePath = savePath;
+            _savePath = "users.json";
             _users = new Dictionary<string,IUser>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
         }

@@ -27,6 +27,7 @@ namespace ARM_MedRegistrar.Model.Patients
         private string _documentNumber;
         private string _bloodType;
         private string _rhFactor;
+        private string _phoneNumber;
 
 
         public IFullName FullName
@@ -50,6 +51,21 @@ namespace ARM_MedRegistrar.Model.Patients
                 _address = value;
             }
         }
+
+        public string PhoneNumber
+        {
+            get => _phoneNumber;
+            set
+            {
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentException("Номер телефона не задан");
+                if (value[0] == '0')
+                    throw new ArgumentException("Номер телефона не может начинаться с нуля");
+
+                _phoneNumber = value;
+            }
+        }
+
         public int PlotNumber
         {
             get => _plotNumber;
@@ -155,7 +171,7 @@ namespace ARM_MedRegistrar.Model.Patients
 
         public string? Allergies { get; set; }
         public uint Id { get; }
-        public Patient(uint id, IFullName fullName, string dateOfBirth, IAddress address, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
+        public Patient(uint id, IFullName fullName, string dateOfBirth, IAddress address, string phoneNumber, int plotNumber, string numbOfPatientCard, int policySeries, string policyNumb, 
             string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies )
         {
             if (dateOfBirth == "" || dateOfBirth == " " || dateOfBirth == null)
@@ -165,6 +181,7 @@ namespace ARM_MedRegistrar.Model.Patients
             FullName = fullName;
             DateOfBirth = dateOfBirth;
             Address = address;
+            PhoneNumber = phoneNumber;
             PlotNumber = plotNumber;
             NumbOfPatientCard = numbOfPatientCard;
             PolicySeries = policySeries;
@@ -180,8 +197,9 @@ namespace ARM_MedRegistrar.Model.Patients
         {
             return "ID: " + Id.ToString() + "\nФамилия: " + FullName.Surname + "\nИмя: " + FullName.Name
             + "\nОтчество: " + FullName.Patronymic + "\nДата рождения: " + DateOfBirth + "\nСерия документа: " + DocumentSeries
-            + "\nНомер документа: " + DocumentNumber + "\nНомер участка: " + PlotNumber + "\nНомер амбул. карты: " + NumbOfPatientCard + "\nГород: " + Address.City
-            + "\nРайон: " + Address.Region + "\nУлица: " + Address.Street + "\nНомер дома: " + Address.NumbOfHouse.ToString() + "\nНомер квартиры: " + Address.NumbOfFlat.ToString() 
+            + "\nНомер документа: " + DocumentNumber + "\nНомер участка: " + PlotNumber + "\nНомер амбул. карты: " + NumbOfPatientCard 
+            + "\nНомер телефона: " + PhoneNumber + "\nГород: " + Address.City + "\nРайон: " + Address.Region + "\nУлица: " + Address.Street + "\nНомер дома: " 
+            + Address.NumbOfHouse.ToString() + "\nНомер квартиры: " + Address.NumbOfFlat.ToString() 
             + "\nСерия мед. полиса: " + PolicySeries.ToString() + "\nНомер мед. полиса: " + PolicyNumb + "\nГруппа крови: " + BloodType + "\nРезус-фактор: " + RhFactor
             + "\nАллергии: " + Allergies;
 

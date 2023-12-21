@@ -17,7 +17,7 @@ namespace ARM_MedRegistrar
         string? IAddPatientForm.Patronymic => textPatr.Text;
 
         string IAddPatientForm.DateOfBirth => dateTimeDateOfBirth.Value.ToShortDateString();
-
+        string IAddPatientForm.PhoneNumber => textPhoneNumber.Text;
         string? IAddPatientForm.City => textCity.Text;
         string? IAddPatientForm.Region => textRegion.Text;
         string IAddPatientForm.Street => textStreet.Text;
@@ -48,7 +48,7 @@ namespace ARM_MedRegistrar
 
         private void NoRegionSet(object? sender, EventArgs e)
         {
-            errorNoRegion.SetError(textRegion, "Поле \"Район\" не заполнено");  
+            errorNoRegion.SetError(textRegion, "Поле \"Район\" не заполнено");
         }
 
         private void NoCitySet(object? sender, EventArgs e)
@@ -118,6 +118,7 @@ namespace ARM_MedRegistrar
             errorNoCity.Clear();
             errorNoRegion.Clear();
             errorNoPlotNumber.Clear();
+            errorNoPhoneNumber.Clear();
 
             if (textSurname.Text == string.Empty)
             {
@@ -197,16 +198,22 @@ namespace ARM_MedRegistrar
                 _isError = true;
                 errorNoDocumentNumber.SetError(textDocumentNumber, "Поле \"Номер документа\" не заполнено");
             }
-            if (numericPlotNumber.Value == 0) 
+            if (numericPlotNumber.Value == 0)
             {
                 _isError = true;
                 errorNoPlotNumber.SetError(numericPlotNumber, "Поле \"Номер участка\" не заполнено");
             }
+            if (textPhoneNumber.Text == string.Empty) 
+            {
+                _isError = true;
+                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
+            }
+            
 
             if (!_isError)
             {
                 if (_presenter.AddPatient())
-                { 
+                {
                     MessageBox.Show("Добавление пациента успешно выполнено!");
 
                     if (!checkNoCloseWindow.Checked)
@@ -224,12 +231,13 @@ namespace ARM_MedRegistrar
                         textDocumentSeries.Clear();
                         textDocumentNumber.Clear();
                         numericPlotNumber.Value = 0;
+                        textPhoneNumber.Clear();
                     }
                 }
             }
 
         }
 
-        
+
     }
 }

@@ -22,7 +22,7 @@ namespace ARM_MedRegistrar
 
         string IRegistrationForm.Post => comboBoxPost.SelectedItem.ToString();
 
-        string IRegistrationForm.PhoneNumber => text1.Text;
+        string IRegistrationForm.PhoneNumber => textPhoneNumber.Text;
 
 
 
@@ -126,10 +126,10 @@ namespace ARM_MedRegistrar
                 errorNoPassword.SetError(textPassword, "Поле \"Пароль\" не заполнено");
             }
 
-            if (text1.Text == string.Empty)
+            if (textPhoneNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPhoneNumber.SetError(text1, "Поле \"Номер телефона\" не заполнено");
+                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
 

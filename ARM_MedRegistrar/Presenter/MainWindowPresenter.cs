@@ -21,7 +21,7 @@ namespace ARM_MedRegistrar.Presenter
         public MainWindowPresenter(IMainWindowForm view)
         { 
             _view = view;
-            _jsonPatientRepository = new JsonPatientRepository("patients.json");
+            _jsonPatientRepository = new JsonPatientRepository();
         }
 
 

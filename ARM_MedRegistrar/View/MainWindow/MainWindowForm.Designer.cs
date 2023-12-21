@@ -83,7 +83,8 @@
             errorNoDocumentNumber = new ErrorProvider(components);
             errorWrongDate = new ErrorProvider(components);
             toolTipRemovePatient = new ToolTip(components);
-            button1 = new Button();
+            buttChangeData = new Button();
+            toolTipSaveData = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoDocumentSeries).BeginInit();
@@ -519,15 +520,16 @@
             // 
             errorWrongDate.ContainerControl = this;
             // 
-            // button1
+            // buttChangeData
             // 
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(1590, 556);
-            button1.Name = "button1";
-            button1.Size = new Size(289, 36);
-            button1.TabIndex = 49;
-            button1.Text = "Сохранить изменения";
-            button1.UseVisualStyleBackColor = true;
+            buttChangeData.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttChangeData.Location = new Point(1590, 556);
+            buttChangeData.Name = "buttChangeData";
+            buttChangeData.Size = new Size(289, 36);
+            buttChangeData.TabIndex = 49;
+            buttChangeData.Text = "Изменить данные";
+            buttChangeData.UseVisualStyleBackColor = true;
+            buttChangeData.Click += buttChangeData_Click;
             // 
             // MainWindowForm
             // 
@@ -535,7 +537,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1902, 1033);
-            Controls.Add(button1);
+            Controls.Add(buttChangeData);
             Controls.Add(richTextBoxInfoAboutPatient);
             Controls.Add(buttAllDataAboutPatient);
             Controls.Add(buttAllPatients);
@@ -637,6 +639,7 @@
         private ColumnHeader columnHeader19;
         private ErrorProvider errorWrongDate;
         private ToolTip toolTipRemovePatient;
-        private Button button1;
+        private Button buttChangeData;
+        private ToolTip toolTipSaveData;
     }
 }

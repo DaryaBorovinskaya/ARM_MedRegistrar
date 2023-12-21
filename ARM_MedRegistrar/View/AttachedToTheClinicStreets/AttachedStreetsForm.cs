@@ -29,7 +29,7 @@ namespace ARM_MedRegistrar.View
         private void buttAddDataToFile_Click(object sender, EventArgs e)
         {
             AttachedStreets _newAttachedStreet;
-            IAttachedStreetsRepository jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository("attachedStreets.json");
+            IAttachedStreetsRepository jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
             IList<IAttachedStreets>? _attachedStreets;
 
             bool _isError = false;

@@ -7,6 +7,7 @@ using ARM_MedRegistrar.View.AttachedToTheClinicStreets;
 using ARM_MedRegistrar.Model.Patients;
 using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
 using ARM_MedRegistrar.Presenter;
+using ARM_MedRegistrar.View.ChangeDataOfPatient;
 
 namespace ARM_MedRegistrar
 {
@@ -138,6 +139,8 @@ namespace ARM_MedRegistrar
 
             toolTipAllDataAboutPatients.SetToolTip(buttAllDataAboutPatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
             toolTipRemovePatient.SetToolTip(buttRemovePatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
+            toolTipSaveData.SetToolTip(buttChangeData, "Нажмите, чтобы ");
+
             _presenter = new(this);
 
         }
@@ -268,8 +271,24 @@ namespace ARM_MedRegistrar
 
         private void buttRemovePatient_Click(object sender, EventArgs e)
         {
-            _presenter.RemovePatient();
-            MessageBox.Show("Пациент успешно удалён");
+            uint _selIndex = listViewPatients.SelectedItems.Count != 0 ? uint.Parse(listViewPatients.SelectedItems[0].Text) : 0;
+
+            if (_selIndex != 0)
+            {
+                DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление пациента с ID: {_selIndex}", " ", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    _presenter.RemovePatient();
+                    MessageBox.Show("Пациент успешно удалён");
+                }
+            }
+        }
+
+        private void buttChangeData_Click(object sender, EventArgs e)
+        {
+            ChangeDataOfPatientForm changeDataOfPatientForm = new();
+            changeDataOfPatientForm.ShowDialog();
+
         }
     }
 }

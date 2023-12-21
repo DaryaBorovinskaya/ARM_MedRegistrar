@@ -87,6 +87,9 @@ partial class AddPatientForm
         errorNoPlotNumber = new ErrorProvider(components);
         errorNoCity = new ErrorProvider(components);
         errorNoRegion = new ErrorProvider(components);
+        textPhoneNumber = new TextBox();
+        label23 = new Label();
+        errorNoPhoneNumber = new ErrorProvider(components);
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
@@ -107,6 +110,7 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoCity).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoRegion).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).BeginInit();
         SuspendLayout();
         // 
         // label1
@@ -114,7 +118,7 @@ partial class AddPatientForm
         label1.AutoSize = true;
         label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
         label1.ForeColor = Color.Firebrick;
-        label1.Location = new Point(508, 19);
+        label1.Location = new Point(430, 10);
         label1.Name = "label1";
         label1.Size = new Size(315, 37);
         label1.TabIndex = 0;
@@ -125,7 +129,7 @@ partial class AddPatientForm
         buttAddPatient.BackColor = Color.FromArgb(255, 192, 192);
         buttAddPatient.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
         buttAddPatient.ForeColor = Color.Firebrick;
-        buttAddPatient.Location = new Point(515, 697);
+        buttAddPatient.Location = new Point(428, 697);
         buttAddPatient.Margin = new Padding(4);
         buttAddPatient.Name = "buttAddPatient";
         buttAddPatient.Size = new Size(308, 78);
@@ -139,7 +143,7 @@ partial class AddPatientForm
         label3.AutoSize = true;
         label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label3.ForeColor = Color.Firebrick;
-        label3.Location = new Point(13, 75);
+        label3.Location = new Point(12, 50);
         label3.Margin = new Padding(4, 0, 4, 0);
         label3.Name = "label3";
         label3.Size = new Size(96, 28);
@@ -151,7 +155,7 @@ partial class AddPatientForm
         label2.AutoSize = true;
         label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label2.ForeColor = Color.Firebrick;
-        label2.Location = new Point(13, 154);
+        label2.Location = new Point(12, 120);
         label2.Margin = new Padding(4, 0, 4, 0);
         label2.Name = "label2";
         label2.Size = new Size(51, 28);
@@ -163,7 +167,7 @@ partial class AddPatientForm
         label4.AutoSize = true;
         label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label4.ForeColor = Color.Firebrick;
-        label4.Location = new Point(13, 233);
+        label4.Location = new Point(12, 190);
         label4.Margin = new Padding(4, 0, 4, 0);
         label4.Name = "label4";
         label4.Size = new Size(234, 28);
@@ -174,10 +178,10 @@ partial class AddPatientForm
         // 
         textSurname.BackColor = Color.White;
         textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textSurname.Location = new Point(13, 107);
+        textSurname.Location = new Point(13, 82);
         textSurname.Margin = new Padding(4);
         textSurname.Name = "textSurname";
-        textSurname.Size = new Size(422, 34);
+        textSurname.Size = new Size(400, 34);
         textSurname.TabIndex = 32;
         textSurname.KeyPress += textBox_SpacePress;
         // 
@@ -185,10 +189,10 @@ partial class AddPatientForm
         // 
         textName.BackColor = Color.White;
         textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textName.Location = new Point(13, 186);
+        textName.Location = new Point(12, 152);
         textName.Margin = new Padding(4);
         textName.Name = "textName";
-        textName.Size = new Size(422, 34);
+        textName.Size = new Size(401, 34);
         textName.TabIndex = 33;
         textName.KeyPress += textBox_SpacePress;
         // 
@@ -196,10 +200,10 @@ partial class AddPatientForm
         // 
         textPatr.BackColor = Color.White;
         textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textPatr.Location = new Point(13, 265);
+        textPatr.Location = new Point(12, 222);
         textPatr.Margin = new Padding(4);
         textPatr.Name = "textPatr";
-        textPatr.Size = new Size(422, 34);
+        textPatr.Size = new Size(401, 34);
         textPatr.TabIndex = 34;
         textPatr.KeyPress += textBox_SpacePress;
         // 
@@ -208,7 +212,7 @@ partial class AddPatientForm
         dateTimeDateOfBirth.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         dateTimeDateOfBirth.CalendarTitleBackColor = Color.White;
         dateTimeDateOfBirth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimeDateOfBirth.Location = new Point(486, 166);
+        dateTimeDateOfBirth.Location = new Point(486, 152);
         dateTimeDateOfBirth.Name = "dateTimeDateOfBirth";
         dateTimeDateOfBirth.Size = new Size(250, 34);
         dateTimeDateOfBirth.TabIndex = 35;
@@ -230,7 +234,7 @@ partial class AddPatientForm
         label6.AutoSize = true;
         label6.Font = new Font("Segoe UI", 13.8F, FontStyle.Underline, GraphicsUnit.Point);
         label6.ForeColor = Color.Firebrick;
-        label6.Location = new Point(1032, 19);
+        label6.Location = new Point(895, 15);
         label6.Margin = new Padding(4, 0, 4, 0);
         label6.Name = "label6";
         label6.Size = new Size(79, 31);
@@ -262,7 +266,7 @@ partial class AddPatientForm
         label8.AutoSize = true;
         label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label8.ForeColor = Color.Firebrick;
-        label8.Location = new Point(508, 575);
+        label8.Location = new Point(528, 523);
         label8.Margin = new Padding(4, 0, 4, 0);
         label8.Name = "label8";
         label8.Size = new Size(273, 28);
@@ -320,7 +324,7 @@ partial class AddPatientForm
         label11.AutoSize = true;
         label11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label11.ForeColor = Color.Firebrick;
-        label11.Location = new Point(1162, 424);
+        label11.Location = new Point(895, 523);
         label11.Margin = new Padding(4, 0, 4, 0);
         label11.Name = "label11";
         label11.Size = new Size(101, 28);
@@ -330,7 +334,7 @@ partial class AddPatientForm
         // textAllergies
         // 
         textAllergies.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textAllergies.Location = new Point(1125, 471);
+        textAllergies.Location = new Point(859, 565);
         textAllergies.Multiline = true;
         textAllergies.Name = "textAllergies";
         textAllergies.Size = new Size(178, 138);
@@ -339,7 +343,7 @@ partial class AddPatientForm
         // textCity
         // 
         textCity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textCity.Location = new Point(783, 107);
+        textCity.Location = new Point(783, 82);
         textCity.Name = "textCity";
         textCity.Size = new Size(313, 34);
         textCity.TabIndex = 50;
@@ -348,7 +352,7 @@ partial class AddPatientForm
         // textRegion
         // 
         textRegion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textRegion.Location = new Point(783, 204);
+        textRegion.Location = new Point(783, 152);
         textRegion.Name = "textRegion";
         textRegion.Size = new Size(313, 34);
         textRegion.TabIndex = 51;
@@ -357,7 +361,7 @@ partial class AddPatientForm
         // textStreet
         // 
         textStreet.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textStreet.Location = new Point(783, 303);
+        textStreet.Location = new Point(783, 222);
         textStreet.Name = "textStreet";
         textStreet.Size = new Size(313, 34);
         textStreet.TabIndex = 52;
@@ -366,7 +370,7 @@ partial class AddPatientForm
         // numericNumbOfHouse
         // 
         numericNumbOfHouse.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericNumbOfHouse.Location = new Point(1155, 108);
+        numericNumbOfHouse.Location = new Point(783, 324);
         numericNumbOfHouse.Name = "numericNumbOfHouse";
         numericNumbOfHouse.Size = new Size(104, 34);
         numericNumbOfHouse.TabIndex = 53;
@@ -375,7 +379,7 @@ partial class AddPatientForm
         // numericNumbOfFlat
         // 
         numericNumbOfFlat.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericNumbOfFlat.Location = new Point(1170, 205);
+        numericNumbOfFlat.Location = new Point(992, 324);
         numericNumbOfFlat.Name = "numericNumbOfFlat";
         numericNumbOfFlat.Size = new Size(104, 34);
         numericNumbOfFlat.TabIndex = 54;
@@ -386,7 +390,7 @@ partial class AddPatientForm
         label12.AutoSize = true;
         label12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label12.ForeColor = Color.Firebrick;
-        label12.Location = new Point(862, 256);
+        label12.Location = new Point(784, 191);
         label12.Margin = new Padding(4, 0, 4, 0);
         label12.Name = "label12";
         label12.Size = new Size(68, 28);
@@ -398,7 +402,7 @@ partial class AddPatientForm
         label13.AutoSize = true;
         label13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label13.ForeColor = Color.Firebrick;
-        label13.Location = new Point(861, 173);
+        label13.Location = new Point(783, 121);
         label13.Margin = new Padding(4, 0, 4, 0);
         label13.Name = "label13";
         label13.Size = new Size(69, 28);
@@ -410,7 +414,7 @@ partial class AddPatientForm
         label14.AutoSize = true;
         label14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label14.ForeColor = Color.Firebrick;
-        label14.Location = new Point(862, 75);
+        label14.Location = new Point(783, 51);
         label14.Margin = new Padding(4, 0, 4, 0);
         label14.Name = "label14";
         label14.Size = new Size(68, 28);
@@ -422,7 +426,7 @@ partial class AddPatientForm
         label15.AutoSize = true;
         label15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label15.ForeColor = Color.Firebrick;
-        label15.Location = new Point(1148, 75);
+        label15.Location = new Point(774, 286);
         label15.Margin = new Padding(4, 0, 4, 0);
         label15.Name = "label15";
         label15.Size = new Size(126, 28);
@@ -434,7 +438,7 @@ partial class AddPatientForm
         label16.AutoSize = true;
         label16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         label16.ForeColor = Color.Firebrick;
-        label16.Location = new Point(1125, 172);
+        label16.Location = new Point(960, 286);
         label16.Margin = new Padding(4, 0, 4, 0);
         label16.Name = "label16";
         label16.Size = new Size(168, 28);
@@ -527,7 +531,7 @@ partial class AddPatientForm
         // 
         textNumbOfPatientCard.BackColor = Color.White;
         textNumbOfPatientCard.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        textNumbOfPatientCard.Location = new Point(805, 575);
+        textNumbOfPatientCard.Location = new Point(541, 575);
         textNumbOfPatientCard.Name = "textNumbOfPatientCard";
         textNumbOfPatientCard.Size = new Size(267, 34);
         textNumbOfPatientCard.TabIndex = 65;
@@ -538,7 +542,7 @@ partial class AddPatientForm
         checkNoCloseWindow.AutoSize = true;
         checkNoCloseWindow.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         checkNoCloseWindow.ForeColor = Color.Black;
-        checkNoCloseWindow.Location = new Point(859, 722);
+        checkNoCloseWindow.Location = new Point(743, 722);
         checkNoCloseWindow.Name = "checkNoCloseWindow";
         checkNoCloseWindow.Size = new Size(213, 32);
         checkNoCloseWindow.TabIndex = 66;
@@ -602,7 +606,6 @@ partial class AddPatientForm
         label21.Size = new Size(386, 28);
         label21.TabIndex = 72;
         label21.Text = "Документ, подтверждающий личность";
-        
         // 
         // label22
         // 
@@ -636,12 +639,41 @@ partial class AddPatientForm
         // 
         errorNoRegion.ContainerControl = this;
         // 
+        // textPhoneNumber
+        // 
+        textPhoneNumber.BackColor = Color.White;
+        textPhoneNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textPhoneNumber.Location = new Point(13, 286);
+        textPhoneNumber.Margin = new Padding(4);
+        textPhoneNumber.Name = "textPhoneNumber";
+        textPhoneNumber.Size = new Size(400, 34);
+        textPhoneNumber.TabIndex = 74;
+        textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
+        // 
+        // label23
+        // 
+        label23.AutoSize = true;
+        label23.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label23.ForeColor = Color.Firebrick;
+        label23.Location = new Point(12, 260);
+        label23.Margin = new Padding(4, 0, 4, 0);
+        label23.Name = "label23";
+        label23.Size = new Size(166, 28);
+        label23.TabIndex = 75;
+        label23.Text = "Номер телефона";
+        // 
+        // errorNoPhoneNumber
+        // 
+        errorNoPhoneNumber.ContainerControl = this;
+        // 
         // AddPatientForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
-        ClientSize = new Size(1315, 788);
+        ClientSize = new Size(1132, 788);
+        Controls.Add(label23);
+        Controls.Add(textPhoneNumber);
         Controls.Add(label22);
         Controls.Add(label21);
         Controls.Add(label20);
@@ -689,7 +721,6 @@ partial class AddPatientForm
         Name = "AddPatientForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "AddPatient";
-        
         ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).EndInit();
         ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).EndInit();
@@ -710,6 +741,7 @@ partial class AddPatientForm
         ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoCity).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoRegion).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -786,4 +818,7 @@ partial class AddPatientForm
     private ErrorProvider errorNoPlotNumber;
     private ErrorProvider errorNoCity;
     private ErrorProvider errorNoRegion;
+    private Label label23;
+    private TextBox textPhoneNumber;
+    private ErrorProvider errorNoPhoneNumber;
 }

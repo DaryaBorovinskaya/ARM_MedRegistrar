@@ -22,9 +22,9 @@ namespace ARM_MedRegistrar.Presenter
         public AddPatientPresenter(IAddPatientForm view) 
         { 
             _view = view;
-            _jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository("attachedStreets.json");
+            _jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
             
-            _jsonPatientRepository = new JsonPatientRepository("patients.json");
+            _jsonPatientRepository = new JsonPatientRepository();
         }
 
 
@@ -69,7 +69,7 @@ namespace ARM_MedRegistrar.Presenter
 
             _id = _jsonPatientRepository.CreateId();
 
-            _newPatient = new Patient(_id, _fullName, _view.DateOfBirth, _address, _view.PlotNumber,
+            _newPatient = new Patient(_id, _fullName, _view.DateOfBirth, _address, _view.PhoneNumber, _view.PlotNumber,
                 _view.NumbOfPatientCard, _view.PolicySeries, _view.PolicyNumb, _view.DocumentSeries,
                 _view.DocumentNumber, _view.BloodType, _view.RhFactor, _view.Allergies);
 
