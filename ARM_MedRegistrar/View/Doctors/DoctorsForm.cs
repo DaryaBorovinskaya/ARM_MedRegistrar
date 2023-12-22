@@ -166,19 +166,56 @@ namespace ARM_MedRegistrar.View.Doctors
 
         private void buttRemovePatient_Click(object sender, EventArgs e)
         {
-            uint _selIndex = listViewDoctors.SelectedItems.Count != 0 ? uint.Parse(listViewDoctors.SelectedItems[0].Text) : 0;
-
-            if (_selIndex != 0)
+            IList<uint> _selectedId = new List<uint>();
+            if (checkIsMultiSelect.Checked)
             {
-                DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление врача с ID: {_selIndex}", " ", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                if (listViewDoctors.SelectedItems.Count != 0)
                 {
-                    _presenter.RemoveDoctor();
-                    MessageBox.Show("Врач успешно удалён");
+                    for (int i = 0; i < listViewDoctors.SelectedItems.Count; i++)
+                    {
+                        uint selectItemValue = uint.Parse(listViewDoctors.SelectedItems[i].Text);
+                        _selectedId.Add(selectItemValue);
+
+                    }
+
+                    string _lineOfId = "";
+
+                    foreach (uint id in _selectedId)
+                        _lineOfId += id.ToString() + "  ";
+
+                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление врачей с ID: {_lineOfId}", " ", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (_presenter.RemoveDoctor(_selectedId))
+                            MessageBox.Show("Врачи успешно удалены");
+                        else
+                            MessageBox.Show("Не удалось удалить врачей");
+                    }
+
+                }
+            }
+
+
+            else
+            {
+
+
+                uint _selIndex = listViewDoctors.SelectedItems.Count != 0 ? uint.Parse(listViewDoctors.SelectedItems[0].Text) : 0;
+
+                if (_selIndex != 0)
+                {
+                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление врача с ID: {_selIndex}", " ", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        _selectedId.Add(_selIndex);
+                        if (_presenter.RemoveDoctor(_selectedId))
+                            MessageBox.Show("Врач успешно удалён");
+                        else
+                            MessageBox.Show("Не удалось удалить врача");
+                    }
                 }
             }
         }
-
         private void buttAllDoctors_Click(object sender, EventArgs e)
         {
             listViewDoctors.Items.Clear();
@@ -194,9 +231,21 @@ namespace ARM_MedRegistrar.View.Doctors
 
         private void buttAllDataAboutDoctor_Click(object sender, EventArgs e)
         {
-            richTextBoxInfoAboutDoctor.Clear();
+            errorMultiSelect.Clear();
+            if (!checkIsMultiSelect.Checked)
+            {
+                richTextBoxInfoAboutDoctor.Clear();
 
-            _presenter.ShowInfoAboutDoctor();
+                _presenter.ShowInfoAboutDoctor();
+            }
+            else
+                errorMultiSelect.SetError(checkIsMultiSelect, "Нельзя выполнить действие, т.к. \nвыбрано несколько врачей");
+
+        }
+
+        private void checkIsMultiSelect_CheckedChanged(object sender, EventArgs e)
+        {
+            listViewDoctors.MultiSelect = true;
         }
     }
 }

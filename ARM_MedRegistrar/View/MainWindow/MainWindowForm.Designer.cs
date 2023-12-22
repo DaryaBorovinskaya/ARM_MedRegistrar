@@ -83,9 +83,13 @@
             buttAllDataAboutAppointment = new Button();
             buttAllAppointments = new Button();
             buttSearchAppointment = new Button();
+            buttPaidMedServices = new Button();
+            checkIsMultiSelect = new CheckBox();
+            errorMultiSelect = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorMultiSelect).BeginInit();
             SuspendLayout();
             // 
             // buttAddPatient
@@ -125,6 +129,7 @@
             // listViewSchedule
             // 
             listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader20, columnHeader7, columnHeader8, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
+            listViewSchedule.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             listViewSchedule.Location = new Point(12, 680);
             listViewSchedule.MultiSelect = false;
             listViewSchedule.Name = "listViewSchedule";
@@ -228,9 +233,9 @@
             // 
             buttAttachedStreets.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAttachedStreets.ForeColor = Color.Firebrick;
-            buttAttachedStreets.Location = new Point(1287, 51);
+            buttAttachedStreets.Location = new Point(1634, 51);
             buttAttachedStreets.Name = "buttAttachedStreets";
-            buttAttachedStreets.Size = new Size(300, 65);
+            buttAttachedStreets.Size = new Size(256, 65);
             buttAttachedStreets.TabIndex = 18;
             buttAttachedStreets.Text = "Прикреплённые улицы";
             buttAttachedStreets.UseVisualStyleBackColor = true;
@@ -251,7 +256,7 @@
             // listViewPatients
             // 
             listViewPatients.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader15, columnHeader19, columnHeader5, columnHeader6 });
-            listViewPatients.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            listViewPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             listViewPatients.Location = new Point(12, 284);
             listViewPatients.MultiSelect = false;
             listViewPatients.Name = "listViewPatients";
@@ -406,9 +411,9 @@
             // 
             buttDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttDoctors.ForeColor = Color.Firebrick;
-            buttDoctors.Location = new Point(1613, 51);
+            buttDoctors.Location = new Point(1175, 51);
             buttDoctors.Name = "buttDoctors";
-            buttDoctors.Size = new Size(266, 65);
+            buttDoctors.Size = new Size(134, 65);
             buttDoctors.TabIndex = 44;
             buttDoctors.Text = "Врачи";
             buttDoctors.UseVisualStyleBackColor = true;
@@ -518,12 +523,43 @@
             buttSearchAppointment.Text = "Найти запись";
             buttSearchAppointment.UseVisualStyleBackColor = true;
             // 
+            // buttPaidMedServices
+            // 
+            buttPaidMedServices.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttPaidMedServices.ForeColor = Color.Firebrick;
+            buttPaidMedServices.Location = new Point(1353, 51);
+            buttPaidMedServices.Name = "buttPaidMedServices";
+            buttPaidMedServices.Size = new Size(246, 65);
+            buttPaidMedServices.TabIndex = 53;
+            buttPaidMedServices.Text = "Платные медицинские услуги";
+            buttPaidMedServices.UseVisualStyleBackColor = true;
+            buttPaidMedServices.Click += buttPaidMedServices_Click;
+            // 
+            // checkIsMultiSelect
+            // 
+            checkIsMultiSelect.AutoSize = true;
+            checkIsMultiSelect.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsMultiSelect.ForeColor = Color.Firebrick;
+            checkIsMultiSelect.Location = new Point(842, 556);
+            checkIsMultiSelect.Name = "checkIsMultiSelect";
+            checkIsMultiSelect.Size = new Size(309, 32);
+            checkIsMultiSelect.TabIndex = 54;
+            checkIsMultiSelect.Text = "Выбор нескольких пациентов";
+            checkIsMultiSelect.UseVisualStyleBackColor = true;
+            checkIsMultiSelect.CheckedChanged += checkIsMultiSelect_CheckedChanged_1;
+            // 
+            // errorMultiSelect
+            // 
+            errorMultiSelect.ContainerControl = this;
+            // 
             // MainWindowForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1902, 1033);
+            Controls.Add(checkIsMultiSelect);
+            Controls.Add(buttPaidMedServices);
             Controls.Add(buttSearchAppointment);
             Controls.Add(buttAllAppointments);
             Controls.Add(buttAllDataAboutAppointment);
@@ -559,6 +595,7 @@
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorMultiSelect).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -623,5 +660,8 @@
         private Button buttAllDataAboutAppointment;
         private Button buttAllAppointments;
         private Button buttSearchAppointment;
+        private Button buttPaidMedServices;
+        private CheckBox checkIsMultiSelect;
+        private ErrorProvider errorMultiSelect;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
+using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
 using ARM_MedRegistrar.Model.Persons.Doctors;
 using ARM_MedRegistrar.View.Doctors;
 
@@ -95,9 +96,30 @@ namespace ARM_MedRegistrar.Presenter
             if (_doctors != null && _doctors.Count != 0 && _view.SelectedId != 0)
                 _view.InfoAboutPatient = _doctors[_view.SelectedId].Format();
         }
-        public void RemoveDoctor()
+        public bool RemoveDoctor(IList<uint> _listOfId)
         {
-            _jsonDoctorRepository.Remove(_view.SelectedId);
+            _doctors = _jsonDoctorRepository.GetAll();
+            if (_doctors == null || _doctors.Count == 0 || _listOfId.Count == 0)
+                return false;
+            if (_listOfId.Count == _doctors.Count)
+                return false;
+
+
+            foreach (uint key in _doctors.Keys)
+                {
+                    foreach (uint id in _listOfId)
+                    {
+                        if (key == id)
+                        {
+                            _jsonDoctorRepository.Remove(id);
+                        }
+                    }
+
+                }
+
+                return true;
+            
+           
         }
     }
 

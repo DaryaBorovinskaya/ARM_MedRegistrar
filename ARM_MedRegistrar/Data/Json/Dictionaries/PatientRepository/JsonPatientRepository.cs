@@ -31,7 +31,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
                 throw new ArgumentNullException(nameof(value));
 
             if (_patients != null && _patients.ContainsKey(value.Id))
-                throw new ArgumentException("Логин занят");
+                throw new ArgumentException("ID занят");
 
             
             _patients?.Add(value.Id, value);

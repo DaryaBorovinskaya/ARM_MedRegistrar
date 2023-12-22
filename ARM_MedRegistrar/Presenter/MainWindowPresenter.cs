@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -104,9 +105,29 @@ namespace ARM_MedRegistrar.Presenter
             if (_patients != null && _patients.Count != 0 && _view.SelectedId != 0)
                 _view.InfoAboutPatient = _patients[_view.SelectedId].Format();
         }
-        public void RemovePatient()
+        public bool RemovePatient(IList<uint> _listOfId)
         {
-            _jsonPatientRepository.Remove(_view.SelectedId);
+            _patients = _jsonPatientRepository.GetAll();
+            if (_patients == null || _patients.Count == 0 || _listOfId.Count == 0)
+                return false;
+            
+            if (_listOfId.Count == _patients.Count)
+                return false;
+
+            foreach (uint key in _patients.Keys)
+            {
+                foreach (uint id in _listOfId)
+                {
+                    if (key == id)
+                    {
+                        _jsonPatientRepository.Remove(id);
+                    }
+                }
+
+            }
+
+            return true;
+            
         }
     }
 }

@@ -27,7 +27,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
             if (_doctors != null && _doctors.ContainsKey(value.Id))
-                throw new ArgumentException("Логин занят");
+                throw new ArgumentException("ID занят");
 
             
             _doctors?.Add(value.Id, value);

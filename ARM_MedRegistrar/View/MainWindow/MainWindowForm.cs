@@ -9,6 +9,7 @@ using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
 using ARM_MedRegistrar.Presenter;
 using ARM_MedRegistrar.View.ChangeDataOfPatient;
 using ARM_MedRegistrar.View.AddAppointment;
+using ARM_MedRegistrar.View.PaidMedServices;
 
 namespace ARM_MedRegistrar
 {
@@ -139,7 +140,7 @@ namespace ARM_MedRegistrar
 
             toolTipAllDataAboutPatients.SetToolTip(buttAllDataAboutPatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
             toolTipRemovePatient.SetToolTip(buttRemovePatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
-            
+
             _presenter = new(this);
 
         }
@@ -202,9 +203,15 @@ namespace ARM_MedRegistrar
 
         private void buttAllDataAboutPatient_Click(object sender, EventArgs e)
         {
-            richTextBoxInfoAboutPatient.Clear();
+            errorMultiSelect.Clear();
+            if (!checkIsMultiSelect.Checked)
+            {
+                richTextBoxInfoAboutPatient.Clear();
 
-            _presenter.ShowInfoAboutPatient();
+                _presenter.ShowInfoAboutPatient();
+            }
+            else
+                errorMultiSelect.SetError(checkIsMultiSelect, "Нельзя выполнить действие, т.к. \nвыбрано несколько пациентов");
         }
 
         private void buttSearchPatient_Click(object sender, EventArgs e)
@@ -248,15 +255,51 @@ namespace ARM_MedRegistrar
 
         private void buttRemovePatient_Click(object sender, EventArgs e)
         {
-            uint _selIndex = listViewPatients.SelectedItems.Count != 0 ? uint.Parse(listViewPatients.SelectedItems[0].Text) : 0;
-
-            if (_selIndex != 0)
+            IList<uint> _selectedId = new List<uint>();
+            if (checkIsMultiSelect.Checked)
             {
-                DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление пациента с ID: {_selIndex}", " ", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+                if (listViewPatients.SelectedItems.Count != 0)
                 {
-                    _presenter.RemovePatient();
-                    MessageBox.Show("Пациент успешно удалён");
+                    for (int i = 0; i < listViewPatients.SelectedItems.Count; i++)
+                    {
+                        uint selectItemValue = uint.Parse(listViewPatients.SelectedItems[i].Text);
+                        _selectedId.Add(selectItemValue);
+
+                    }
+
+                    string _lineOfId = "";
+
+                    foreach (uint id in _selectedId)
+                        _lineOfId += id.ToString() + "  ";
+
+                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление пациентов с ID: {_lineOfId}", " ", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (_presenter.RemovePatient(_selectedId))
+                            MessageBox.Show("Пациенты успешно удалены");
+                        else
+                            MessageBox.Show("Не удалось удалить пациентов");
+                    }
+
+                }
+            }
+
+
+            else
+            {
+                uint _selIndex = listViewPatients.SelectedItems.Count != 0 ? uint.Parse(listViewPatients.SelectedItems[0].Text) : 0;
+
+                if (_selIndex != 0)
+                {
+                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление пациента с ID: {_selIndex}", " ", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        _selectedId.Add(_selIndex);
+                        if (_presenter.RemovePatient(_selectedId))
+                            MessageBox.Show("Пациент успешно удалён");
+                        else
+                            MessageBox.Show("Не удалось удалить пациента");
+                    }
                 }
             }
         }
@@ -272,6 +315,17 @@ namespace ARM_MedRegistrar
         {
             AddAppointmentForm addAppointmentForm = new();
             addAppointmentForm.ShowDialog();
+        }
+
+        private void buttPaidMedServices_Click(object sender, EventArgs e)
+        {
+            PaidMedServicesForm paidMedServicesForm = new(this);
+            paidMedServicesForm.ShowDialog();
+        }
+
+        private void checkIsMultiSelect_CheckedChanged_1(object sender, EventArgs e)
+        {
+            listViewPatients.MultiSelect = true;
         }
     }
 }

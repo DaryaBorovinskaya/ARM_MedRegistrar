@@ -25,7 +25,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
             if (_appointments != null && _appointments.ContainsKey(value.Id))
-                throw new ArgumentException("Логин занят");
+                throw new ArgumentException("ID занят");
             //JsonSerializerOptions options = new JsonSerializerOptions {WriteIndented = true};
 
             if (!File.Exists(_savePath))

@@ -58,9 +58,12 @@
             errorNoName = new ErrorProvider(components);
             errorNoSurname = new ErrorProvider(components);
             errorNoSpecialization = new ErrorProvider(components);
+            checkIsMultiSelect = new CheckBox();
+            errorMultiSelect = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSpecialization).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorMultiSelect).BeginInit();
             SuspendLayout();
             // 
             // listViewDoctors
@@ -303,12 +306,30 @@
             // 
             errorNoSpecialization.ContainerControl = this;
             // 
+            // checkIsMultiSelect
+            // 
+            checkIsMultiSelect.AutoSize = true;
+            checkIsMultiSelect.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsMultiSelect.ForeColor = Color.Firebrick;
+            checkIsMultiSelect.Location = new Point(465, 615);
+            checkIsMultiSelect.Name = "checkIsMultiSelect";
+            checkIsMultiSelect.Size = new Size(276, 32);
+            checkIsMultiSelect.TabIndex = 63;
+            checkIsMultiSelect.Text = "Выбор нескольких врачей";
+            checkIsMultiSelect.UseVisualStyleBackColor = true;
+            checkIsMultiSelect.CheckedChanged += checkIsMultiSelect_CheckedChanged;
+            // 
+            // errorMultiSelect
+            // 
+            errorMultiSelect.ContainerControl = this;
+            // 
             // DoctorsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1541, 674);
+            Controls.Add(checkIsMultiSelect);
             Controls.Add(label5);
             Controls.Add(comboBoxSpecializations);
             Controls.Add(label6);
@@ -334,6 +355,7 @@
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSpecialization).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorMultiSelect).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -369,5 +391,7 @@
         private ErrorProvider errorNoName;
         private ErrorProvider errorNoSurname;
         private ErrorProvider errorNoSpecialization;
+        private CheckBox checkIsMultiSelect;
+        private ErrorProvider errorMultiSelect;
     }
 }
