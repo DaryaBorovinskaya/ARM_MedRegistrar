@@ -85,26 +85,26 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
         }
         int IChangeDataOfPatientForm.NumbOfHouse
         {
-            get => (int)numericNumbOfHouse.Value;
+            get => int.Parse(textNumbOfHouse.Text);
             set
             {
-                numericNumbOfHouse.Value = value;
+                textNumbOfHouse.Text = value.ToString();
             }
         }
         int IChangeDataOfPatientForm.NumbOfFlat
         {
-            get => (int)numericNumbOfFlat.Value;
+            get => int.Parse(textNumbOfFlat.Text);
             set
             {
-                numericNumbOfFlat.Value = value;
+                textNumbOfFlat.Text = value.ToString();
             }
         }
         int IChangeDataOfPatientForm.PlotNumber
         {
-            get => (int)numericPlotNumber.Value;
+            get => int.Parse(textPlotNumber.Text);
             set
             {
-                numericPlotNumber.Value = value;
+                textPlotNumber.Text = value.ToString();
             }
         }
         string IChangeDataOfPatientForm.NumbOfPatientCard
@@ -117,10 +117,10 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
         }
         int IChangeDataOfPatientForm.PolicySeries
         {
-            get => (int)numericPolicySeries.Value;
+            get => int.Parse(textPolicySeries.Text);
             set
             {
-                numericPolicySeries.Value = value;
+                textPolicySeries.Text = value.ToString();
             }
         }
         string IChangeDataOfPatientForm.PolicyNumb
@@ -252,10 +252,10 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                 errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
             }
 
-            if (numericPolicySeries.Value == 0)
+            if (textPolicySeries.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPolicySeries.SetError(numericPolicySeries, "Поле \"Серия полиса\" не заполнено");
+                errorNoPolicySeries.SetError(textPolicySeries, "Поле \"Серия полиса\" не заполнено");
             }
 
             if (textPolicyNumber.Text == string.Empty)
@@ -288,16 +288,16 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                 errorNoStreet.SetError(textStreet, "Поле \"Улица\" не заполнено");
             }
 
-            if (numericNumbOfHouse.Value == 0)
+            if (textNumbOfHouse.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfHouse.SetError(numericNumbOfHouse, "Поле \"Дом\" не заполнено");
+                errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Дом\" не заполнено");
             }
 
-            if (numericNumbOfFlat.Value == 0)
+            if (textNumbOfFlat.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfFlat.SetError(numericNumbOfFlat, "Поле \"Квартира\" не заполнено");
+                errorNoNumbOfFlat.SetError(textNumbOfFlat, "Поле \"Квартира\" не заполнено");
             }
 
             if (comboBoxBloodType.SelectedIndex == -1)
@@ -329,10 +329,10 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                 _isError = true;
                 errorNoDocumentNumber.SetError(textDocumentNumber, "Поле \"Номер документа\" не заполнено");
             }
-            if (numericPlotNumber.Value == 0)
+            if (textPlotNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPlotNumber.SetError(numericPlotNumber, "Поле \"Номер участка\" не заполнено");
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле \"Номер участка\" не заполнено");
             }
             if (textPhoneNumber.Text == string.Empty)
             {
@@ -359,16 +359,16 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                         textPatr.Clear();
                         textDocumentSeries.Clear();
                         textDocumentNumber.Clear();
-                        numericPolicySeries.Value = 0;
+                        textPolicySeries.Clear();
                         textPolicyNumber.Clear();
                         dateTimeDateOfBirth.Value = DateTime.Today;
                         textPhoneNumber.Clear();
                         textCity.Clear();
                         textRegion.Clear();
                         textStreet.Clear();
-                        numericNumbOfHouse.Value = 0;
-                        numericNumbOfFlat.Value = 0;
-                        numericPlotNumber.Value = 0;
+                        textNumbOfHouse.Clear();    
+                        textNumbOfFlat.Clear();
+                        textPlotNumber.Clear();
                         textNumbOfPatientCard.Clear();
                         comboBoxBloodType.SelectedIndex = -1;
                         comboBoxRhFactor.SelectedIndex = -1;

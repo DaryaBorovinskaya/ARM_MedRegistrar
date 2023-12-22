@@ -23,7 +23,11 @@ namespace ARM_MedRegistrar.View
         }
 
 
-
+        private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
+                e.KeyChar = '\0';
+        }
 
 
         private void buttAddDataToFile_Click(object sender, EventArgs e)
@@ -44,8 +48,6 @@ namespace ARM_MedRegistrar.View
 
             if (_attachedStreets == null)
             {
-
-
                 if (textCity.Text == string.Empty)
                 {
                     _isError = true;
@@ -64,18 +66,22 @@ namespace ARM_MedRegistrar.View
                     errorNoStreet.SetError(textStreet, "Поле \"Улица\" не заполнено");
                 }
 
-                if (numericNumbOfHouse.Value == 0)
+                if (textNumbOfHouse.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoNumbOfHouse.SetError(numericNumbOfHouse, "Поле \"Номер дома\" не заполнено");
+                    errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Номер дома\" не заполнено");
                 }
 
                 if (!_isError)
                 {
-                    _newAttachedStreet = new(textCity.Text, textRegion.Text, textStreet.Text, (int)numericNumbOfHouse.Value);
-                    jsonAttachedStreetsRepository.Add(_newAttachedStreet);
+                    //_newAttachedStreet = new(textCity.Text, textRegion.Text, textStreet.Text, (int)numericNumbOfHouse.Value);
+                    //jsonAttachedStreetsRepository.Add(_newAttachedStreet);
 
                     MessageBox.Show("Успешно добавлено");
+                    textCity.Clear();
+                    textRegion.Clear();
+                    textStreet.Clear();
+                    textNumbOfHouse.Clear();
                 }
             }
 
@@ -87,10 +93,10 @@ namespace ARM_MedRegistrar.View
                     errorNoStreet.SetError(textStreet, "Поле \"Улица\" не заполнено");
                 }
 
-                if (numericNumbOfHouse.Value == 0)
+                if (textNumbOfHouse.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoNumbOfHouse.SetError(numericNumbOfHouse, "Поле \"Номер дома\" не заполнено");
+                    errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Номер дома\" не заполнено");
                 }
 
                 if (!_isError)
@@ -102,8 +108,8 @@ namespace ARM_MedRegistrar.View
                     if (textRegion.Text == string.Empty)
                         textRegion.Text = _attachedStreets[0].Region;
 
-                    _newAttachedStreet = new(textCity.Text, textRegion.Text, textStreet.Text, (int)numericNumbOfHouse.Value);
-                    jsonAttachedStreetsRepository.Add(_newAttachedStreet);
+                    //_newAttachedStreet = new(textCity.Text, textRegion.Text, textStreet.Text, (int)numericNumbOfHouse.Value);
+                    //jsonAttachedStreetsRepository.Add(_newAttachedStreet);
 
                     IList<IAttachedStreets>? _printAttachedStreets = jsonAttachedStreetsRepository.GetAll();
 
@@ -111,30 +117,15 @@ namespace ARM_MedRegistrar.View
                         listBoxAttachedStreets.Items.Add("улица " + item.Street);
 
                     MessageBox.Show("Успешно добавлено");
+                    textCity.Clear();
+                    textRegion.Clear();
+                    textStreet.Clear();
+                    textNumbOfHouse.Clear();
                 }
 
             }
 
         }
 
-        private void checkRemembCity_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void AttachedStreetsForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            numericNumbOfHouse.Maximum = 10000;
-        }
     }
 }

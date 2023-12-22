@@ -65,10 +65,6 @@
             label11 = new Label();
             buttSaveChanges = new Button();
             dateTimeDateOfBirth = new DateTimePicker();
-            numericPolicySeries = new NumericUpDown();
-            numericPlotNumber = new NumericUpDown();
-            numericNumbOfFlat = new NumericUpDown();
-            numericNumbOfHouse = new NumericUpDown();
             checkNoCloseWindow = new CheckBox();
             label6 = new Label();
             textId = new TextBox();
@@ -91,10 +87,10 @@
             errorNoCity = new ErrorProvider(components);
             errorNoRegion = new ErrorProvider(components);
             errorNoPhoneNumber = new ErrorProvider(components);
-            ((System.ComponentModel.ISupportInitialize)numericPolicySeries).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
+            textPolicySeries = new TextBox();
+            textNumbOfHouse = new TextBox();
+            textNumbOfFlat = new TextBox();
+            textPlotNumber = new TextBox();
             ((System.ComponentModel.ISupportInitialize)errorNoId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
@@ -509,38 +505,6 @@
             dateTimeDateOfBirth.Size = new Size(250, 34);
             dateTimeDateOfBirth.TabIndex = 95;
             // 
-            // numericPolicySeries
-            // 
-            numericPolicySeries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numericPolicySeries.Location = new Point(13, 516);
-            numericPolicySeries.Name = "numericPolicySeries";
-            numericPolicySeries.Size = new Size(162, 34);
-            numericPolicySeries.TabIndex = 96;
-            // 
-            // numericPlotNumber
-            // 
-            numericPlotNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numericPlotNumber.Location = new Point(626, 133);
-            numericPlotNumber.Name = "numericPlotNumber";
-            numericPlotNumber.Size = new Size(150, 34);
-            numericPlotNumber.TabIndex = 97;
-            // 
-            // numericNumbOfFlat
-            // 
-            numericNumbOfFlat.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numericNumbOfFlat.Location = new Point(324, 586);
-            numericNumbOfFlat.Name = "numericNumbOfFlat";
-            numericNumbOfFlat.Size = new Size(104, 34);
-            numericNumbOfFlat.TabIndex = 98;
-            // 
-            // numericNumbOfHouse
-            // 
-            numericNumbOfHouse.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numericNumbOfHouse.Location = new Point(324, 516);
-            numericNumbOfHouse.Name = "numericNumbOfHouse";
-            numericNumbOfHouse.Size = new Size(104, 34);
-            numericNumbOfHouse.TabIndex = 99;
-            // 
             // checkNoCloseWindow
             // 
             checkNoCloseWindow.AutoSize = true;
@@ -654,20 +618,56 @@
             // 
             errorNoPhoneNumber.ContainerControl = this;
             // 
+            // textPolicySeries
+            // 
+            textPolicySeries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textPolicySeries.Location = new Point(12, 517);
+            textPolicySeries.Name = "textPolicySeries";
+            textPolicySeries.Size = new Size(192, 34);
+            textPolicySeries.TabIndex = 104;
+            textPolicySeries.KeyPress += textBox_ContainsExceptNumbers;
+            // 
+            // textNumbOfHouse
+            // 
+            textNumbOfHouse.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textNumbOfHouse.Location = new Point(325, 516);
+            textNumbOfHouse.Name = "textNumbOfHouse";
+            textNumbOfHouse.Size = new Size(125, 34);
+            textNumbOfHouse.TabIndex = 105;
+            textNumbOfHouse.KeyPress += textBox_ContainsExceptNumbers;
+            // 
+            // textNumbOfFlat
+            // 
+            textNumbOfFlat.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textNumbOfFlat.Location = new Point(323, 585);
+            textNumbOfFlat.Name = "textNumbOfFlat";
+            textNumbOfFlat.Size = new Size(125, 34);
+            textNumbOfFlat.TabIndex = 106;
+            textNumbOfFlat.KeyPress += textBox_ContainsExceptNumbers;
+            // 
+            // textPlotNumber
+            // 
+            textPlotNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textPlotNumber.Location = new Point(626, 135);
+            textPlotNumber.Name = "textPlotNumber";
+            textPlotNumber.Size = new Size(143, 34);
+            textPlotNumber.TabIndex = 107;
+            textPlotNumber.KeyPress += textBox_ContainsExceptNumbers;
+            // 
             // ChangeDataOfPatientForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(903, 725);
+            Controls.Add(textPlotNumber);
+            Controls.Add(textNumbOfFlat);
+            Controls.Add(textNumbOfHouse);
+            Controls.Add(textPolicySeries);
             Controls.Add(buttSearch);
             Controls.Add(textId);
             Controls.Add(label6);
             Controls.Add(checkNoCloseWindow);
-            Controls.Add(numericNumbOfHouse);
-            Controls.Add(numericNumbOfFlat);
-            Controls.Add(numericPlotNumber);
-            Controls.Add(numericPolicySeries);
             Controls.Add(dateTimeDateOfBirth);
             Controls.Add(buttSaveChanges);
             Controls.Add(label11);
@@ -709,10 +709,6 @@
             Name = "ChangeDataOfPatientForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChangeDataOfPatientForm";
-            ((System.ComponentModel.ISupportInitialize)numericPolicySeries).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoId).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
@@ -773,10 +769,6 @@
         private Label label11;
         private Button buttSaveChanges;
         private DateTimePicker dateTimeDateOfBirth;
-        private NumericUpDown numericPolicySeries;
-        private NumericUpDown numericPlotNumber;
-        private NumericUpDown numericNumbOfFlat;
-        private NumericUpDown numericNumbOfHouse;
         private CheckBox checkNoCloseWindow;
         private Label label6;
         private TextBox textId;
@@ -799,5 +791,9 @@
         private ErrorProvider errorNoCity;
         private ErrorProvider errorNoRegion;
         private ErrorProvider errorNoPhoneNumber;
+        private TextBox textPolicySeries;
+        private TextBox textNumbOfHouse;
+        private TextBox textNumbOfFlat;
+        private TextBox textPlotNumber;
     }
 }

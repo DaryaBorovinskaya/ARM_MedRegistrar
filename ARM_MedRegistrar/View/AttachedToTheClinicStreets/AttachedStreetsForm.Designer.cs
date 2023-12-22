@@ -44,13 +44,12 @@
             label2 = new Label();
             errorNoCity = new ErrorProvider(components);
             errorNoRegion = new ErrorProvider(components);
-            numericNumbOfHouse = new NumericUpDown();
             label3 = new Label();
             errorNoNumbOfHouse = new ErrorProvider(components);
+            textNumbOfHouse = new TextBox();
             ((System.ComponentModel.ISupportInitialize)errorNoStreet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoCity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoRegion).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoNumbOfHouse).BeginInit();
             SuspendLayout();
             // 
@@ -150,7 +149,7 @@
             label13.Size = new Size(69, 28);
             label13.TabIndex = 59;
             label13.Text = "Район";
-            label13.Click += label13_Click;
+            
             // 
             // textStreet
             // 
@@ -196,15 +195,6 @@
             // 
             errorNoRegion.ContainerControl = this;
             // 
-            // numericNumbOfHouse
-            // 
-            numericNumbOfHouse.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numericNumbOfHouse.Location = new Point(385, 425);
-            numericNumbOfHouse.Name = "numericNumbOfHouse";
-            numericNumbOfHouse.Size = new Size(188, 34);
-            numericNumbOfHouse.TabIndex = 65;
-            numericNumbOfHouse.ValueChanged += numericUpDown1_ValueChanged;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -221,14 +211,23 @@
             // 
             errorNoNumbOfHouse.ContainerControl = this;
             // 
+            // textNumbOfHouse
+            // 
+            textNumbOfHouse.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textNumbOfHouse.Location = new Point(416, 424);
+            textNumbOfHouse.Name = "textNumbOfHouse";
+            textNumbOfHouse.Size = new Size(125, 34);
+            textNumbOfHouse.TabIndex = 106;
+            textNumbOfHouse.KeyPress += textBox_ContainsExceptNumbers;
+            // 
             // AttachedStreetsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1320, 746);
+            Controls.Add(textNumbOfHouse);
             Controls.Add(label3);
-            Controls.Add(numericNumbOfHouse);
             Controls.Add(label2);
             Controls.Add(label12);
             Controls.Add(textStreet);
@@ -247,11 +246,10 @@
             Name = "AttachedStreetsForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AttachedStreetsForm";
-            Load += AttachedStreetsForm_Load;
+            
             ((System.ComponentModel.ISupportInitialize)errorNoStreet).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoCity).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoRegion).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoNumbOfHouse).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -274,8 +272,8 @@
         private Label label2;
         private ErrorProvider errorNoCity;
         private ErrorProvider errorNoRegion;
-        private NumericUpDown numericNumbOfHouse;
         private Label label3;
         private ErrorProvider errorNoNumbOfHouse;
+        private TextBox textNumbOfHouse;
     }
 }

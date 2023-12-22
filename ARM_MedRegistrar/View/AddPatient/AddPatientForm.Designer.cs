@@ -40,7 +40,6 @@ partial class AddPatientForm
         dateTimeDateOfBirth = new DateTimePicker();
         label5 = new Label();
         label6 = new Label();
-        numericPlotNumber = new NumericUpDown();
         label7 = new Label();
         label8 = new Label();
         comboBoxBloodType = new ComboBox();
@@ -52,15 +51,12 @@ partial class AddPatientForm
         textCity = new TextBox();
         textRegion = new TextBox();
         textStreet = new TextBox();
-        numericNumbOfHouse = new NumericUpDown();
-        numericNumbOfFlat = new NumericUpDown();
         label12 = new Label();
         label13 = new Label();
         label14 = new Label();
         label15 = new Label();
         label16 = new Label();
         textPolicyNumb = new TextBox();
-        numericPolicySeries = new NumericUpDown();
         label17 = new Label();
         label18 = new Label();
         errorNoSurname = new ErrorProvider(components);
@@ -90,10 +86,10 @@ partial class AddPatientForm
         textPhoneNumber = new TextBox();
         label23 = new Label();
         errorNoPhoneNumber = new ErrorProvider(components);
-        ((System.ComponentModel.ISupportInitialize)numericPlotNumber).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)numericPolicySeries).BeginInit();
+        textPlotNumber = new TextBox();
+        textPolicySeries = new TextBox();
+        textNumbOfHouse = new TextBox();
+        textNumbOfFlat = new TextBox();
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPolicySeries).BeginInit();
@@ -241,14 +237,6 @@ partial class AddPatientForm
         label6.TabIndex = 37;
         label6.Text = "Адрес";
         // 
-        // numericPlotNumber
-        // 
-        numericPlotNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericPlotNumber.Location = new Point(541, 473);
-        numericPlotNumber.Name = "numericPlotNumber";
-        numericPlotNumber.Size = new Size(150, 34);
-        numericPlotNumber.TabIndex = 39;
-        // 
         // label7
         // 
         label7.AutoSize = true;
@@ -367,24 +355,6 @@ partial class AddPatientForm
         textStreet.TabIndex = 52;
         textStreet.KeyPress += textBox_SpacePress;
         // 
-        // numericNumbOfHouse
-        // 
-        numericNumbOfHouse.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericNumbOfHouse.Location = new Point(783, 324);
-        numericNumbOfHouse.Name = "numericNumbOfHouse";
-        numericNumbOfHouse.Size = new Size(104, 34);
-        numericNumbOfHouse.TabIndex = 53;
-        numericNumbOfHouse.ValueChanged += numericNumbOfHouse_ValueChanged;
-        // 
-        // numericNumbOfFlat
-        // 
-        numericNumbOfFlat.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericNumbOfFlat.Location = new Point(992, 324);
-        numericNumbOfFlat.Name = "numericNumbOfFlat";
-        numericNumbOfFlat.Size = new Size(104, 34);
-        numericNumbOfFlat.TabIndex = 54;
-        numericNumbOfFlat.ValueChanged += numericNumbOfFlat_ValueChanged;
-        // 
         // label12
         // 
         label12.AutoSize = true;
@@ -453,15 +423,6 @@ partial class AddPatientForm
         textPolicyNumb.Size = new Size(372, 34);
         textPolicyNumb.TabIndex = 61;
         textPolicyNumb.KeyPress += textBox_ContainsExceptNumbers;
-        // 
-        // numericPolicySeries
-        // 
-        numericPolicySeries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        numericPolicySeries.Location = new Point(13, 628);
-        numericPolicySeries.Name = "numericPolicySeries";
-        numericPolicySeries.Size = new Size(162, 34);
-        numericPolicySeries.TabIndex = 62;
-        numericPolicySeries.ValueChanged += numericPolicySeries_ValueChanged;
         // 
         // label17
         // 
@@ -666,12 +627,52 @@ partial class AddPatientForm
         // 
         errorNoPhoneNumber.ContainerControl = this;
         // 
+        // textPlotNumber
+        // 
+        textPlotNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textPlotNumber.Location = new Point(541, 471);
+        textPlotNumber.Name = "textPlotNumber";
+        textPlotNumber.Size = new Size(143, 34);
+        textPlotNumber.TabIndex = 76;
+        textPlotNumber.KeyPress += textBox_ContainsExceptNumbers;
+        // 
+        // textPolicySeries
+        // 
+        textPolicySeries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textPolicySeries.Location = new Point(13, 629);
+        textPolicySeries.Name = "textPolicySeries";
+        textPolicySeries.Size = new Size(192, 34);
+        textPolicySeries.TabIndex = 77;
+        textPolicySeries.KeyPress += textBox_ContainsExceptNumbers;
+        // 
+        // textNumbOfHouse
+        // 
+        textNumbOfHouse.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textNumbOfHouse.Location = new Point(783, 333);
+        textNumbOfHouse.Name = "textNumbOfHouse";
+        textNumbOfHouse.Size = new Size(125, 34);
+        textNumbOfHouse.TabIndex = 78;
+        textNumbOfHouse.KeyPress += textBox_ContainsExceptNumbers;
+        // 
+        // textNumbOfFlat
+        // 
+        textNumbOfFlat.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textNumbOfFlat.Location = new Point(971, 333);
+        textNumbOfFlat.Name = "textNumbOfFlat";
+        textNumbOfFlat.Size = new Size(125, 34);
+        textNumbOfFlat.TabIndex = 79;
+        textNumbOfFlat.KeyPress += textBox_ContainsExceptNumbers;
+        // 
         // AddPatientForm
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
         ClientSize = new Size(1132, 788);
+        Controls.Add(textNumbOfFlat);
+        Controls.Add(textNumbOfHouse);
+        Controls.Add(textPolicySeries);
+        Controls.Add(textPlotNumber);
         Controls.Add(label23);
         Controls.Add(textPhoneNumber);
         Controls.Add(label22);
@@ -684,15 +685,12 @@ partial class AddPatientForm
         Controls.Add(textNumbOfPatientCard);
         Controls.Add(label18);
         Controls.Add(label17);
-        Controls.Add(numericPolicySeries);
         Controls.Add(textPolicyNumb);
         Controls.Add(label16);
         Controls.Add(label15);
         Controls.Add(label14);
         Controls.Add(label13);
         Controls.Add(label12);
-        Controls.Add(numericNumbOfFlat);
-        Controls.Add(numericNumbOfHouse);
         Controls.Add(textStreet);
         Controls.Add(textRegion);
         Controls.Add(textCity);
@@ -704,7 +702,6 @@ partial class AddPatientForm
         Controls.Add(comboBoxBloodType);
         Controls.Add(label8);
         Controls.Add(label7);
-        Controls.Add(numericPlotNumber);
         Controls.Add(label6);
         Controls.Add(label5);
         Controls.Add(dateTimeDateOfBirth);
@@ -721,10 +718,6 @@ partial class AddPatientForm
         Name = "AddPatientForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "AddPatient";
-        ((System.ComponentModel.ISupportInitialize)numericPlotNumber).EndInit();
-        ((System.ComponentModel.ISupportInitialize)numericNumbOfHouse).EndInit();
-        ((System.ComponentModel.ISupportInitialize)numericNumbOfFlat).EndInit();
-        ((System.ComponentModel.ISupportInitialize)numericPolicySeries).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPolicySeries).EndInit();
@@ -771,7 +764,6 @@ partial class AddPatientForm
     private DateTimePicker dateTimeDateOfBirth;
     private Label label5;
     private Label label6;
-    private NumericUpDown numericPlotNumber;
     private Label label7;
     private Label label8;
     private ComboBox comboBoxBloodType;
@@ -791,7 +783,7 @@ partial class AddPatientForm
     private Label label15;
     private Label label16;
     private TextBox textPolicyNumb;
-    private NumericUpDown numericPolicySeries;
+    private NumericUpDown numeric;
     private Label label17;
     private Label label18;
     private ErrorProvider errorNoSurname;
@@ -821,4 +813,9 @@ partial class AddPatientForm
     private Label label23;
     private TextBox textPhoneNumber;
     private ErrorProvider errorNoPhoneNumber;
+    private TextBox textBox4;
+    private TextBox textNumbOfHouse;
+    private TextBox textPolicySeries;
+    private TextBox textPlotNumber;
+    private TextBox textNumbOfFlat;
 }

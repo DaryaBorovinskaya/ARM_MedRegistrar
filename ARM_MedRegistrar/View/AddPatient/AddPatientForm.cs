@@ -21,11 +21,11 @@ namespace ARM_MedRegistrar
         string? IAddPatientForm.City => textCity.Text;
         string? IAddPatientForm.Region => textRegion.Text;
         string IAddPatientForm.Street => textStreet.Text;
-        int IAddPatientForm.NumbOfHouse => (int)numericNumbOfHouse.Value;
-        int IAddPatientForm.NumbOfFlat => (int)numericNumbOfFlat.Value;
-        int IAddPatientForm.PlotNumber => (int)numericPlotNumber.Value;
+        int IAddPatientForm.NumbOfHouse => int.Parse(textNumbOfHouse.Text);
+        int IAddPatientForm.NumbOfFlat => int.Parse(textNumbOfFlat.Text);
+        int IAddPatientForm.PlotNumber => int.Parse(textPlotNumber.Text);
         string IAddPatientForm.NumbOfPatientCard => textNumbOfPatientCard.Text;
-        int IAddPatientForm.PolicySeries => (int)numericPolicySeries.Value;
+        int IAddPatientForm.PolicySeries => int.Parse(textPolicySeries.Text);
         string IAddPatientForm.PolicyNumb => textPolicyNumb.Text;
         string IAddPatientForm.DocumentSeries => textDocumentSeries.Text;
         string IAddPatientForm.DocumentNumber => textDocumentNumber.Text;
@@ -89,7 +89,7 @@ namespace ARM_MedRegistrar
 
         private void numericPolicySeries_ValueChanged(object sender, EventArgs e)
         {
-            numericPolicySeries.Maximum = 9999;
+            numeric.Maximum = 9999;
         }
 
 
@@ -132,10 +132,10 @@ namespace ARM_MedRegistrar
                 errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
             }
 
-            if (numericPolicySeries.Value == 0)
+            if (textPolicySeries.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPolicySeries.SetError(numericPolicySeries, "Поле \"Серия полиса\" не заполнено");
+                errorNoPolicySeries.SetError(textPolicySeries, "Поле \"Серия полиса\" не заполнено");
             }
 
             if (textPolicyNumb.Text == string.Empty)
@@ -157,16 +157,16 @@ namespace ARM_MedRegistrar
                 errorNoStreet.SetError(textStreet, "Поле \"Улица\" не заполнено");
             }
 
-            if (numericNumbOfHouse.Value == 0)
+            if (textNumbOfHouse.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfHouse.SetError(numericNumbOfHouse, "Поле \"Дом\" не заполнено");
+                errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Дом\" не заполнено");
             }
 
-            if (numericNumbOfFlat.Value == 0)
+            if (textNumbOfFlat.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfFlat.SetError(numericNumbOfFlat, "Поле \"Квартира\" не заполнено");
+                errorNoNumbOfFlat.SetError(textNumbOfFlat, "Поле \"Квартира\" не заполнено");
             }
 
             if (comboBoxBloodType.SelectedIndex == -1)
@@ -198,17 +198,17 @@ namespace ARM_MedRegistrar
                 _isError = true;
                 errorNoDocumentNumber.SetError(textDocumentNumber, "Поле \"Номер документа\" не заполнено");
             }
-            if (numericPlotNumber.Value == 0)
+            if (textPlotNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPlotNumber.SetError(numericPlotNumber, "Поле \"Номер участка\" не заполнено");
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле \"Номер участка\" не заполнено");
             }
-            if (textPhoneNumber.Text == string.Empty) 
+            if (textPhoneNumber.Text == string.Empty)
             {
                 _isError = true;
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
-            
+
 
             if (!_isError)
             {
@@ -223,15 +223,15 @@ namespace ARM_MedRegistrar
                         textSurname.Clear();
                         textName.Clear();
                         textPatr.Clear();
-                        numericPolicySeries.Value = 0;
+                        textPolicySeries.Clear();
                         textPolicyNumb.Clear();
                         textStreet.Clear();
-                        numericNumbOfHouse.Value = 0;
-                        numericNumbOfFlat.Value = 0;
+                        textNumbOfHouse.Clear();
+                        textNumbOfFlat.Clear();
                         textNumbOfPatientCard.Clear();
                         textDocumentSeries.Clear();
                         textDocumentNumber.Clear();
-                        numericPlotNumber.Value = 0;
+                        textPlotNumber.Clear();
                         textPhoneNumber.Clear();
                     }
                 }

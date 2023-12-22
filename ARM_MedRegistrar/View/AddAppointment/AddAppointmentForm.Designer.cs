@@ -43,9 +43,9 @@
             label2 = new Label();
             buttAllPatients = new Button();
             buttAllDoctors = new Button();
-            dateTimePicker1 = new DateTimePicker();
+            dateTimePickerDateOfAppointment = new DateTimePicker();
             label3 = new Label();
-            dateTimePicker2 = new DateTimePicker();
+            dateTimePickerTimeOfAppointment = new DateTimePicker();
             label4 = new Label();
             label5 = new Label();
             comboBoxCabinetOrHome = new ComboBox();
@@ -166,13 +166,13 @@
             buttAllDoctors.Text = "Обновить список";
             buttAllDoctors.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // dateTimePickerDateOfAppointment
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Location = new Point(1358, 95);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(375, 34);
-            dateTimePicker1.TabIndex = 6;
+            dateTimePickerDateOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickerDateOfAppointment.Location = new Point(1358, 95);
+            dateTimePickerDateOfAppointment.Name = "dateTimePickerDateOfAppointment";
+            dateTimePickerDateOfAppointment.Size = new Size(375, 34);
+            dateTimePickerDateOfAppointment.TabIndex = 6;
             // 
             // label3
             // 
@@ -185,15 +185,15 @@
             label3.TabIndex = 7;
             label3.Text = "Дата приёма";
             // 
-            // dateTimePicker2
+            // dateTimePickerTimeOfAppointment
             // 
-            dateTimePicker2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker2.Format = DateTimePickerFormat.Time;
-            dateTimePicker2.Location = new Point(1358, 205);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.ShowUpDown = true;
-            dateTimePicker2.Size = new Size(375, 34);
-            dateTimePicker2.TabIndex = 8;
+            dateTimePickerTimeOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickerTimeOfAppointment.Format = DateTimePickerFormat.Time;
+            dateTimePickerTimeOfAppointment.Location = new Point(1358, 205);
+            dateTimePickerTimeOfAppointment.Name = "dateTimePickerTimeOfAppointment";
+            dateTimePickerTimeOfAppointment.ShowUpDown = true;
+            dateTimePickerTimeOfAppointment.Size = new Size(375, 34);
+            dateTimePickerTimeOfAppointment.TabIndex = 8;
             // 
             // label4
             // 
@@ -283,9 +283,9 @@
             Controls.Add(comboBoxCabinetOrHome);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(dateTimePicker2);
+            Controls.Add(dateTimePickerTimeOfAppointment);
             Controls.Add(label3);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dateTimePickerDateOfAppointment);
             Controls.Add(buttAllDoctors);
             Controls.Add(buttAllPatients);
             Controls.Add(label2);
@@ -313,9 +313,9 @@
         private Label label2;
         private Button buttAllPatients;
         private Button buttAllDoctors;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePickerDateOfAppointment;
         private Label label3;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dateTimePickerTimeOfAppointment;
         private Label label4;
         private Label label5;
         private ComboBox comboBoxCabinetOrHome;
