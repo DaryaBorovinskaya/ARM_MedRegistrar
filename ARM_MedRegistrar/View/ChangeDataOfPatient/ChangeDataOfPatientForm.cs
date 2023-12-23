@@ -198,6 +198,22 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
                 e.KeyChar = '\0';
         }
+
+        private string textBoxWithoutNullInBeginning(TextBox textBox)
+        {
+            string _newTextOfTextBox = textBox.Text;
+            int _length = _newTextOfTextBox.Length;
+            if (_newTextOfTextBox[0] == '0')
+            {
+                if (_length == 1)
+                    _newTextOfTextBox = "1";
+                else
+                    _newTextOfTextBox = _newTextOfTextBox.Remove(0, 1);
+            }
+            return _newTextOfTextBox;
+        }
+
+
         private void buttSearch_Click(object sender, EventArgs e)
         {
             errorNoId.Clear();
@@ -207,7 +223,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
 
             else
             {
-
+                textId.Text = textBoxWithoutNullInBeginning(textId);
                 if (!_presenter.ShowDataAboutPatient())
                 {
                     textId.ReadOnly = false;
@@ -340,6 +356,15 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
+            textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
+            textPolicySeries.Text = textBoxWithoutNullInBeginning(textPolicySeries);
+            textPolicyNumber.Text = textBoxWithoutNullInBeginning(textPolicyNumber);
+            textDocumentSeries.Text = textBoxWithoutNullInBeginning(textDocumentSeries);
+            textDocumentNumber.Text = textBoxWithoutNullInBeginning(textDocumentNumber);
+            textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
+            textNumbOfFlat.Text = textBoxWithoutNullInBeginning(textNumbOfFlat);
+            textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
+            textNumbOfPatientCard.Text = textBoxWithoutNullInBeginning(textNumbOfPatientCard);
 
 
             if (!_isError)

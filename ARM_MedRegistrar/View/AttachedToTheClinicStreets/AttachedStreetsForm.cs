@@ -29,6 +29,19 @@ namespace ARM_MedRegistrar.View
                 e.KeyChar = '\0';
         }
 
+        private string textBoxWithoutNullInBeginning(TextBox textBox)
+        {
+            string _newTextOfTextBox = textBox.Text;
+            int _length = _newTextOfTextBox.Length;
+            if (_newTextOfTextBox[0] == '0')
+            {
+                if (_length == 1)
+                    _newTextOfTextBox = "1";
+                else
+                    _newTextOfTextBox = _newTextOfTextBox.Remove(0, 1);
+            }
+            return _newTextOfTextBox;
+        }
 
         private void buttAddDataToFile_Click(object sender, EventArgs e)
         {
@@ -71,6 +84,9 @@ namespace ARM_MedRegistrar.View
                     _isError = true;
                     errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Номер дома\" не заполнено");
                 }
+
+                textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
+
 
                 if (!_isError)
                 {

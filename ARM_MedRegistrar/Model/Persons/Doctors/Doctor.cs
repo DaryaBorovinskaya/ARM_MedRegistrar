@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.WorkSchedules;
 
 namespace ARM_MedRegistrar.Model.Persons.Doctors
 {
@@ -28,6 +29,7 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
             }
         }
 
+        public IList<IWorkSchedule> WorkSchedule { get; set; }
         public string PhoneNumber
         {
             get => _phoneNumber; set
@@ -71,10 +73,11 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 
 
         public uint Id { get; }
-        public Doctor(uint id, IFullName fullName, string phoneNumber, string specialization, int plotNumber, int cabinet)
+        public Doctor(uint id, IFullName fullName, IList<IWorkSchedule> workSchedule ,string phoneNumber, string specialization, int plotNumber, int cabinet)
         {
             Id = id;
             FullName = fullName;
+            WorkSchedule = workSchedule;
             PhoneNumber = phoneNumber;
             Specialization = specialization;
             PlotNumber = plotNumber;
@@ -84,9 +87,15 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 
         public string Format()
         {
+            string _lineSchedule = "";
+            foreach (IWorkSchedule workSchedule in WorkSchedule) 
+                 _lineSchedule += workSchedule.Format();
+                
+            
+
             return "ID: " + Id.ToString() + "\nФамилия: " + FullName.Surname + "\nИмя: " + FullName.Name
             + "\nОтчество: " + FullName.Patronymic + "\nСпециализация: " + Specialization + "\nНомер телефона: " + PhoneNumber
-            + "\nНомер участка: " + PlotNumber + "\nНомер кабинета: " + Cabinet;
+            + "\nНомер участка: " + PlotNumber + "\nНомер кабинета: " + Cabinet + _lineSchedule;
         }
     }
 }

@@ -91,7 +91,19 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
                 e.KeyChar = '\0';
         }
 
-
+        private string textBoxWithoutNullInBeginning(TextBox textBox)
+        {
+            string _newTextOfTextBox = textBox.Text;
+            int _length = _newTextOfTextBox.Length;
+            if (_newTextOfTextBox[0] == '0')
+            {
+                if (_length == 1)
+                    _newTextOfTextBox = "1";
+                else
+                    _newTextOfTextBox = _newTextOfTextBox.Remove(0, 1);
+            }
+            return _newTextOfTextBox;
+        }
         private void buttSearch_Click(object sender, EventArgs e)
         {
             errorNoId.Clear();
@@ -99,8 +111,11 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
             if (textId.Text == string.Empty)
                 errorNoId.SetError(textId, "Поле \"ID\" не заполнено");
 
+            
+
             else
             {
+                textId.Text = textBoxWithoutNullInBeginning(textId);
 
                 if (!_presenter.ShowDataAboutDoctor())
                 {
@@ -157,6 +172,11 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
                 _isError = true;
                 errorNoPlotNumber.SetError(textPlotNumber, "Поле \"Номер участка\" не заполнено");
             }
+
+            textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
+            textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
+            textCabinet.Text = textBoxWithoutNullInBeginning(textCabinet);
+
 
             if (!_isError)
             {

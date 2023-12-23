@@ -77,6 +77,22 @@ namespace ARM_MedRegistrar
                 e.KeyChar = '\0';
 
         }
+
+        private string textBoxWithoutNullInBeginning(TextBox textBox)
+        {
+            string _newTextOfTextBox = textBox.Text;
+            int _length = _newTextOfTextBox.Length;
+            if (_newTextOfTextBox[0] == '0')
+            {
+                if (_length == 1)
+                    _newTextOfTextBox = "1";
+                else
+                    _newTextOfTextBox = _newTextOfTextBox.Remove(0, 1);
+            }
+            return _newTextOfTextBox;
+        }
+
+
         private void buttRegistration_Click(object sender, EventArgs e)
         {
 
@@ -132,6 +148,7 @@ namespace ARM_MedRegistrar
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
+            textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
 
             if (!_isError)
             {

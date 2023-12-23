@@ -15,5 +15,6 @@ namespace ARM_MedRegistrar.View.AddDoctor
         public string PhoneNumber { get;}
         public int PlotNumber { get;  }
         public int Cabinet { get;  }
+       
     }
 }
