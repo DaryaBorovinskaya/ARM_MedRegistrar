@@ -86,6 +86,7 @@
             buttPaidMedServices = new Button();
             checkIsMultiSelect = new CheckBox();
             errorMultiSelect = new ErrorProvider(components);
+            columnHeader21 = new ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).BeginInit();
@@ -128,7 +129,7 @@
             // 
             // listViewSchedule
             // 
-            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader20, columnHeader7, columnHeader8, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
+            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader20, columnHeader7, columnHeader8, columnHeader21, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
             listViewSchedule.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             listViewSchedule.Location = new Point(12, 680);
             listViewSchedule.MultiSelect = false;
@@ -552,6 +553,11 @@
             // 
             errorMultiSelect.ContainerControl = this;
             // 
+            // columnHeader21
+            // 
+            columnHeader21.Text = "Тип записи";
+            columnHeader21.Width = 150;
+            // 
             // MainWindowForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -663,5 +669,6 @@
         private Button buttPaidMedServices;
         private CheckBox checkIsMultiSelect;
         private ErrorProvider errorMultiSelect;
+        private ColumnHeader columnHeader21;
     }
 }

@@ -56,6 +56,48 @@
             textCabinet = new TextBox();
             textPlotNumber = new TextBox();
             errorNoPlotNumber = new ErrorProvider(components);
+            label20 = new Label();
+            label19 = new Label();
+            checkIsWeekendTues = new CheckBox();
+            checkIsWeekendWed = new CheckBox();
+            checkIsWeekendThurs = new CheckBox();
+            checkIsWeekendFri = new CheckBox();
+            checkIsWeekendSat = new CheckBox();
+            checkIsWeekendSun = new CheckBox();
+            checkIsWeekendMon = new CheckBox();
+            timeSunWorkEnd = new DateTimePicker();
+            timeSunWorkBeginning = new DateTimePicker();
+            timeTuesWorkBeginning = new DateTimePicker();
+            timeTuesWorkEnd = new DateTimePicker();
+            timeThursWorkBeginning = new DateTimePicker();
+            timeThursWorkEnd = new DateTimePicker();
+            timeFriWorkBeginning = new DateTimePicker();
+            timeFriWorkEnd = new DateTimePicker();
+            timeSatWorkBeginning = new DateTimePicker();
+            timeSatWorkEnd = new DateTimePicker();
+            timeWedWorkBeginning = new DateTimePicker();
+            timeWedWorkEnd = new DateTimePicker();
+            timeMonWorkEnd = new DateTimePicker();
+            timeMonWorkBeginning = new DateTimePicker();
+            label16 = new Label();
+            label15 = new Label();
+            label14 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label17 = new Label();
+            label18 = new Label();
+            timeDurationOfAppointment = new DateTimePicker();
+            label21 = new Label();
+            errorNoDurationOfAppointment = new ErrorProvider(components);
+            errorNoCorrectTimeMon = new ErrorProvider(components);
+            errorNoCorrectTimeThurs = new ErrorProvider(components);
+            errorNoCorrectTimeFri = new ErrorProvider(components);
+            errorNoCorrectTimeSat = new ErrorProvider(components);
+            errorNoCorrectTimeSun = new ErrorProvider(components);
+            errorNoCorrectTimeWed = new ErrorProvider(components);
+            errorNoCorrectTimeTues = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)errorNoId).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
@@ -63,6 +105,14 @@
             ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSpecialization).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoDurationOfAppointment).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeMon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeThurs).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeFri).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeSat).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeSun).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeWed).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeTues).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -245,7 +295,7 @@
             // 
             checkNoCloseWindow.AutoSize = true;
             checkNoCloseWindow.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            checkNoCloseWindow.Location = new Point(580, 424);
+            checkNoCloseWindow.Location = new Point(579, 575);
             checkNoCloseWindow.Name = "checkNoCloseWindow";
             checkNoCloseWindow.Size = new Size(206, 32);
             checkNoCloseWindow.TabIndex = 120;
@@ -257,7 +307,7 @@
             buttSaveChanges.BackColor = Color.FromArgb(255, 192, 192);
             buttSaveChanges.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             buttSaveChanges.ForeColor = Color.Firebrick;
-            buttSaveChanges.Location = new Point(184, 415);
+            buttSaveChanges.Location = new Point(195, 566);
             buttSaveChanges.Margin = new Padding(4);
             buttSaveChanges.Name = "buttSaveChanges";
             buttSaveChanges.Size = new Size(369, 47);
@@ -316,12 +366,446 @@
             // 
             errorNoPlotNumber.ContainerControl = this;
             // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.ForeColor = Color.Firebrick;
+            label20.Location = new Point(1206, 105);
+            label20.Name = "label20";
+            label20.Size = new Size(174, 28);
+            label20.TabIndex = 154;
+            label20.Text = "Конец рабоч. дня";
+            label20.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label19.ForeColor = Color.Firebrick;
+            label19.Location = new Point(983, 105);
+            label19.Name = "label19";
+            label19.Size = new Size(184, 28);
+            label19.TabIndex = 153;
+            label19.Text = "Начало рабоч. дня";
+            label19.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // checkIsWeekendTues
+            // 
+            checkIsWeekendTues.AutoSize = true;
+            checkIsWeekendTues.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsWeekendTues.Location = new Point(845, 213);
+            checkIsWeekendTues.Name = "checkIsWeekendTues";
+            checkIsWeekendTues.Size = new Size(72, 32);
+            checkIsWeekendTues.TabIndex = 152;
+            checkIsWeekendTues.Text = "Вых.";
+            checkIsWeekendTues.UseVisualStyleBackColor = true;
+            checkIsWeekendTues.CheckedChanged += checkIsWeekendTues_CheckedChanged;
+            // 
+            // checkIsWeekendWed
+            // 
+            checkIsWeekendWed.AutoSize = true;
+            checkIsWeekendWed.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsWeekendWed.Location = new Point(845, 286);
+            checkIsWeekendWed.Name = "checkIsWeekendWed";
+            checkIsWeekendWed.Size = new Size(72, 32);
+            checkIsWeekendWed.TabIndex = 151;
+            checkIsWeekendWed.Text = "Вых.";
+            checkIsWeekendWed.UseVisualStyleBackColor = true;
+            checkIsWeekendWed.CheckedChanged += checkIsWeekendWed_CheckedChanged;            // 
+            // checkIsWeekendThurs
+            // 
+            checkIsWeekendThurs.AutoSize = true;
+            checkIsWeekendThurs.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsWeekendThurs.Location = new Point(845, 360);
+            checkIsWeekendThurs.Name = "checkIsWeekendThurs";
+            checkIsWeekendThurs.Size = new Size(72, 32);
+            checkIsWeekendThurs.TabIndex = 150;
+            checkIsWeekendThurs.Text = "Вых.";
+            checkIsWeekendThurs.UseVisualStyleBackColor = true;
+            checkIsWeekendThurs.CheckedChanged += checkIsWeekendThurs_CheckedChanged;
+            // 
+            // checkIsWeekendFri
+            // 
+            checkIsWeekendFri.AutoSize = true;
+            checkIsWeekendFri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsWeekendFri.Location = new Point(845, 425);
+            checkIsWeekendFri.Name = "checkIsWeekendFri";
+            checkIsWeekendFri.Size = new Size(72, 32);
+            checkIsWeekendFri.TabIndex = 149;
+            checkIsWeekendFri.Text = "Вых.";
+            checkIsWeekendFri.UseVisualStyleBackColor = true;
+            checkIsWeekendFri.CheckedChanged += checkIsWeekendFri_CheckedChanged;
+            // 
+            // checkIsWeekendSat
+            // 
+            checkIsWeekendSat.AutoSize = true;
+            checkIsWeekendSat.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsWeekendSat.Location = new Point(845, 497);
+            checkIsWeekendSat.Name = "checkIsWeekendSat";
+            checkIsWeekendSat.Size = new Size(72, 32);
+            checkIsWeekendSat.TabIndex = 148;
+            checkIsWeekendSat.Text = "Вых.";
+            checkIsWeekendSat.UseVisualStyleBackColor = true;
+            checkIsWeekendSat.CheckedChanged += checkIsWeekendSat_CheckedChanged;
+            // 
+            // checkIsWeekendSun
+            // 
+            checkIsWeekendSun.AutoSize = true;
+            checkIsWeekendSun.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsWeekendSun.Location = new Point(845, 559);
+            checkIsWeekendSun.Name = "checkIsWeekendSun";
+            checkIsWeekendSun.Size = new Size(72, 32);
+            checkIsWeekendSun.TabIndex = 147;
+            checkIsWeekendSun.Text = "Вых.";
+            checkIsWeekendSun.UseVisualStyleBackColor = true;
+            checkIsWeekendSun.CheckedChanged += checkIsWeekendSun_CheckedChanged;
+            // 
+            // checkIsWeekendMon
+            // 
+            checkIsWeekendMon.AutoSize = true;
+            checkIsWeekendMon.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsWeekendMon.Location = new Point(845, 144);
+            checkIsWeekendMon.Name = "checkIsWeekendMon";
+            checkIsWeekendMon.Size = new Size(72, 32);
+            checkIsWeekendMon.TabIndex = 146;
+            checkIsWeekendMon.Text = "Вых.";
+            checkIsWeekendMon.UseVisualStyleBackColor = true;
+            checkIsWeekendMon.CheckedChanged += checkIsWeekendMon_CheckedChanged;
+            // 
+            // timeSunWorkEnd
+            // 
+            timeSunWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeSunWorkEnd.Format = DateTimePickerFormat.Time;
+            timeSunWorkEnd.Location = new Point(1248, 555);
+            timeSunWorkEnd.Name = "timeSunWorkEnd";
+            timeSunWorkEnd.ShowUpDown = true;
+            timeSunWorkEnd.Size = new Size(115, 34);
+            timeSunWorkEnd.TabIndex = 145;
+            // 
+            // timeSunWorkBeginning
+            // 
+            timeSunWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeSunWorkBeginning.Format = DateTimePickerFormat.Time;
+            timeSunWorkBeginning.Location = new Point(1035, 554);
+            timeSunWorkBeginning.Name = "timeSunWorkBeginning";
+            timeSunWorkBeginning.ShowUpDown = true;
+            timeSunWorkBeginning.Size = new Size(115, 34);
+            timeSunWorkBeginning.TabIndex = 144;
+            // 
+            // timeTuesWorkBeginning
+            // 
+            timeTuesWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeTuesWorkBeginning.Format = DateTimePickerFormat.Time;
+            timeTuesWorkBeginning.Location = new Point(1035, 214);
+            timeTuesWorkBeginning.Name = "timeTuesWorkBeginning";
+            timeTuesWorkBeginning.ShowUpDown = true;
+            timeTuesWorkBeginning.Size = new Size(115, 34);
+            timeTuesWorkBeginning.TabIndex = 143;
+            // 
+            // timeTuesWorkEnd
+            // 
+            timeTuesWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeTuesWorkEnd.Format = DateTimePickerFormat.Time;
+            timeTuesWorkEnd.Location = new Point(1248, 214);
+            timeTuesWorkEnd.Name = "timeTuesWorkEnd";
+            timeTuesWorkEnd.ShowUpDown = true;
+            timeTuesWorkEnd.Size = new Size(115, 34);
+            timeTuesWorkEnd.TabIndex = 142;
+            // 
+            // timeThursWorkBeginning
+            // 
+            timeThursWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeThursWorkBeginning.Format = DateTimePickerFormat.Time;
+            timeThursWorkBeginning.Location = new Point(1035, 356);
+            timeThursWorkBeginning.Name = "timeThursWorkBeginning";
+            timeThursWorkBeginning.ShowUpDown = true;
+            timeThursWorkBeginning.Size = new Size(115, 34);
+            timeThursWorkBeginning.TabIndex = 141;
+            // 
+            // timeThursWorkEnd
+            // 
+            timeThursWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeThursWorkEnd.Format = DateTimePickerFormat.Time;
+            timeThursWorkEnd.Location = new Point(1248, 356);
+            timeThursWorkEnd.Name = "timeThursWorkEnd";
+            timeThursWorkEnd.ShowUpDown = true;
+            timeThursWorkEnd.Size = new Size(115, 34);
+            timeThursWorkEnd.TabIndex = 140;
+            // 
+            // timeFriWorkBeginning
+            // 
+            timeFriWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeFriWorkBeginning.Format = DateTimePickerFormat.Time;
+            timeFriWorkBeginning.Location = new Point(1035, 420);
+            timeFriWorkBeginning.Name = "timeFriWorkBeginning";
+            timeFriWorkBeginning.ShowUpDown = true;
+            timeFriWorkBeginning.Size = new Size(115, 34);
+            timeFriWorkBeginning.TabIndex = 139;
+            // 
+            // timeFriWorkEnd
+            // 
+            timeFriWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeFriWorkEnd.Format = DateTimePickerFormat.Time;
+            timeFriWorkEnd.Location = new Point(1248, 420);
+            timeFriWorkEnd.Name = "timeFriWorkEnd";
+            timeFriWorkEnd.ShowUpDown = true;
+            timeFriWorkEnd.Size = new Size(115, 34);
+            timeFriWorkEnd.TabIndex = 138;
+            // 
+            // timeSatWorkBeginning
+            // 
+            timeSatWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeSatWorkBeginning.Format = DateTimePickerFormat.Time;
+            timeSatWorkBeginning.Location = new Point(1035, 491);
+            timeSatWorkBeginning.Name = "timeSatWorkBeginning";
+            timeSatWorkBeginning.ShowUpDown = true;
+            timeSatWorkBeginning.Size = new Size(115, 34);
+            timeSatWorkBeginning.TabIndex = 137;
+            // 
+            // timeSatWorkEnd
+            // 
+            timeSatWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeSatWorkEnd.Format = DateTimePickerFormat.Time;
+            timeSatWorkEnd.Location = new Point(1248, 491);
+            timeSatWorkEnd.Name = "timeSatWorkEnd";
+            timeSatWorkEnd.ShowUpDown = true;
+            timeSatWorkEnd.Size = new Size(115, 34);
+            timeSatWorkEnd.TabIndex = 136;
+            // 
+            // timeWedWorkBeginning
+            // 
+            timeWedWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeWedWorkBeginning.Format = DateTimePickerFormat.Time;
+            timeWedWorkBeginning.Location = new Point(1035, 285);
+            timeWedWorkBeginning.Name = "timeWedWorkBeginning";
+            timeWedWorkBeginning.ShowUpDown = true;
+            timeWedWorkBeginning.Size = new Size(115, 34);
+            timeWedWorkBeginning.TabIndex = 135;
+            // 
+            // timeWedWorkEnd
+            // 
+            timeWedWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeWedWorkEnd.Format = DateTimePickerFormat.Time;
+            timeWedWorkEnd.Location = new Point(1250, 285);
+            timeWedWorkEnd.Name = "timeWedWorkEnd";
+            timeWedWorkEnd.ShowUpDown = true;
+            timeWedWorkEnd.Size = new Size(115, 34);
+            timeWedWorkEnd.TabIndex = 134;
+            // 
+            // timeMonWorkEnd
+            // 
+            timeMonWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeMonWorkEnd.Format = DateTimePickerFormat.Time;
+            timeMonWorkEnd.Location = new Point(1248, 139);
+            timeMonWorkEnd.Name = "timeMonWorkEnd";
+            timeMonWorkEnd.ShowUpDown = true;
+            timeMonWorkEnd.Size = new Size(115, 34);
+            timeMonWorkEnd.TabIndex = 133;
+            // 
+            // timeMonWorkBeginning
+            // 
+            timeMonWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeMonWorkBeginning.Format = DateTimePickerFormat.Time;
+            timeMonWorkBeginning.Location = new Point(1035, 140);
+            timeMonWorkBeginning.Name = "timeMonWorkBeginning";
+            timeMonWorkBeginning.ShowUpDown = true;
+            timeMonWorkBeginning.Size = new Size(115, 34);
+            timeMonWorkBeginning.TabIndex = 132;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.ForeColor = Color.Firebrick;
+            label16.Location = new Point(950, 425);
+            label16.Name = "label16";
+            label16.Size = new Size(34, 28);
+            label16.TabIndex = 131;
+            label16.Text = "Пт";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.ForeColor = Color.Firebrick;
+            label15.Location = new Point(947, 356);
+            label15.Name = "label15";
+            label15.Size = new Size(33, 28);
+            label15.TabIndex = 130;
+            label15.Text = "Чт";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.ForeColor = Color.Firebrick;
+            label14.Location = new Point(947, 497);
+            label14.Name = "label14";
+            label14.Size = new Size(36, 28);
+            label14.TabIndex = 129;
+            label14.Text = "Сб";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.ForeColor = Color.Firebrick;
+            label13.Location = new Point(951, 560);
+            label13.Name = "label13";
+            label13.Size = new Size(32, 28);
+            label13.TabIndex = 128;
+            label13.Text = "Вс";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.ForeColor = Color.Firebrick;
+            label12.Location = new Point(947, 285);
+            label12.Name = "label12";
+            label12.Size = new Size(36, 28);
+            label12.TabIndex = 127;
+            label12.Text = "Ср";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.ForeColor = Color.Firebrick;
+            label11.Location = new Point(947, 214);
+            label11.Name = "label11";
+            label11.Size = new Size(31, 28);
+            label11.TabIndex = 126;
+            label11.Text = "Вт";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.ForeColor = Color.Firebrick;
+            label10.Location = new Point(947, 145);
+            label10.Name = "label10";
+            label10.Size = new Size(38, 28);
+            label10.TabIndex = 125;
+            label10.Text = "Пн";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label17.ForeColor = Color.Firebrick;
+            label17.Location = new Point(1082, 49);
+            label17.Name = "label17";
+            label17.Size = new Size(190, 31);
+            label17.TabIndex = 124;
+            label17.Text = "График работы ";
+            label17.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label18.Location = new Point(838, 614);
+            label18.Name = "label18";
+            label18.Size = new Size(329, 28);
+            label18.TabIndex = 155;
+            label18.Text = "Вых. - выходной (нерабочий день)";
+            // 
+            // timeDurationOfAppointment
+            // 
+            timeDurationOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            timeDurationOfAppointment.Format = DateTimePickerFormat.Time;
+            timeDurationOfAppointment.Location = new Point(279, 465);
+            timeDurationOfAppointment.Name = "timeDurationOfAppointment";
+            timeDurationOfAppointment.ShowUpDown = true;
+            timeDurationOfAppointment.Size = new Size(115, 34);
+            timeDurationOfAppointment.TabIndex = 156;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label21.ForeColor = Color.Firebrick;
+            label21.Location = new Point(279, 420);
+            label21.Margin = new Padding(4, 0, 4, 0);
+            label21.Name = "label21";
+            label21.Size = new Size(276, 28);
+            label21.TabIndex = 157;
+            label21.Text = "Продолжительность приёма";
+            // 
+            // errorNoDurationOfAppointment
+            // 
+            errorNoDurationOfAppointment.ContainerControl = this;
+            // 
+            // errorNoCorrectTimeMon
+            // 
+            errorNoCorrectTimeMon.ContainerControl = this;
+            // 
+            // errorNoCorrectTimeThurs
+            // 
+            errorNoCorrectTimeThurs.ContainerControl = this;
+            // 
+            // errorNoCorrectTimeFri
+            // 
+            errorNoCorrectTimeFri.ContainerControl = this;
+            // 
+            // errorNoCorrectTimeSat
+            // 
+            errorNoCorrectTimeSat.ContainerControl = this;
+            // 
+            // errorNoCorrectTimeSun
+            // 
+            errorNoCorrectTimeSun.ContainerControl = this;
+            // 
+            // errorNoCorrectTimeWed
+            // 
+            errorNoCorrectTimeWed.ContainerControl = this;
+            // 
+            // errorNoCorrectTimeTues
+            // 
+            errorNoCorrectTimeTues.ContainerControl = this;
+            // 
             // ChangeDataOfDoctorForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(863, 485);
+            ClientSize = new Size(1427, 662);
+            Controls.Add(label21);
+            Controls.Add(timeDurationOfAppointment);
+            Controls.Add(label18);
+            Controls.Add(label20);
+            Controls.Add(label19);
+            Controls.Add(checkIsWeekendTues);
+            Controls.Add(checkIsWeekendWed);
+            Controls.Add(checkIsWeekendThurs);
+            Controls.Add(checkIsWeekendFri);
+            Controls.Add(checkIsWeekendSat);
+            Controls.Add(checkIsWeekendSun);
+            Controls.Add(checkIsWeekendMon);
+            Controls.Add(timeSunWorkEnd);
+            Controls.Add(timeSunWorkBeginning);
+            Controls.Add(timeTuesWorkBeginning);
+            Controls.Add(timeTuesWorkEnd);
+            Controls.Add(timeThursWorkBeginning);
+            Controls.Add(timeThursWorkEnd);
+            Controls.Add(timeFriWorkBeginning);
+            Controls.Add(timeFriWorkEnd);
+            Controls.Add(timeSatWorkBeginning);
+            Controls.Add(timeSatWorkEnd);
+            Controls.Add(timeWedWorkBeginning);
+            Controls.Add(timeWedWorkEnd);
+            Controls.Add(timeMonWorkEnd);
+            Controls.Add(timeMonWorkBeginning);
+            Controls.Add(label16);
+            Controls.Add(label15);
+            Controls.Add(label14);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label17);
             Controls.Add(textCabinet);
             Controls.Add(textPlotNumber);
             Controls.Add(checkNoCloseWindow);
@@ -354,6 +838,14 @@
             ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSpecialization).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoDurationOfAppointment).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeMon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeThurs).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeFri).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeSat).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeSun).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeWed).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeTues).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -387,5 +879,47 @@
         private TextBox textCabinet;
         private TextBox textPlotNumber;
         private ErrorProvider errorNoPlotNumber;
+        private Label label20;
+        private Label label19;
+        private CheckBox checkIsWeekendTues;
+        private CheckBox checkIsWeekendWed;
+        private CheckBox checkIsWeekendThurs;
+        private CheckBox checkIsWeekendFri;
+        private CheckBox checkIsWeekendSat;
+        private CheckBox checkIsWeekendSun;
+        private CheckBox checkIsWeekendMon;
+        private DateTimePicker timeSunWorkEnd;
+        private DateTimePicker timeSunWorkBeginning;
+        private DateTimePicker timeTuesWorkBeginning;
+        private DateTimePicker timeTuesWorkEnd;
+        private DateTimePicker timeThursWorkBeginning;
+        private DateTimePicker timeThursWorkEnd;
+        private DateTimePicker timeFriWorkBeginning;
+        private DateTimePicker timeFriWorkEnd;
+        private DateTimePicker timeSatWorkBeginning;
+        private DateTimePicker timeSatWorkEnd;
+        private DateTimePicker timeWedWorkBeginning;
+        private DateTimePicker timeWedWorkEnd;
+        private DateTimePicker timeMonWorkEnd;
+        private DateTimePicker timeMonWorkBeginning;
+        private Label label16;
+        private Label label15;
+        private Label label14;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label17;
+        private Label label18;
+        private DateTimePicker timeDurationOfAppointment;
+        private Label label21;
+        private ErrorProvider errorNoDurationOfAppointment;
+        private ErrorProvider errorNoCorrectTimeMon;
+        private ErrorProvider errorNoCorrectTimeThurs;
+        private ErrorProvider errorNoCorrectTimeFri;
+        private ErrorProvider errorNoCorrectTimeSat;
+        private ErrorProvider errorNoCorrectTimeSun;
+        private ErrorProvider errorNoCorrectTimeWed;
+        private ErrorProvider errorNoCorrectTimeTues;
     }
 }

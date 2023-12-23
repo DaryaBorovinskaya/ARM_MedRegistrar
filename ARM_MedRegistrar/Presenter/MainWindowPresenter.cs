@@ -12,7 +12,7 @@ using ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository;
 namespace ARM_MedRegistrar.Presenter
 {
     public class MainWindowPresenter
-    {
+    { 
         IMainWindowForm _view;
         IPatientRepository _jsonPatientRepository;
         IDictionary<uint, IPatient>? _patients;

@@ -85,11 +85,12 @@ namespace ARM_MedRegistrar.View
                     errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Номер дома\" не заполнено");
                 }
 
-                textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
-
+                
 
                 if (!_isError)
                 {
+                    textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
+
                     //_newAttachedStreet = new(textCity.Text, textRegion.Text, textStreet.Text, (int)numericNumbOfHouse.Value);
                     //jsonAttachedStreetsRepository.Add(_newAttachedStreet);
 

@@ -131,7 +131,7 @@ namespace ARM_MedRegistrar
             form.Hide();
 
             InitializeComponent();
-            DialogResult = DialogResult.Cancel;
+            
 
             FormClosed += OnClosed;
 

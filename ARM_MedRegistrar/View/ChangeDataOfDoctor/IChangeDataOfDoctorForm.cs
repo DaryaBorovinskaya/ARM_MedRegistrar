@@ -16,5 +16,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
         public string PhoneNumber { get; set; }
         public int PlotNumber { get; set; }
         public int Cabinet { get; set; }
+        public IList<DateTime> TimesOfWork { get; set; }
+        public DateTime DurationOfAppointment { get; set; }
     }
 }

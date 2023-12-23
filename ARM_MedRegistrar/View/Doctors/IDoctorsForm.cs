@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.View.Doctors
 {
-    public interface IDoctorsForm
+    public interface IDoctorsForm 
     {
         public uint Id { set; }
         public int CountOfLine { set; }

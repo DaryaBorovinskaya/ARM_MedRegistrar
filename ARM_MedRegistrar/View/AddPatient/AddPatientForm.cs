@@ -223,18 +223,19 @@ namespace ARM_MedRegistrar
             }
 
 
-            textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
-            textPolicySeries.Text = textBoxWithoutNullInBeginning(textPolicySeries);
-            textPolicyNumb.Text = textBoxWithoutNullInBeginning(textPolicyNumb);
-            textDocumentSeries.Text = textBoxWithoutNullInBeginning(textDocumentSeries);
-            textDocumentNumber.Text = textBoxWithoutNullInBeginning(textDocumentNumber);
-            textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
-            textNumbOfFlat.Text = textBoxWithoutNullInBeginning(textNumbOfFlat);
-            textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
-            textNumbOfPatientCard.Text = textBoxWithoutNullInBeginning(textNumbOfPatientCard);
-
+            
             if (!_isError)
             {
+                textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
+                textPolicySeries.Text = textBoxWithoutNullInBeginning(textPolicySeries);
+                textPolicyNumb.Text = textBoxWithoutNullInBeginning(textPolicyNumb);
+                textDocumentSeries.Text = textBoxWithoutNullInBeginning(textDocumentSeries);
+                textDocumentNumber.Text = textBoxWithoutNullInBeginning(textDocumentNumber);
+                textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
+                textNumbOfFlat.Text = textBoxWithoutNullInBeginning(textNumbOfFlat);
+                textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
+                textNumbOfPatientCard.Text = textBoxWithoutNullInBeginning(textNumbOfPatientCard);
+
                 if (_presenter.AddPatient())
                 {
                     MessageBox.Show("Добавление пациента успешно выполнено!");

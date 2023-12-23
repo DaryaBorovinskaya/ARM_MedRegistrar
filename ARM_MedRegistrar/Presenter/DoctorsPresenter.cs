@@ -70,7 +70,7 @@ namespace ARM_MedRegistrar.Presenter
                 {
                     _isSuccess = true;
                     _countOfLine++;
-                    _view.CountOfLine = _countOfLine;
+                    _view.CountOfLine = _countOfLine; 
                     _view.Id = doctor.Id;
                     _view.Surname = doctor.FullName.Surname;
                     _view.Name = doctor.FullName.Name;

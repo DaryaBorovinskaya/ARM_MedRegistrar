@@ -18,7 +18,7 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
         public string Specialization { get; set; }
         public int PlotNumber { get; set; }
         public int Cabinet { get; set; }
-      
 
+        public DateTime DurationOfAppointment { get; set; }
     }
 }

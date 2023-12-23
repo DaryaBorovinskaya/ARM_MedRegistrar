@@ -7,16 +7,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ARM_MedRegistrar.Model.WorkSchedules
 {
     public class WorkScheduleOfDoctor : IWorkSchedule
     {
         private string _dayOfWeek;
-        private string _workBeginning;
-        private string _workEnd;
+        private static readonly string[] _dayOfWeeks = { "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье" };
 
-       
+        public static string[] GetDaysOfWeek => _dayOfWeeks;
+        
         public string DayOfWeek
         {
             get => _dayOfWeek;
@@ -25,45 +26,32 @@ namespace ARM_MedRegistrar.Model.WorkSchedules
                 if (value == "" || value == " " || value == null)
                     throw new ArgumentException("День недели не задан");
                 _dayOfWeek = value;
-                OnPropertyChanged();
             }
         }
 
         
-        public string WorkBeginning
-        {
-            get => _workBeginning;
-            set
-            {
-                if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Начало рабоч. дня не задано");
-                _workBeginning = value;
-                OnPropertyChanged();
-            }
-        }
+        public DateTime WorkBeginning { get; set; }
+        
+        
 
-        public string WorkEnd
-        {
-            get => _workEnd;
-            set
-            {
-                if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Конец рабоч. дня не задан");
-                _workEnd = value;
-                OnPropertyChanged();
-            }
-        }
+        public DateTime WorkEnd { get; set; }
+        
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        
+          
+        public WorkScheduleOfDoctor(string dayOfWeek, DateTime workBeginning, DateTime workEnd )
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            DayOfWeek = dayOfWeek;
+            workBeginning = workBeginning.Date + new TimeSpan(workBeginning.TimeOfDay.Hours, workBeginning.TimeOfDay.Minutes, 0);
+            WorkBeginning = workBeginning;
+            workEnd = workEnd.Date + new TimeSpan(workEnd.TimeOfDay.Hours, workEnd.TimeOfDay.Minutes, 0);
+            WorkEnd = workEnd;
+            
         }
 
         public string Format()
         {
-            return "День недели: " + DayOfWeek + "\n : " + WorkBeginning + "\n : " + WorkEnd + "\n";
+            return "День недели: " + DayOfWeek + "\nНачало рабоч. дня: " + WorkBeginning.TimeOfDay.ToString() + "\nКонец рабоч. дня : " + WorkEnd.TimeOfDay.ToString()   + "\n\n";
         }
 
     }

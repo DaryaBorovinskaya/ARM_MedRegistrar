@@ -73,7 +73,10 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 
 
         public uint Id { get; }
-        public Doctor(uint id, IFullName fullName, IList<IWorkSchedule> workSchedule ,string phoneNumber, string specialization, int plotNumber, int cabinet)
+
+        public DateTime DurationOfAppointment { get; set; }
+
+        public Doctor(uint id, IFullName fullName, IList<IWorkSchedule> workSchedule ,string phoneNumber, string specialization, int plotNumber, int cabinet , DateTime durationOfAppointment)
         {
             Id = id;
             FullName = fullName;
@@ -82,7 +85,10 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
             Specialization = specialization;
             PlotNumber = plotNumber;
             Cabinet = cabinet;
-            
+
+            durationOfAppointment = durationOfAppointment.Date + new TimeSpan(durationOfAppointment.TimeOfDay.Hours, durationOfAppointment.TimeOfDay.Minutes, 0);
+            DurationOfAppointment = durationOfAppointment;
+
         }
 
         public string Format()
@@ -95,7 +101,8 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 
             return "ID: " + Id.ToString() + "\nФамилия: " + FullName.Surname + "\nИмя: " + FullName.Name
             + "\nОтчество: " + FullName.Patronymic + "\nСпециализация: " + Specialization + "\nНомер телефона: " + PhoneNumber
-            + "\nНомер участка: " + PlotNumber + "\nНомер кабинета: " + Cabinet + _lineSchedule;
+            + "\nНомер участка: " + PlotNumber + "\nНомер кабинета: " + Cabinet + "\n\nГРАФИК РАБОТЫ\n\n" + _lineSchedule 
+            + "\nПродолжит. приёма : " + DurationOfAppointment.TimeOfDay.ToString();
         }
     }
 }

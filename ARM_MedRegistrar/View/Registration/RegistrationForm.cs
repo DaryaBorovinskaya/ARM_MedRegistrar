@@ -148,10 +148,11 @@ namespace ARM_MedRegistrar
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
-            textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
+           
 
             if (!_isError)
             {
+                textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
                 if (_presenter.IsSuccessRegistration())
                 {
                     MessageBox.Show($"Вы успешно зарегистрированы (должность {comboBoxPost.SelectedItem})");

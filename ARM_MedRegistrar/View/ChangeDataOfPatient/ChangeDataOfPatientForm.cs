@@ -356,19 +356,20 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
-            textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
-            textPolicySeries.Text = textBoxWithoutNullInBeginning(textPolicySeries);
-            textPolicyNumber.Text = textBoxWithoutNullInBeginning(textPolicyNumber);
-            textDocumentSeries.Text = textBoxWithoutNullInBeginning(textDocumentSeries);
-            textDocumentNumber.Text = textBoxWithoutNullInBeginning(textDocumentNumber);
-            textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
-            textNumbOfFlat.Text = textBoxWithoutNullInBeginning(textNumbOfFlat);
-            textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
-            textNumbOfPatientCard.Text = textBoxWithoutNullInBeginning(textNumbOfPatientCard);
-
+            
 
             if (!_isError)
             {
+                textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
+                textPolicySeries.Text = textBoxWithoutNullInBeginning(textPolicySeries);
+                textPolicyNumber.Text = textBoxWithoutNullInBeginning(textPolicyNumber);
+                textDocumentSeries.Text = textBoxWithoutNullInBeginning(textDocumentSeries);
+                textDocumentNumber.Text = textBoxWithoutNullInBeginning(textDocumentNumber);
+                textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
+                textNumbOfFlat.Text = textBoxWithoutNullInBeginning(textNumbOfFlat);
+                textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
+                textNumbOfPatientCard.Text = textBoxWithoutNullInBeginning(textNumbOfPatientCard);
+
                 if (_presenter.SaveChanges())
                 {
                     MessageBox.Show("Данные пациента успешно изменены");

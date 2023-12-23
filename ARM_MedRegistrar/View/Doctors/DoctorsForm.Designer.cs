@@ -180,7 +180,7 @@
             buttRemoveDoctor.TabIndex = 50;
             buttRemoveDoctor.Text = "Удалить врача";
             buttRemoveDoctor.UseVisualStyleBackColor = true;
-            buttRemoveDoctor.Click += buttRemovePatient_Click;
+            buttRemoveDoctor.Click += buttRemoveDoctor_Click;
             // 
             // buttAllDoctors
             // 

@@ -65,20 +65,40 @@ partial class AddDoctorForm
         label14 = new Label();
         label15 = new Label();
         label16 = new Label();
-        TimeMonWorkBeginning = new DateTimePicker();
-        dateTimePicker1 = new DateTimePicker();
-        dateTimePicker2 = new DateTimePicker();
-        dateTimePicker3 = new DateTimePicker();
-        dateTimePicker4 = new DateTimePicker();
-        dateTimePicker5 = new DateTimePicker();
-        dateTimePicker6 = new DateTimePicker();
-        dateTimePicker7 = new DateTimePicker();
-        dateTimePicker8 = new DateTimePicker();
-        dateTimePicker9 = new DateTimePicker();
-        dateTimePicker10 = new DateTimePicker();
-        dateTimePicker11 = new DateTimePicker();
-        dateTimePicker12 = new DateTimePicker();
-        dateTimePicker13 = new DateTimePicker();
+        timeMonWorkBeginning = new DateTimePicker();
+        timeMonWorkEnd = new DateTimePicker();
+        timeWedWorkEnd = new DateTimePicker();
+        timeWedWorkBeginning = new DateTimePicker();
+        timeSatWorkEnd = new DateTimePicker();
+        timeSatWorkBeginning = new DateTimePicker();
+        timeFriWorkEnd = new DateTimePicker();
+        timeFriWorkBeginning = new DateTimePicker();
+        timeThursWorkEnd = new DateTimePicker();
+        timeThursWorkBeginning = new DateTimePicker();
+        timeTuesWorkEnd = new DateTimePicker();
+        timeTuesWorkBeginning = new DateTimePicker();
+        timeSunWorkBeginning = new DateTimePicker();
+        timeSunWorkEnd = new DateTimePicker();
+        checkIsWeekendMon = new CheckBox();
+        checkIsWeekendSun = new CheckBox();
+        checkIsWeekendSat = new CheckBox();
+        checkIsWeekendFri = new CheckBox();
+        checkIsWeekendThurs = new CheckBox();
+        checkIsWeekendWed = new CheckBox();
+        checkIsWeekendTues = new CheckBox();
+        label17 = new Label();
+        timeDurationOfAppointment = new DateTimePicker();
+        label18 = new Label();
+        errorNoDurationOfAppointment = new ErrorProvider(components);
+        errorNoCorrectTimeMon = new ErrorProvider(components);
+        errorNoCorrectTimeThurs = new ErrorProvider(components);
+        errorNoCorrectTimeFri = new ErrorProvider(components);
+        errorNoCorrectTimeSat = new ErrorProvider(components);
+        errorNoCorrectTimeSun = new ErrorProvider(components);
+        errorNoCorrectTimeWed = new ErrorProvider(components);
+        errorNoCorrectTimeTues = new ErrorProvider(components);
+        label19 = new Label();
+        label20 = new Label();
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoCabinet).BeginInit();
@@ -87,6 +107,14 @@ partial class AddDoctorForm
         ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)dataGridSchedule).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSchedule).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoDurationOfAppointment).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeMon).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeThurs).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeFri).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeSat).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeSun).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeWed).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeTues).BeginInit();
         SuspendLayout();
         // 
         // label2
@@ -94,7 +122,7 @@ partial class AddDoctorForm
         label2.AutoSize = true;
         label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
         label2.ForeColor = Color.Firebrick;
-        label2.Location = new Point(207, 50);
+        label2.Location = new Point(196, 47);
         label2.Margin = new Padding(4, 0, 4, 0);
         label2.Name = "label2";
         label2.Size = new Size(268, 37);
@@ -338,11 +366,11 @@ partial class AddDoctorForm
         // label9
         // 
         label9.AutoSize = true;
-        label9.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+        label9.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
         label9.ForeColor = Color.Firebrick;
-        label9.Location = new Point(1067, 50);
+        label9.Location = new Point(1046, 24);
         label9.Name = "label9";
-        label9.Size = new Size(188, 32);
+        label9.Size = new Size(190, 31);
         label9.TabIndex = 43;
         label9.Text = "График работы ";
         label9.TextAlign = ContentAlignment.TopCenter;
@@ -365,6 +393,7 @@ partial class AddDoctorForm
         // label10
         // 
         label10.AutoSize = true;
+        label10.ForeColor = Color.Firebrick;
         label10.Location = new Point(923, 127);
         label10.Name = "label10";
         label10.Size = new Size(38, 28);
@@ -374,6 +403,7 @@ partial class AddDoctorForm
         // label11
         // 
         label11.AutoSize = true;
+        label11.ForeColor = Color.Firebrick;
         label11.Location = new Point(923, 196);
         label11.Name = "label11";
         label11.Size = new Size(31, 28);
@@ -383,6 +413,7 @@ partial class AddDoctorForm
         // label12
         // 
         label12.AutoSize = true;
+        label12.ForeColor = Color.Firebrick;
         label12.Location = new Point(923, 267);
         label12.Name = "label12";
         label12.Size = new Size(36, 28);
@@ -393,6 +424,7 @@ partial class AddDoctorForm
         // label13
         // 
         label13.AutoSize = true;
+        label13.ForeColor = Color.Firebrick;
         label13.Location = new Point(927, 542);
         label13.Name = "label13";
         label13.Size = new Size(32, 28);
@@ -402,6 +434,7 @@ partial class AddDoctorForm
         // label14
         // 
         label14.AutoSize = true;
+        label14.ForeColor = Color.Firebrick;
         label14.Location = new Point(923, 479);
         label14.Name = "label14";
         label14.Size = new Size(36, 28);
@@ -411,6 +444,7 @@ partial class AddDoctorForm
         // label15
         // 
         label15.AutoSize = true;
+        label15.ForeColor = Color.Firebrick;
         label15.Location = new Point(923, 338);
         label15.Name = "label15";
         label15.Size = new Size(33, 28);
@@ -420,151 +454,316 @@ partial class AddDoctorForm
         // label16
         // 
         label16.AutoSize = true;
+        label16.ForeColor = Color.Firebrick;
         label16.Location = new Point(926, 407);
         label16.Name = "label16";
         label16.Size = new Size(34, 28);
         label16.TabIndex = 52;
         label16.Text = "Пт";
         // 
-        // TimeMonWorkBeginning
+        // timeMonWorkBeginning
         // 
-        TimeMonWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        TimeMonWorkBeginning.Format = DateTimePickerFormat.Time;
-        TimeMonWorkBeginning.Location = new Point(1011, 122);
-        TimeMonWorkBeginning.Name = "TimeMonWorkBeginning";
-        TimeMonWorkBeginning.ShowUpDown = true;
-        TimeMonWorkBeginning.Size = new Size(115, 34);
-        TimeMonWorkBeginning.TabIndex = 54;
+        timeMonWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeMonWorkBeginning.Format = DateTimePickerFormat.Time;
+        timeMonWorkBeginning.Location = new Point(1011, 122);
+        timeMonWorkBeginning.Name = "timeMonWorkBeginning";
+        timeMonWorkBeginning.ShowUpDown = true;
+        timeMonWorkBeginning.Size = new Size(115, 34);
+        timeMonWorkBeginning.TabIndex = 54;
         // 
-        // dateTimePicker1
+        // timeMonWorkEnd
         // 
-        dateTimePicker1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker1.Format = DateTimePickerFormat.Time;
-        dateTimePicker1.Location = new Point(1224, 121);
-        dateTimePicker1.Name = "dateTimePicker1";
-        dateTimePicker1.ShowUpDown = true;
-        dateTimePicker1.Size = new Size(115, 34);
-        dateTimePicker1.TabIndex = 55;
+        timeMonWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeMonWorkEnd.Format = DateTimePickerFormat.Time;
+        timeMonWorkEnd.Location = new Point(1224, 121);
+        timeMonWorkEnd.Name = "timeMonWorkEnd";
+        timeMonWorkEnd.ShowUpDown = true;
+        timeMonWorkEnd.Size = new Size(115, 34);
+        timeMonWorkEnd.TabIndex = 55;
         // 
-        // dateTimePicker2
+        // timeWedWorkEnd
         // 
-        dateTimePicker2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker2.Format = DateTimePickerFormat.Time;
-        dateTimePicker2.Location = new Point(1224, 267);
-        dateTimePicker2.Name = "dateTimePicker2";
-        dateTimePicker2.ShowUpDown = true;
-        dateTimePicker2.Size = new Size(115, 34);
-        dateTimePicker2.TabIndex = 56;
+        timeWedWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeWedWorkEnd.Format = DateTimePickerFormat.Time;
+        timeWedWorkEnd.Location = new Point(1226, 267);
+        timeWedWorkEnd.Name = "timeWedWorkEnd";
+        timeWedWorkEnd.ShowUpDown = true;
+        timeWedWorkEnd.Size = new Size(115, 34);
+        timeWedWorkEnd.TabIndex = 56;
         // 
-        // dateTimePicker3
+        // timeWedWorkBeginning
         // 
-        dateTimePicker3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker3.Format = DateTimePickerFormat.Time;
-        dateTimePicker3.Location = new Point(1011, 267);
-        dateTimePicker3.Name = "dateTimePicker3";
-        dateTimePicker3.ShowUpDown = true;
-        dateTimePicker3.Size = new Size(115, 34);
-        dateTimePicker3.TabIndex = 57;
+        timeWedWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeWedWorkBeginning.Format = DateTimePickerFormat.Time;
+        timeWedWorkBeginning.Location = new Point(1011, 267);
+        timeWedWorkBeginning.Name = "timeWedWorkBeginning";
+        timeWedWorkBeginning.ShowUpDown = true;
+        timeWedWorkBeginning.Size = new Size(115, 34);
+        timeWedWorkBeginning.TabIndex = 57;
         // 
-        // dateTimePicker4
+        // timeSatWorkEnd
         // 
-        dateTimePicker4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker4.Format = DateTimePickerFormat.Time;
-        dateTimePicker4.Location = new Point(1224, 473);
-        dateTimePicker4.Name = "dateTimePicker4";
-        dateTimePicker4.ShowUpDown = true;
-        dateTimePicker4.Size = new Size(115, 34);
-        dateTimePicker4.TabIndex = 58;
+        timeSatWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeSatWorkEnd.Format = DateTimePickerFormat.Time;
+        timeSatWorkEnd.Location = new Point(1224, 473);
+        timeSatWorkEnd.Name = "timeSatWorkEnd";
+        timeSatWorkEnd.ShowUpDown = true;
+        timeSatWorkEnd.Size = new Size(115, 34);
+        timeSatWorkEnd.TabIndex = 58;
         // 
-        // dateTimePicker5
+        // timeSatWorkBeginning
         // 
-        dateTimePicker5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker5.Format = DateTimePickerFormat.Time;
-        dateTimePicker5.Location = new Point(1011, 473);
-        dateTimePicker5.Name = "dateTimePicker5";
-        dateTimePicker5.ShowUpDown = true;
-        dateTimePicker5.Size = new Size(115, 34);
-        dateTimePicker5.TabIndex = 59;
+        timeSatWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeSatWorkBeginning.Format = DateTimePickerFormat.Time;
+        timeSatWorkBeginning.Location = new Point(1011, 473);
+        timeSatWorkBeginning.Name = "timeSatWorkBeginning";
+        timeSatWorkBeginning.ShowUpDown = true;
+        timeSatWorkBeginning.Size = new Size(115, 34);
+        timeSatWorkBeginning.TabIndex = 59;
         // 
-        // dateTimePicker6
+        // timeFriWorkEnd
         // 
-        dateTimePicker6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker6.Format = DateTimePickerFormat.Time;
-        dateTimePicker6.Location = new Point(1224, 402);
-        dateTimePicker6.Name = "dateTimePicker6";
-        dateTimePicker6.ShowUpDown = true;
-        dateTimePicker6.Size = new Size(115, 34);
-        dateTimePicker6.TabIndex = 60;
+        timeFriWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeFriWorkEnd.Format = DateTimePickerFormat.Time;
+        timeFriWorkEnd.Location = new Point(1224, 402);
+        timeFriWorkEnd.Name = "timeFriWorkEnd";
+        timeFriWorkEnd.ShowUpDown = true;
+        timeFriWorkEnd.Size = new Size(115, 34);
+        timeFriWorkEnd.TabIndex = 60;
         // 
-        // dateTimePicker7
+        // timeFriWorkBeginning
         // 
-        dateTimePicker7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker7.Format = DateTimePickerFormat.Time;
-        dateTimePicker7.Location = new Point(1011, 402);
-        dateTimePicker7.Name = "dateTimePicker7";
-        dateTimePicker7.ShowUpDown = true;
-        dateTimePicker7.Size = new Size(115, 34);
-        dateTimePicker7.TabIndex = 61;
+        timeFriWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeFriWorkBeginning.Format = DateTimePickerFormat.Time;
+        timeFriWorkBeginning.Location = new Point(1011, 402);
+        timeFriWorkBeginning.Name = "timeFriWorkBeginning";
+        timeFriWorkBeginning.ShowUpDown = true;
+        timeFriWorkBeginning.Size = new Size(115, 34);
+        timeFriWorkBeginning.TabIndex = 61;
         // 
-        // dateTimePicker8
+        // timeThursWorkEnd
         // 
-        dateTimePicker8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker8.Format = DateTimePickerFormat.Time;
-        dateTimePicker8.Location = new Point(1224, 332);
-        dateTimePicker8.Name = "dateTimePicker8";
-        dateTimePicker8.ShowUpDown = true;
-        dateTimePicker8.Size = new Size(115, 34);
-        dateTimePicker8.TabIndex = 62;
+        timeThursWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeThursWorkEnd.Format = DateTimePickerFormat.Time;
+        timeThursWorkEnd.Location = new Point(1224, 338);
+        timeThursWorkEnd.Name = "timeThursWorkEnd";
+        timeThursWorkEnd.ShowUpDown = true;
+        timeThursWorkEnd.Size = new Size(115, 34);
+        timeThursWorkEnd.TabIndex = 62;
         // 
-        // dateTimePicker9
+        // timeThursWorkBeginning
         // 
-        dateTimePicker9.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker9.Format = DateTimePickerFormat.Time;
-        dateTimePicker9.Location = new Point(1011, 338);
-        dateTimePicker9.Name = "dateTimePicker9";
-        dateTimePicker9.ShowUpDown = true;
-        dateTimePicker9.Size = new Size(115, 34);
-        dateTimePicker9.TabIndex = 63;
+        timeThursWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeThursWorkBeginning.Format = DateTimePickerFormat.Time;
+        timeThursWorkBeginning.Location = new Point(1011, 338);
+        timeThursWorkBeginning.Name = "timeThursWorkBeginning";
+        timeThursWorkBeginning.ShowUpDown = true;
+        timeThursWorkBeginning.Size = new Size(115, 34);
+        timeThursWorkBeginning.TabIndex = 63;
         // 
-        // dateTimePicker10
+        // timeTuesWorkEnd
         // 
-        dateTimePicker10.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker10.Format = DateTimePickerFormat.Time;
-        dateTimePicker10.Location = new Point(1224, 190);
-        dateTimePicker10.Name = "dateTimePicker10";
-        dateTimePicker10.ShowUpDown = true;
-        dateTimePicker10.Size = new Size(115, 34);
-        dateTimePicker10.TabIndex = 64;
+        timeTuesWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeTuesWorkEnd.Format = DateTimePickerFormat.Time;
+        timeTuesWorkEnd.Location = new Point(1224, 196);
+        timeTuesWorkEnd.Name = "timeTuesWorkEnd";
+        timeTuesWorkEnd.ShowUpDown = true;
+        timeTuesWorkEnd.Size = new Size(115, 34);
+        timeTuesWorkEnd.TabIndex = 64;
         // 
-        // dateTimePicker11
+        // timeTuesWorkBeginning
         // 
-        dateTimePicker11.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker11.Format = DateTimePickerFormat.Time;
-        dateTimePicker11.Location = new Point(1011, 196);
-        dateTimePicker11.Name = "dateTimePicker11";
-        dateTimePicker11.ShowUpDown = true;
-        dateTimePicker11.Size = new Size(115, 34);
-        dateTimePicker11.TabIndex = 65;
+        timeTuesWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeTuesWorkBeginning.Format = DateTimePickerFormat.Time;
+        timeTuesWorkBeginning.Location = new Point(1011, 196);
+        timeTuesWorkBeginning.Name = "timeTuesWorkBeginning";
+        timeTuesWorkBeginning.ShowUpDown = true;
+        timeTuesWorkBeginning.Size = new Size(115, 34);
+        timeTuesWorkBeginning.TabIndex = 65;
         // 
-        // dateTimePicker12
+        // timeSunWorkBeginning
         // 
-        dateTimePicker12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker12.Format = DateTimePickerFormat.Time;
-        dateTimePicker12.Location = new Point(1011, 536);
-        dateTimePicker12.Name = "dateTimePicker12";
-        dateTimePicker12.ShowUpDown = true;
-        dateTimePicker12.Size = new Size(115, 34);
-        dateTimePicker12.TabIndex = 66;
+        timeSunWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeSunWorkBeginning.Format = DateTimePickerFormat.Time;
+        timeSunWorkBeginning.Location = new Point(1011, 536);
+        timeSunWorkBeginning.Name = "timeSunWorkBeginning";
+        timeSunWorkBeginning.ShowUpDown = true;
+        timeSunWorkBeginning.Size = new Size(115, 34);
+        timeSunWorkBeginning.TabIndex = 66;
         // 
-        // dateTimePicker13
+        // timeSunWorkEnd
         // 
-        dateTimePicker13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-        dateTimePicker13.Format = DateTimePickerFormat.Time;
-        dateTimePicker13.Location = new Point(1224, 537);
-        dateTimePicker13.Name = "dateTimePicker13";
-        dateTimePicker13.ShowUpDown = true;
-        dateTimePicker13.Size = new Size(115, 34);
-        dateTimePicker13.TabIndex = 67;
+        timeSunWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeSunWorkEnd.Format = DateTimePickerFormat.Time;
+        timeSunWorkEnd.Location = new Point(1224, 537);
+        timeSunWorkEnd.Name = "timeSunWorkEnd";
+        timeSunWorkEnd.ShowUpDown = true;
+        timeSunWorkEnd.Size = new Size(115, 34);
+        timeSunWorkEnd.TabIndex = 67;
+        // 
+        // checkIsWeekendMon
+        // 
+        checkIsWeekendMon.AutoSize = true;
+        checkIsWeekendMon.Location = new Point(821, 126);
+        checkIsWeekendMon.Name = "checkIsWeekendMon";
+        checkIsWeekendMon.Size = new Size(72, 32);
+        checkIsWeekendMon.TabIndex = 68;
+        checkIsWeekendMon.Text = "Вых.";
+        checkIsWeekendMon.UseVisualStyleBackColor = true;
+        checkIsWeekendMon.CheckedChanged += checkIsWeekendMon_CheckedChanged;
+        // 
+        // checkIsWeekendSun
+        // 
+        checkIsWeekendSun.AutoSize = true;
+        checkIsWeekendSun.Location = new Point(821, 541);
+        checkIsWeekendSun.Name = "checkIsWeekendSun";
+        checkIsWeekendSun.Size = new Size(72, 32);
+        checkIsWeekendSun.TabIndex = 75;
+        checkIsWeekendSun.Text = "Вых.";
+        checkIsWeekendSun.UseVisualStyleBackColor = true;
+        checkIsWeekendSun.CheckedChanged += checkIsWeekendSun_CheckedChanged;
+        // 
+        // checkIsWeekendSat
+        // 
+        checkIsWeekendSat.AutoSize = true;
+        checkIsWeekendSat.Location = new Point(821, 479);
+        checkIsWeekendSat.Name = "checkIsWeekendSat";
+        checkIsWeekendSat.Size = new Size(72, 32);
+        checkIsWeekendSat.TabIndex = 76;
+        checkIsWeekendSat.Text = "Вых.";
+        checkIsWeekendSat.UseVisualStyleBackColor = true;
+        checkIsWeekendSat.CheckedChanged += checkIsWeekendSat_CheckedChanged;
+        // 
+        // checkIsWeekendFri
+        // 
+        checkIsWeekendFri.AutoSize = true;
+        checkIsWeekendFri.Location = new Point(821, 407);
+        checkIsWeekendFri.Name = "checkIsWeekendFri";
+        checkIsWeekendFri.Size = new Size(72, 32);
+        checkIsWeekendFri.TabIndex = 77;
+        checkIsWeekendFri.Text = "Вых.";
+        checkIsWeekendFri.UseVisualStyleBackColor = true;
+        checkIsWeekendFri.CheckedChanged += checkIsWeekendFri_CheckedChanged;
+        // 
+        // checkIsWeekendThurs
+        // 
+        checkIsWeekendThurs.AutoSize = true;
+        checkIsWeekendThurs.Location = new Point(821, 342);
+        checkIsWeekendThurs.Name = "checkIsWeekendThurs";
+        checkIsWeekendThurs.Size = new Size(72, 32);
+        checkIsWeekendThurs.TabIndex = 78;
+        checkIsWeekendThurs.Text = "Вых.";
+        checkIsWeekendThurs.UseVisualStyleBackColor = true;
+        checkIsWeekendThurs.CheckedChanged += checkIsWeekendThurs_CheckedChanged;
+        // 
+        // checkIsWeekendWed
+        // 
+        checkIsWeekendWed.AutoSize = true;
+        checkIsWeekendWed.Location = new Point(821, 268);
+        checkIsWeekendWed.Name = "checkIsWeekendWed";
+        checkIsWeekendWed.Size = new Size(72, 32);
+        checkIsWeekendWed.TabIndex = 79;
+        checkIsWeekendWed.Text = "Вых.";
+        checkIsWeekendWed.UseVisualStyleBackColor = true;
+        checkIsWeekendWed.CheckedChanged += checkIsWeekendWed_CheckedChanged;
+        // 
+        // checkIsWeekendTues
+        // 
+        checkIsWeekendTues.AutoSize = true;
+        checkIsWeekendTues.Location = new Point(821, 195);
+        checkIsWeekendTues.Name = "checkIsWeekendTues";
+        checkIsWeekendTues.Size = new Size(72, 32);
+        checkIsWeekendTues.TabIndex = 80;
+        checkIsWeekendTues.Text = "Вых.";
+        checkIsWeekendTues.UseVisualStyleBackColor = true;
+        checkIsWeekendTues.CheckedChanged += checkIsWeekendTues_CheckedChanged;
+        // 
+        // label17
+        // 
+        label17.AutoSize = true;
+        label17.Location = new Point(776, 616);
+        label17.Name = "label17";
+        label17.Size = new Size(329, 28);
+        label17.TabIndex = 81;
+        label17.Text = "Вых. - выходной (нерабочий день)";
+        // 
+        // timeDurationOfAppointment
+        // 
+        timeDurationOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeDurationOfAppointment.Format = DateTimePickerFormat.Time;
+        timeDurationOfAppointment.Location = new Point(413, 502);
+        timeDurationOfAppointment.Name = "timeDurationOfAppointment";
+        timeDurationOfAppointment.ShowUpDown = true;
+        timeDurationOfAppointment.Size = new Size(115, 34);
+        timeDurationOfAppointment.TabIndex = 82;
+        // 
+        // label18
+        // 
+        label18.AutoSize = true;
+        label18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label18.ForeColor = Color.Firebrick;
+        label18.Location = new Point(413, 456);
+        label18.Margin = new Padding(4, 0, 4, 0);
+        label18.Name = "label18";
+        label18.Size = new Size(276, 28);
+        label18.TabIndex = 83;
+        label18.Text = "Продолжительность приёма";
+        // 
+        // errorNoDurationOfAppointment
+        // 
+        errorNoDurationOfAppointment.ContainerControl = this;
+        // 
+        // errorNoCorrectTimeMon
+        // 
+        errorNoCorrectTimeMon.ContainerControl = this;
+        // 
+        // errorNoCorrectTimeThurs
+        // 
+        errorNoCorrectTimeThurs.ContainerControl = this;
+        // 
+        // errorNoCorrectTimeFri
+        // 
+        errorNoCorrectTimeFri.ContainerControl = this;
+        // 
+        // errorNoCorrectTimeSat
+        // 
+        errorNoCorrectTimeSat.ContainerControl = this;
+        // 
+        // errorNoCorrectTimeSun
+        // 
+        errorNoCorrectTimeSun.ContainerControl = this;
+        // 
+        // errorNoCorrectTimeWed
+        // 
+        errorNoCorrectTimeWed.ContainerControl = this;
+        // 
+        // errorNoCorrectTimeTues
+        // 
+        errorNoCorrectTimeTues.ContainerControl = this;
+        // 
+        // label19
+        // 
+        label19.AutoSize = true;
+        label19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label19.ForeColor = Color.Firebrick;
+        label19.Location = new Point(959, 87);
+        label19.Name = "label19";
+        label19.Size = new Size(184, 28);
+        label19.TabIndex = 84;
+        label19.Text = "Начало рабоч. дня";
+        label19.TextAlign = ContentAlignment.TopCenter;
+        // 
+        // label20
+        // 
+        label20.AutoSize = true;
+        label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label20.ForeColor = Color.Firebrick;
+        label20.Location = new Point(1182, 87);
+        label20.Name = "label20";
+        label20.Size = new Size(174, 28);
+        label20.TabIndex = 85;
+        label20.Text = "Конец рабоч. дня";
+        label20.TextAlign = ContentAlignment.TopCenter;
         // 
         // AddDoctorForm
         // 
@@ -572,20 +771,32 @@ partial class AddDoctorForm
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.Snow;
         ClientSize = new Size(1399, 669);
-        Controls.Add(dateTimePicker13);
-        Controls.Add(dateTimePicker12);
-        Controls.Add(dateTimePicker11);
-        Controls.Add(dateTimePicker10);
-        Controls.Add(dateTimePicker9);
-        Controls.Add(dateTimePicker8);
-        Controls.Add(dateTimePicker7);
-        Controls.Add(dateTimePicker6);
-        Controls.Add(dateTimePicker5);
-        Controls.Add(dateTimePicker4);
-        Controls.Add(dateTimePicker3);
-        Controls.Add(dateTimePicker2);
-        Controls.Add(dateTimePicker1);
-        Controls.Add(TimeMonWorkBeginning);
+        Controls.Add(label20);
+        Controls.Add(label19);
+        Controls.Add(label18);
+        Controls.Add(timeDurationOfAppointment);
+        Controls.Add(label17);
+        Controls.Add(checkIsWeekendTues);
+        Controls.Add(checkIsWeekendWed);
+        Controls.Add(checkIsWeekendThurs);
+        Controls.Add(checkIsWeekendFri);
+        Controls.Add(checkIsWeekendSat);
+        Controls.Add(checkIsWeekendSun);
+        Controls.Add(checkIsWeekendMon);
+        Controls.Add(timeSunWorkEnd);
+        Controls.Add(timeSunWorkBeginning);
+        Controls.Add(timeTuesWorkBeginning);
+        Controls.Add(timeTuesWorkEnd);
+        Controls.Add(timeThursWorkBeginning);
+        Controls.Add(timeThursWorkEnd);
+        Controls.Add(timeFriWorkBeginning);
+        Controls.Add(timeFriWorkEnd);
+        Controls.Add(timeSatWorkBeginning);
+        Controls.Add(timeSatWorkEnd);
+        Controls.Add(timeWedWorkBeginning);
+        Controls.Add(timeWedWorkEnd);
+        Controls.Add(timeMonWorkEnd);
+        Controls.Add(timeMonWorkBeginning);
         Controls.Add(label16);
         Controls.Add(label15);
         Controls.Add(label14);
@@ -629,6 +840,14 @@ partial class AddDoctorForm
         ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)dataGridSchedule).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSchedule).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoDurationOfAppointment).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeMon).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeThurs).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeFri).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeSat).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeSun).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeWed).EndInit();
+        ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeTues).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -677,18 +896,38 @@ partial class AddDoctorForm
     private Label label15;
     private Label label14;
     private Label label13;
-    private DateTimePicker TimeMonWorkBeginning;
-    private DateTimePicker dateTimePicker13;
-    private DateTimePicker dateTimePicker12;
-    private DateTimePicker dateTimePicker11;
-    private DateTimePicker dateTimePicker10;
-    private DateTimePicker dateTimePicker9;
-    private DateTimePicker dateTimePicker8;
-    private DateTimePicker dateTimePicker7;
-    private DateTimePicker dateTimePicker6;
-    private DateTimePicker dateTimePicker5;
-    private DateTimePicker dateTimePicker4;
-    private DateTimePicker dateTimePicker3;
-    private DateTimePicker dateTimePicker2;
-    private DateTimePicker dateTimePicker1;
+    private DateTimePicker timeMonWorkBeginning;
+    private DateTimePicker timeSunWorkEnd;
+    private DateTimePicker timeSunWorkBeginning;
+    private DateTimePicker timeTuesWorkBeginning;
+    private DateTimePicker timeTuesWorkEnd;
+    private DateTimePicker timeThursWorkBeginning;
+    private DateTimePicker timeThursWorkEnd;
+    private DateTimePicker timeFriWorkBeginning;
+    private DateTimePicker timeFriWorkEnd;
+    private DateTimePicker timeSatWorkBeginning;
+    private DateTimePicker timeSatWorkEnd;
+    private DateTimePicker timeWedWorkBeginning;
+    private DateTimePicker timeWedWorkEnd;
+    private DateTimePicker timeMonWorkEnd;
+    private CheckBox checkIsWeekendMon;
+    private CheckBox checkIsWeekendTues;
+    private CheckBox checkIsWeekendWed;
+    private CheckBox checkIsWeekendThurs;
+    private CheckBox checkIsWeekendFri;
+    private CheckBox checkIsWeekendSat;
+    private CheckBox checkIsWeekendSun;
+    private Label label17;
+    private DateTimePicker timeDurationOfAppointment;
+    private Label label18;
+    private ErrorProvider errorNoDurationOfAppointment;
+    private ErrorProvider errorNoCorrectTimeMon;
+    private ErrorProvider errorNoCorrectTimeThurs;
+    private ErrorProvider errorNoCorrectTimeFri;
+    private ErrorProvider errorNoCorrectTimeSat;
+    private ErrorProvider errorNoCorrectTimeSun;
+    private ErrorProvider errorNoCorrectTimeWed;
+    private ErrorProvider errorNoCorrectTimeTues;
+    private Label label20;
+    private Label label19;
 }

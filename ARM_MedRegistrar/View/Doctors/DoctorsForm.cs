@@ -164,7 +164,7 @@ namespace ARM_MedRegistrar.View.Doctors
             }
         }
 
-        private void buttRemovePatient_Click(object sender, EventArgs e)
+        private void buttRemoveDoctor_Click(object sender, EventArgs e)
         {
             IList<uint> _selectedId = new List<uint>();
             if (checkIsMultiSelect.Checked)
