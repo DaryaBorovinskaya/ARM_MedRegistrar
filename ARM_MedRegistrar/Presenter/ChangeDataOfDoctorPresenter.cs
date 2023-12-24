@@ -1,4 +1,5 @@
-﻿using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
+﻿using ARM_MedRegistrar.Data.Json.Dictionaries;
+using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
 using ARM_MedRegistrar.Model.Persons.Doctors;
 using ARM_MedRegistrar.Model.WorkSchedules;
 using ARM_MedRegistrar.View.ChangeDataOfDoctor;
@@ -8,7 +9,7 @@ namespace ARM_MedRegistrar.Presenter
     public class ChangeDataOfDoctorPresenter
     {
         IChangeDataOfDoctorForm _view;
-        IDoctorRepository _jsonDoctorRepository;
+        IBaseRepository<uint, IDoctor> _jsonDoctorRepository;
         IDictionary<uint, IDoctor> _doctors;
         IList<DateTime> _timesOfWork;
         IWorkSchedule _workSchedule;
@@ -25,7 +26,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool ShowDataAboutDoctor()
         {
-            _doctors = _jsonDoctorRepository.GetAll();
+            _doctors = _jsonDoctorRepository.Read();
             if (_doctors == null || _doctors.Count == 0)
                 return false;
 
@@ -131,7 +132,7 @@ namespace ARM_MedRegistrar.Presenter
 
                     _doctor.WorkSchedule = _workSchedules;
 
-                    if (_jsonDoctorRepository.SaveChangedData(_doctor))
+                    if (_jsonDoctorRepository.Update(_doctor))
                         return true;
                 }
             }

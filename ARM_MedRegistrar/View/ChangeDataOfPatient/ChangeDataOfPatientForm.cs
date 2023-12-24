@@ -216,6 +216,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
 
         private void buttSearch_Click(object sender, EventArgs e)
         {
+            buttSaveChanges.Enabled = true;
             errorNoId.Clear();
 
             if (textId.Text == string.Empty)
@@ -236,6 +237,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
 
         private void buttSaveChanges_Click(object sender, EventArgs e)
         {
+            buttSaveChanges.Enabled = false;
             bool _isError = false;
 
             errorNoSurname.Clear();
@@ -356,7 +358,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
-            
+
 
             if (!_isError)
             {
@@ -392,7 +394,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                         textCity.Clear();
                         textRegion.Clear();
                         textStreet.Clear();
-                        textNumbOfHouse.Clear();    
+                        textNumbOfHouse.Clear();
                         textNumbOfFlat.Clear();
                         textPlotNumber.Clear();
                         textNumbOfPatientCard.Clear();

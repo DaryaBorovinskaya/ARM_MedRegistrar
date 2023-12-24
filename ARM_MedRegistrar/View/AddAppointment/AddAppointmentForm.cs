@@ -1,5 +1,6 @@
 ﻿
 using ARM_MedRegistrar.Presenter;
+using ARM_MedRegistrar.View.MainWindow;
 using Newtonsoft.Json.Linq;
 
 namespace ARM_MedRegistrar.View.AddAppointment
@@ -90,9 +91,9 @@ namespace ARM_MedRegistrar.View.AddAppointment
             }
         }
 
-        public string GetFreeTimeOfAppointment => comboBoxFreeTimeOfAppointment.SelectedItem.ToString();
+        string IAddAppointmentForm.GetFreeTimeOfAppointment => comboBoxFreeTimeOfAppointment.SelectedItem.ToString();
 
-        public IList<string> SetFreeTimeOfAppointment
+        IList<string> IAddAppointmentForm.SetFreeTimeOfAppointment
         {
             set
             {
@@ -125,7 +126,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         string IAddAppointmentForm.PatientSurname
         {
-
+            get => textSurname.Text;
             set
             {
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
@@ -133,7 +134,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
         }
         string IAddAppointmentForm.PatientName
         {
-
+            get => textName.Text;
             set
             {
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
@@ -148,6 +149,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
         }
         string IAddAppointmentForm.PatientDateOfBirth
         {
+            get => dateTimeDateOfBirth.Value.ToShortDateString();
             set
             {
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
@@ -170,14 +172,30 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         DateTime IAddAppointmentForm.TimeOfAppointment => dateTimePickerTimeOfAppointment.Value;
 
+        string IAddAppointmentForm.GetTypeOfAppointment => comboBoxTypeOfAppointment.SelectedItem.ToString();
 
+        string IAddAppointmentForm.PlaceOfAppointment
+        {
+            get => textPlace.Text;
+            set
+            {
+                textPlace.Text = value;
+            }
+        }
 
+        string IAddAppointmentForm.InfoAboutPatient
+        {
+            set
+            {
+                richTextBoxInfoAboutPatient.Text = value;
+            }
+        }
 
         public AddAppointmentForm()
         {
             InitializeComponent();
 
-            comboBoxCabinetOrHome.Items.AddRange(new string[] { "Первичный приём у врача", "Вторичный приём у врача", "Вызов на дом" });
+            comboBoxTypeOfAppointment.Items.AddRange(new string[] { "Первичный приём у врача", "Вторичный приём у врача", "Вызов на дом" });
             toolTipShowFreeTimeOfAppointment.SetToolTip(buttShowFreeTimeOfAppointment, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку и выберите нужное время записи");
             _presenter = new(this);
 
@@ -200,10 +218,26 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         private void buttWorkingDoctors_Click(object sender, EventArgs e)
         {
-            listViewDoctors.Items.Clear();
-            buttShowFreeTimeOfAppointment.Enabled = true;
-            if (!_presenter.WorkingDoctors())
-                MessageBox.Show("В указанные день и время ни один из врачей не имеет свободной записи");
+            DateTime _dateFutureTime = DateTime.Today;
+            if (_dateFutureTime.Month == 12)
+                _dateFutureTime = new DateTime(_dateFutureTime.Year + 1, 1, _dateFutureTime.Day, 0, 0, 0);
+            else
+                _dateFutureTime = new DateTime(_dateFutureTime.Year, (_dateFutureTime.Month + 1) % 12, _dateFutureTime.Day, 0, 0, 0);
+
+            errorWrongDate.Clear();
+
+            if (dateTimePickerDateOfAppointment.Value.Date < DateTime.Today)
+                errorWrongDate.SetError(dateTimePickerDateOfAppointment, "Нельзя записать на приём в прошедший день");
+            else if (dateTimePickerDateOfAppointment.Value.Date > _dateFutureTime)
+                errorWrongDate.SetError(dateTimePickerDateOfAppointment, "Нельзя записать на приём позже, чем через месяц");
+            else
+            {
+                listViewDoctors.Items.Clear();
+                buttShowFreeTimeOfAppointment.Enabled = true;
+
+                if (!_presenter.WorkingDoctors())
+                    MessageBox.Show("В указанные день и время ни один из врачей не имеет свободной записи");
+            }
         }
 
         private void buttShowFreeTimeOfAppointment_Click(object sender, EventArgs e)
@@ -217,6 +251,107 @@ namespace ARM_MedRegistrar.View.AddAppointment
         {
             richTextBoxInfoAboutDoctor.Clear();
             _presenter.ShowInfoAboutDoctor();
+        }
+
+        private void comboBoxFreeTimeOfAppointment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxTypeOfAppointment.Enabled = true;
+            textPlace.Enabled = true;
+        }
+
+        private void buttSearchPatient_Click(object sender, EventArgs e)
+        {
+            listViewPatients.Items.Clear();
+            bool _isError = false;
+
+            errorNoSurname.Clear();
+            errorNoName.Clear();
+            errorWrongDate.Clear();
+
+            if (textSurname.Text == string.Empty)
+            {
+                _isError = true;
+                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
+            }
+
+            if (textName.Text == string.Empty)
+            {
+                _isError = true;
+                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
+            }
+
+            if ((dateTimeDateOfBirth.Value.Day >= DateTime.Today.Day && dateTimeDateOfBirth.Value.Month >= DateTime.Today.Month
+                && dateTimeDateOfBirth.Value.Year >= DateTime.Today.Year) || dateTimeDateOfBirth.Value.Year > DateTime.Today.Year)
+            {
+                _isError = true;
+                errorWrongDate.SetError(dateTimeDateOfBirth, "Поле \"Дата рождения\" заполнено неверно");
+            }
+
+            if (!_isError)
+            {
+                if (!_presenter.SearchPatient())
+                    MessageBox.Show("Пациент не найден");
+                textSurname.Clear();
+                textName.Clear();
+                textPatr.Clear();
+                dateTimeDateOfBirth.Value = DateTime.Today;
+            }
+        }
+
+        private void comboBoxTypeOfAppointment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            bool _isError = false;
+            errorNoSelectedPatient.Clear();
+            errorWrongDoctor.Clear();
+
+            uint _selIndex = listViewPatients.SelectedItems.Count != 0 ? uint.Parse(listViewPatients.SelectedItems[0].Text) : 0;
+
+            if (_selIndex == 0)
+            {
+                _isError = true;
+                errorNoSelectedPatient.SetError(listViewPatients, "Сначала выберите пациента из списка, нажав на его ID");
+            }
+            if (!_presenter.IsDoctorCanTakeAtHome())
+            {
+                _isError = true;
+                errorWrongDoctor.SetError(listViewDoctors, "Этот врач не принимает на дому");
+            }
+
+
+            if (!_isError)
+            {
+
+                if (!_presenter.GetPlaseOfAppointment())
+                    MessageBox.Show("Не удалось получить место приёма");
+            }
+
+        }
+
+        private void buttSaveChanges_Click(object sender, EventArgs e)
+        {
+            errorNoPlace.Clear();
+            if (textPlace.Text == string.Empty)
+                errorNoPlace.SetError(textPlace, "Поле \"Место\" не заполнено");
+            else
+            {
+                if (!_presenter.SaveChangesOfPlaceOfAppointment())
+                    MessageBox.Show("Не удалось сохранить изменения");
+                else
+                    MessageBox.Show("Изменения в поле \"Место\" сохранены");
+            }
+        }
+
+        private void AddAppointmentForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttAllDataAboutPatient_Click(object sender, EventArgs e)
+        {
+            richTextBoxInfoAboutPatient.Clear();
+
+            _presenter.ShowInfoAboutPatient();
         }
     }
 }

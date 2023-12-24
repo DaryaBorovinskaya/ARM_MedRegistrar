@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
 {
-    public class JsonDoctorRepository : IDoctorRepository
+    public class JsonDoctorRepository :  IBaseWithIdRepository<uint, IDoctor>
     {
         private readonly string _savePath;
         private IDictionary<uint, IDoctor>? _doctors; 
@@ -17,7 +17,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
             
         }
 
-        public void Add(IDoctor value)
+        public void Create(IDoctor value)
         {
             if (!File.Exists(_savePath))
                 _doctors = new SortedDictionary<uint, IDoctor>();
@@ -35,7 +35,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
 
         }
 
-        public IDictionary<uint,IDoctor>? GetAll()
+        public IDictionary<uint,IDoctor>? Read()
         {
             if (!File.Exists(_savePath))
                 _doctors = new SortedDictionary<uint, IDoctor>();
@@ -44,7 +44,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
             return _doctors;
         }
 
-        public bool SaveChangedData(IDoctor changedValue)
+        public bool Update(IDoctor changedValue)
         {
 
             if (!File.Exists(_savePath))
@@ -61,7 +61,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
             }
             return false;
         }
-        public void Remove(uint key)
+        public void Delete(uint key)
         {
             if (!File.Exists(_savePath))
                 _doctors = new SortedDictionary<uint, IDoctor>();

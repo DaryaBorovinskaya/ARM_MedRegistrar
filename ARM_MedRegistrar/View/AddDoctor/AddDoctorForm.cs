@@ -226,10 +226,10 @@ namespace ARM_MedRegistrar
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
-            if (timeDurationOfAppointment.Value.Hour == DateTime.Now.Hour && timeDurationOfAppointment.Value.Minute == DateTime.Now.Minute)
+            if (timeDurationOfAppointment.Value.Hour > 1 || (timeDurationOfAppointment.Value.Hour == DateTime.Now.Hour && timeDurationOfAppointment.Value.Minute == DateTime.Now.Minute))
             {
                 _isError = true;
-                errorNoDurationOfAppointment.SetError(timeDurationOfAppointment, "Поле \"Продолжительность приёма\" не заполнено");
+                errorNoDurationOfAppointment.SetError(timeDurationOfAppointment, "Поле \"Продолжительность приёма\" заполнено некорректно");
             }
 
             if (!IsCorrectTime(timeMonWorkBeginning.Value, timeMonWorkEnd.Value) && !checkIsWeekendMon.Checked)

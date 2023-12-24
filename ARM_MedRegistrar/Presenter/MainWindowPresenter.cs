@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository;
+using ARM_MedRegistrar.Data.Json.Dictionaries;
 
 namespace ARM_MedRegistrar.Presenter
 {
     public class MainWindowPresenter
     { 
         IMainWindowForm _view;
-        IPatientRepository _jsonPatientRepository;
+        IBaseWithIdRepository<uint, IPatient>  _jsonPatientRepository;
         IDictionary<uint, IPatient>? _patients;
         int _countOfLine = -1;
         bool _isSuccess;
@@ -24,12 +25,12 @@ namespace ARM_MedRegistrar.Presenter
             _jsonPatientRepository = new JsonPatientRepository();
         }
 
-
+         
         public bool SearchPatient()
         {
             _countOfLine = -1;
             _isSuccess = false;
-            _patients = _jsonPatientRepository.GetAll();
+            _patients = _jsonPatientRepository.Read();
             if (_patients == null || _patients.Count == 0) 
                 return false;
 
@@ -67,7 +68,7 @@ namespace ARM_MedRegistrar.Presenter
         {
             _countOfLine= -1;
             _isSuccess = false;
-            _patients = _jsonPatientRepository.GetAll();
+            _patients = _jsonPatientRepository.Read();
             if (_patients == null || _patients.Count == 0)
                 return false;
 
@@ -98,7 +99,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public void ShowInfoAboutPatient()
         {
-            _patients = _jsonPatientRepository.GetAll();
+            _patients = _jsonPatientRepository.Read();
             if (_patients == null || _patients.Count == 0)
                 return;
 
@@ -107,7 +108,7 @@ namespace ARM_MedRegistrar.Presenter
         }
         public bool RemovePatient(IList<uint> _listOfId)
         {
-            _patients = _jsonPatientRepository.GetAll();
+            _patients = _jsonPatientRepository.Read();
             if (_patients == null || _patients.Count == 0 || _listOfId.Count == 0)
                 return false;
             
@@ -120,7 +121,7 @@ namespace ARM_MedRegistrar.Presenter
                 {
                     if (key == id)
                     {
-                        _jsonPatientRepository.Remove(id);
+                        _jsonPatientRepository.Delete(id);
                     }
                 }
 

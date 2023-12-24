@@ -20,7 +20,15 @@ namespace ARM_MedRegistrar
 
         string IRegistrationForm.Password => textPassword.Text;
 
-        string IRegistrationForm.Post => comboBoxPost.SelectedItem.ToString();
+        string IRegistrationForm.GetPost => comboBoxPost.SelectedItem.ToString();
+
+        IList<string> IRegistrationForm.SetPost
+        {
+            set
+            {
+                comboBoxPost.Items.AddRange(value.ToArray());
+            }
+        }
 
         string IRegistrationForm.PhoneNumber => textPhoneNumber.Text;
 
@@ -35,12 +43,14 @@ namespace ARM_MedRegistrar
             FormClosed += OnClosed;
 
 
-            comboBoxPost.Items.AddRange(new string[] { "медицинский регистратор", "заведующий регистратурой", "главный врач" });
+
 
             _presenter = new(this);
 
             _presenter.NoOneHeadDoctorEvent += NoOneHeadDoctorSet;
             _presenter.MatchedLogEvent += MatchedLogSet;
+
+            _presenter.SetPost();
 
         }
 
@@ -148,7 +158,7 @@ namespace ARM_MedRegistrar
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
             }
 
-           
+
 
             if (!_isError)
             {
@@ -185,6 +195,11 @@ namespace ARM_MedRegistrar
         private void RegistrationForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBoxPost_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

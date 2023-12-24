@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
 {
-    public class JsonPatientRepository : IPatientRepository
+    public class JsonPatientRepository  : IBaseWithIdRepository<uint, IPatient>
     {
         private readonly string _savePath;
         private IDictionary<uint, IPatient>? _patients;
@@ -18,7 +18,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
             
         }
 
-        public void Add(IPatient value)
+        public void Create(IPatient value)
         {
             if (!File.Exists(_savePath))
                 _patients = new SortedDictionary<uint, IPatient>();
@@ -39,7 +39,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
 
         }
 
-        public IDictionary<uint, IPatient>? GetAll()
+        public IDictionary<uint, IPatient>? Read()
         {
             if (!File.Exists(_savePath))
                 _patients = new SortedDictionary<uint, IPatient>();
@@ -50,7 +50,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
             return _patients;
         }
 
-        public bool SaveChangedData(IPatient changedValue)
+        public bool Update(IPatient changedValue)
         {
 
             if (!File.Exists(_savePath))
@@ -67,7 +67,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
             }
             return false;
         }
-        public void Remove(uint key)
+        public void Delete(uint key)
         {
             if (!File.Exists(_savePath))
                 _patients = new SortedDictionary<uint, IPatient>();

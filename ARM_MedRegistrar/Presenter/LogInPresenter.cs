@@ -1,14 +1,14 @@
 ﻿using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository;
 using ARM_MedRegistrar.View.LogIn;
-
+using ARM_MedRegistrar.Data.Json.Dictionaries;
 
 namespace ARM_MedRegistrar.Presenter
 {
     public class LogInPresenter
     {
         ILogInForm _view;
-        IUserRepository _userRepository;
+        IBaseRepository<string, IUser> _userRepository;
         IDictionary<string, IUser>? _users;
         public LogInPresenter(ILogInForm view)
         {
@@ -19,7 +19,7 @@ namespace ARM_MedRegistrar.Presenter
         public IUser? LogIn()
         {
             string saltedPassword;
-            _users = _userRepository.GetAll();
+            _users = _userRepository.Read();
             if (_users == null || _users.Count == 0) 
                 return null;
             else

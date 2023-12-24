@@ -18,7 +18,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
     public class Patient : IPatient
     {
         private IFullName _fullName;
-        private IAddress _address;
+        private IPatientAddress _address;
         private int _plotNumber;  //номер участка
         private string _numbOfPatientCard; //номер амбулаторной карты
         private int _policySeries;
@@ -41,7 +41,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
             }
         }
         public string DateOfBirth { get; }
-        public IAddress Address
+        public IPatientAddress Address
         {
             get => _address;
             set
@@ -171,7 +171,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
 
         public string? Allergies { get; set; }
         public uint Id { get; }
-        public Patient(uint id, IFullName fullName, string dateOfBirth, IAddress address, string phoneNumber, int plotNumber, 
+        public Patient(uint id, IFullName fullName, string dateOfBirth, IPatientAddress address, string phoneNumber, int plotNumber, 
             string numbOfPatientCard, int policySeries, string policyNumb, 
             string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies )
         {
@@ -199,8 +199,8 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
             return "ID: " + Id.ToString() + "\nФамилия: " + FullName.Surname + "\nИмя: " + FullName.Name
             + "\nОтчество: " + FullName.Patronymic + "\nДата рождения: " + DateOfBirth + "\nСерия документа: " + DocumentSeries
             + "\nНомер документа: " + DocumentNumber + "\nНомер участка: " + PlotNumber + "\nНомер амбул. карты: " + NumbOfPatientCard 
-            + "\nНомер телефона: " + PhoneNumber + "\nГород: " + Address.City + "\nРайон: " + Address.Region + "\nУлица: " + Address.Street + "\nНомер дома: " 
-            + Address.NumbOfHouse.ToString() + "\nНомер квартиры: " + Address.NumbOfFlat.ToString() 
+            + "\nНомер телефона: " + PhoneNumber + "\nГород: " + Address.AddressOfBuilding.City + "\nРайон: " + Address.AddressOfBuilding.Region + "\nУлица: " + Address.AddressOfBuilding.Street + "\nНомер дома: " 
+            + Address.AddressOfBuilding.NumbOfHouse.ToString() + "\nНомер квартиры: " + Address.NumbOfFlat.ToString() 
             + "\nСерия мед. полиса: " + PolicySeries.ToString() + "\nНомер мед. полиса: " + PolicyNumb + "\nГруппа крови: " + BloodType + "\nРезус-фактор: " + RhFactor
             + "\nАллергии: " + Allergies;
 

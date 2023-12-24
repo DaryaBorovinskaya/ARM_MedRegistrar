@@ -1,18 +1,18 @@
 ﻿using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
 using ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository;
-using ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedServiceRepository;
 using ARM_MedRegistrar.Model.PaidMedServices;
 using ARM_MedRegistrar.Model.Persons.Doctors;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View.PaidMedServices;
 using System.Security.Cryptography;
+using ARM_MedRegistrar.Data.Json.Dictionaries;
 
 namespace ARM_MedRegistrar.Presenter
 {
     public class PaidMedServicesPresenter
     {
         IPaidMedServicesForm _view;
-        IPaidMedServiceRepository _jsonPaidMedServiceRepository;
+        IBaseWithIdRepository<uint, IPaidMedService> _jsonPaidMedServiceRepository;
         IPaidMedService _paidMedService;
         IDictionary<uint, IPaidMedService> _paidMedServices;
         uint _id;
@@ -29,7 +29,7 @@ namespace ARM_MedRegistrar.Presenter
             
             _id = _jsonPaidMedServiceRepository.CreateId();
             _paidMedService = new PaidMedService(_view.Title, _view.Price, _id);
-            _jsonPaidMedServiceRepository.Add(_paidMedService);
+            _jsonPaidMedServiceRepository.Create(_paidMedService);
         }
 
 
@@ -38,7 +38,7 @@ namespace ARM_MedRegistrar.Presenter
         {
             _countOfLine = -1;
             _isSuccess = false;
-            _paidMedServices = _jsonPaidMedServiceRepository.GetAll();
+            _paidMedServices = _jsonPaidMedServiceRepository.Read();
             if (_paidMedServices == null || _paidMedServices.Count == 0)
                 return false;
 
@@ -69,7 +69,7 @@ namespace ARM_MedRegistrar.Presenter
         {
             _countOfLine = -1;
             _isSuccess = false;
-            _paidMedServices = _jsonPaidMedServiceRepository.GetAll();
+            _paidMedServices = _jsonPaidMedServiceRepository.Read();
             if (_paidMedServices == null || _paidMedServices.Count == 0)
                 return false;
 
@@ -94,7 +94,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool RemovePaidMedService(IList<uint> _listOfId)
         {
-            _paidMedServices = _jsonPaidMedServiceRepository.GetAll();
+            _paidMedServices = _jsonPaidMedServiceRepository.Read();
             if (_paidMedServices == null || _paidMedServices.Count == 0 || _listOfId.Count == 0)
                 return false;
 
@@ -107,7 +107,7 @@ namespace ARM_MedRegistrar.Presenter
                 {
                     if (key == id)
                     {
-                        _jsonPaidMedServiceRepository.Remove(id);
+                        _jsonPaidMedServiceRepository.Delete(id);
                     }
                 }
 
@@ -121,7 +121,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool CalculateTotalPrice(IList<uint> _listOfId)
         {
-            _paidMedServices = _jsonPaidMedServiceRepository.GetAll();
+            _paidMedServices = _jsonPaidMedServiceRepository.Read();
             if (_paidMedServices == null || _paidMedServices.Count == 0 || _listOfId.Count == 0)
                 return false;
 

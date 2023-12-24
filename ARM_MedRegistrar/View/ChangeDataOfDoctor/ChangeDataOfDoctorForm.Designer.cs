@@ -305,6 +305,7 @@
             // buttSaveChanges
             // 
             buttSaveChanges.BackColor = Color.FromArgb(255, 192, 192);
+            buttSaveChanges.Enabled = false;
             buttSaveChanges.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
             buttSaveChanges.ForeColor = Color.Firebrick;
             buttSaveChanges.Location = new Point(195, 566);
@@ -412,7 +413,8 @@
             checkIsWeekendWed.TabIndex = 151;
             checkIsWeekendWed.Text = "Вых.";
             checkIsWeekendWed.UseVisualStyleBackColor = true;
-            checkIsWeekendWed.CheckedChanged += checkIsWeekendWed_CheckedChanged;            // 
+            checkIsWeekendWed.CheckedChanged += checkIsWeekendWed_CheckedChanged;
+            // 
             // checkIsWeekendThurs
             // 
             checkIsWeekendThurs.AutoSize = true;

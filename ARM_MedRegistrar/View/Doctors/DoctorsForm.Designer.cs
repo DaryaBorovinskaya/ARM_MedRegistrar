@@ -162,7 +162,7 @@
             // richTextBoxInfoAboutDoctor
             // 
             richTextBoxInfoAboutDoctor.BackColor = SystemColors.Window;
-            richTextBoxInfoAboutDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxInfoAboutDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxInfoAboutDoctor.Location = new Point(1094, 228);
             richTextBoxInfoAboutDoctor.Name = "richTextBoxInfoAboutDoctor";
             richTextBoxInfoAboutDoctor.ReadOnly = true;

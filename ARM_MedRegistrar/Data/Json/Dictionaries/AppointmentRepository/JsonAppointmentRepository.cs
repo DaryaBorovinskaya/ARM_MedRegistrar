@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 {
-    public class JsonAppointmentRepository : IAppointmentRepository
+    public class JsonAppointmentRepository : IBaseWithIdRepository<uint, IAppointment> 
     {
         private readonly string _savePath;
         private IDictionary<uint, IAppointment>? _appointments;
@@ -20,7 +20,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
           
         }
 
-        public void Add(IAppointment value)
+        public void Create(IAppointment value)
         {
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
@@ -51,7 +51,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 
         }
 
-        public IDictionary<uint, IAppointment>? GetAll()
+        public IDictionary<uint, IAppointment>? Read()
         {
             if (!File.Exists(_savePath))
             {
@@ -64,7 +64,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
         }
 
 
-        public bool SaveChangedData(IAppointment changedValue)
+        public bool Update(IAppointment changedValue)
         {
 
             if (!File.Exists(_savePath))
@@ -82,7 +82,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
             return false;
         }
 
-        public void Remove(uint key)
+        public void Delete(uint key)
         {
             if (_appointments == null)
                 throw new ArgumentNullException(nameof(_appointments));

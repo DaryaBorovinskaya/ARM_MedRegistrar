@@ -1,4 +1,6 @@
-﻿using ARM_MedRegistrar.Model.WorkSchedules;
+﻿using ARM_MedRegistrar.Model.DaysWithFreeAppointments;
+using ARM_MedRegistrar.Model.Identifications;
+using ARM_MedRegistrar.Model.WorkSchedules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +9,8 @@ using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.Model.FreeTimeOfAppointments
 {
-    public interface IFreeTimeOfAppointment : IWorkBeginningEnd
+    public interface IFreeTimeOfAppointment : IIdentification
     {
-        public DateTime DateOfAppointment { get; set; }
-        public IList<DateTime> TimeOfAppointments { get; set; }
-        
-        public DateTime DurationOfAppointment { get; set; }
+        public IList<IDayWithFreeAppointments> FreeTimeOfAppointments { get; set; }
     }
 }

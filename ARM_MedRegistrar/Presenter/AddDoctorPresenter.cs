@@ -6,6 +6,8 @@ using ARM_MedRegistrar.Model.WorkSchedules;
 using System.ComponentModel;
 using ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.FreeTimeOfAppointments;
+using ARM_MedRegistrar.Model.DaysWithFreeAppointments;
+using ARM_MedRegistrar.Data.Json.Dictionaries;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -14,20 +16,19 @@ namespace ARM_MedRegistrar.Presenter
         IAddDoctorForm _view;
         IFullName _fullName;
         IDoctor _newDoctor;
-        IDoctorRepository _jsonDoctorRepository;
-        IFreeTimeOfAppointmentRepository _jsonFreeTimeOfAppointmentRepository;
+        IBaseWithIdRepository<uint, IDoctor> _jsonDoctorRepository;
+        IBaseRepository<uint, IFreeTimeOfAppointment> _jsonFreeTimeOfAppointmentRepository;
         uint _id;
         DateTime _nullTime = new(1753,1,1, 0, 0, 0);
         IWorkSchedule _workSchedule;
         IList<DateTime> _timesOfWork;
         IList<IWorkSchedule> _workSchedules;
-        IFreeTimeOfAppointment _freeTimeOfAppointment;
-        IList<IFreeTimeOfAppointment> _freeTimeOfAppointments;
+        IDayWithFreeAppointments _dayWithFreeAppointments;
+        IFreeTimeOfAppointment _freeTimeOfAppointments;
 
         public AddDoctorPresenter(IAddDoctorForm view)
         {
             _view = view;
-            _freeTimeOfAppointments = new List<IFreeTimeOfAppointment>();
             _workSchedules = new List<IWorkSchedule>();
             _jsonDoctorRepository = new JsonDoctorRepository();
             _jsonFreeTimeOfAppointmentRepository = new JsonFreeTimeOfAppointmentRepository();
@@ -58,7 +59,7 @@ namespace ARM_MedRegistrar.Presenter
             _newDoctor = new Doctor(_id, _fullName, _workSchedules,_view.PhoneNumber, _view.Specializations, _view.PlotNumber,
                 _view.Cabinet, _view.DurationOfAppointment);
 
-            _jsonDoctorRepository.Add(_newDoctor);
+            _jsonDoctorRepository.Create(_newDoctor);
 
             
             return true;

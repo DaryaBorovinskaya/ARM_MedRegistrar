@@ -1,4 +1,5 @@
-﻿using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
+﻿using ARM_MedRegistrar.Data.Json.Dictionaries;
+using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
 using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
 using ARM_MedRegistrar.Model.Persons.Doctors;
 using ARM_MedRegistrar.View.Doctors;
@@ -9,7 +10,7 @@ namespace ARM_MedRegistrar.Presenter
     public class DoctorsPresenter
     {
         IDoctorsForm _view;
-        IDoctorRepository _jsonDoctorRepository;
+        IBaseWithIdRepository<uint, IDoctor> _jsonDoctorRepository;
         IDictionary<uint, IDoctor>? _doctors;
         int _countOfLine = -1;
         bool _isSuccess;
@@ -24,7 +25,7 @@ namespace ARM_MedRegistrar.Presenter
         {
             _countOfLine = -1;
             _isSuccess = false;
-            _doctors = _jsonDoctorRepository.GetAll();
+            _doctors = _jsonDoctorRepository.Read();
             if (_doctors == null || _doctors.Count == 0)
                 return false;
 
@@ -60,7 +61,7 @@ namespace ARM_MedRegistrar.Presenter
         {
             _countOfLine = -1;
             _isSuccess = false;
-            _doctors = _jsonDoctorRepository.GetAll();
+            _doctors = _jsonDoctorRepository.Read();
             if (_doctors == null || _doctors.Count == 0)
                 return false;
 
@@ -89,7 +90,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public void ShowInfoAboutDoctor()
         {
-            _doctors = _jsonDoctorRepository.GetAll();
+            _doctors = _jsonDoctorRepository.Read();
             if (_doctors == null || _doctors.Count == 0)
                 return;
 
@@ -98,7 +99,7 @@ namespace ARM_MedRegistrar.Presenter
         }
         public bool RemoveDoctor(IList<uint> _listOfId)
         {
-            _doctors = _jsonDoctorRepository.GetAll();
+            _doctors = _jsonDoctorRepository.Read();
             if (_doctors == null || _doctors.Count == 0 || _listOfId.Count == 0)
                 return false;
             if (_listOfId.Count == _doctors.Count)
@@ -111,7 +112,7 @@ namespace ARM_MedRegistrar.Presenter
                     {
                         if (key == id)
                         {
-                            _jsonDoctorRepository.Remove(id);
+                            _jsonDoctorRepository.Delete(id);
                         }
                     }
 

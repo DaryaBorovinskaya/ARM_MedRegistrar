@@ -1,22 +1,14 @@
 ﻿using ARM_MedRegistrar.Model.Addresses;
-using ARM_MedRegistrar.Model.Appointments;
-using ARM_MedRegistrar.Model.Persons;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries
 {
     public interface IBaseRepository<T, U> where U : class
     {
 
-        public void Add(U value);
-        public IDictionary<T, U>? GetAll();
-        public bool SaveChangedData(U changedValue);
-        public void Remove(T key);
+        public void Create(U value);
+        public IDictionary<T, U>? Read();
+        public bool Update(U changedValue);
+        public void Delete(T key);
 
 
 

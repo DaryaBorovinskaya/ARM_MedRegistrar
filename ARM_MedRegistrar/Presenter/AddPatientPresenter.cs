@@ -1,10 +1,12 @@
 ﻿using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
-using ARM_MedRegistrar.Data.Json.Lists.AttachedStreets;
 using ARM_MedRegistrar.Model.Addresses;
 using ARM_MedRegistrar.Model.AttachedStreets;
 using ARM_MedRegistrar.Model.Persons.Patients;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View.AddPatient;
+using ARM_MedRegistrar.Data.Json.Dictionaries;
+using ARM_MedRegistrar.Data.Json.Dictionaries.AttachedStreets;
+using ARM_MedRegistrar.Model.AddressesOfBuilding;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -12,13 +14,14 @@ namespace ARM_MedRegistrar.Presenter
     {
         IFullName _fullName;
         IPatient _newPatient;
-        IAddress _address;
+        IPatientAddress _address;
         IAddPatientForm _view;
-        IAttachedStreetsRepository _jsonAttachedStreetsRepository;
-        IList<IAttachedStreets>? _attStreets;
+        IBaseWithIdRepository<uint, IAttachedStreets> _jsonAttachedStreetsRepository;
+        IDictionary<uint,IAttachedStreets>? _attStreets;
         uint _id;
         string _city, _region;
-        IPatientRepository _jsonPatientRepository; 
+        IBaseWithIdRepository<uint, IPatient> _jsonPatientRepository;
+        IAddressOfBuilding _addressOfBuilding;
         public AddPatientPresenter(IAddPatientForm view) 
         { 
             _view = view;
@@ -33,13 +36,13 @@ namespace ARM_MedRegistrar.Presenter
         public event EventHandler? NoRegionEvent;
         public bool AddPatient()
         {
-            _attStreets = _jsonAttachedStreetsRepository.GetAll();
+            _attStreets = _jsonAttachedStreetsRepository.Read();
             _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
 
             if (_attStreets != null && _attStreets.Count != 0)
             {
-                _city = _view.City == string.Empty ? _attStreets[0].City : _view.City;
-                _region = _view.Region == string.Empty ? _attStreets[0].Region : _view.Region;
+                _city = _view.City == string.Empty ? _attStreets[0].AddressOfBuilding.City : _view.City;
+                _region = _view.Region == string.Empty ? _attStreets[0].AddressOfBuilding.Region : _view.Region;
                 
             }
 
@@ -64,7 +67,8 @@ namespace ARM_MedRegistrar.Presenter
                 
             }
 
-            _address = new Address(_city, _region, _view.Street, _view.NumbOfHouse, _view.NumbOfFlat);
+            _addressOfBuilding = new AddressOfBuilding(_city, _region, _view.Street, _view.NumbOfHouse);
+            _address = new PatientAddress(_addressOfBuilding, _view.NumbOfFlat);
 
 
             _id = _jsonPatientRepository.CreateId();
@@ -73,14 +77,8 @@ namespace ARM_MedRegistrar.Presenter
                 _view.NumbOfPatientCard, _view.PolicySeries, _view.PolicyNumb, _view.DocumentSeries,
                 _view.DocumentNumber, _view.BloodType, _view.RhFactor, _view.Allergies);
 
-            _jsonPatientRepository.Add(_newPatient);
+            _jsonPatientRepository.Create(_newPatient);
             return true;
-
-
-
-            
-            
-
         }
 
     }

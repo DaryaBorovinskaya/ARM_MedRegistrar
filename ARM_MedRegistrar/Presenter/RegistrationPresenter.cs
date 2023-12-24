@@ -2,6 +2,7 @@
 using ARM_MedRegistrar.Model.Persons.Users;
 using ARM_MedRegistrar.View.Registration;
 using ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository;
+using ARM_MedRegistrar.Data.Json.Dictionaries;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -10,17 +11,26 @@ namespace ARM_MedRegistrar.Presenter
         IFullName _fullName;
         IUser _newUser;
         IRegistrationForm _view;
-        IUserRepository _jsonUserRepository;
+        IBaseRepository<string, IUser> _jsonUserRepository;
         IDictionary<string, IUser>? _users;
         public RegistrationPresenter(IRegistrationForm view)
         { 
             _view = view;
             _jsonUserRepository = new JsonUserRepository();
-            _users = _jsonUserRepository.GetAll();
+            _users = _jsonUserRepository.Read();
         }
 
         public event EventHandler? NoOneHeadDoctorEvent;
         public event EventHandler? MatchedLogEvent;
+
+        public void SetPost()
+        {
+            if (_users != null && _users.Count == 0)
+                _view.SetPost = new List<string>{ "медицинский регистратор", "заведующий регистратурой", "главный врач", "системный администратор" };
+            else
+                _view.SetPost = new List<string> { "медицинский регистратор", "заведующий регистратурой", "главный врач" };
+        }
+
 
         public bool IsSuccessRegistration()
         {
@@ -29,7 +39,7 @@ namespace ARM_MedRegistrar.Presenter
             {
                 foreach (string key in _users.Keys)
                 {
-                    if (_users[key].Post == "главный врач" && _view.Post == "главный врач")
+                    if (_users[key].Post == "главный врач" && _view.GetPost == "главный врач")
                     {
 
                         NoOneHeadDoctorEvent?.Invoke(this, EventArgs.Empty);
@@ -50,8 +60,8 @@ namespace ARM_MedRegistrar.Presenter
             if (_isSuccess)
             {
                 _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
-                _newUser = new User(_fullName, _view.Login, _view.Password, _view.Post, _view.PhoneNumber);
-                _jsonUserRepository.Add( _newUser);
+                _newUser = new User(_fullName, _view.Login, _view.Password, _view.GetPost, _view.PhoneNumber);
+                _jsonUserRepository.Create( _newUser);
                 
                 return true;
             }

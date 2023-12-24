@@ -211,6 +211,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
 
         private void buttSearch_Click(object sender, EventArgs e)
         {
+            buttSaveChanges.Enabled = true;
             errorNoId.Clear();
 
             if (textId.Text == string.Empty)
@@ -235,6 +236,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
 
         private void buttSaveChanges_Click(object sender, EventArgs e)
         {
+            buttSaveChanges.Enabled = false;
             bool _isError = false;
 
             errorNoSurname.Clear();
@@ -285,10 +287,10 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
                 errorNoPlotNumber.SetError(textPlotNumber, "Поле \"Номер участка\" не заполнено");
             }
 
-            if (timeDurationOfAppointment.Value.Hour == DateTime.Now.Hour && timeDurationOfAppointment.Value.Minute == DateTime.Now.Minute)
+            if (timeDurationOfAppointment.Value.Hour > 1 || (timeDurationOfAppointment.Value.Hour ==DateTime.Now.Hour && timeDurationOfAppointment.Value.Minute == DateTime.Now.Minute))
             {
                 _isError = true;
-                errorNoDurationOfAppointment.SetError(timeDurationOfAppointment, "Поле \"Продолжительность приёма\" не заполнено");
+                errorNoDurationOfAppointment.SetError(timeDurationOfAppointment, "Поле \"Продолжительность приёма\" заполнено некорректно");
             }
 
             if (!IsCorrectTime(timeMonWorkBeginning.Value, timeMonWorkEnd.Value) && !checkIsWeekendMon.Checked)
@@ -380,6 +382,8 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
                 else
                     MessageBox.Show("Не удалось внести изменения");
             }
+            else
+                buttSaveChanges.Enabled = true;
         }
 
         private void checkIsWeekendMon_CheckedChanged(object sender, EventArgs e)

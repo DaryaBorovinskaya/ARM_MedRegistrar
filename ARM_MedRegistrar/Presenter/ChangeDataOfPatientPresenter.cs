@@ -4,13 +4,14 @@ using ARM_MedRegistrar.Model.Persons.Patients;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View.ChangeDataOfPatient;
 using System.Windows.Forms;
+using ARM_MedRegistrar.Data.Json.Dictionaries;
 
 namespace ARM_MedRegistrar.Presenter
 {
     public class ChangeDataOfPatientPresenter
     {
         IChangeDataOfPatientForm _view;
-        IPatientRepository _jsonPatientRepository;
+        IBaseWithIdRepository<uint, IPatient> _jsonPatientRepository;
         IDictionary<uint, IPatient> _patients;
         IPatient _patient;
 
@@ -22,7 +23,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool ShowDataAboutPatient()
         {
-            _patients = _jsonPatientRepository.GetAll();
+            _patients = _jsonPatientRepository.Read();
             if (_patients == null || _patients.Count == 0)
                 return false;
 
@@ -38,10 +39,10 @@ namespace ARM_MedRegistrar.Presenter
                         _view.Name = _patient.FullName.Name;
                         _view.Patronymic = _patient.FullName.Patronymic;
                         _view.DateOfBirth = _patient.DateOfBirth;
-                        _view.City = _patient.Address.City;
-                        _view.Region = _patient.Address.Region;
-                        _view.Street = _patient.Address.Street;
-                        _view.NumbOfHouse = _patient.Address.NumbOfHouse;
+                        _view.City = _patient.Address.AddressOfBuilding.City;
+                        _view.Region = _patient.Address.AddressOfBuilding.Region;
+                        _view.Street = _patient.Address.AddressOfBuilding.Street;
+                        _view.NumbOfHouse = _patient.Address.AddressOfBuilding.NumbOfHouse;
                         _view.NumbOfFlat = _patient.Address.NumbOfFlat;
                         _view.PhoneNumber = _patient.PhoneNumber;
                         _view.PlotNumber = _patient.PlotNumber;
@@ -71,10 +72,10 @@ namespace ARM_MedRegistrar.Presenter
                     _patient.FullName.Surname = _view.Surname;
                     _patient.FullName.Name = _view.Name;
                     _patient.FullName.Patronymic = _view.Patronymic;
-                    _patient.Address.City = _view.City;
-                    _patient.Address.Region = _view.Region;
-                    _patient.Address.Street = _view.Street;
-                    _patient.Address.NumbOfHouse = _view.NumbOfHouse;
+                    _patient.Address.AddressOfBuilding.City = _view.City;
+                    _patient.Address.AddressOfBuilding.Region = _view.Region;
+                    _patient.Address.AddressOfBuilding.Street = _view.Street;
+                    _patient.Address.AddressOfBuilding.NumbOfHouse = _view.NumbOfHouse;
                     _patient.Address.NumbOfFlat = _view.NumbOfFlat;
                     _patient.PhoneNumber = _view.PhoneNumber;
                     _patient.PlotNumber = _view.PlotNumber;
@@ -87,7 +88,7 @@ namespace ARM_MedRegistrar.Presenter
                     _patient.RhFactor = _view.RhFactor;
                     _patient.Allergies = _view.Allergies;
 
-                    if (_jsonPatientRepository.SaveChangedData(_patient)) 
+                    if (_jsonPatientRepository.Update(_patient)) 
                         return true;
                 }
             }

@@ -1,9 +1,10 @@
-﻿using ARM_MedRegistrar.Model.Persons;
+﻿using ARM_MedRegistrar.Model.Persons.Users;
+using ARM_MedRegistrar.Model.Persons;
 using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
 {
-    public class JsonUserRepository : IUserRepository
+    public class JsonUserRepository :  IBaseRepository<string, IUser> 
     {
         private readonly string _savePath;
         private IDictionary<string, IUser>? _users;
@@ -12,11 +13,11 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
         public JsonUserRepository()
         {
             _savePath = "users.json";
-            _users = new Dictionary<string,IUser>();
+            _users = new Dictionary<string, IUser>() ;
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
         }
 
-        public void Add(IUser value)
+        public void Create(IUser value)
         {
             if (!File.Exists(_savePath))
                 _users = new Dictionary<string, IUser>();
@@ -30,30 +31,13 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
             if (_users != null && _users.ContainsKey(value.Login))
                 throw new ArgumentException("Логин занят");
 
-
             
             _users?.Add(value.Login, value);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, _settings));
 
-            //JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-
-            //if (!File.Exists(_savePath))
-            //{
-            //    _users?.Add(key, value);
-            //    File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, settings));
-            //}
-
-            //else
-            //{
-            //    _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), settings);
-            //    _users?.Add(key, value);
-            //    File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, settings));
-            //}
-
-
         }
 
-        public IDictionary<string, IUser>? GetAll()
+        public IDictionary<string, IUser>? Read()
         {
 
             if (!File.Exists(_savePath))
@@ -64,15 +48,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
             return _users;
         }
 
-        //if (!File.Exists(_savePath)) return new Dictionary<string, IUser>();
-
-        //JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-
-        //_users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), settings);
-
-        //return _users;
-
-        public bool SaveChangedData(IUser changedValue)
+        public bool Update(IUser changedValue)
         {
 
             if (!File.Exists(_savePath))
@@ -89,7 +65,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
             }
             return false;
         }
-        public void Remove(string key)
+        public void Delete(string key)
         {
             if (!File.Exists(_savePath))
                 _users = new Dictionary<string, IUser>();
@@ -104,14 +80,9 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
             if (!_users.ContainsKey(key) || !File.Exists(_savePath))
                 throw new Exception("Не удалось удалить объект из файла: удаляемый элемент или/и файл не найдены");
 
-            //JsonSerializerSettings settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-
-            //_users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), settings);
 
             _users?.Remove(key);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, _settings));
-
-            //File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, settings));
 
 
         }

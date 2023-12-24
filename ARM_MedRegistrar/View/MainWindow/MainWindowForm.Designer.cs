@@ -35,6 +35,7 @@
             listViewSchedule = new ListView();
             columnHeader20 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
+            columnHeader22 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
             columnHeader21 = new ColumnHeader();
             columnHeader13 = new ColumnHeader();
@@ -87,7 +88,6 @@
             buttPaidMedServices = new Button();
             checkIsMultiSelect = new CheckBox();
             errorMultiSelect = new ErrorProvider(components);
-            columnHeader22 = new ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).BeginInit();
@@ -150,6 +150,11 @@
             // 
             columnHeader7.Text = "Дата";
             columnHeader7.Width = 100;
+            // 
+            // columnHeader22
+            // 
+            columnHeader22.Text = "Время";
+            columnHeader22.Width = 100;
             // 
             // columnHeader8
             // 
@@ -465,7 +470,7 @@
             // richTextBoxInfoAboutPatient
             // 
             richTextBoxInfoAboutPatient.BackColor = SystemColors.Window;
-            richTextBoxInfoAboutPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxInfoAboutPatient.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBoxInfoAboutPatient.Location = new Point(1500, 284);
             richTextBoxInfoAboutPatient.Name = "richTextBoxInfoAboutPatient";
             richTextBoxInfoAboutPatient.ReadOnly = true;
@@ -558,11 +563,6 @@
             // errorMultiSelect
             // 
             errorMultiSelect.ContainerControl = this;
-            // 
-            // columnHeader22
-            // 
-            columnHeader22.Text = "Время";
-            columnHeader22.Width = 100;
             // 
             // MainWindowForm
             // 

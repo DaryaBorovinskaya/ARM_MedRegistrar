@@ -1,6 +1,7 @@
 ﻿
 
-using ARM_MedRegistrar.Data.Json.Lists.AttachedStreets;
+using ARM_MedRegistrar.Data.Json.Dictionaries;
+using ARM_MedRegistrar.Data.Json.Dictionaries.AttachedStreets;
 using ARM_MedRegistrar.Model.AttachedStreets;
 
 
@@ -46,8 +47,8 @@ namespace ARM_MedRegistrar.View
         private void buttAddDataToFile_Click(object sender, EventArgs e)
         {
             AttachedStreets _newAttachedStreet;
-            IAttachedStreetsRepository jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
-            IList<IAttachedStreets>? _attachedStreets;
+            IBaseWithIdRepository<uint, IAttachedStreets> jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
+            IDictionary<uint,IAttachedStreets>? _attachedStreets;
 
             bool _isError = false;
 
@@ -57,7 +58,7 @@ namespace ARM_MedRegistrar.View
             errorNoRegion.Clear();
             errorNoNumbOfHouse.Clear();
 
-            _attachedStreets = jsonAttachedStreetsRepository.GetAll();
+            _attachedStreets = jsonAttachedStreetsRepository.Read();
 
             if (_attachedStreets == null)
             {
@@ -120,19 +121,20 @@ namespace ARM_MedRegistrar.View
                 {
 
                     if (textCity.Text == string.Empty)
-                        textCity.Text = _attachedStreets[0].City;
+                        textCity.Text = _attachedStreets[0].AddressOfBuilding.City;
 
                     if (textRegion.Text == string.Empty)
-                        textRegion.Text = _attachedStreets[0].Region;
+                        textRegion.Text = _attachedStreets[0].AddressOfBuilding.Region;
 
                     //_newAttachedStreet = new(textCity.Text, textRegion.Text, textStreet.Text, (int)numericNumbOfHouse.Value);
                     //jsonAttachedStreetsRepository.Add(_newAttachedStreet);
 
-                    IList<IAttachedStreets>? _printAttachedStreets = jsonAttachedStreetsRepository.GetAll();
-
-                    foreach (var item in _printAttachedStreets)
-                        listBoxAttachedStreets.Items.Add("улица " + item.Street);
-
+                    IDictionary<uint,IAttachedStreets>? _printAttachedStreets = jsonAttachedStreetsRepository.Read();
+                    if (_printAttachedStreets != null)
+                    {
+                        foreach (var item in _printAttachedStreets.Values)
+                            listBoxAttachedStreets.Items.Add("улица " + item.AddressOfBuilding.Street);
+                    }
                     MessageBox.Show("Успешно добавлено");
                     textCity.Clear();
                     textRegion.Clear();

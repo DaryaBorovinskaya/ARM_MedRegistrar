@@ -250,6 +250,7 @@ namespace ARM_MedRegistrar
             comboBoxPost.Name = "comboBoxPost";
             comboBoxPost.Size = new Size(329, 36);
             comboBoxPost.TabIndex = 27;
+            comboBoxPost.SelectedIndexChanged += comboBoxPost_SelectedIndexChanged;
             // 
             // label5
             // 

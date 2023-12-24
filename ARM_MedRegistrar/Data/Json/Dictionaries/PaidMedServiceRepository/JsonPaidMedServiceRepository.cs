@@ -1,5 +1,4 @@
-﻿using ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedServiceRepository;
-using ARM_MedRegistrar.Model.PaidMedServices;
+﻿using ARM_MedRegistrar.Model.PaidMedServices;
 using ARM_MedRegistrar.Model.Persons.Patients;
 using Newtonsoft.Json;
 using System;
@@ -10,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
 {
-    public class JsonPaidMedServiceRepository : IPaidMedServiceRepository
+    public class JsonPaidMedServiceRepository : IBaseWithIdRepository<uint, IPaidMedService>
     {
         private readonly string _savePath;
         private IDictionary<uint, IPaidMedService>? _paidMedServices;
@@ -23,7 +22,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
 
         }
 
-        public void Add(IPaidMedService value)
+        public void Create(IPaidMedService value)
         {
             if (!File.Exists(_savePath))
                 _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
@@ -44,7 +43,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
 
         }
 
-        public IDictionary<uint, IPaidMedService>? GetAll()
+        public IDictionary<uint, IPaidMedService>? Read()
         {
             if (!File.Exists(_savePath))
                 _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
@@ -55,7 +54,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
             return _paidMedServices;
         }
 
-        public bool SaveChangedData(IPaidMedService changedValue)
+        public bool Update(IPaidMedService changedValue)
         {
 
             if (!File.Exists(_savePath))
@@ -72,7 +71,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
             }
             return false;
         }
-        public void Remove(uint key)
+        public void Delete(uint key)
         {
             if (!File.Exists(_savePath))
                 _paidMedServices = new SortedDictionary<uint, IPaidMedService>();

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ARM_MedRegistrar.Model.Addresses
+﻿
+namespace ARM_MedRegistrar.Model.AddressesOfBuilding
 {
-    public class Address : IAddress
+    public class AddressOfBuilding :IAddressOfBuilding
     {
         private string _city;
         private string _region;
         private string _street;
         private int _numbOfHouse;
-        private int _numbOfFlat;
+
         public string City
         {
             get => _city; set
@@ -41,6 +35,8 @@ namespace ARM_MedRegistrar.Model.Addresses
                 _street = value;
             }
         }
+
+
         public int NumbOfHouse
         {
             get => _numbOfHouse;
@@ -51,29 +47,19 @@ namespace ARM_MedRegistrar.Model.Addresses
                 _numbOfHouse = value;
             }
         }
-        public int NumbOfFlat
-        {
-            get => _numbOfFlat;
-            set
-            {
-                if (value <= 0)
-                    throw new ArgumentException("Номер квартиры не может быть меньше или равным нулю");
-                _numbOfFlat = value;
-            }
-        }
 
-        public Address(string city, string region, string street, int numbOfHouse = 1, int numbOfFlat = 1)
+        public uint Id { get; }
+        public AddressOfBuilding(string city, string region, string street, int numbOfHouse)
         {
             City = city;
             Region = region;
             Street = street;
             NumbOfHouse = numbOfHouse;
-            NumbOfFlat = numbOfFlat;
         }
 
         public string Format()
         {
-            return $"г. {City}, район {Region}, ул. {Street}, д. {NumbOfHouse}, кв. {NumbOfFlat}";
+            return $"район {Region}, ул. {Street}, д. {NumbOfHouse}, г. {City}";
         }
     }
 }

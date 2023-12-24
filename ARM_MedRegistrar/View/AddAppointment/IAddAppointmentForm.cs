@@ -24,10 +24,10 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
 
         public uint PatientId { set; }
-        public string PatientSurname {  set; }
-        public string PatientName {  set; }
+        public string PatientSurname { get; set; }
+        public string PatientName { get; set; }
         public string? PatientPatronymic { set; }
-        public string PatientDateOfBirth { set; }
+        public string PatientDateOfBirth { get; set; }
         
         public uint PatientSelectedId { get; }
         public int PatientCountOfLine { set; }
@@ -35,5 +35,14 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         public DateTime DayOfAppointment {  get; }
         public DateTime TimeOfAppointment { get; }
+
+        public string GetTypeOfAppointment { get; }
+
+
+        public string PlaceOfAppointment { get; set; }
+
+        public string InfoAboutPatient {  set; }
+
+
     }
 }
