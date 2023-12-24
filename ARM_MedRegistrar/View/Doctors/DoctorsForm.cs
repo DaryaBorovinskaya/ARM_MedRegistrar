@@ -81,7 +81,7 @@ namespace ARM_MedRegistrar.View.Doctors
             }
         }
 
-        string IDoctorsForm.InfoAboutPatient
+        string IDoctorsForm.InfoAboutDoctor
         {
             set
             {

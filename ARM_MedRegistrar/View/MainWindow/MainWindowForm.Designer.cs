@@ -36,6 +36,7 @@
             columnHeader20 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
+            columnHeader21 = new ColumnHeader();
             columnHeader13 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
             columnHeader10 = new ColumnHeader();
@@ -86,7 +87,7 @@
             buttPaidMedServices = new Button();
             checkIsMultiSelect = new CheckBox();
             errorMultiSelect = new ErrorProvider(components);
-            columnHeader21 = new ColumnHeader();
+            columnHeader22 = new ColumnHeader();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).BeginInit();
@@ -129,7 +130,7 @@
             // 
             // listViewSchedule
             // 
-            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader20, columnHeader7, columnHeader8, columnHeader21, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
+            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader20, columnHeader7, columnHeader22, columnHeader8, columnHeader21, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
             listViewSchedule.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             listViewSchedule.Location = new Point(12, 680);
             listViewSchedule.MultiSelect = false;
@@ -147,13 +148,18 @@
             // 
             // columnHeader7
             // 
-            columnHeader7.Text = "Дата и время";
-            columnHeader7.Width = 250;
+            columnHeader7.Text = "Дата";
+            columnHeader7.Width = 100;
             // 
             // columnHeader8
             // 
             columnHeader8.Text = "Номер кабинета или адрес";
             columnHeader8.Width = 300;
+            // 
+            // columnHeader21
+            // 
+            columnHeader21.Text = "Тип записи";
+            columnHeader21.Width = 150;
             // 
             // columnHeader13
             // 
@@ -553,10 +559,10 @@
             // 
             errorMultiSelect.ContainerControl = this;
             // 
-            // columnHeader21
+            // columnHeader22
             // 
-            columnHeader21.Text = "Тип записи";
-            columnHeader21.Width = 150;
+            columnHeader22.Text = "Время";
+            columnHeader22.Width = 100;
             // 
             // MainWindowForm
             // 
@@ -670,5 +676,6 @@
         private CheckBox checkIsMultiSelect;
         private ErrorProvider errorMultiSelect;
         private ColumnHeader columnHeader21;
+        private ColumnHeader columnHeader22;
     }
 }

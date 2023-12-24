@@ -12,6 +12,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
         AddAppointmentPresenter _presenter;
         uint IAddAppointmentForm.DoctorId
         {
+
             set
             {
                 listViewDoctors.Items.Add(value.ToString());
@@ -89,6 +90,24 @@ namespace ARM_MedRegistrar.View.AddAppointment
             }
         }
 
+        public string GetFreeTimeOfAppointment => comboBoxFreeTimeOfAppointment.SelectedItem.ToString();
+
+        public IList<string> SetFreeTimeOfAppointment
+        {
+            set
+            {
+                comboBoxFreeTimeOfAppointment.Items.AddRange(value.ToArray());
+            }
+        }
+
+        string IAddAppointmentForm.InfoAboutDoctor
+        {
+            set
+            {
+                richTextBoxInfoAboutDoctor.Text = value;
+            }
+        }
+
         uint IAddAppointmentForm.PatientId
         {
             set
@@ -150,14 +169,16 @@ namespace ARM_MedRegistrar.View.AddAppointment
         DateTime IAddAppointmentForm.DayOfAppointment => dateTimePickerDateOfAppointment.Value;
 
         DateTime IAddAppointmentForm.TimeOfAppointment => dateTimePickerTimeOfAppointment.Value;
-        
+
+
+
 
         public AddAppointmentForm()
         {
             InitializeComponent();
 
             comboBoxCabinetOrHome.Items.AddRange(new string[] { "Первичный приём у врача", "Вторичный приём у врача", "Вызов на дом" });
-
+            toolTipShowFreeTimeOfAppointment.SetToolTip(buttShowFreeTimeOfAppointment, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку и выберите нужное время записи");
             _presenter = new(this);
 
         }
@@ -171,6 +192,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         private void buttAllDoctors_Click(object sender, EventArgs e)
         {
+            buttShowFreeTimeOfAppointment.Enabled = false;
             listViewDoctors.Items.Clear();
             if (!_presenter.ShowAllDoctors())
                 MessageBox.Show("Список врачей пуст");
@@ -178,8 +200,23 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         private void buttWorkingDoctors_Click(object sender, EventArgs e)
         {
+            listViewDoctors.Items.Clear();
+            buttShowFreeTimeOfAppointment.Enabled = true;
             if (!_presenter.WorkingDoctors())
                 MessageBox.Show("В указанные день и время ни один из врачей не имеет свободной записи");
+        }
+
+        private void buttShowFreeTimeOfAppointment_Click(object sender, EventArgs e)
+        {
+            comboBoxFreeTimeOfAppointment.Items.Clear();
+            if (!_presenter.ShowFreeTimeOfAppointment())
+                MessageBox.Show("Врач не имеет свободной записи на этот день");
+        }
+
+        private void buttAllDataAboutDoctor_Click(object sender, EventArgs e)
+        {
+            richTextBoxInfoAboutDoctor.Clear();
+            _presenter.ShowInfoAboutDoctor();
         }
     }
 }

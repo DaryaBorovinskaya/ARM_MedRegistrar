@@ -19,6 +19,6 @@ namespace ARM_MedRegistrar.View.Doctors
         public int Cabinet {  set; }
         public uint SelectedId { get; }
         
-        public string InfoAboutPatient { set; }
+        public string InfoAboutDoctor { set; }
     }
 }

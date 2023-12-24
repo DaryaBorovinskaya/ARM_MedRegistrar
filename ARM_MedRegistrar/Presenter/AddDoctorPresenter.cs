@@ -4,6 +4,8 @@ using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
 using ARM_MedRegistrar.Model.WorkSchedules;
 using System.ComponentModel;
+using ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments;
+using ARM_MedRegistrar.Model.FreeTimeOfAppointments;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -13,43 +15,25 @@ namespace ARM_MedRegistrar.Presenter
         IFullName _fullName;
         IDoctor _newDoctor;
         IDoctorRepository _jsonDoctorRepository;
+        IFreeTimeOfAppointmentRepository _jsonFreeTimeOfAppointmentRepository;
         uint _id;
-        DateTime _nullTime = new(1753, 1, 1, 0, 0, 0);
+        DateTime _nullTime = new(1753,1,1, 0, 0, 0);
         IWorkSchedule _workSchedule;
         IList<DateTime> _timesOfWork;
-        IList<IWorkSchedule> _workSchedules = new List<IWorkSchedule>();
+        IList<IWorkSchedule> _workSchedules;
+        IFreeTimeOfAppointment _freeTimeOfAppointment;
+        IList<IFreeTimeOfAppointment> _freeTimeOfAppointments;
 
         public AddDoctorPresenter(IAddDoctorForm view)
         {
             _view = view;
+            _freeTimeOfAppointments = new List<IFreeTimeOfAppointment>();
+            _workSchedules = new List<IWorkSchedule>();
             _jsonDoctorRepository = new JsonDoctorRepository();
+            _jsonFreeTimeOfAppointmentRepository = new JsonFreeTimeOfAppointmentRepository();
         }
 
         
-        public void ShowSchedule()
-        {
-
-
-            
-
-
-            //for (int rows = 0; rows < dataGridSchedule.Rows.Count; rows++)
-            //{
-            //    IWorkSchedule _workSchedule = new WorkScheduleOfDoctor()
-            //    {
-            //        DayOfWeek = dataGridSchedule.Rows[rows].Cells[0].Value.ToString(),
-            //        WorkBeginning = dataGridSchedule.Rows[rows].Cells[1].Value.ToString(),
-            //        WorkEnd = dataGridSchedule.Rows[rows].Cells[2].Value.ToString()
-            //    };
-
-            //    _workSchedules.Add(_workSchedule);
-
-
-            //}
-        }
-
-
-
         public bool AddDoctor()
         {
             _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
@@ -65,6 +49,8 @@ namespace ARM_MedRegistrar.Presenter
                 {
                     _workSchedule = new WorkScheduleOfDoctor(WorkScheduleOfDoctor.GetDaysOfWeek[i / 2], _timesOfWork[i], _timesOfWork[i + 1]);
                     _workSchedules.Add(_workSchedule);
+                    
+                    
                 }
                 
             }
@@ -73,6 +59,8 @@ namespace ARM_MedRegistrar.Presenter
                 _view.Cabinet, _view.DurationOfAppointment);
 
             _jsonDoctorRepository.Add(_newDoctor);
+
+            
             return true;
         }
     }

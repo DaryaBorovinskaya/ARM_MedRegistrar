@@ -8,7 +8,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
 {
     public interface IAddAppointmentForm
     {
-        public uint DoctorId { set; }
+        public uint DoctorId {  set; }
         public int DoctorCountOfLine { set; }
         public string DoctorSurname {  set; }
         public string DoctorName {  set; }
@@ -18,6 +18,9 @@ namespace ARM_MedRegistrar.View.AddAppointment
         public int DoctorPlotNumber { set; }
         public int DoctorCabinet { set; }
         public uint DoctorSelectedId { get; }
+        public string GetFreeTimeOfAppointment { get;  }
+        public IList<string> SetFreeTimeOfAppointment { set; }
+        public string InfoAboutDoctor { set; }
 
 
         public uint PatientId { set; }

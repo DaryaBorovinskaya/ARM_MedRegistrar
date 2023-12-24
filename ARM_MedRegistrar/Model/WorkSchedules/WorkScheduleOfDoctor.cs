@@ -42,9 +42,9 @@ namespace ARM_MedRegistrar.Model.WorkSchedules
         public WorkScheduleOfDoctor(string dayOfWeek, DateTime workBeginning, DateTime workEnd )
         {
             DayOfWeek = dayOfWeek;
-            workBeginning = workBeginning.Date + new TimeSpan(workBeginning.TimeOfDay.Hours, workBeginning.TimeOfDay.Minutes, 0);
+            workBeginning = workBeginning.Date +  new TimeSpan(workBeginning.TimeOfDay.Hours, workBeginning.TimeOfDay.Minutes, 0);
             WorkBeginning = workBeginning;
-            workEnd = workEnd.Date + new TimeSpan(workEnd.TimeOfDay.Hours, workEnd.TimeOfDay.Minutes, 0);
+            workEnd = workEnd.Date +  new TimeSpan(workEnd.TimeOfDay.Hours, workEnd.TimeOfDay.Minutes, 0);
             WorkEnd = workEnd;
             
         }

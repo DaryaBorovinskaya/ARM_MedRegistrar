@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             listViewPatients = new ListView();
             columnHeader1 = new ColumnHeader();
             columnHeader2 = new ColumnHeader();
@@ -56,16 +57,23 @@
             textPlace = new TextBox();
             label7 = new Label();
             buttWorkingDoctors = new Button();
+            buttShowFreeTimeOfAppointment = new Button();
+            comboBoxFreeTimeOfAppointment = new ComboBox();
+            toolTipShowFreeTimeOfAppointment = new ToolTip(components);
+            errorNoTime = new ErrorProvider(components);
+            richTextBoxInfoAboutDoctor = new RichTextBox();
+            buttAllDataAboutDoctor = new Button();
+            ((System.ComponentModel.ISupportInitialize)errorNoTime).BeginInit();
             SuspendLayout();
             // 
             // listViewPatients
             // 
             listViewPatients.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader12 });
             listViewPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewPatients.Location = new Point(12, 95);
+            listViewPatients.Location = new Point(13, 160);
             listViewPatients.MultiSelect = false;
             listViewPatients.Name = "listViewPatients";
-            listViewPatients.Size = new Size(591, 457);
+            listViewPatients.Size = new Size(591, 493);
             listViewPatients.TabIndex = 0;
             listViewPatients.UseCompatibleStateImageBehavior = false;
             listViewPatients.View = System.Windows.Forms.View.Details;
@@ -99,10 +107,10 @@
             // 
             listViewDoctors.Columns.AddRange(new ColumnHeader[] { columnHeader5, columnHeader6, columnHeader7, columnHeader8, columnHeader10, columnHeader11, columnHeader9 });
             listViewDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewDoctors.Location = new Point(627, 95);
+            listViewDoctors.Location = new Point(628, 160);
             listViewDoctors.MultiSelect = false;
             listViewDoctors.Name = "listViewDoctors";
-            listViewDoctors.Size = new Size(770, 457);
+            listViewDoctors.Size = new Size(770, 493);
             listViewDoctors.TabIndex = 1;
             listViewDoctors.UseCompatibleStateImageBehavior = false;
             listViewDoctors.View = System.Windows.Forms.View.Details;
@@ -134,8 +142,8 @@
             // 
             // columnHeader11
             // 
-            columnHeader11.Text = "График работы";
-            columnHeader11.Width = 300;
+            columnHeader11.Text = "Кабинет";
+            columnHeader11.Width = 100;
             // 
             // columnHeader9
             // 
@@ -147,7 +155,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.Firebrick;
-            label1.Location = new Point(12, 60);
+            label1.Location = new Point(13, 106);
             label1.Name = "label1";
             label1.Size = new Size(125, 32);
             label1.TabIndex = 2;
@@ -158,7 +166,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(627, 60);
+            label2.Location = new Point(628, 106);
             label2.Name = "label2";
             label2.Size = new Size(82, 32);
             label2.TabIndex = 3;
@@ -168,7 +176,7 @@
             // 
             buttAllPatients.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             buttAllPatients.ForeColor = Color.Firebrick;
-            buttAllPatients.Location = new Point(385, 558);
+            buttAllPatients.Location = new Point(386, 659);
             buttAllPatients.Name = "buttAllPatients";
             buttAllPatients.Size = new Size(218, 42);
             buttAllPatients.TabIndex = 4;
@@ -180,7 +188,7 @@
             // 
             buttAllDoctors.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             buttAllDoctors.ForeColor = Color.Firebrick;
-            buttAllDoctors.Location = new Point(1179, 558);
+            buttAllDoctors.Location = new Point(1180, 659);
             buttAllDoctors.Name = "buttAllDoctors";
             buttAllDoctors.Size = new Size(218, 45);
             buttAllDoctors.TabIndex = 5;
@@ -190,10 +198,12 @@
             // 
             // dateTimePickerDateOfAppointment
             // 
+            dateTimePickerDateOfAppointment.CustomFormat = "dd.MM.yyyy - dddd";
             dateTimePickerDateOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerDateOfAppointment.Location = new Point(1428, 130);
+            dateTimePickerDateOfAppointment.Format = DateTimePickerFormat.Custom;
+            dateTimePickerDateOfAppointment.Location = new Point(770, 57);
             dateTimePickerDateOfAppointment.Name = "dateTimePickerDateOfAppointment";
-            dateTimePickerDateOfAppointment.Size = new Size(341, 34);
+            dateTimePickerDateOfAppointment.Size = new Size(333, 34);
             dateTimePickerDateOfAppointment.TabIndex = 6;
             // 
             // label3
@@ -201,7 +211,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(1613, 95);
+            label3.Location = new Point(770, 15);
             label3.Name = "label3";
             label3.Size = new Size(156, 32);
             label3.TabIndex = 7;
@@ -211,7 +221,7 @@
             // 
             dateTimePickerTimeOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePickerTimeOfAppointment.Format = DateTimePickerFormat.Time;
-            dateTimePickerTimeOfAppointment.Location = new Point(1613, 230);
+            dateTimePickerTimeOfAppointment.Location = new Point(1145, 57);
             dateTimePickerTimeOfAppointment.Name = "dateTimePickerTimeOfAppointment";
             dateTimePickerTimeOfAppointment.ShowUpDown = true;
             dateTimePickerTimeOfAppointment.Size = new Size(156, 34);
@@ -222,7 +232,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Firebrick;
-            label4.Location = new Point(1594, 195);
+            label4.Location = new Point(1145, 9);
             label4.Name = "label4";
             label4.Size = new Size(175, 32);
             label4.TabIndex = 9;
@@ -244,7 +254,7 @@
             comboBoxCabinetOrHome.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCabinetOrHome.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxCabinetOrHome.FormattingEnabled = true;
-            comboBoxCabinetOrHome.Location = new Point(12, 656);
+            comboBoxCabinetOrHome.Location = new Point(12, 737);
             comboBoxCabinetOrHome.Name = "comboBoxCabinetOrHome";
             comboBoxCabinetOrHome.Size = new Size(339, 36);
             comboBoxCabinetOrHome.TabIndex = 11;
@@ -254,7 +264,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Firebrick;
-            label6.Location = new Point(12, 621);
+            label6.Location = new Point(12, 702);
             label6.Name = "label6";
             label6.Size = new Size(138, 32);
             label6.TabIndex = 12;
@@ -263,10 +273,10 @@
             // textPlace
             // 
             textPlace.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPlace.Location = new Point(394, 656);
+            textPlace.Location = new Point(476, 731);
             textPlace.Multiline = true;
             textPlace.Name = "textPlace";
-            textPlace.Size = new Size(458, 97);
+            textPlace.Size = new Size(425, 58);
             textPlace.TabIndex = 13;
             // 
             // label7
@@ -274,7 +284,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.Firebrick;
-            label7.Location = new Point(394, 621);
+            label7.Location = new Point(386, 738);
             label7.Name = "label7";
             label7.Size = new Size(84, 32);
             label7.TabIndex = 14;
@@ -285,7 +295,7 @@
             buttWorkingDoctors.BackColor = SystemColors.Window;
             buttWorkingDoctors.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttWorkingDoctors.ForeColor = Color.Firebrick;
-            buttWorkingDoctors.Location = new Point(1423, 290);
+            buttWorkingDoctors.Location = new Point(1372, 22);
             buttWorkingDoctors.Name = "buttWorkingDoctors";
             buttWorkingDoctors.Size = new Size(346, 72);
             buttWorkingDoctors.TabIndex = 15;
@@ -293,12 +303,66 @@
             buttWorkingDoctors.UseVisualStyleBackColor = false;
             buttWorkingDoctors.Click += buttWorkingDoctors_Click;
             // 
+            // buttShowFreeTimeOfAppointment
+            // 
+            buttShowFreeTimeOfAppointment.Enabled = false;
+            buttShowFreeTimeOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            buttShowFreeTimeOfAppointment.ForeColor = Color.Firebrick;
+            buttShowFreeTimeOfAppointment.Location = new Point(1473, 524);
+            buttShowFreeTimeOfAppointment.Name = "buttShowFreeTimeOfAppointment";
+            buttShowFreeTimeOfAppointment.Size = new Size(276, 66);
+            buttShowFreeTimeOfAppointment.TabIndex = 16;
+            buttShowFreeTimeOfAppointment.Text = "Показать свободные часы приёма врача";
+            buttShowFreeTimeOfAppointment.UseVisualStyleBackColor = true;
+            buttShowFreeTimeOfAppointment.Click += buttShowFreeTimeOfAppointment_Click;
+            // 
+            // comboBoxFreeTimeOfAppointment
+            // 
+            comboBoxFreeTimeOfAppointment.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxFreeTimeOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxFreeTimeOfAppointment.ForeColor = Color.Firebrick;
+            comboBoxFreeTimeOfAppointment.FormattingEnabled = true;
+            comboBoxFreeTimeOfAppointment.Location = new Point(1435, 596);
+            comboBoxFreeTimeOfAppointment.Name = "comboBoxFreeTimeOfAppointment";
+            comboBoxFreeTimeOfAppointment.Size = new Size(337, 36);
+            comboBoxFreeTimeOfAppointment.TabIndex = 17;
+            // 
+            // errorNoTime
+            // 
+            errorNoTime.ContainerControl = this;
+            // 
+            // richTextBoxInfoAboutDoctor
+            // 
+            richTextBoxInfoAboutDoctor.BackColor = SystemColors.Window;
+            richTextBoxInfoAboutDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxInfoAboutDoctor.Location = new Point(1415, 211);
+            richTextBoxInfoAboutDoctor.Name = "richTextBoxInfoAboutDoctor";
+            richTextBoxInfoAboutDoctor.ReadOnly = true;
+            richTextBoxInfoAboutDoctor.Size = new Size(365, 286);
+            richTextBoxInfoAboutDoctor.TabIndex = 50;
+            richTextBoxInfoAboutDoctor.Text = "";
+            // 
+            // buttAllDataAboutDoctor
+            // 
+            buttAllDataAboutDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllDataAboutDoctor.Location = new Point(1425, 160);
+            buttAllDataAboutDoctor.Name = "buttAllDataAboutDoctor";
+            buttAllDataAboutDoctor.Size = new Size(355, 45);
+            buttAllDataAboutDoctor.TabIndex = 51;
+            buttAllDataAboutDoctor.Text = "Все данные о выбранном враче";
+            buttAllDataAboutDoctor.UseVisualStyleBackColor = true;
+            buttAllDataAboutDoctor.Click += buttAllDataAboutDoctor_Click;
+            // 
             // AddAppointmentForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(1781, 817);
+            ClientSize = new Size(1792, 880);
+            Controls.Add(buttAllDataAboutDoctor);
+            Controls.Add(richTextBoxInfoAboutDoctor);
+            Controls.Add(comboBoxFreeTimeOfAppointment);
+            Controls.Add(buttShowFreeTimeOfAppointment);
             Controls.Add(buttWorkingDoctors);
             Controls.Add(label7);
             Controls.Add(textPlace);
@@ -315,11 +379,13 @@
             Controls.Add(label1);
             Controls.Add(listViewDoctors);
             Controls.Add(listViewPatients);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "AddAppointmentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddAppointmentForm";
+            ((System.ComponentModel.ISupportInitialize)errorNoTime).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -352,7 +418,13 @@
         private Button buttWorkingDoctors;
         private ColumnHeader columnHeader9;
         private ColumnHeader columnHeader10;
-        private ColumnHeader columnHeader11;
         private ColumnHeader columnHeader12;
+        private ColumnHeader columnHeader11;
+        private Button buttShowFreeTimeOfAppointment;
+        private ComboBox comboBoxFreeTimeOfAppointment;
+        private ToolTip toolTipShowFreeTimeOfAppointment;
+        private ErrorProvider errorNoTime;
+        private RichTextBox richTextBoxInfoAboutDoctor;
+        private Button buttAllDataAboutDoctor;
     }
 }

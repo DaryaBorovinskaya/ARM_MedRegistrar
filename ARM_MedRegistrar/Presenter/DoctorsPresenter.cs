@@ -94,7 +94,7 @@ namespace ARM_MedRegistrar.Presenter
                 return;
 
             if (_doctors != null && _doctors.Count != 0 && _view.SelectedId != 0)
-                _view.InfoAboutPatient = _doctors[_view.SelectedId].Format();
+                _view.InfoAboutDoctor = _doctors[_view.SelectedId].Format();
         }
         public bool RemoveDoctor(IList<uint> _listOfId)
         {

@@ -7,7 +7,8 @@ namespace ARM_MedRegistrar.Model.Appointments
 {
     public interface IAppointment : IIdentification, IFormatter
     {
-        public DateTime DateAndTime {  get; set; }
+        public DateTime Date { get; set; }
+        public DateTime Time {  get; set; }
         public IPatient Patient { get; set; }
         public IDoctor Doctor { get; set; }
 

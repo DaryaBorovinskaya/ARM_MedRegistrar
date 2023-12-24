@@ -86,7 +86,7 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
             PlotNumber = plotNumber;
             Cabinet = cabinet;
 
-            durationOfAppointment = durationOfAppointment.Date + new TimeSpan(durationOfAppointment.TimeOfDay.Hours, durationOfAppointment.TimeOfDay.Minutes, 0);
+            durationOfAppointment = durationOfAppointment.Date +  new TimeSpan(durationOfAppointment.TimeOfDay.Hours, durationOfAppointment.TimeOfDay.Minutes, 0);
             DurationOfAppointment = durationOfAppointment;
 
         }

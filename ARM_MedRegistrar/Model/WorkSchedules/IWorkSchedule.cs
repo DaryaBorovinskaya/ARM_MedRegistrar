@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.Model.WorkSchedules
 {
-    public interface IWorkSchedule : IFormatter
+    public interface IWorkSchedule : IFormatter, IWorkBeginningEnd
     {
         
         public string DayOfWeek { get; set; }
-        public DateTime WorkBeginning { get; set; }
-        public DateTime WorkEnd { get; set; }
+        
        
     }
 }
