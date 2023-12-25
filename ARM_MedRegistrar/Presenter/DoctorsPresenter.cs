@@ -10,7 +10,7 @@ namespace ARM_MedRegistrar.Presenter
     public class DoctorsPresenter
     {
         IDoctorsForm _view;
-        IBaseWithIdRepository<uint, IDoctor> _jsonDoctorRepository;
+        IBaseRepositoryWithCreatedID<uint, IDoctor> _jsonDoctorRepository;
         IDictionary<uint, IDoctor>? _doctors;
         int _countOfLine = -1;
         bool _isSuccess;

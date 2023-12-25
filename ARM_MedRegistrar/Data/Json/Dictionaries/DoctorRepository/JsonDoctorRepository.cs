@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
 {
-    public class JsonDoctorRepository :  IBaseWithIdRepository<uint, IDoctor>
+    public class JsonDoctorRepository :  IBaseRepositoryWithCreatedID<uint, IDoctor>
     {
         private readonly string _savePath;
         private IDictionary<uint, IDoctor>? _doctors; 
@@ -80,7 +80,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
 
         }
 
-        public uint CreateId()
+        public uint CreateID()
         {
             if (!File.Exists(_savePath))
                 _doctors = new SortedDictionary<uint, IDoctor>();

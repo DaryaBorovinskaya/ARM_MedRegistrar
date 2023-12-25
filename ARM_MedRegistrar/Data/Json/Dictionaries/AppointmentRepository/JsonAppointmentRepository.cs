@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 {
-    public class JsonAppointmentRepository : IBaseWithIdRepository<uint, IAppointment> 
+    public class JsonAppointmentRepository : IBaseRepositoryWithCreatedID<uint, IAppointment> 
     {
         private readonly string _savePath;
         private IDictionary<uint, IAppointment>? _appointments;
@@ -105,7 +105,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 
         }
 
-        public uint CreateId()
+        public uint CreateID()
         {
             if (!File.Exists(_savePath))
                 _appointments = new SortedDictionary<uint,IAppointment>();

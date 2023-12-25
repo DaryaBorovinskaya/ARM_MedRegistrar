@@ -15,11 +15,11 @@ namespace ARM_MedRegistrar.Presenter
     public class AddAppointmentPresenter
     {
         IAddAppointmentForm _view;
-        IBaseWithIdRepository<uint, IDoctor>  _jsonDoctorRepository;
+        IBaseRepositoryWithCreatedID<uint, IDoctor>  _jsonDoctorRepository;
         IDictionary<uint, IDoctor>? _doctors;
         IFreeTimeOfAppointment _freeTimeOfAppointments;
         IDictionary<uint, IFreeTimeOfAppointment>? _dictFreeTimeOfAppointments;
-        IBaseWithIdRepository<uint, IPatient> _jsonPatientRepository;
+        IBaseRepositoryWithCreatedID<uint, IPatient> _jsonPatientRepository;
         IDictionary<uint, IPatient>? _patients;
         IBaseRepository<uint, IFreeTimeOfAppointment> _jsonFreeTimeOfAppointmentRepository;
         IDayWithFreeAppointments _dayWithFreeAppointments;

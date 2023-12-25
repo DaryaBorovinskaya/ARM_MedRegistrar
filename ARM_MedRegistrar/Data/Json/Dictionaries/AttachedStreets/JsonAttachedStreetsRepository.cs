@@ -7,7 +7,7 @@ using ARM_MedRegistrar.Model.Persons.Doctors;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.AttachedStreets
 {
-    public class JsonAttachedStreetsRepository : IBaseWithIdRepository<uint, IAttachedStreets>
+    public class JsonAttachedStreetsRepository : IBaseRepositoryWithCreatedID<uint, IAttachedStreets>
     {
         private readonly string _savePath;
         private IDictionary<uint, IAttachedStreets>? _attachedStreets = new SortedDictionary<uint,IAttachedStreets>();
@@ -85,7 +85,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AttachedStreets
         }
 
 
-        public uint CreateId()
+        public uint CreateID()
         {
             if (!File.Exists(_savePath))
                 _attachedStreets = new SortedDictionary<uint, IAttachedStreets>();

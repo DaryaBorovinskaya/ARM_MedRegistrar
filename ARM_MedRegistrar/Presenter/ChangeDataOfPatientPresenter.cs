@@ -11,7 +11,7 @@ namespace ARM_MedRegistrar.Presenter
     public class ChangeDataOfPatientPresenter
     {
         IChangeDataOfPatientForm _view;
-        IBaseWithIdRepository<uint, IPatient> _jsonPatientRepository;
+        IBaseRepositoryWithCreatedID<uint, IPatient> _jsonPatientRepository;
         IDictionary<uint, IPatient> _patients;
         IPatient _patient;
 

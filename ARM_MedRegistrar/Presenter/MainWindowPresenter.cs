@@ -15,7 +15,7 @@ namespace ARM_MedRegistrar.Presenter
     public class MainWindowPresenter
     { 
         IMainWindowForm _view;
-        IBaseWithIdRepository<uint, IPatient>  _jsonPatientRepository;
+        IBaseRepositoryWithCreatedID<uint, IPatient>  _jsonPatientRepository;
         IDictionary<uint, IPatient>? _patients;
         int _countOfLine = -1;
         bool _isSuccess;

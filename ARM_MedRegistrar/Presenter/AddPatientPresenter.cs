@@ -16,11 +16,11 @@ namespace ARM_MedRegistrar.Presenter
         IPatient _newPatient;
         IPatientAddress _address;
         IAddPatientForm _view;
-        IBaseWithIdRepository<uint, IAttachedStreets> _jsonAttachedStreetsRepository;
+        IBaseRepositoryWithCreatedID<uint, IAttachedStreets> _jsonAttachedStreetsRepository;
         IDictionary<uint,IAttachedStreets>? _attStreets;
         uint _id;
         string _city, _region;
-        IBaseWithIdRepository<uint, IPatient> _jsonPatientRepository;
+        IBaseRepositoryWithCreatedID<uint, IPatient> _jsonPatientRepository;
         IAddressOfBuilding _addressOfBuilding;
         public AddPatientPresenter(IAddPatientForm view) 
         { 
@@ -71,7 +71,7 @@ namespace ARM_MedRegistrar.Presenter
             _address = new PatientAddress(_addressOfBuilding, _view.NumbOfFlat);
 
 
-            _id = _jsonPatientRepository.CreateId();
+            _id = _jsonPatientRepository.CreateID();
 
             _newPatient = new Patient(_id, _fullName, _view.DateOfBirth, _address, _view.PhoneNumber, _view.PlotNumber,
                 _view.NumbOfPatientCard, _view.PolicySeries, _view.PolicyNumb, _view.DocumentSeries,

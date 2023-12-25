@@ -47,7 +47,7 @@ namespace ARM_MedRegistrar.View
         private void buttAddDataToFile_Click(object sender, EventArgs e)
         {
             AttachedStreets _newAttachedStreet;
-            IBaseWithIdRepository<uint, IAttachedStreets> jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
+            IBaseRepositoryWithCreatedID<uint, IAttachedStreets> jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
             IDictionary<uint,IAttachedStreets>? _attachedStreets;
 
             bool _isError = false;

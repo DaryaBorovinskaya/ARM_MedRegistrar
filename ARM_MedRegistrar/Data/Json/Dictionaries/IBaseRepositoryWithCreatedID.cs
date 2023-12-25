@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries
 {
-    public interface IBaseWithIdRepository<T, U> : IBaseRepository<T, U> where U : class
+    public interface IBaseRepositoryWithCreatedID<T, U> : IBaseRepository<T, U> where U : class
     {
-        public uint CreateId();
+        public uint CreateID();
     }
 }

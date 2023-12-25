@@ -16,7 +16,7 @@ namespace ARM_MedRegistrar.Presenter
         IAddDoctorForm _view;
         IFullName _fullName;
         IDoctor _newDoctor;
-        IBaseWithIdRepository<uint, IDoctor> _jsonDoctorRepository;
+        IBaseRepositoryWithCreatedID<uint, IDoctor> _jsonDoctorRepository;
         IBaseRepository<uint, IFreeTimeOfAppointment> _jsonFreeTimeOfAppointmentRepository;
         uint _id;
         DateTime _nullTime = new(1753,1,1, 0, 0, 0);
@@ -38,7 +38,7 @@ namespace ARM_MedRegistrar.Presenter
         public bool AddDoctor()
         {
             _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
-            _id = _jsonDoctorRepository.CreateId();
+            _id = _jsonDoctorRepository.CreateID();
 
             _timesOfWork = _view.TimesOfWork;
             for (int i = 0; i < _timesOfWork.Count; i += 2)

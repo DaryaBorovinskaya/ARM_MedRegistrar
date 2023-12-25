@@ -12,7 +12,7 @@ namespace ARM_MedRegistrar.Presenter
     public class PaidMedServicesPresenter
     {
         IPaidMedServicesForm _view;
-        IBaseWithIdRepository<uint, IPaidMedService> _jsonPaidMedServiceRepository;
+        IBaseRepositoryWithCreatedID<uint, IPaidMedService> _jsonPaidMedServiceRepository;
         IPaidMedService _paidMedService;
         IDictionary<uint, IPaidMedService> _paidMedServices;
         uint _id;
@@ -27,7 +27,7 @@ namespace ARM_MedRegistrar.Presenter
         public void AddPaidMedService()
         {
             
-            _id = _jsonPaidMedServiceRepository.CreateId();
+            _id = _jsonPaidMedServiceRepository.CreateID();
             _paidMedService = new PaidMedService(_view.Title, _view.Price, _id);
             _jsonPaidMedServiceRepository.Create(_paidMedService);
         }

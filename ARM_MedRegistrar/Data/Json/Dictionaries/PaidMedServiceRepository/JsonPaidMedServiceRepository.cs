@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
 {
-    public class JsonPaidMedServiceRepository : IBaseWithIdRepository<uint, IPaidMedService>
+    public class JsonPaidMedServiceRepository : IBaseRepositoryWithCreatedID<uint, IPaidMedService>
     {
         private readonly string _savePath;
         private IDictionary<uint, IPaidMedService>? _paidMedServices;
@@ -91,7 +91,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
 
         }
 
-        public uint CreateId()
+        public uint CreateID()
         {
             if (!File.Exists(_savePath))
                 _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
