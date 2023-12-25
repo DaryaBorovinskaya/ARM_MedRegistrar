@@ -60,11 +60,11 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Snow;
-            label1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Firebrick;
-            label1.Location = new Point(12, 34);
+            label1.Location = new Point(28, 37);
             label1.Name = "label1";
-            label1.Size = new Size(430, 38);
+            label1.Size = new Size(458, 41);
             label1.TabIndex = 0;
             label1.Text = "Платные медицинские услуги";
             // 
@@ -72,10 +72,10 @@
             // 
             listViewPaidMedServices.Columns.AddRange(new ColumnHeader[] { columnHeader3, columnHeader1, columnHeader2 });
             listViewPaidMedServices.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewPaidMedServices.Location = new Point(12, 233);
+            listViewPaidMedServices.Location = new Point(28, 317);
             listViewPaidMedServices.MultiSelect = false;
             listViewPaidMedServices.Name = "listViewPaidMedServices";
-            listViewPaidMedServices.Size = new Size(755, 321);
+            listViewPaidMedServices.Size = new Size(1303, 443);
             listViewPaidMedServices.TabIndex = 1;
             listViewPaidMedServices.UseCompatibleStateImageBehavior = false;
             listViewPaidMedServices.View = System.Windows.Forms.View.Details;
@@ -88,20 +88,20 @@
             // columnHeader1
             // 
             columnHeader1.Text = "Наименование услуги";
-            columnHeader1.Width = 500;
+            columnHeader1.Width = 1000;
             // 
             // columnHeader2
             // 
             columnHeader2.Text = "Цена";
-            columnHeader2.Width = 150;
+            columnHeader2.Width = 200;
             // 
             // buttAddPaidMedService
             // 
-            buttAddPaidMedService.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAddPaidMedService.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttAddPaidMedService.ForeColor = Color.Firebrick;
-            buttAddPaidMedService.Location = new Point(942, 332);
+            buttAddPaidMedService.Location = new Point(1446, 429);
             buttAddPaidMedService.Name = "buttAddPaidMedService";
-            buttAddPaidMedService.Size = new Size(220, 44);
+            buttAddPaidMedService.Size = new Size(271, 83);
             buttAddPaidMedService.TabIndex = 2;
             buttAddPaidMedService.Text = "Добавить услугу";
             buttAddPaidMedService.UseVisualStyleBackColor = true;
@@ -109,9 +109,9 @@
             // 
             // buttRemoveMedService
             // 
-            buttRemoveMedService.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttRemoveMedService.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttRemoveMedService.ForeColor = Color.Firebrick;
-            buttRemoveMedService.Location = new Point(12, 570);
+            buttRemoveMedService.Location = new Point(28, 783);
             buttRemoveMedService.Name = "buttRemoveMedService";
             buttRemoveMedService.Size = new Size(220, 44);
             buttRemoveMedService.TabIndex = 3;
@@ -122,32 +122,32 @@
             // textTotalPrice
             // 
             textTotalPrice.BackColor = Color.White;
-            textTotalPrice.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textTotalPrice.Location = new Point(942, 660);
+            textTotalPrice.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            textTotalPrice.Location = new Point(1575, 918);
             textTotalPrice.Name = "textTotalPrice";
             textTotalPrice.ReadOnly = true;
-            textTotalPrice.Size = new Size(182, 39);
+            textTotalPrice.Size = new Size(208, 43);
             textTotalPrice.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(993, 613);
+            label2.Location = new Point(1575, 873);
             label2.Name = "label2";
-            label2.Size = new Size(71, 28);
+            label2.Size = new Size(84, 32);
             label2.TabIndex = 5;
             label2.Text = "Итого:";
             // 
             // buttCalculateTotalPrice
             // 
             buttCalculateTotalPrice.BackColor = Color.White;
-            buttCalculateTotalPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttCalculateTotalPrice.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttCalculateTotalPrice.ForeColor = Color.Firebrick;
-            buttCalculateTotalPrice.Location = new Point(534, 655);
+            buttCalculateTotalPrice.Location = new Point(1051, 918);
             buttCalculateTotalPrice.Name = "buttCalculateTotalPrice";
-            buttCalculateTotalPrice.Size = new Size(371, 44);
+            buttCalculateTotalPrice.Size = new Size(440, 55);
             buttCalculateTotalPrice.TabIndex = 6;
             buttCalculateTotalPrice.Text = "Посчитать итоговую стоимость";
             buttCalculateTotalPrice.UseVisualStyleBackColor = false;
@@ -155,30 +155,30 @@
             // 
             // textSearchingTitle
             // 
-            textSearchingTitle.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textSearchingTitle.Location = new Point(12, 166);
+            textSearchingTitle.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            textSearchingTitle.Location = new Point(101, 230);
             textSearchingTitle.Name = "textSearchingTitle";
-            textSearchingTitle.Size = new Size(313, 39);
+            textSearchingTitle.Size = new Size(313, 43);
             textSearchingTitle.TabIndex = 8;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(12, 135);
+            label3.Location = new Point(115, 166);
             label3.Name = "label3";
-            label3.Size = new Size(216, 28);
+            label3.Size = new Size(259, 32);
             label3.TabIndex = 9;
             label3.Text = "Наименование услуги";
             // 
             // buttSearchPaidMedService
             // 
-            buttSearchPaidMedService.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttSearchPaidMedService.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttSearchPaidMedService.ForeColor = Color.Firebrick;
-            buttSearchPaidMedService.Location = new Point(362, 161);
+            buttSearchPaidMedService.Location = new Point(648, 212);
             buttSearchPaidMedService.Name = "buttSearchPaidMedService";
-            buttSearchPaidMedService.Size = new Size(220, 44);
+            buttSearchPaidMedService.Size = new Size(273, 61);
             buttSearchPaidMedService.TabIndex = 10;
             buttSearchPaidMedService.Text = "Найти";
             buttSearchPaidMedService.UseVisualStyleBackColor = true;
@@ -192,18 +192,18 @@
             // 
             label4.AutoSize = true;
             label4.BackColor = Color.Snow;
-            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Firebrick;
-            label4.Location = new Point(874, 39);
+            label4.Location = new Point(1357, 80);
             label4.Name = "label4";
-            label4.Size = new Size(358, 31);
+            label4.Size = new Size(426, 37);
             label4.TabIndex = 11;
             label4.Text = "Добавление платной мед. услуги";
             // 
             // textTitle
             // 
             textTitle.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            textTitle.Location = new Point(896, 148);
+            textTitle.Location = new Point(1440, 183);
             textTitle.Name = "textTitle";
             textTitle.Size = new Size(313, 39);
             textTitle.TabIndex = 12;
@@ -211,22 +211,22 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Firebrick;
-            label5.Location = new Point(896, 107);
+            label5.Location = new Point(1440, 142);
             label5.Name = "label5";
-            label5.Size = new Size(156, 28);
+            label5.Size = new Size(188, 32);
             label5.TabIndex = 13;
             label5.Text = "Наименование ";
             // 
             // buttAllPaidMedServices
             // 
             buttAllPaidMedServices.BackColor = Color.MistyRose;
-            buttAllPaidMedServices.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllPaidMedServices.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttAllPaidMedServices.ForeColor = Color.Firebrick;
-            buttAllPaidMedServices.Location = new Point(511, 570);
+            buttAllPaidMedServices.Location = new Point(1023, 766);
             buttAllPaidMedServices.Name = "buttAllPaidMedServices";
-            buttAllPaidMedServices.Size = new Size(256, 44);
+            buttAllPaidMedServices.Size = new Size(308, 61);
             buttAllPaidMedServices.TabIndex = 15;
             buttAllPaidMedServices.Text = "Обновить список услуг";
             buttAllPaidMedServices.UseVisualStyleBackColor = false;
@@ -235,11 +235,11 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Firebrick;
-            label6.Location = new Point(896, 228);
+            label6.Location = new Point(1440, 263);
             label6.Name = "label6";
-            label6.Size = new Size(59, 28);
+            label6.Size = new Size(71, 32);
             label6.TabIndex = 16;
             label6.Text = "Цена";
             // 
@@ -250,7 +250,7 @@
             // numericPrice
             // 
             numericPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numericPrice.Location = new Point(902, 259);
+            numericPrice.Location = new Point(1446, 294);
             numericPrice.Name = "numericPrice";
             numericPrice.Size = new Size(150, 34);
             numericPrice.TabIndex = 17;
@@ -259,11 +259,11 @@
             // checkIsMultiSelect
             // 
             checkIsMultiSelect.AutoSize = true;
-            checkIsMultiSelect.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsMultiSelect.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             checkIsMultiSelect.ForeColor = Color.Firebrick;
-            checkIsMultiSelect.Location = new Point(253, 577);
+            checkIsMultiSelect.Location = new Point(550, 783);
             checkIsMultiSelect.Name = "checkIsMultiSelect";
-            checkIsMultiSelect.Size = new Size(258, 32);
+            checkIsMultiSelect.Size = new Size(306, 36);
             checkIsMultiSelect.TabIndex = 18;
             checkIsMultiSelect.Text = "Выбор нескольких услуг";
             checkIsMultiSelect.UseVisualStyleBackColor = true;
@@ -274,7 +274,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(1309, 750);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(checkIsMultiSelect);
             Controls.Add(numericPrice);
             Controls.Add(label6);
@@ -293,10 +293,9 @@
             Controls.Add(listViewPaidMedServices);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
             Name = "PaidMedServicesForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "PaidMedServicesForm";
+            Text = "ARM_MedRegistrar";
             ((System.ComponentModel.ISupportInitialize)errorNoTitle).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPrice).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericPrice).EndInit();

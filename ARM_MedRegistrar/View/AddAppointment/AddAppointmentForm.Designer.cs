@@ -48,8 +48,6 @@
             buttAllDoctors = new Button();
             dateTimePickerDateOfAppointment = new DateTimePicker();
             label3 = new Label();
-            dateTimePickerTimeOfAppointment = new DateTimePicker();
-            label4 = new Label();
             label5 = new Label();
             comboBoxTypeOfAppointment = new ComboBox();
             label6 = new Label();
@@ -214,7 +212,7 @@
             dateTimePickerDateOfAppointment.CustomFormat = "dd.MM.yyyy - dddd";
             dateTimePickerDateOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePickerDateOfAppointment.Format = DateTimePickerFormat.Custom;
-            dateTimePickerDateOfAppointment.Location = new Point(770, 57);
+            dateTimePickerDateOfAppointment.Location = new Point(914, 60);
             dateTimePickerDateOfAppointment.Name = "dateTimePickerDateOfAppointment";
             dateTimePickerDateOfAppointment.Size = new Size(333, 34);
             dateTimePickerDateOfAppointment.TabIndex = 6;
@@ -224,32 +222,11 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(770, 15);
+            label3.Location = new Point(999, 15);
             label3.Name = "label3";
             label3.Size = new Size(156, 32);
             label3.TabIndex = 7;
             label3.Text = "Дата приёма";
-            // 
-            // dateTimePickerTimeOfAppointment
-            // 
-            dateTimePickerTimeOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePickerTimeOfAppointment.Format = DateTimePickerFormat.Time;
-            dateTimePickerTimeOfAppointment.Location = new Point(1145, 57);
-            dateTimePickerTimeOfAppointment.Name = "dateTimePickerTimeOfAppointment";
-            dateTimePickerTimeOfAppointment.ShowUpDown = true;
-            dateTimePickerTimeOfAppointment.Size = new Size(156, 34);
-            dateTimePickerTimeOfAppointment.TabIndex = 8;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.ForeColor = Color.Firebrick;
-            label4.Location = new Point(1145, 9);
-            label4.Name = "label4";
-            label4.Size = new Size(175, 32);
-            label4.TabIndex = 9;
-            label4.Text = "Время приёма";
             // 
             // label5
             // 
@@ -269,7 +246,7 @@
             comboBoxTypeOfAppointment.Enabled = false;
             comboBoxTypeOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxTypeOfAppointment.FormattingEnabled = true;
-            comboBoxTypeOfAppointment.Location = new Point(619, 785);
+            comboBoxTypeOfAppointment.Location = new Point(619, 743);
             comboBoxTypeOfAppointment.Name = "comboBoxTypeOfAppointment";
             comboBoxTypeOfAppointment.Size = new Size(339, 36);
             comboBoxTypeOfAppointment.TabIndex = 11;
@@ -280,7 +257,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Firebrick;
-            label6.Location = new Point(628, 750);
+            label6.Location = new Point(628, 690);
             label6.Name = "label6";
             label6.Size = new Size(138, 32);
             label6.TabIndex = 12;
@@ -291,10 +268,10 @@
             textPlace.BackColor = Color.White;
             textPlace.Enabled = false;
             textPlace.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPlace.Location = new Point(964, 785);
+            textPlace.Location = new Point(964, 749);
             textPlace.Multiline = true;
             textPlace.Name = "textPlace";
-            textPlace.Size = new Size(425, 58);
+            textPlace.Size = new Size(411, 71);
             textPlace.TabIndex = 13;
             // 
             // label7
@@ -302,11 +279,11 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.Firebrick;
-            label7.Location = new Point(974, 723);
+            label7.Location = new Point(964, 712);
             label7.Name = "label7";
-            label7.Size = new Size(168, 56);
+            label7.Size = new Size(292, 28);
             label7.TabIndex = 14;
-            label7.Text = "Место, где будет \r\nприём врача ";
+            label7.Text = "Место, где будет приём врача ";
             label7.TextAlign = ContentAlignment.TopCenter;
             // 
             // buttWorkingDoctors
@@ -490,9 +467,9 @@
             // buttSaveChanges
             // 
             buttSaveChanges.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttSaveChanges.Location = new Point(1163, 742);
+            buttSaveChanges.Location = new Point(964, 826);
             buttSaveChanges.Name = "buttSaveChanges";
-            buttSaveChanges.Size = new Size(226, 37);
+            buttSaveChanges.Size = new Size(300, 42);
             buttSaveChanges.TabIndex = 61;
             buttSaveChanges.Text = "Сохранить изменения";
             buttSaveChanges.UseVisualStyleBackColor = true;
@@ -565,8 +542,6 @@
             Controls.Add(label6);
             Controls.Add(comboBoxTypeOfAppointment);
             Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(dateTimePickerTimeOfAppointment);
             Controls.Add(label3);
             Controls.Add(dateTimePickerDateOfAppointment);
             Controls.Add(buttAllDoctors);
@@ -579,7 +554,7 @@
             MaximizeBox = false;
             Name = "AddAppointmentForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AddAppointmentForm";
+            Text = "ARM_MedRegistrar";
             Load += AddAppointmentForm_Load;
             ((System.ComponentModel.ISupportInitialize)errorNoTime).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
@@ -605,8 +580,6 @@
         private Button buttAllDoctors;
         private DateTimePicker dateTimePickerDateOfAppointment;
         private Label label3;
-        private DateTimePicker dateTimePickerTimeOfAppointment;
-        private Label label4;
         private Label label5;
         private ComboBox comboBoxTypeOfAppointment;
         private Label label6;

@@ -149,7 +149,6 @@
             label13.Size = new Size(69, 28);
             label13.TabIndex = 59;
             label13.Text = "Район";
-            
             // 
             // textStreet
             // 
@@ -245,8 +244,7 @@
             MaximizeBox = false;
             Name = "AttachedStreetsForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AttachedStreetsForm";
-            
+            Text = "ARM_MedRegistrar";
             ((System.ComponentModel.ISupportInitialize)errorNoStreet).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoCity).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoRegion).EndInit();

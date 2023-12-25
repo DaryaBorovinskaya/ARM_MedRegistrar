@@ -4,41 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans;
 using ARM_MedRegistrar.Model.WorkSchedules;
 
 namespace ARM_MedRegistrar.Model.Persons.Doctors
 {
     public class Doctor : IDoctor
     {
-        private IFullName _fullName;
-        private string _phoneNumber;
+        private IPersonalData _personalData;
         private string _specialization;
         private int _plotNumber;  //номер участка
         private int _cabinet;
 
 
 
-        public IFullName FullName
+        public IPersonalData PersonalData
         {
-            get => _fullName;
+            get => _personalData;
             set
             {
                 if (value == null)
-                    throw new ArgumentException("Попытка присвоить значение null полю ФИО");
-                _fullName = value;
+                    throw new ArgumentException("Попытка присвоить значение null полю Персональные данные");
+                _personalData = value;
             }
         }
 
         public IList<IWorkSchedule> WorkSchedule { get; set; }
-        public string PhoneNumber
-        {
-            get => _phoneNumber; set
-            {
-                if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Номер телефона не задана");
-                _phoneNumber = value;
-            }
-        }
+        
         public string Specialization
         {
             get => _specialization; set
@@ -76,12 +68,11 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 
         public DateTime DurationOfAppointment { get; set; }
 
-        public Doctor(uint id, IFullName fullName, IList<IWorkSchedule> workSchedule ,string phoneNumber, string specialization, int plotNumber, int cabinet , DateTime durationOfAppointment)
+        public Doctor(uint id, IPersonalData personalData, IList<IWorkSchedule> workSchedule , string specialization, int plotNumber, int cabinet , DateTime durationOfAppointment)
         {
             Id = id;
-            FullName = fullName;
+            PersonalData = personalData;
             WorkSchedule = workSchedule;
-            PhoneNumber = phoneNumber;
             Specialization = specialization;
             PlotNumber = plotNumber;
             Cabinet = cabinet;
@@ -96,13 +87,10 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
             string _lineSchedule = "";
             foreach (IWorkSchedule workSchedule in WorkSchedule) 
                  _lineSchedule += workSchedule.Format();
-                
-            
 
-            return "ID: " + Id.ToString() + "\nФамилия: " + FullName.Surname + "\nИмя: " + FullName.Name
-            + "\nОтчество: " + FullName.Patronymic + "\nСпециализация: " + Specialization + "\nНомер телефона: " + PhoneNumber
-            + "\nНомер участка: " + PlotNumber + "\nНомер кабинета: " + Cabinet + "\n\nГРАФИК РАБОТЫ\n\n" + _lineSchedule 
-            + "\nПродолжит. приёма : " + DurationOfAppointment.TimeOfDay.ToString();
+
+            return $"ID: {Id}\n{PersonalData.Format()}Специализация: {Specialization}\nНомер участка: {PlotNumber}\n" +
+                $"Номер кабинета: {Cabinet}\n\nГРАФИК РАБОТЫ\n\n{_lineSchedule}\nПродолжит. приёма: {DurationOfAppointment.TimeOfDay}";
         }
     }
 }

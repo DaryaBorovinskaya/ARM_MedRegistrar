@@ -38,16 +38,16 @@ namespace ARM_MedRegistrar.Presenter
             {
                 foreach(IPatient patient in _patients.Values)
                 {
-                    if (patient.DateOfBirth == _view.DateOfBirth && patient.FullName.Surname == _view.Surname 
-                        && patient.FullName.Name == _view.Name )
+                    if (patient.DateOfBirth == _view.DateOfBirth && patient.PersonalData.FullName.Surname == _view.Surname 
+                        && patient.PersonalData.FullName.Name == _view.Name )
                     {
                         _isSuccess = true;
                         _countOfLine++;
                         _view.CountOfLine = _countOfLine;
                         _view.Id = patient.Id;
-                        _view.Surname = patient.FullName.Surname;
-                        _view.Name = patient.FullName.Name;
-                        _view.Patronymic = patient.FullName.Patronymic;
+                        _view.Surname = patient.PersonalData.FullName.Surname;
+                        _view.Name = patient.PersonalData.FullName.Name;
+                        _view.Patronymic = patient.PersonalData.FullName.Patronymic;
                         _view.DateOfBirth = patient.DateOfBirth;
                         _view.DocumentSeries = patient.DocumentSeries;
                         _view.DocumentNumber = patient.DocumentNumber;
@@ -80,9 +80,9 @@ namespace ARM_MedRegistrar.Presenter
                     _countOfLine++;
                     _view.CountOfLine = _countOfLine;
                     _view.Id = patient.Id;
-                    _view.Surname = patient.FullName.Surname;
-                    _view.Name = patient.FullName.Name;
-                    _view.Patronymic = patient.FullName.Patronymic;
+                    _view.Surname = patient.PersonalData.FullName.Surname;
+                    _view.Name = patient.PersonalData.FullName.Name;
+                    _view.Patronymic = patient.PersonalData.FullName.Patronymic;
                     _view.DateOfBirth = patient.DateOfBirth;
                     _view.DocumentSeries = patient.DocumentSeries;
                     _view.DocumentNumber = patient.DocumentNumber;

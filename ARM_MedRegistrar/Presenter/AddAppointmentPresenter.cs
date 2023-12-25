@@ -56,9 +56,9 @@ namespace ARM_MedRegistrar.Presenter
                     _countOfLine++;
                     _view.DoctorCountOfLine = _countOfLine;
                     _view.DoctorId = doctor.Id;
-                    _view.DoctorSurname = doctor.FullName.Surname;
-                    _view.DoctorName = doctor.FullName.Name;
-                    _view.DoctorPatronymic = doctor.FullName.Patronymic;
+                    _view.DoctorSurname = doctor.PersonalData.FullName.Surname;
+                    _view.DoctorName = doctor.PersonalData.FullName.Name;
+                    _view.DoctorPatronymic = doctor.PersonalData.FullName.Patronymic;
                     _view.DoctorSpecialization = doctor.Specialization;
                     _view.DoctorCabinet = doctor.Cabinet;
                     _view.DoctorPlotNumber = doctor.PlotNumber;
@@ -88,9 +88,9 @@ namespace ARM_MedRegistrar.Presenter
                     _countOfLine++;
                     _view.PatientCountOfLine = _countOfLine;
                     _view.PatientId = patient.Id;
-                    _view.PatientSurname = patient.FullName.Surname;
-                    _view.PatientName = patient.FullName.Name;
-                    _view.PatientPatronymic = patient.FullName.Patronymic;
+                    _view.PatientSurname = patient.PersonalData.FullName.Surname;
+                    _view.PatientName = patient.PersonalData.FullName.Name;
+                    _view.PatientPatronymic = patient.PersonalData.FullName.Patronymic;
                     _view.PatientDateOfBirth = patient.DateOfBirth;
 
                 }
@@ -115,16 +115,15 @@ namespace ARM_MedRegistrar.Presenter
                 {
                     foreach (IWorkSchedule workSchedule in doctor.WorkSchedule)
                     {
-                        if (workSchedule.DayOfWeek == _translator.Translate(_view.DayOfAppointment.DayOfWeek.ToString()) &&
-                             workSchedule.WorkBeginning.TimeOfDay <= _view.TimeOfAppointment.TimeOfDay && workSchedule.WorkEnd.TimeOfDay > _view.TimeOfAppointment.TimeOfDay)
+                        if (workSchedule.DayOfWeek == _translator.Translate(_view.DayOfAppointment.DayOfWeek.ToString()))
                         {
                             
                             _countOfLine++;
                             _view.DoctorCountOfLine = _countOfLine;
                             _view.DoctorId = doctor.Id;
-                            _view.DoctorSurname = doctor.FullName.Surname;
-                            _view.DoctorName = doctor.FullName.Name;
-                            _view.DoctorPatronymic = doctor.FullName.Patronymic;
+                            _view.DoctorSurname = doctor.PersonalData.FullName.Surname;
+                            _view.DoctorName = doctor.PersonalData.FullName.Name;
+                            _view.DoctorPatronymic = doctor.PersonalData.FullName.Patronymic;
                             _view.DoctorSpecialization = doctor.Specialization;
                             _view.DoctorCabinet = doctor.Cabinet;
                             _view.DoctorPlotNumber = doctor.PlotNumber;
@@ -214,8 +213,6 @@ namespace ARM_MedRegistrar.Presenter
                             
                     }
                       
-                      
-                    
                 }
                 
             }
@@ -307,16 +304,16 @@ namespace ARM_MedRegistrar.Presenter
             {
                 foreach (IPatient patient in _patients.Values)
                 {
-                    if (patient.DateOfBirth == _view.PatientDateOfBirth && patient.FullName.Surname == _view.PatientSurname
-                        && patient.FullName.Name == _view.PatientName)
+                    if (patient.DateOfBirth == _view.PatientDateOfBirth && patient.PersonalData.FullName.Surname == _view.PatientSurname
+                        && patient.PersonalData.FullName.Name == _view.PatientName)
                     {
                         _isSuccess = true;
                         _countOfLine++;
                         _view.PatientCountOfLine = _countOfLine;
                         _view.PatientId = patient.Id;
-                        _view.PatientSurname = patient.FullName.Surname;
-                        _view.PatientName = patient.FullName.Name;
-                        _view.PatientPatronymic = patient.FullName.Patronymic;
+                        _view.PatientSurname = patient.PersonalData.FullName.Surname;
+                        _view.PatientName = patient.PersonalData.FullName.Name;
+                        _view.PatientPatronymic = patient.PersonalData.FullName.Patronymic;
                         _view.PatientDateOfBirth = patient.DateOfBirth;
                         
                     }

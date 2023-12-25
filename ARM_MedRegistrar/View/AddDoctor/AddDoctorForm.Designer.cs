@@ -53,11 +53,8 @@ partial class AddDoctorForm
         textPlotNumber = new TextBox();
         textCabinet = new TextBox();
         errorNoPlotNumber = new ErrorProvider(components);
-        dataGridSchedule = new DataGridView();
-        buttClearSchedule = new Button();
         label9 = new Label();
         errorNoSchedule = new ErrorProvider(components);
-        buttShowSchedule = new Button();
         label10 = new Label();
         label11 = new Label();
         label12 = new Label();
@@ -105,7 +102,6 @@ partial class AddDoctorForm
         ((System.ComponentModel.ISupportInitialize)errorNoSpecial).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)dataGridSchedule).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSchedule).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoDurationOfAppointment).BeginInit();
         ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeMon).BeginInit();
@@ -341,28 +337,6 @@ partial class AddDoctorForm
         // 
         errorNoPlotNumber.ContainerControl = this;
         // 
-        // dataGridSchedule
-        // 
-        dataGridSchedule.BackgroundColor = Color.White;
-        dataGridSchedule.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        dataGridSchedule.Location = new Point(1146, 625);
-        dataGridSchedule.Name = "dataGridSchedule";
-        dataGridSchedule.RowHeadersWidth = 51;
-        dataGridSchedule.RowTemplate.Height = 29;
-        dataGridSchedule.Size = new Size(48, 20);
-        dataGridSchedule.TabIndex = 40;
-        // 
-        // buttClearSchedule
-        // 
-        buttClearSchedule.ForeColor = Color.Firebrick;
-        buttClearSchedule.Location = new Point(1313, 596);
-        buttClearSchedule.Name = "buttClearSchedule";
-        buttClearSchedule.Size = new Size(74, 68);
-        buttClearSchedule.TabIndex = 42;
-        buttClearSchedule.Text = "Очистить таблицу";
-        buttClearSchedule.UseVisualStyleBackColor = true;
-        buttClearSchedule.Click += buttClearSchedule_Click;
-        // 
         // label9
         // 
         label9.AutoSize = true;
@@ -378,17 +352,6 @@ partial class AddDoctorForm
         // errorNoSchedule
         // 
         errorNoSchedule.ContainerControl = this;
-        // 
-        // buttShowSchedule
-        // 
-        buttShowSchedule.ForeColor = Color.Firebrick;
-        buttShowSchedule.Location = new Point(1210, 606);
-        buttShowSchedule.Name = "buttShowSchedule";
-        buttShowSchedule.Size = new Size(97, 51);
-        buttShowSchedule.TabIndex = 45;
-        buttShowSchedule.Text = "Показать таблицу";
-        buttShowSchedule.UseVisualStyleBackColor = true;
-        buttShowSchedule.Click += buttShowSchedule_Click;
         // 
         // label10
         // 
@@ -804,10 +767,7 @@ partial class AddDoctorForm
         Controls.Add(label12);
         Controls.Add(label11);
         Controls.Add(label10);
-        Controls.Add(buttShowSchedule);
         Controls.Add(label9);
-        Controls.Add(buttClearSchedule);
-        Controls.Add(dataGridSchedule);
         Controls.Add(textCabinet);
         Controls.Add(textPlotNumber);
         Controls.Add(label8);
@@ -831,14 +791,13 @@ partial class AddDoctorForm
         MaximizeBox = false;
         Name = "AddDoctorForm";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = "AddDoctor";
+        Text = "ARM_MedRegistrar";
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoCabinet).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSpecial).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPlotNumber).EndInit();
-        ((System.ComponentModel.ISupportInitialize)dataGridSchedule).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoSchedule).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoDurationOfAppointment).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoCorrectTimeMon).EndInit();
@@ -884,11 +843,8 @@ partial class AddDoctorForm
     private TextBox textCabinet;
     private TextBox textPlotNumber;
     private ErrorProvider errorNoPlotNumber;
-    private DataGridView dataGridSchedule;
-    private Button buttClearSchedule;
     private Label label9;
     private ErrorProvider errorNoSchedule;
-    private Button buttShowSchedule;
     private Label label12;
     private Label label11;
     private Label label10;

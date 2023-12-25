@@ -199,7 +199,7 @@ namespace ARM_MedRegistrar
 
         private void comboBoxPost_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

@@ -194,7 +194,7 @@
             MaximizeBox = false;
             Name = "InfoAboutUserForm";
             StartPosition = FormStartPosition.Manual;
-            Text = "InfoAboutUserForm";
+            Text = "ARM_MedRegistrar";
             ResumeLayout(false);
             PerformLayout();
         }

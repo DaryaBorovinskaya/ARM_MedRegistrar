@@ -7,12 +7,14 @@ using ARM_MedRegistrar.View.AddPatient;
 using ARM_MedRegistrar.Data.Json.Dictionaries;
 using ARM_MedRegistrar.Data.Json.Dictionaries.AttachedStreets;
 using ARM_MedRegistrar.Model.AddressesOfBuilding;
+using ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans;
 
 namespace ARM_MedRegistrar.Presenter
 {
     public class AddPatientPresenter
     {
         IFullName _fullName;
+        IPersonalData _personalData;
         IPatient _newPatient;
         IPatientAddress _address;
         IAddPatientForm _view;
@@ -38,6 +40,7 @@ namespace ARM_MedRegistrar.Presenter
         {
             _attStreets = _jsonAttachedStreetsRepository.Read();
             _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
+            _personalData = new PersonalData(_fullName, _view.PhoneNumber);
 
             if (_attStreets != null && _attStreets.Count != 0)
             {
@@ -73,7 +76,7 @@ namespace ARM_MedRegistrar.Presenter
 
             _id = _jsonPatientRepository.CreateID();
 
-            _newPatient = new Patient(_id, _fullName, _view.DateOfBirth, _address, _view.PhoneNumber, _view.PlotNumber,
+            _newPatient = new Patient(_id, _personalData, _view.DateOfBirth, _address, _view.PlotNumber,
                 _view.NumbOfPatientCard, _view.PolicySeries, _view.PolicyNumb, _view.DocumentSeries,
                 _view.DocumentNumber, _view.BloodType, _view.RhFactor, _view.Allergies);
 

@@ -35,16 +35,16 @@ namespace ARM_MedRegistrar.Presenter
                     {
                         _patient = _patients[key];
 
-                        _view.Surname = _patient.FullName.Surname;
-                        _view.Name = _patient.FullName.Name;
-                        _view.Patronymic = _patient.FullName.Patronymic;
+                        _view.Surname = _patient.PersonalData.FullName.Surname;
+                        _view.Name = _patient.PersonalData.FullName.Name;
+                        _view.Patronymic = _patient.PersonalData.FullName.Patronymic;
                         _view.DateOfBirth = _patient.DateOfBirth;
                         _view.City = _patient.Address.AddressOfBuilding.City;
                         _view.Region = _patient.Address.AddressOfBuilding.Region;
                         _view.Street = _patient.Address.AddressOfBuilding.Street;
                         _view.NumbOfHouse = _patient.Address.AddressOfBuilding.NumbOfHouse;
                         _view.NumbOfFlat = _patient.Address.NumbOfFlat;
-                        _view.PhoneNumber = _patient.PhoneNumber;
+                        _view.PhoneNumber = _patient.PersonalData.PhoneNumber;
                         _view.PlotNumber = _patient.PlotNumber;
                         _view.NumbOfPatientCard = _patient.NumbOfPatientCard;
                         _view.PolicySeries = _patient.PolicySeries;
@@ -69,15 +69,15 @@ namespace ARM_MedRegistrar.Presenter
                 if (key == _view.Id)  
                 {
                     _patient = _patients[key];
-                    _patient.FullName.Surname = _view.Surname;
-                    _patient.FullName.Name = _view.Name;
-                    _patient.FullName.Patronymic = _view.Patronymic;
+                    _patient.PersonalData.FullName.Surname = _view.Surname; 
+                    _patient.PersonalData.FullName.Name = _view.Name;
+                    _patient.PersonalData.FullName.Patronymic = _view.Patronymic;
                     _patient.Address.AddressOfBuilding.City = _view.City;
                     _patient.Address.AddressOfBuilding.Region = _view.Region;
                     _patient.Address.AddressOfBuilding.Street = _view.Street;
                     _patient.Address.AddressOfBuilding.NumbOfHouse = _view.NumbOfHouse;
                     _patient.Address.NumbOfFlat = _view.NumbOfFlat;
-                    _patient.PhoneNumber = _view.PhoneNumber;
+                    _patient.PersonalData.PhoneNumber = _view.PhoneNumber;
                     _patient.PlotNumber = _view.PlotNumber;
                     _patient.NumbOfPatientCard = _view.NumbOfPatientCard;
                     _patient.PolicySeries = _view.PolicySeries;

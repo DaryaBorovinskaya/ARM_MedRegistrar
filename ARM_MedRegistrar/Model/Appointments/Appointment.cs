@@ -59,8 +59,8 @@ namespace ARM_MedRegistrar.Model.Appointments
 
         public string Format()
         {
-            return "";
-        //    return "ID: " + Id + "\nДата: " + Date + "\n : " + Time + "\n : " + Patient.FullName.Surname
+            return $"ID: {Id}\nДата: {Date}\nВремя: {Time}\nМесто приёма: {Place} ";
+        //    return "ID: " + Id + "\n" + Date + "\n : " + Time + "\n : " + Patient.FullName.Surname
         }
     }
 }

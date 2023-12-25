@@ -34,7 +34,6 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
 
         public DateTime DayOfAppointment {  get; }
-        public DateTime TimeOfAppointment { get; }
 
         public string GetTypeOfAppointment { get; }
 

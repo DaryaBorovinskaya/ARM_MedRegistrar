@@ -40,5 +40,10 @@ namespace ARM_MedRegistrar.Model.Persons
             Name = name;
             Patronymic = patronymic;
         }
+
+        public string Format()
+        {
+            return $"Фамилия: {Surname}\nИмя: {Name}\nОтчество: {Patronymic}\n";
+        }
     }
 }

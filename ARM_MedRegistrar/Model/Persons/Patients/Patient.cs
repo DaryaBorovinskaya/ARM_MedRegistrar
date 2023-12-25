@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ARM_MedRegistrar.Model.Addresses;
 using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans;
 using Microsoft.VisualBasic.Logging;
 using Newtonsoft.Json.Linq;
 
@@ -15,9 +16,9 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
 
 
 
-    public class Patient : IPatient
+    public class Patient : IPatient 
     {
-        private IFullName _fullName;
+        private IPersonalData _personalData;
         private IPatientAddress _address;
         private int _plotNumber;  //номер участка
         private string _numbOfPatientCard; //номер амбулаторной карты
@@ -27,17 +28,16 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
         private string _documentNumber;
         private string _bloodType;
         private string _rhFactor;
-        private string _phoneNumber;
 
 
-        public IFullName FullName
+        public IPersonalData PersonalData
         {
-            get => _fullName;
+            get => _personalData;
             set
             {
                 if (value == null)
-                    throw new ArgumentException("Попытка присвоить значение null полю ФИО");
-                _fullName = value;
+                    throw new ArgumentException("Попытка присвоить значение null полю Персональные данные");
+                _personalData = value;
             }
         }
         public string DateOfBirth { get; }
@@ -52,19 +52,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
             }
         }
 
-        public string PhoneNumber
-        {
-            get => _phoneNumber;
-            set
-            {
-                if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Номер телефона не задан");
-                if (value[0] == '0')
-                    throw new ArgumentException("Номер телефона не может начинаться с нуля");
-
-                _phoneNumber = value;
-            }
-        }
+        
 
         public int PlotNumber
         {
@@ -171,7 +159,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
 
         public string? Allergies { get; set; }
         public uint Id { get; }
-        public Patient(uint id, IFullName fullName, string dateOfBirth, IPatientAddress address, string phoneNumber, int plotNumber, 
+        public Patient(uint id, IPersonalData personalData , string dateOfBirth, IPatientAddress address, int plotNumber, 
             string numbOfPatientCard, int policySeries, string policyNumb, 
             string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies )
         {
@@ -179,10 +167,9 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
                 throw new ArgumentException("Дата рождения не задана");
 
             Id = id;
-            FullName = fullName;
+            PersonalData = personalData;
             DateOfBirth = dateOfBirth;
             Address = address;
-            PhoneNumber = phoneNumber;
             PlotNumber = plotNumber;
             NumbOfPatientCard = numbOfPatientCard;
             PolicySeries = policySeries;
@@ -196,13 +183,9 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
 
         public string Format()
         {
-            return "ID: " + Id.ToString() + "\nФамилия: " + FullName.Surname + "\nИмя: " + FullName.Name
-            + "\nОтчество: " + FullName.Patronymic + "\nДата рождения: " + DateOfBirth + "\nСерия документа: " + DocumentSeries
-            + "\nНомер документа: " + DocumentNumber + "\nНомер участка: " + PlotNumber + "\nНомер амбул. карты: " + NumbOfPatientCard 
-            + "\nНомер телефона: " + PhoneNumber + "\nГород: " + Address.AddressOfBuilding.City + "\nРайон: " + Address.AddressOfBuilding.Region + "\nУлица: " + Address.AddressOfBuilding.Street + "\nНомер дома: " 
-            + Address.AddressOfBuilding.NumbOfHouse.ToString() + "\nНомер квартиры: " + Address.NumbOfFlat.ToString() 
-            + "\nСерия мед. полиса: " + PolicySeries.ToString() + "\nНомер мед. полиса: " + PolicyNumb + "\nГруппа крови: " + BloodType + "\nРезус-фактор: " + RhFactor
-            + "\nАллергии: " + Allergies;
+            return $"ID: {Id}\n{PersonalData.Format()}Дата рождения: {DateOfBirth}\nСерия документа: {DocumentSeries}\nНомер документа: " +
+                $"{DocumentNumber}\nНомер участка: {PlotNumber}\nНомер амбул. карты: { NumbOfPatientCard}\n{Address.Format()}" +
+                $"\nСерия мед. полиса: {PolicySeries}\nНомер мед. полиса: {PolicyNumb}\nГруппа крови: { BloodType}\nРезус-фактор: { RhFactor}\nАллергии: { Allergies}";
 
         }
     }

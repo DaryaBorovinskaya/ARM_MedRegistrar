@@ -170,8 +170,6 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         DateTime IAddAppointmentForm.DayOfAppointment => dateTimePickerDateOfAppointment.Value;
 
-        DateTime IAddAppointmentForm.TimeOfAppointment => dateTimePickerTimeOfAppointment.Value;
-
         string IAddAppointmentForm.GetTypeOfAppointment => comboBoxTypeOfAppointment.SelectedItem.ToString();
 
         string IAddAppointmentForm.PlaceOfAppointment

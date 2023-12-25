@@ -136,7 +136,7 @@ namespace ARM_MedRegistrar
             FormClosed += OnClosed;
 
             _employee = employee;
-            textFullNameOfRegistr.Text = _employee.FullName.Surname;         //из файла (данные User)
+            textFullNameOfRegistr.Text = _employee.PersonalData.FullName.Surname;         //из файла (данные User)
 
             toolTipAllDataAboutPatients.SetToolTip(buttAllDataAboutPatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
             toolTipRemovePatient.SetToolTip(buttRemovePatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");

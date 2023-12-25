@@ -51,7 +51,7 @@ namespace ARM_MedRegistrar.Model.WorkSchedules
 
         public string Format()
         {
-            return "День недели: " + DayOfWeek + "\nНачало рабоч. дня: " + WorkBeginning.TimeOfDay.ToString() + "\nКонец рабоч. дня : " + WorkEnd.TimeOfDay.ToString()   + "\n\n";
+            return $"День недели: {DayOfWeek}\nНачало рабоч. дня: {WorkBeginning.TimeOfDay}\nКонец рабоч. дня : {WorkEnd.TimeOfDay}\n\n";
         }
 
     }

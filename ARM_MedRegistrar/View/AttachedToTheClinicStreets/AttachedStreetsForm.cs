@@ -48,7 +48,7 @@ namespace ARM_MedRegistrar.View
         {
             AttachedStreets _newAttachedStreet;
             IBaseRepositoryWithCreatedID<uint, IAttachedStreets> jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
-            IDictionary<uint,IAttachedStreets>? _attachedStreets;
+            IDictionary<uint, IAttachedStreets>? _attachedStreets;
 
             bool _isError = false;
 
@@ -86,7 +86,7 @@ namespace ARM_MedRegistrar.View
                     errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Номер дома\" не заполнено");
                 }
 
-                
+
 
                 if (!_isError)
                 {
@@ -129,7 +129,7 @@ namespace ARM_MedRegistrar.View
                     //_newAttachedStreet = new(textCity.Text, textRegion.Text, textStreet.Text, (int)numericNumbOfHouse.Value);
                     //jsonAttachedStreetsRepository.Add(_newAttachedStreet);
 
-                    IDictionary<uint,IAttachedStreets>? _printAttachedStreets = jsonAttachedStreetsRepository.Read();
+                    IDictionary<uint, IAttachedStreets>? _printAttachedStreets = jsonAttachedStreetsRepository.Read();
                     if (_printAttachedStreets != null)
                     {
                         foreach (var item in _printAttachedStreets.Values)

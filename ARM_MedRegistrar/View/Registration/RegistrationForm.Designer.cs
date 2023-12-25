@@ -333,7 +333,7 @@ namespace ARM_MedRegistrar
             MaximizeBox = false;
             Name = "RegistrationForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Registration";
+            Text = "ARM_MedRegistrar";
             Load += RegistrationForm_Load;
             ((System.ComponentModel.ISupportInitialize)errorNoLog).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPassword).EndInit();

@@ -15,7 +15,7 @@ namespace ARM_MedRegistrar.Model.Persons
     public interface IUser : IUserEmployee
     {
         public string Login { get; set; }
-        public string Password { get; set; }
+        public string SaltPassword { get; set; }
 
         public byte[] Salt { get; set; }
     }

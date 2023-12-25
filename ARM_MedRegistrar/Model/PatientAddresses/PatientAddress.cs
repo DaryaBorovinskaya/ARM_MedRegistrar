@@ -26,7 +26,12 @@ namespace ARM_MedRegistrar.Model.Addresses
 
         public string Format()
         {
-            return AddressOfBuilding.Format() +  $", кв. {NumbOfFlat}";
+            return $"{AddressOfBuilding.Format()}Квартира: {NumbOfFlat}\n";
+        }
+
+        public string FormatOneLine()
+        {
+            return $"{AddressOfBuilding.FormatOneLine()}, кв. {NumbOfFlat}";
         }
     }
 }

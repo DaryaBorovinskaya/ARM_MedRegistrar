@@ -3,7 +3,7 @@ using ARM_MedRegistrar.Model.Persons.Doctors;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
 using ARM_MedRegistrar.Model.WorkSchedules;
-using System.ComponentModel;
+using ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans;
 using ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.DaysWithFreeAppointments;
@@ -15,6 +15,7 @@ namespace ARM_MedRegistrar.Presenter
     {
         IAddDoctorForm _view;
         IFullName _fullName;
+        IPersonalData _personalData;
         IDoctor _newDoctor;
         IBaseRepositoryWithCreatedID<uint, IDoctor> _jsonDoctorRepository;
         IBaseRepository<uint, IFreeTimeOfAppointment> _jsonFreeTimeOfAppointmentRepository;
@@ -38,6 +39,7 @@ namespace ARM_MedRegistrar.Presenter
         public bool AddDoctor()
         {
             _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
+            _personalData = new PersonalData(_fullName, _view.PhoneNumber);
             _id = _jsonDoctorRepository.CreateID();
 
             _timesOfWork = _view.TimesOfWork;
@@ -56,7 +58,7 @@ namespace ARM_MedRegistrar.Presenter
                 
             }
 
-            _newDoctor = new Doctor(_id, _fullName, _workSchedules,_view.PhoneNumber, _view.Specializations, _view.PlotNumber,
+            _newDoctor = new Doctor(_id, _personalData, _workSchedules, _view.Specializations, _view.PlotNumber,
                 _view.Cabinet, _view.DurationOfAppointment);
 
             _jsonDoctorRepository.Create(_newDoctor);

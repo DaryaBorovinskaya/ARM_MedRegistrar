@@ -389,7 +389,7 @@ namespace ARM_MedRegistrar
             MaximizeBox = false;
             Name = "ChangeDataOfUserForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Registration";
+            Text = "ARM_MedRegistrar";
             Load += Registration_Load_1;
             ((System.ComponentModel.ISupportInitialize)errorNoOldLog).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoOldPassword).EndInit();

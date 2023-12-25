@@ -201,7 +201,7 @@ partial class LogInForm
         MaximizeBox = false;
         Name = "LogInForm";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = "Entrance";
+        Text = "ARM_MedRegistrar";
         ((System.ComponentModel.ISupportInitialize)errorNoLog).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPassword).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorWrongLogOrPassword).EndInit();

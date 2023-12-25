@@ -158,7 +158,7 @@
             // 
             // columnHeader8
             // 
-            columnHeader8.Text = "Номер кабинета или адрес";
+            columnHeader8.Text = "Место приёма";
             columnHeader8.Width = 300;
             // 
             // columnHeader21
@@ -603,7 +603,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "MainWindowForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "MainWindow";
+            Text = "ARM_MedRegistrar";
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).EndInit();

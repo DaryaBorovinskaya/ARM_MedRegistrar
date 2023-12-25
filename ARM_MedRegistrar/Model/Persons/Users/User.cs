@@ -1,5 +1,8 @@
 ﻿using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans;
 using Microsoft.VisualBasic.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,91 +15,65 @@ namespace ARM_MedRegistrar.Model.Persons.Users
 
     public class User : IUser
     {
-        private IFullName _fullName;
-        private string _phoneNumber;
-        private string _post;
+        //private IPersonalData _personalData;
+        //private string _post;
         
 
-        public IFullName FullName
-        {
-            get => _fullName;
-            set
-            {
-                if (value == null)
-                    throw new ArgumentException("Попытка присвоить значение null полю ФИО");
-                _fullName = value;
-            }
-        }
-
+        public IPersonalData PersonalData { get; set; }
+        //{
+        //    get => _personalData;
+        //    set
+        //    {
+        //        if (value == null)
+        //            throw new ArgumentException("Попытка присвоить значение null полю Персональные данные");
+        //        _personalData = value;
+        //    }
+        //}
         public string Login { get; set; }
-        public string Password { get; set; }
-        public string Post
-        {
-            get => _post;
-            set
-            {
-                if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Должность не задана");
+        public string SaltPassword { get; set; }
+        public string Post { get; set; }
+        //{
+        //    get => _post;
+        //    set
+        //    {
+        //        if (value == "" || value == " " || value == null)
+        //            throw new ArgumentException("Должность не задана");
 
-                _post = value;
-            }
-        }
+        //        _post = value;
+        //    }
+        //}
 
         public byte[] Salt { get; set; }
-        
-        public string PhoneNumber
-        {
-            get => _phoneNumber;
-            set
-            {
-                if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Логин не задан");
 
-                _phoneNumber = value;
-            }
-        }
 
         public User()
         {
 
         }
-        public User(IFullName fullName, string login, string password, string post, string phoneNumber)
+
+        [JsonConstructor]
+        public User(IPersonalData personalData, string login, byte[] salt, string saltPassword,  string post)
         {
+            if (personalData == null)
+                throw new ArgumentException("Попытка присвоить значение null полю Персональные данные");
             if (login == "" || login == " " || login == null)
                 throw new ArgumentException("Логин не задан");
 
-            if (password == "" || password == " " || password == null)
+            if (saltPassword == "" || saltPassword == " " || saltPassword == null)
                 throw new ArgumentException("Пароль не задан");
+            if (post == "" || post == " " || post == null)
+                throw new ArgumentException("Должность не задана");
 
 
-            FullName = fullName;
+            PersonalData = personalData;
             Login = login;
             Post = post;
-            PhoneNumber = phoneNumber;
-            Salt = GenerateSalt();
-            Password = GenerateSaltPassword(password, Salt); 
+            Salt = salt;
+            SaltPassword = saltPassword; 
         }
 
-        public static byte[] GenerateSalt()
-        {
-            int saltLength = 64;
-            byte[] salt = new byte[saltLength];
-            var rngRand = new RNGCryptoServiceProvider();
-            rngRand.GetBytes(salt);
-            return salt;
-        }
-
-        public static byte[]  GenerateSha256Hash(string password, byte[] salt)
-        {
-            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-            byte[] saltedPassword = new byte[salt.Length + passwordBytes.Length];
-            return SHA256.HashData(saltedPassword);
-        }
-
-        public static string GenerateSaltPassword(string password, byte[] salt)
-        {
-            return BitConverter.ToString(GenerateSha256Hash(password, salt));
-        }
+        
+        
 
 
     }

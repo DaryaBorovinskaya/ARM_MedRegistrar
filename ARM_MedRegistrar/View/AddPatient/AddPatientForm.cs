@@ -58,15 +58,12 @@ namespace ARM_MedRegistrar
 
         private void textBox_SpacePress(object sender, KeyPressEventArgs e)
         {
-            //char ch = e.KeyChar;
-
             if (e.KeyChar == (int)Keys.Space)
                 e.KeyChar = '\0';
         }
 
         private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
         {
-            //char ch = e.KeyChar;
 
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
                 e.KeyChar = '\0';
@@ -223,7 +220,7 @@ namespace ARM_MedRegistrar
             }
 
 
-            
+
             if (!_isError)
             {
                 textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);

@@ -709,7 +709,7 @@
             MaximizeBox = false;
             Name = "ChangeDataOfPatientForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ChangeDataOfPatientForm";
+            Text = "ARM_MedRegistrar";
             ((System.ComponentModel.ISupportInitialize)errorNoId).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();

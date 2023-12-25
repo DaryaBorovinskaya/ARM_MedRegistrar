@@ -89,13 +89,13 @@ namespace ARM_MedRegistrar.View.Doctors
             }
         }
 
+        public Func<string>? OnDoctorWhoFind; 
         public DoctorsForm(Form form)
         {
             _form = form;
             _form.Hide();
             FormClosed += OnClosed;
             InitializeComponent();
-
             comboBoxSpecializations.Items.AddRange(new string[] { "терапевт", "педиатр", "врач общей практики", "хирург", "невролог", "оториноларинголог", "офтальмолог", "травматолог", "акушер-гинеколог", "уролог", "инфекционист", "онколог", "гастроэнтеролог", "кардиолог", "эндокринолог" });
             toolTipAllDataAboutDoctors.SetToolTip(buttAllDataAboutDoctor, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку");
             toolTipRemoveDoctor.SetToolTip(buttRemoveDoctor, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку");
@@ -246,6 +246,44 @@ namespace ARM_MedRegistrar.View.Doctors
         private void checkIsMultiSelect_CheckedChanged(object sender, EventArgs e)
         {
             listViewDoctors.MultiSelect = true;
+        }
+
+        private void richTextBoxInfoAboutDoctor_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxSpecializations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void textPatr_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textName_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void textSurname_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
         }
     }
 }

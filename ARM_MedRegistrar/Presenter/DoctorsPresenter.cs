@@ -33,16 +33,16 @@ namespace ARM_MedRegistrar.Presenter
             {
                 foreach (IDoctor doctor in _doctors.Values)
                 {
-                    if (doctor.FullName.Surname == _view.Surname && doctor.FullName.Name == _view.Name 
+                    if (doctor.PersonalData.FullName.Surname == _view.Surname && doctor.PersonalData.FullName.Name == _view.Name 
                         && doctor.Specialization == _view.Specialization)
                     {
                         _isSuccess = true;
                         _countOfLine++;
                         _view.CountOfLine = _countOfLine;
                         _view.Id = doctor.Id;
-                        _view.Surname = doctor.FullName.Surname;
-                        _view.Name = doctor.FullName.Name;
-                        _view.Patronymic = doctor.FullName.Patronymic;
+                        _view.Surname = doctor.PersonalData.FullName.Surname;
+                        _view.Name = doctor.PersonalData.FullName.Name;
+                        _view.Patronymic = doctor.PersonalData.FullName.Patronymic;
                         _view.Specialization = doctor.Specialization;
                         _view.Cabinet = doctor.Cabinet;
                         _view.PlotNumber = doctor.PlotNumber;
@@ -73,9 +73,9 @@ namespace ARM_MedRegistrar.Presenter
                     _countOfLine++;
                     _view.CountOfLine = _countOfLine; 
                     _view.Id = doctor.Id;
-                    _view.Surname = doctor.FullName.Surname;
-                    _view.Name = doctor.FullName.Name;
-                    _view.Patronymic = doctor.FullName.Patronymic;
+                    _view.Surname = doctor.PersonalData.FullName.Surname;
+                    _view.Name = doctor.PersonalData.FullName.Name;
+                    _view.Patronymic = doctor.PersonalData.FullName.Patronymic;
                     _view.Specialization = doctor.Specialization;
                     _view.Cabinet = doctor.Cabinet;
                     _view.PlotNumber = doctor.PlotNumber;

@@ -717,7 +717,7 @@ partial class AddPatientForm
         MaximizeBox = false;
         Name = "AddPatientForm";
         StartPosition = FormStartPosition.CenterScreen;
-        Text = "AddPatient";
+        Text = "ARM_MedRegistrar";
         ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
         ((System.ComponentModel.ISupportInitialize)errorNoPolicySeries).EndInit();

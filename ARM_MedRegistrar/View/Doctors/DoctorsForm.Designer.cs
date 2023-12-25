@@ -69,11 +69,11 @@
             // listViewDoctors
             // 
             listViewDoctors.Columns.AddRange(new ColumnHeader[] { columnHeader7, columnHeader1, columnHeader2, columnHeader3, columnHeader6, columnHeader4, columnHeader5 });
-            listViewDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewDoctors.Location = new Point(12, 228);
+            listViewDoctors.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            listViewDoctors.Location = new Point(12, 320);
             listViewDoctors.MultiSelect = false;
             listViewDoctors.Name = "listViewDoctors";
-            listViewDoctors.Size = new Size(1056, 377);
+            listViewDoctors.Size = new Size(1126, 498);
             listViewDoctors.TabIndex = 39;
             listViewDoctors.UseCompatibleStateImageBehavior = false;
             listViewDoctors.View = System.Windows.Forms.View.Details;
@@ -101,7 +101,7 @@
             // columnHeader6
             // 
             columnHeader6.Text = "Специализация";
-            columnHeader6.Width = 150;
+            columnHeader6.Width = 200;
             // 
             // columnHeader4
             // 
@@ -116,21 +116,21 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(12, 18);
+            label2.Location = new Point(33, 24);
             label2.Name = "label2";
-            label2.Size = new Size(99, 37);
+            label2.Size = new Size(109, 41);
             label2.TabIndex = 40;
             label2.Text = "Врачи";
             // 
             // buttAddDoctor
             // 
-            buttAddDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAddDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttAddDoctor.ForeColor = Color.Firebrick;
-            buttAddDoctor.Location = new Point(123, 20);
+            buttAddDoctor.Location = new Point(211, 24);
             buttAddDoctor.Name = "buttAddDoctor";
-            buttAddDoctor.Size = new Size(240, 39);
+            buttAddDoctor.Size = new Size(339, 52);
             buttAddDoctor.TabIndex = 41;
             buttAddDoctor.Text = "Добавить врача";
             buttAddDoctor.UseVisualStyleBackColor = true;
@@ -138,11 +138,11 @@
             // 
             // buttSearchDoctor
             // 
-            buttSearchDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttSearchDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttSearchDoctor.ForeColor = Color.Firebrick;
-            buttSearchDoctor.Location = new Point(765, 117);
+            buttSearchDoctor.Location = new Point(873, 162);
             buttSearchDoctor.Name = "buttSearchDoctor";
-            buttSearchDoctor.Size = new Size(174, 99);
+            buttSearchDoctor.Size = new Size(265, 112);
             buttSearchDoctor.TabIndex = 42;
             buttSearchDoctor.Text = "Найти врача\r\n";
             buttSearchDoctor.UseVisualStyleBackColor = true;
@@ -150,10 +150,10 @@
             // 
             // buttAllDataAboutDoctor
             // 
-            buttAllDataAboutDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttAllDataAboutDoctor.Location = new Point(1174, 177);
+            buttAllDataAboutDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllDataAboutDoctor.Location = new Point(1462, 129);
             buttAllDataAboutDoctor.Name = "buttAllDataAboutDoctor";
-            buttAllDataAboutDoctor.Size = new Size(355, 45);
+            buttAllDataAboutDoctor.Size = new Size(410, 73);
             buttAllDataAboutDoctor.TabIndex = 48;
             buttAllDataAboutDoctor.Text = "Все данные о выбранном враче";
             buttAllDataAboutDoctor.UseVisualStyleBackColor = true;
@@ -163,20 +163,21 @@
             // 
             richTextBoxInfoAboutDoctor.BackColor = SystemColors.Window;
             richTextBoxInfoAboutDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            richTextBoxInfoAboutDoctor.Location = new Point(1094, 228);
+            richTextBoxInfoAboutDoctor.Location = new Point(1276, 228);
             richTextBoxInfoAboutDoctor.Name = "richTextBoxInfoAboutDoctor";
             richTextBoxInfoAboutDoctor.ReadOnly = true;
-            richTextBoxInfoAboutDoctor.Size = new Size(435, 376);
+            richTextBoxInfoAboutDoctor.Size = new Size(596, 590);
             richTextBoxInfoAboutDoctor.TabIndex = 49;
             richTextBoxInfoAboutDoctor.Text = "";
+            richTextBoxInfoAboutDoctor.TextChanged += richTextBoxInfoAboutDoctor_TextChanged;
             // 
             // buttRemoveDoctor
             // 
-            buttRemoveDoctor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttRemoveDoctor.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttRemoveDoctor.ForeColor = Color.Firebrick;
-            buttRemoveDoctor.Location = new Point(12, 611);
+            buttRemoveDoctor.Location = new Point(13, 896);
             buttRemoveDoctor.Name = "buttRemoveDoctor";
-            buttRemoveDoctor.Size = new Size(186, 36);
+            buttRemoveDoctor.Size = new Size(193, 69);
             buttRemoveDoctor.TabIndex = 50;
             buttRemoveDoctor.Text = "Удалить врача";
             buttRemoveDoctor.UseVisualStyleBackColor = true;
@@ -185,11 +186,11 @@
             // buttAllDoctors
             // 
             buttAllDoctors.BackColor = Color.MistyRose;
-            buttAllDoctors.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllDoctors.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttAllDoctors.ForeColor = Color.Firebrick;
-            buttAllDoctors.Location = new Point(765, 611);
+            buttAllDoctors.Location = new Point(805, 896);
             buttAllDoctors.Name = "buttAllDoctors";
-            buttAllDoctors.Size = new Size(303, 36);
+            buttAllDoctors.Size = new Size(333, 69);
             buttAllDoctors.TabIndex = 51;
             buttAllDoctors.Text = "Обновить список врачей\r\n";
             buttAllDoctors.UseVisualStyleBackColor = false;
@@ -197,10 +198,10 @@
             // 
             // buttChangeData
             // 
-            buttChangeData.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttChangeData.Location = new Point(1252, 611);
+            buttChangeData.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttChangeData.Location = new Point(1505, 896);
             buttChangeData.Name = "buttChangeData";
-            buttChangeData.Size = new Size(277, 36);
+            buttChangeData.Size = new Size(367, 74);
             buttChangeData.TabIndex = 52;
             buttChangeData.Text = "Изменить данные врача\r\n";
             buttChangeData.UseVisualStyleBackColor = true;
@@ -208,91 +209,99 @@
             // 
             // textSurname
             // 
-            textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textSurname.Location = new Point(12, 117);
+            textSurname.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            textSurname.Location = new Point(33, 163);
             textSurname.Name = "textSurname";
-            textSurname.Size = new Size(328, 34);
+            textSurname.Size = new Size(328, 39);
             textSurname.TabIndex = 53;
+            textSurname.TextChanged += textSurname_TextChanged;
             textSurname.KeyPress += textBox_SpacePress;
             // 
             // textName
             // 
-            textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textName.Location = new Point(12, 182);
+            textName.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            textName.Location = new Point(33, 257);
             textName.Name = "textName";
-            textName.Size = new Size(328, 34);
+            textName.Size = new Size(328, 39);
             textName.TabIndex = 54;
+            textName.TextChanged += textName_TextChanged;
             textName.KeyPress += textBox_SpacePress;
             // 
             // textPatr
             // 
-            textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPatr.Location = new Point(392, 117);
+            textPatr.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            textPatr.Location = new Point(460, 162);
             textPatr.Name = "textPatr";
-            textPatr.Size = new Size(328, 34);
+            textPatr.Size = new Size(328, 39);
             textPatr.TabIndex = 55;
+            textPatr.TextChanged += textPatr_TextChanged;
             textPatr.KeyPress += textBox_SpacePress;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Firebrick;
-            label6.Location = new Point(392, 86);
+            label6.Location = new Point(460, 127);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(96, 28);
+            label6.Size = new Size(117, 32);
             label6.TabIndex = 60;
             label6.Text = "Отчество";
+            label6.Click += label6_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(12, 86);
+            label3.Location = new Point(33, 127);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(96, 28);
+            label3.Size = new Size(113, 32);
             label3.TabIndex = 58;
             label3.Text = "Фамилия";
+            label3.Click += label3_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Firebrick;
-            label4.Location = new Point(13, 154);
+            label4.Location = new Point(33, 222);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(51, 28);
+            label4.Size = new Size(61, 32);
             label4.TabIndex = 59;
             label4.Text = "Имя";
+            label4.Click += label4_Click;
             // 
             // comboBoxSpecializations
             // 
             comboBoxSpecializations.BackColor = Color.White;
             comboBoxSpecializations.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBoxSpecializations.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxSpecializations.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxSpecializations.ForeColor = Color.Firebrick;
             comboBoxSpecializations.FormattingEnabled = true;
-            comboBoxSpecializations.Location = new Point(392, 182);
+            comboBoxSpecializations.Location = new Point(460, 258);
             comboBoxSpecializations.Margin = new Padding(4);
             comboBoxSpecializations.Name = "comboBoxSpecializations";
-            comboBoxSpecializations.Size = new Size(328, 36);
+            comboBoxSpecializations.Size = new Size(328, 39);
             comboBoxSpecializations.TabIndex = 61;
+            comboBoxSpecializations.SelectedIndexChanged += comboBoxSpecializations_SelectedIndexChanged;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Firebrick;
-            label5.Location = new Point(392, 154);
+            label5.Location = new Point(460, 222);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(156, 28);
+            label5.Size = new Size(186, 32);
             label5.TabIndex = 62;
             label5.Text = "Специализация";
+            label5.Click += label5_Click;
             // 
             // errorNoName
             // 
@@ -309,11 +318,11 @@
             // checkIsMultiSelect
             // 
             checkIsMultiSelect.AutoSize = true;
-            checkIsMultiSelect.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkIsMultiSelect.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             checkIsMultiSelect.ForeColor = Color.Firebrick;
-            checkIsMultiSelect.Location = new Point(465, 615);
+            checkIsMultiSelect.Location = new Point(402, 913);
             checkIsMultiSelect.Name = "checkIsMultiSelect";
-            checkIsMultiSelect.Size = new Size(276, 32);
+            checkIsMultiSelect.Size = new Size(329, 36);
             checkIsMultiSelect.TabIndex = 63;
             checkIsMultiSelect.Text = "Выбор нескольких врачей";
             checkIsMultiSelect.UseVisualStyleBackColor = true;
@@ -328,7 +337,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(1541, 674);
+            ClientSize = new Size(1902, 1033);
             Controls.Add(checkIsMultiSelect);
             Controls.Add(label5);
             Controls.Add(comboBoxSpecializations);
@@ -348,10 +357,9 @@
             Controls.Add(label2);
             Controls.Add(listViewDoctors);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
             Name = "DoctorsForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "DoctorsForm";
+            Text = "ARM_MedRegistrar";
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSpecialization).EndInit();

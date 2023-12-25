@@ -43,9 +43,9 @@ namespace ARM_MedRegistrar.Presenter
                     {
                         _doctor = _doctors[key];
                          
-                        _view.Surname = _doctor.FullName.Surname;
-                        _view.Name = _doctor.FullName.Name;
-                        _view.Patronymic = _doctor.FullName.Patronymic;
+                        _view.Surname = _doctor.PersonalData.FullName.Surname;
+                        _view.Name = _doctor.PersonalData.FullName.Name;
+                        _view.Patronymic = _doctor.PersonalData.FullName.Patronymic;
                         
                         foreach(IWorkSchedule workSchedule in _doctor.WorkSchedule)
                         {
@@ -88,7 +88,7 @@ namespace ARM_MedRegistrar.Presenter
 
                         _view.TimesOfWork = _timesOfWork;
                         _view.TimesOfWork = _timesOfWork;
-                        _view.PhoneNumber = _doctor.PhoneNumber;
+                        _view.PhoneNumber = _doctor.PersonalData.PhoneNumber;
                         _view.PlotNumber = _doctor.PlotNumber;
                         _view.Specialization = _doctor.Specialization;
                         _view.Cabinet = _doctor.Cabinet;
@@ -107,10 +107,10 @@ namespace ARM_MedRegistrar.Presenter
                 if (key == _view.Id)
                 {
                     _doctor = _doctors[key];
-                    _doctor.FullName.Surname = _view.Surname;
-                    _doctor.FullName.Name = _view.Name;
-                    _doctor.FullName.Patronymic = _view.Patronymic;
-                    _doctor.PhoneNumber = _view.PhoneNumber;
+                    _doctor.PersonalData.FullName.Surname = _view.Surname;
+                    _doctor.PersonalData.FullName.Name = _view.Name;
+                    _doctor.PersonalData.FullName.Patronymic = _view.Patronymic;
+                    _doctor.PersonalData.PhoneNumber = _view.PhoneNumber;
                     _doctor.PlotNumber = _view.PlotNumber;
                     _doctor.Specialization = _view.Specialization;
                     _doctor.Cabinet = _view.Cabinet;

@@ -49,6 +49,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
             set
             {
                 dateTimeDateOfBirth.Value = DateTime.ParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+                dateTimeDateOfBirth.Enabled = false;
             }
         }
         string IChangeDataOfPatientForm.PhoneNumber
@@ -244,7 +245,6 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
             errorNoName.Clear();
             errorNoPolicySeries.Clear();
             errorNoPolicyNumber.Clear();
-            errorWrongDate.Clear();
             errorNoStreet.Clear();
             errorNoNumbOfHouse.Clear();
             errorNoNumbOfFlat.Clear();
@@ -282,12 +282,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
                 errorNoPolicyNumber.SetError(textPolicyNumber, "Поле \"Номер полиса\" не заполнено");
             }
 
-            if (dateTimeDateOfBirth.Value.Day >= DateTime.Today.Day && dateTimeDateOfBirth.Value.Month >= DateTime.Today.Month
-                && dateTimeDateOfBirth.Value.Year >= DateTime.Today.Year || dateTimeDateOfBirth.Value.Year > DateTime.Today.Year)
-            {
-                _isError = true;
-                errorWrongDate.SetError(dateTimeDateOfBirth, "Поле \"Дата рождения\" заполнено неверно");
-            }
+            
             if (textCity.Text == string.Empty)
             {
                 _isError = true;

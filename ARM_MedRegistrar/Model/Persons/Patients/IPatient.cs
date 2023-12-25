@@ -2,15 +2,15 @@
 using ARM_MedRegistrar.Model.Formatter;
 using ARM_MedRegistrar.Model.Identifications;
 using ARM_MedRegistrar.Model.Persons;
+using ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans;
 
 namespace ARM_MedRegistrar.Model.Persons.Patients
 {
 
     public interface IPatient : IIdentification, IFormatter
     {
-        public IFullName FullName { get; set; }
+        public IPersonalData PersonalData {  get; set; }
         public string DateOfBirth { get; }
-        public string PhoneNumber {  get; set; }
         public IPatientAddress Address { get; set; }
         public int PlotNumber { get; set; }
         public string NumbOfPatientCard { get; set; }
