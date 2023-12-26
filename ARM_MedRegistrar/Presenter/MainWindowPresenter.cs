@@ -1,14 +1,10 @@
 ﻿using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
 using ARM_MedRegistrar.Model.Persons.Patients;
-using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View.MainWindow;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository;
 using ARM_MedRegistrar.Data.Json.Dictionaries;
+using ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments;
+using ARM_MedRegistrar.Model.DaysWithFreeAppointments;
+using ARM_MedRegistrar.Model.FreeTimeOfAppointments;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -16,6 +12,9 @@ namespace ARM_MedRegistrar.Presenter
     { 
         IMainWindowForm _view;
         IBaseRepositoryWithCreatedID<uint, IPatient>  _jsonPatientRepository;
+        IBaseRepository<uint, IFreeTimeOfAppointment> _jsonFreeTimeOfAppointmentRepository;
+        IDictionary<uint, IFreeTimeOfAppointment>? _dictFreeTimeOfAppointments;
+        IList<IDayWithFreeAppointments>? _resultListOfDaysWithAppointments;
         IDictionary<uint, IPatient>? _patients;
         int _countOfLine = -1;
         bool _isSuccess;
@@ -23,6 +22,36 @@ namespace ARM_MedRegistrar.Presenter
         { 
             _view = view;
             _jsonPatientRepository = new JsonPatientRepository();
+            _jsonFreeTimeOfAppointmentRepository = new JsonFreeTimeOfAppointmentRepository();
+        }
+
+
+        public void ClearFreeAppointments()
+        {
+            _dictFreeTimeOfAppointments = _jsonFreeTimeOfAppointmentRepository.Read();
+
+            if (_dictFreeTimeOfAppointments == null || _dictFreeTimeOfAppointments.Count == 0)
+            {
+                return;
+            }
+
+            foreach (uint key in _dictFreeTimeOfAppointments.Keys)
+            {
+                _resultListOfDaysWithAppointments = _dictFreeTimeOfAppointments[key].FreeTimeOfAppointments;
+                foreach (IDayWithFreeAppointments dayWithFreeAppointments in _dictFreeTimeOfAppointments[key].FreeTimeOfAppointments)
+                {
+                    if (dayWithFreeAppointments.DateOfAppointment < DateOnly.FromDateTime(DateTime.Now))
+                    {
+                        _resultListOfDaysWithAppointments.Remove(dayWithFreeAppointments);
+                    }
+
+                }
+                _dictFreeTimeOfAppointments[key].FreeTimeOfAppointments = _resultListOfDaysWithAppointments;
+
+                _jsonFreeTimeOfAppointmentRepository.Update(_dictFreeTimeOfAppointments[key]);
+            }
+
+
         }
 
         public bool SearchPatient()

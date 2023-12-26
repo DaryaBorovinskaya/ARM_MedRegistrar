@@ -40,7 +40,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
                 _personalData = value;
             }
         }
-        public string DateOfBirth { get; }
+        public DateOnly DateOfBirth { get; }
         public IPatientAddress Address
         {
             get => _address;
@@ -159,13 +159,10 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
 
         public string? Allergies { get; set; }
         public uint Id { get; }
-        public Patient(uint id, IPersonalData personalData , string dateOfBirth, IPatientAddress address, int plotNumber, 
+        public Patient(uint id, IPersonalData personalData , DateOnly dateOfBirth, IPatientAddress address, int plotNumber, 
             string numbOfPatientCard, int policySeries, string policyNumb, 
             string documentSeries, string documentNumber, string bloodType, string rhFactor, string? allergies )
         {
-            if (dateOfBirth == "" || dateOfBirth == " " || dateOfBirth == null)
-                throw new ArgumentException("Дата рождения не задана");
-
             Id = id;
             PersonalData = personalData;
             DateOfBirth = dateOfBirth;

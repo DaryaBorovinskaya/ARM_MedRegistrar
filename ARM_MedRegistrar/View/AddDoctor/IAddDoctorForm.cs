@@ -15,8 +15,8 @@ namespace ARM_MedRegistrar.View.AddDoctor
         public string PhoneNumber { get;}
         public int PlotNumber { get;  }
         public int Cabinet { get;  }
-        public IList<DateTime> TimesOfWork { get; }
-        public DateTime DurationOfAppointment {  get; }
+        public IList<TimeOnly> TimesOfWork { get; }
+        public TimeOnly DurationOfAppointment {  get; }
        
     }
 }

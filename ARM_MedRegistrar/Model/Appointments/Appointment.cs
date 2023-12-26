@@ -13,8 +13,8 @@ namespace ARM_MedRegistrar.Model.Appointments
         private IPatient _patient;
         private IDoctor _doctor;
         private string _place;
-        public DateTime Date { get; set; }
-        public DateTime Time { get; set; }
+        public DateTime DateAndTime { get; set; }
+        
         public IPatient Patient
         {
             get => _patient;
@@ -47,11 +47,10 @@ namespace ARM_MedRegistrar.Model.Appointments
             }
         }
         public uint Id { get; }
-        public Appointment(uint id, IPatient patient, IDoctor doctor, DateTime date, DateTime time, string place)
+        public Appointment(uint id, IPatient patient, IDoctor doctor, DateTime dateAndTime, string place)
         {
             Id = id;
-            Date = date;
-            Time = time;
+            DateAndTime = dateAndTime.Date + new TimeSpan(dateAndTime.Hour,dateAndTime.Minute,0);
             Patient = patient;
             Doctor = doctor;
             Place = place;
@@ -59,8 +58,7 @@ namespace ARM_MedRegistrar.Model.Appointments
 
         public string Format()
         {
-            return $"ID: {Id}\nДата: {Date}\nВремя: {Time}\nМесто приёма: {Place} ";
-        //    return "ID: " + Id + "\n" + Date + "\n : " + Time + "\n : " + Patient.FullName.Surname
+            return $"ID: {Id}\nДата и время: {DateAndTime}\nМесто приёма: {Place} ";
         }
     }
 }

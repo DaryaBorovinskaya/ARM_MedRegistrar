@@ -62,12 +62,12 @@ namespace ARM_MedRegistrar
             }
         }
 
-        string IMainWindowForm.DateOfBirth
+        DateOnly IMainWindowForm.DateOfBirth
         {
-            get => dateTimeDateOfBirth.Value.ToShortDateString();
+            get => DateOnly.FromDateTime(dateTimeDateOfBirth.Value);
             set
             {
-                listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
+                listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value.ToString());
             }
         }
 
@@ -324,6 +324,11 @@ namespace ARM_MedRegistrar
         private void checkIsMultiSelect_CheckedChanged_1(object sender, EventArgs e)
         {
             listViewPatients.MultiSelect = true;
+        }
+
+        private void MainWindowForm_Load(object sender, EventArgs e)
+        {
+            _presenter.ClearFreeAppointments();
         }
     }
 }

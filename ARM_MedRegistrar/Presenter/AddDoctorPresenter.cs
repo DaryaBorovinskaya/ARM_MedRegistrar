@@ -8,6 +8,7 @@ using ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.DaysWithFreeAppointments;
 using ARM_MedRegistrar.Data.Json.Dictionaries;
+using ARM_MedRegistrar.Model.WorksBeginningEnd;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -20,9 +21,9 @@ namespace ARM_MedRegistrar.Presenter
         IBaseRepositoryWithCreatedID<uint, IDoctor> _jsonDoctorRepository;
         IBaseRepository<uint, IFreeTimeOfAppointment> _jsonFreeTimeOfAppointmentRepository;
         uint _id;
-        DateTime _nullTime = new(1753,1,1, 0, 0, 0);
+        TimeOnly _nullTime = new(0, 0, 0);
         IWorkSchedule _workSchedule;
-        IList<DateTime> _timesOfWork;
+        IList<TimeOnly> _timesOfWork;
         IList<IWorkSchedule> _workSchedules;
         IDayWithFreeAppointments _dayWithFreeAppointments;
         IFreeTimeOfAppointment _freeTimeOfAppointments;
@@ -50,7 +51,7 @@ namespace ARM_MedRegistrar.Presenter
 
                 else
                 {
-                    _workSchedule = new WorkScheduleOfDoctor(WorkScheduleOfDoctor.GetDaysOfWeek[i / 2], _timesOfWork[i], _timesOfWork[i + 1]);
+                    _workSchedule = new WorkScheduleOfDoctor(WorkScheduleOfDoctor.GetDaysOfWeek[i / 2], new WorkBeginningEnd(  _timesOfWork[i], _timesOfWork[i + 1]));
                     _workSchedules.Add(_workSchedule);
                     
                     

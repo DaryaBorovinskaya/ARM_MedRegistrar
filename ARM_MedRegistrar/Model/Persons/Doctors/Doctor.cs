@@ -66,9 +66,9 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 
         public uint Id { get; }
 
-        public DateTime DurationOfAppointment { get; set; }
+        public TimeOnly DurationOfAppointment { get; set; }
 
-        public Doctor(uint id, IPersonalData personalData, IList<IWorkSchedule> workSchedule , string specialization, int plotNumber, int cabinet , DateTime durationOfAppointment)
+        public Doctor(uint id, IPersonalData personalData, IList<IWorkSchedule> workSchedule , string specialization, int plotNumber, int cabinet , TimeOnly durationOfAppointment)
         {
             Id = id;
             PersonalData = personalData;
@@ -77,7 +77,7 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
             PlotNumber = plotNumber;
             Cabinet = cabinet;
 
-            durationOfAppointment = durationOfAppointment.Date +  new TimeSpan(durationOfAppointment.TimeOfDay.Hours, durationOfAppointment.TimeOfDay.Minutes, 0);
+            durationOfAppointment = new TimeOnly(durationOfAppointment.Hour, durationOfAppointment.Minute,0);
             DurationOfAppointment = durationOfAppointment;
 
         }
@@ -90,7 +90,7 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 
 
             return $"ID: {Id}\n{PersonalData.Format()}Специализация: {Specialization}\nНомер участка: {PlotNumber}\n" +
-                $"Номер кабинета: {Cabinet}\n\nГРАФИК РАБОТЫ\n\n{_lineSchedule}\nПродолжит. приёма: {DurationOfAppointment.TimeOfDay}";
+                $"Номер кабинета: {Cabinet}\n\nГРАФИК РАБОТЫ\n\n{_lineSchedule}\nПродолжит. приёма: {DurationOfAppointment}";
         }
     }
 }

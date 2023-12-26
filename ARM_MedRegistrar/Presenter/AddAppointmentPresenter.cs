@@ -9,6 +9,7 @@ using ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.DaysWithFreeAppointments;
 using ARM_MedRegistrar.Data.Json.Dictionaries;
+using ARM_MedRegistrar.Model.WorksBeginningEnd;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -40,6 +41,8 @@ namespace ARM_MedRegistrar.Presenter
             
         }
 
+        
+
         public bool ShowAllDoctors()
         {
             _countOfLine = -1;
@@ -70,7 +73,6 @@ namespace ARM_MedRegistrar.Presenter
             }
             return false;
         }
-
 
         public bool ShowAllPatients()
         {
@@ -104,6 +106,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool WorkingDoctors()
         {
+            bool _isSuccess = false;
             _countOfLine = -1;
             _doctors = _jsonDoctorRepository.Read();
             if (_doctors == null || _doctors.Count == 0)
@@ -127,12 +130,14 @@ namespace ARM_MedRegistrar.Presenter
                             _view.DoctorSpecialization = doctor.Specialization;
                             _view.DoctorCabinet = doctor.Cabinet;
                             _view.DoctorPlotNumber = doctor.PlotNumber;
-                            return true;
+                            _isSuccess = true;
                         }
                     }
+
                 }
 
-
+                if (_isSuccess)
+                    return true;
                 
             }
             return false;
@@ -142,7 +147,7 @@ namespace ARM_MedRegistrar.Presenter
         {
             bool IsContainDayOfAppointment;
             IWorkSchedule _workSchedule;
-            IList<string> _rezult = new List<string>();
+            IList<string> _result = new List<string>();
             _daysWithFreeAppointments = new List<IDayWithFreeAppointments>();
             _doctors = _jsonDoctorRepository.Read();
             _dictFreeTimeOfAppointments = _jsonFreeTimeOfAppointmentRepository.Read();
@@ -162,12 +167,11 @@ namespace ARM_MedRegistrar.Presenter
                             foreach (IWorkSchedule workSchedule in _doctors[key].WorkSchedule)
                                 if (workSchedule.DayOfWeek == _translator.Translate(_view.DayOfAppointment.DayOfWeek.ToString()))   //если день недели желаемой записи совпадает с рабочим днём врача
                                 {
-                                    _workSchedule = workSchedule;
-                                    _dayWithFreeAppointments = new DayWithFreeAppointments(_workSchedule.WorkBeginning, _workSchedule.WorkEnd, _doctors[key].DurationOfAppointment, _view.DayOfAppointment); //создание записей на выбранный в части view день
-                                    foreach (DateTime time in _dayWithFreeAppointments.TimeOfAppointments)
-                                        _rezult.Add(time.TimeOfDay.ToString());                     //запись всех свободных записей в итоговый List<string>
+                                    _dayWithFreeAppointments = new DayWithFreeAppointments(new WorkBeginningEnd( workSchedule.WorkBeginningEnd.WorkBeginning, workSchedule.WorkBeginningEnd.WorkEnd), _doctors[key].DurationOfAppointment, _view.DayOfAppointment); //создание записей на выбранный в части view день
+                                    foreach (TimeOnly time in _dayWithFreeAppointments.TimeOfAppointments)
+                                        _result.Add(time.ToString());                     //запись всех свободных записей в итоговый List<string>
 
-                                    _view.SetFreeTimeOfAppointment = _rezult;       //итоговые значения передаются в view
+                                    _view.SetFreeTimeOfAppointment = _result;       //итоговые значения передаются в view
                                     _daysWithFreeAppointments.Add(_dayWithFreeAppointments);
                                     _freeTimeOfAppointments = new FreeTimeOfAppointment(_daysWithFreeAppointments, key);
                                     //_dictFreeTimeOfAppointments.Add(key, _freeTimeOfAppointments);
@@ -175,37 +179,39 @@ namespace ARM_MedRegistrar.Presenter
                                     return true;
                                 }
                         }
-                        else
+                        else 
                         { 
-                            foreach (IFreeTimeOfAppointment freeTimeOfAppointments in _dictFreeTimeOfAppointments.Values)
+                            foreach (uint id in _dictFreeTimeOfAppointments.Keys)  //IFreeTimeOfAppointment freeTimeOfAppointments in _dictFreeTimeOfAppointments.Values
                             {
-                                foreach ( DayWithFreeAppointments dayWithFreeAppointments in freeTimeOfAppointments.FreeTimeOfAppointments)
-                                    if (dayWithFreeAppointments.DateOfAppointment != _view.DayOfAppointment.Date)             //если на выбранную дату не создано свободных записей
-                                    {
-                                        foreach (IWorkSchedule workSchedule in _doctors[key].WorkSchedule)
-                                            if (workSchedule.DayOfWeek == _translator.Translate(_view.DayOfAppointment.DayOfWeek.ToString()))
-                                            {
-                                                _workSchedule = workSchedule;
-                                                _dayWithFreeAppointments = new DayWithFreeAppointments(_workSchedule.WorkBeginning, _workSchedule.WorkEnd, _doctors[key].DurationOfAppointment, _view.DayOfAppointment);
-                                                foreach (DateTime time in _dayWithFreeAppointments.TimeOfAppointments)
-                                                    _rezult.Add(time.TimeOfDay.ToString());
+                                if (id == _view.DoctorSelectedId)
+                                {
+                                    foreach (DayWithFreeAppointments dayWithFreeAppointments in _dictFreeTimeOfAppointments[id].FreeTimeOfAppointments)
+                                        if (dayWithFreeAppointments.DateOfAppointment != _view.DayOfAppointment)             //если на выбранную дату не создано свободных записей
+                                        {
+                                            foreach (IWorkSchedule workSchedule in _doctors[key].WorkSchedule)
+                                                if (workSchedule.DayOfWeek == _translator.Translate(_view.DayOfAppointment.DayOfWeek.ToString()))
+                                                {
+                                                    _dayWithFreeAppointments = new DayWithFreeAppointments(new WorkBeginningEnd(workSchedule.WorkBeginningEnd.WorkBeginning, workSchedule.WorkBeginningEnd.WorkEnd), _doctors[key].DurationOfAppointment, _view.DayOfAppointment);
+                                                    foreach (TimeOnly time in _dayWithFreeAppointments.TimeOfAppointments)
+                                                        _result.Add(time.ToString());
 
 
-                                                
-                                                _view.SetFreeTimeOfAppointment = _rezult;
-                                                _freeTimeOfAppointments = _dictFreeTimeOfAppointments[key];
-                                                _freeTimeOfAppointments.FreeTimeOfAppointments.Add(_dayWithFreeAppointments);
-                                                _jsonFreeTimeOfAppointmentRepository.Update(_freeTimeOfAppointments);    //обновление данных свободных записей 
-                                                return true;
-                                            }
-                                    }
-                                    else
-                                    {
-                                        foreach (DateTime time in dayWithFreeAppointments.TimeOfAppointments)     //получаем данные из уже созданного ранее List
-                                            _rezult.Add(time.TimeOfDay.ToString());
-                                        _view.SetFreeTimeOfAppointment = _rezult;
-                                        return true;
-                                    }
+
+                                                    _view.SetFreeTimeOfAppointment = _result;
+                                                    _freeTimeOfAppointments = _dictFreeTimeOfAppointments[key];
+                                                    _freeTimeOfAppointments.FreeTimeOfAppointments.Add(_dayWithFreeAppointments);
+                                                    _jsonFreeTimeOfAppointmentRepository.Update(_freeTimeOfAppointments);    //обновление данных свободных записей 
+                                                    return true;
+                                                }
+                                        }
+                                        else
+                                        {
+                                            foreach (TimeOnly time in dayWithFreeAppointments.TimeOfAppointments)     //получаем данные из уже созданного ранее List
+                                                _result.Add(time.ToString());
+                                            _view.SetFreeTimeOfAppointment = _result;
+                                            return true;
+                                        }
+                                }
                             }
                             
                                     

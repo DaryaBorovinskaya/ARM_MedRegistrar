@@ -12,7 +12,7 @@ namespace ARM_MedRegistrar
     public partial class AddDoctorForm : Form, IAddDoctorForm
     {
         //private BindingList<IWorkSchedule> _schedules;
-        IList<DateTime> _timesOfWork;
+        IList<TimeOnly> _timesOfWork;
         AddDoctorPresenter _presenter;
         DateTime _nullTime = new(1753, 1, 1, 0, 0, 0);
         string IAddDoctorForm.Surname => textSurname.Text;
@@ -29,33 +29,33 @@ namespace ARM_MedRegistrar
 
         int IAddDoctorForm.Cabinet => int.Parse(textCabinet.Text);
 
-        IList<DateTime> IAddDoctorForm.TimesOfWork
+        IList<TimeOnly> IAddDoctorForm.TimesOfWork
         {
             get
             {
-                _timesOfWork = new List<DateTime>()
+                _timesOfWork = new List<TimeOnly>()
                 {
-                    timeMonWorkBeginning.Value,
-                    timeMonWorkEnd.Value,
-                    timeTuesWorkBeginning.Value,
-                    timeTuesWorkEnd.Value,
-                    timeWedWorkBeginning.Value,
-                    timeWedWorkEnd.Value,
-                    timeThursWorkBeginning.Value,
-                    timeThursWorkEnd.Value,
-                    timeFriWorkBeginning.Value,
-                    timeFriWorkEnd.Value,
-                    timeSatWorkBeginning.Value,
-                    timeSatWorkEnd.Value,
-                    timeSunWorkBeginning.Value,
-                    timeSunWorkEnd.Value
+                    TimeOnly.FromDateTime(timeMonWorkBeginning.Value),
+                    TimeOnly.FromDateTime(timeMonWorkEnd.Value),
+                    TimeOnly.FromDateTime(timeTuesWorkBeginning.Value),
+                    TimeOnly.FromDateTime(timeTuesWorkEnd.Value),
+                    TimeOnly.FromDateTime(timeWedWorkBeginning.Value),
+                    TimeOnly.FromDateTime(timeWedWorkEnd.Value),
+                    TimeOnly.FromDateTime(timeThursWorkBeginning.Value),
+                    TimeOnly.FromDateTime(timeThursWorkEnd.Value),
+                    TimeOnly.FromDateTime(timeFriWorkBeginning.Value),
+                    TimeOnly.FromDateTime(timeFriWorkEnd.Value) ,
+                    TimeOnly.FromDateTime(timeSatWorkBeginning.Value),
+                    TimeOnly.FromDateTime(timeSatWorkEnd.Value),
+                    TimeOnly.FromDateTime(timeSunWorkBeginning.Value),
+                    TimeOnly.FromDateTime(timeSunWorkEnd.Value)
                 };
 
                 return _timesOfWork;
             }
         }
 
-        DateTime IAddDoctorForm.DurationOfAppointment => timeDurationOfAppointment.Value;
+        TimeOnly IAddDoctorForm.DurationOfAppointment => TimeOnly.FromDateTime(timeDurationOfAppointment.Value);
 
         public AddDoctorForm()
         {
@@ -104,43 +104,6 @@ namespace ARM_MedRegistrar
             return _newTextOfTextBox;
         }
 
-
-        private void buttClearSchedule_Click(object sender, EventArgs e)
-        {
-            //dataGridSchedule.DataSource = null;
-            //dataGridSchedule.Rows.Clear();
-            //buttShowSchedule.Enabled = true;
-        }
-
-        private void buttShowSchedule_Click(object sender, EventArgs e)
-        {
-            //_schedules = new BindingList<IWorkSchedule>();
-
-            //dataGridSchedule.DataSource = _schedules;
-
-            //if (dataGridSchedule.Columns["DayOfWeek"] != null)
-            //    dataGridSchedule.Columns["DayOfWeek"].HeaderText = "День недели";
-            //if (dataGridSchedule.Columns["WorkBeginning"] != null)
-            //    dataGridSchedule.Columns["WorkBeginning"].HeaderText = "Начало работы";
-            //if (dataGridSchedule.Columns["WorkEnd"] != null)
-            //    dataGridSchedule.Columns["WorkEnd"].HeaderText = "Конец работы";
-
-            //dataGridSchedule.Columns[0].Width = 200;
-            //dataGridSchedule.Columns[1].Width = 180;
-            //dataGridSchedule.Columns[2].Width = 180;
-
-            //_schedules.Add(new WorkScheduleOfDoctor() { DayOfWeek = "Пн", WorkBeginning = "1", WorkEnd = "1" });
-            //_schedules.Add(new WorkScheduleOfDoctor() { DayOfWeek = "Вт", WorkBeginning = "1", WorkEnd = "1" });
-            //_schedules.Add(new WorkScheduleOfDoctor() { DayOfWeek = "Ср", WorkBeginning = "1", WorkEnd = "1" });
-            //_schedules.Add(new WorkScheduleOfDoctor() { DayOfWeek = "Чт", WorkBeginning = "1", WorkEnd = "1" });
-            //_schedules.Add(new WorkScheduleOfDoctor() { DayOfWeek = "Пт", WorkBeginning = "1", WorkEnd = "1" });
-            //_schedules.Add(new WorkScheduleOfDoctor() { DayOfWeek = "Сб", WorkBeginning = "1", WorkEnd = "1" });
-            //_schedules.Add(new WorkScheduleOfDoctor() { DayOfWeek = "Вс", WorkBeginning = "1", WorkEnd = "1" });
-
-
-            //buttShowSchedule.Enabled = false;
-        }
-
         private static bool IsCorrectTime(DateTime timeBeginning, DateTime timeEnd)
         {
             if ((timeEnd.Hour - timeBeginning.Hour < 1) && (timeEnd.Minute - timeBeginning.Minute <= 1))
@@ -152,10 +115,7 @@ namespace ARM_MedRegistrar
 
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
-            //IList<IWorkSchedule> _workSchedules = new List<IWorkSchedule>();
-
             bool _isError = false;
-
 
             errorNoSurname.Clear();
             errorNoName.Clear();
@@ -171,24 +131,7 @@ namespace ARM_MedRegistrar
             errorNoCorrectTimeFri.Clear();
             errorNoCorrectTimeSat.Clear();
             errorNoCorrectTimeSun.Clear();
-            //errorNoSchedule.Clear();
-
-
-            //for (int rows = 0; rows < dataGridSchedule.Rows.Count; rows++)
-            //{
-            //    for (int col = 0; col < dataGridSchedule.Rows[rows].Cells.Count; col++)
-            //    {
-            //        if (dataGridSchedule.Rows[rows].Cells[col].Value.ToString() == null)
-            //        {
-            //            _isError = true;
-            //            errorNoSchedule.SetError(dataGridSchedule, "График работы не заполнен");
-            //            break;
-            //        }
-
-            //    }
-            //}
-
-
+            
 
             if (textSurname.Text == string.Empty)
             {

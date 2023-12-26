@@ -12,7 +12,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
         public string Surname { get; set; }
         public string Name { get; set; }
         public string? Patronymic { get; set; }
-        public string DateOfBirth {  set; }
+        public DateOnly DateOfBirth {  set; }
         public string PhoneNumber { get; set; }
         public string City { get; set; }
         public string Region { get; set; }

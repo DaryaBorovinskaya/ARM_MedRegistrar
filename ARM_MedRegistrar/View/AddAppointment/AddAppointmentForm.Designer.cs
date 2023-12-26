@@ -79,6 +79,7 @@
             buttAddAppointment = new Button();
             richTextBoxInfoAboutPatient = new RichTextBox();
             buttAllDataAboutPatient = new Button();
+            buttChange = new Button();
             ((System.ComponentModel.ISupportInitialize)errorNoTime).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
@@ -291,11 +292,11 @@
             buttWorkingDoctors.BackColor = SystemColors.Window;
             buttWorkingDoctors.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             buttWorkingDoctors.ForeColor = Color.Firebrick;
-            buttWorkingDoctors.Location = new Point(1372, 22);
+            buttWorkingDoctors.Location = new Point(1312, 48);
             buttWorkingDoctors.Name = "buttWorkingDoctors";
-            buttWorkingDoctors.Size = new Size(346, 72);
+            buttWorkingDoctors.Size = new Size(387, 55);
             buttWorkingDoctors.TabIndex = 15;
-            buttWorkingDoctors.Text = "Врачи, работающие в указ. дату и время";
+            buttWorkingDoctors.Text = "Врачи, работающие в указ. дату\r\n";
             buttWorkingDoctors.UseVisualStyleBackColor = false;
             buttWorkingDoctors.Click += buttWorkingDoctors_Click;
             // 
@@ -467,9 +468,9 @@
             // buttSaveChanges
             // 
             buttSaveChanges.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttSaveChanges.Location = new Point(964, 826);
+            buttSaveChanges.Location = new Point(1125, 826);
             buttSaveChanges.Name = "buttSaveChanges";
-            buttSaveChanges.Size = new Size(300, 42);
+            buttSaveChanges.Size = new Size(250, 42);
             buttSaveChanges.TabIndex = 61;
             buttSaveChanges.Text = "Сохранить изменения";
             buttSaveChanges.UseVisualStyleBackColor = true;
@@ -490,6 +491,7 @@
             buttAddAppointment.TabIndex = 62;
             buttAddAppointment.Text = "Создать запись на приём";
             buttAddAppointment.UseVisualStyleBackColor = false;
+            buttAddAppointment.Click += buttAddAppointment_Click;
             // 
             // richTextBoxInfoAboutPatient
             // 
@@ -513,12 +515,24 @@
             buttAllDataAboutPatient.UseVisualStyleBackColor = true;
             buttAllDataAboutPatient.Click += buttAllDataAboutPatient_Click;
             // 
+            // buttChange
+            // 
+            buttChange.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttChange.Location = new Point(964, 826);
+            buttChange.Name = "buttChange";
+            buttChange.Size = new Size(115, 42);
+            buttChange.TabIndex = 65;
+            buttChange.Text = "Изменить";
+            buttChange.UseVisualStyleBackColor = true;
+            buttChange.Click += buttChange_Click;
+            // 
             // AddAppointmentForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1792, 880);
+            Controls.Add(buttChange);
             Controls.Add(buttAllDataAboutPatient);
             Controls.Add(richTextBoxInfoAboutPatient);
             Controls.Add(buttAddAppointment);
@@ -619,5 +633,6 @@
         private Button buttAddAppointment;
         private RichTextBox richTextBoxInfoAboutPatient;
         private Button buttAllDataAboutPatient;
+        private Button buttChange;
     }
 }

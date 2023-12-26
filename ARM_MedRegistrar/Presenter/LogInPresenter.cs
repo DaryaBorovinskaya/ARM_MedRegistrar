@@ -25,21 +25,14 @@ namespace ARM_MedRegistrar.Presenter
                 return null;
             else
             {
-                //foreach (string key in _users.Keys)
+                
+                foreach (string key in _users.Keys)
 
-                //    if (key == _view.Login)
-                //    {
-                //        saltedPassword =  Model.Persons.Users.User.GenerateSaltPassword(_view.Password, _users[key].Salt);
-                //        if (saltedPassword == _users[key].Password)
-                //            return _users[key];
-                //    }
-                foreach (IUser user in _users.Values)
-
-                    if ( Equals(user.Login.Length ,_view.Login.Length) && Equals(user.Login, _view.Login))
+                    if (Equals(key.Length ,_view.Login.Length) && Equals(key, _view.Login))
                     {
-                        saltedPassword = GeneratingSaltPassword.GenerateSaltPassword(_view.Password, user.Salt);
-                        if (saltedPassword == user.SaltPassword)
-                            return user;
+                        saltedPassword = GeneratingSaltPassword.GenerateSaltPassword(_view.Password, _users[key].Salt);
+                        if (saltedPassword == _users[key].SaltPassword)
+                            return _users[key];
                     }
                 return null;
             }

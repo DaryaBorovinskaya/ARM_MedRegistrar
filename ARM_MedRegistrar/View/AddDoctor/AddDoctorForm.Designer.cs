@@ -129,45 +129,45 @@ partial class AddDoctorForm
         // 
         comboBoxSpecializations.BackColor = Color.White;
         comboBoxSpecializations.DropDownStyle = ComboBoxStyle.DropDownList;
-        comboBoxSpecializations.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        comboBoxSpecializations.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         comboBoxSpecializations.ForeColor = Color.Firebrick;
         comboBoxSpecializations.FormattingEnabled = true;
         comboBoxSpecializations.Location = new Point(413, 142);
         comboBoxSpecializations.Margin = new Padding(4);
         comboBoxSpecializations.Name = "comboBoxSpecializations";
-        comboBoxSpecializations.Size = new Size(252, 36);
+        comboBoxSpecializations.Size = new Size(252, 39);
         comboBoxSpecializations.TabIndex = 3;
         // 
         // textSurname
         // 
         textSurname.BackColor = Color.White;
-        textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textSurname.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         textSurname.Location = new Point(16, 144);
         textSurname.Margin = new Padding(4);
         textSurname.Name = "textSurname";
-        textSurname.Size = new Size(312, 34);
+        textSurname.Size = new Size(312, 39);
         textSurname.TabIndex = 20;
         textSurname.KeyPress += textBox_SpacePress;
         // 
         // textName
         // 
         textName.BackColor = Color.White;
-        textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textName.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         textName.Location = new Point(16, 261);
         textName.Margin = new Padding(4);
         textName.Name = "textName";
-        textName.Size = new Size(312, 34);
+        textName.Size = new Size(312, 39);
         textName.TabIndex = 21;
         textName.KeyPress += textBox_SpacePress;
         // 
         // textPatr
         // 
         textPatr.BackColor = Color.White;
-        textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textPatr.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         textPatr.Location = new Point(13, 370);
         textPatr.Margin = new Padding(4);
         textPatr.Name = "textPatr";
-        textPatr.Size = new Size(315, 34);
+        textPatr.Size = new Size(315, 39);
         textPatr.TabIndex = 22;
         textPatr.KeyPress += textBox_SpacePress;
         // 
@@ -188,72 +188,72 @@ partial class AddDoctorForm
         // label3
         // 
         label3.AutoSize = true;
-        label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label3.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label3.ForeColor = Color.Firebrick;
         label3.Location = new Point(16, 112);
         label3.Margin = new Padding(4, 0, 4, 0);
         label3.Name = "label3";
-        label3.Size = new Size(96, 28);
+        label3.Size = new Size(113, 32);
         label3.TabIndex = 28;
         label3.Text = "Фамилия";
         // 
         // label1
         // 
         label1.AutoSize = true;
-        label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label1.ForeColor = Color.Firebrick;
         label1.Location = new Point(16, 229);
         label1.Margin = new Padding(4, 0, 4, 0);
         label1.Name = "label1";
-        label1.Size = new Size(51, 28);
+        label1.Size = new Size(61, 32);
         label1.TabIndex = 29;
         label1.Text = "Имя";
         // 
         // label4
         // 
         label4.AutoSize = true;
-        label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label4.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label4.ForeColor = Color.Firebrick;
         label4.Location = new Point(13, 338);
         label4.Margin = new Padding(4, 0, 4, 0);
         label4.Name = "label4";
-        label4.Size = new Size(234, 28);
+        label4.Size = new Size(282, 32);
         label4.TabIndex = 30;
         label4.Text = "Отчество (при наличии)";
         // 
         // label5
         // 
         label5.AutoSize = true;
-        label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label5.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label5.ForeColor = Color.Firebrick;
         label5.Location = new Point(413, 110);
         label5.Margin = new Padding(4, 0, 4, 0);
         label5.Name = "label5";
-        label5.Size = new Size(156, 28);
+        label5.Size = new Size(186, 32);
         label5.TabIndex = 31;
         label5.Text = "Специализация";
         // 
         // label6
         // 
         label6.AutoSize = true;
-        label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label6.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label6.ForeColor = Color.Firebrick;
         label6.Location = new Point(413, 229);
         label6.Margin = new Padding(4, 0, 4, 0);
         label6.Name = "label6";
-        label6.Size = new Size(147, 28);
+        label6.Size = new Size(179, 32);
         label6.TabIndex = 32;
         label6.Text = "Номер участка";
         // 
         // label7
         // 
         label7.AutoSize = true;
-        label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label7.ForeColor = Color.Firebrick;
         label7.Location = new Point(413, 338);
         label7.Margin = new Padding(4, 0, 4, 0);
         label7.Name = "label7";
-        label7.Size = new Size(163, 28);
+        label7.Size = new Size(197, 32);
         label7.TabIndex = 33;
         label7.Text = "Номер кабинета";
         // 
@@ -287,23 +287,23 @@ partial class AddDoctorForm
         // textPhoneNumber
         // 
         textPhoneNumber.BackColor = Color.White;
-        textPhoneNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textPhoneNumber.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         textPhoneNumber.Location = new Point(13, 475);
         textPhoneNumber.Margin = new Padding(4);
         textPhoneNumber.Name = "textPhoneNumber";
-        textPhoneNumber.Size = new Size(315, 34);
+        textPhoneNumber.Size = new Size(315, 39);
         textPhoneNumber.TabIndex = 36;
         textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // label8
         // 
         label8.AutoSize = true;
-        label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label8.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label8.ForeColor = Color.Firebrick;
         label8.Location = new Point(13, 443);
         label8.Margin = new Padding(4, 0, 4, 0);
         label8.Name = "label8";
-        label8.Size = new Size(166, 28);
+        label8.Size = new Size(201, 32);
         label8.TabIndex = 37;
         label8.Text = "Номер телефона\r\n";
         // 
@@ -314,22 +314,22 @@ partial class AddDoctorForm
         // textPlotNumber
         // 
         textPlotNumber.BackColor = Color.White;
-        textPlotNumber.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textPlotNumber.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         textPlotNumber.Location = new Point(413, 282);
         textPlotNumber.Margin = new Padding(4);
         textPlotNumber.Name = "textPlotNumber";
-        textPlotNumber.Size = new Size(198, 34);
+        textPlotNumber.Size = new Size(198, 39);
         textPlotNumber.TabIndex = 38;
         textPlotNumber.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // textCabinet
         // 
         textCabinet.BackColor = Color.White;
-        textCabinet.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        textCabinet.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         textCabinet.Location = new Point(413, 396);
         textCabinet.Margin = new Padding(4);
         textCabinet.Name = "textCabinet";
-        textCabinet.Size = new Size(198, 34);
+        textCabinet.Size = new Size(198, 39);
         textCabinet.TabIndex = 39;
         textCabinet.KeyPress += textBox_ContainsExceptNumbers;
         // 
@@ -340,11 +340,11 @@ partial class AddDoctorForm
         // label9
         // 
         label9.AutoSize = true;
-        label9.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+        label9.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
         label9.ForeColor = Color.Firebrick;
         label9.Location = new Point(1046, 24);
         label9.Name = "label9";
-        label9.Size = new Size(190, 31);
+        label9.Size = new Size(227, 37);
         label9.TabIndex = 43;
         label9.Text = "График работы ";
         label9.TextAlign = ContentAlignment.TopCenter;
@@ -356,30 +356,33 @@ partial class AddDoctorForm
         // label10
         // 
         label10.AutoSize = true;
+        label10.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label10.ForeColor = Color.Firebrick;
-        label10.Location = new Point(923, 127);
+        label10.Location = new Point(904, 127);
         label10.Name = "label10";
-        label10.Size = new Size(38, 28);
+        label10.Size = new Size(45, 32);
         label10.TabIndex = 46;
         label10.Text = "Пн";
         // 
         // label11
         // 
         label11.AutoSize = true;
+        label11.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label11.ForeColor = Color.Firebrick;
-        label11.Location = new Point(923, 196);
+        label11.Location = new Point(904, 196);
         label11.Name = "label11";
-        label11.Size = new Size(31, 28);
+        label11.Size = new Size(38, 32);
         label11.TabIndex = 47;
         label11.Text = "Вт";
         // 
         // label12
         // 
         label12.AutoSize = true;
+        label12.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label12.ForeColor = Color.Firebrick;
-        label12.Location = new Point(923, 267);
+        label12.Location = new Point(904, 267);
         label12.Name = "label12";
-        label12.Size = new Size(36, 28);
+        label12.Size = new Size(43, 32);
         label12.TabIndex = 48;
         label12.Text = "Ср";
         label12.Click += label12_Click;
@@ -387,189 +390,194 @@ partial class AddDoctorForm
         // label13
         // 
         label13.AutoSize = true;
+        label13.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label13.ForeColor = Color.Firebrick;
-        label13.Location = new Point(927, 542);
+        label13.Location = new Point(908, 542);
         label13.Name = "label13";
-        label13.Size = new Size(32, 28);
+        label13.Size = new Size(39, 32);
         label13.TabIndex = 49;
         label13.Text = "Вс";
         // 
         // label14
         // 
         label14.AutoSize = true;
+        label14.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label14.ForeColor = Color.Firebrick;
-        label14.Location = new Point(923, 479);
+        label14.Location = new Point(904, 479);
         label14.Name = "label14";
-        label14.Size = new Size(36, 28);
+        label14.Size = new Size(43, 32);
         label14.TabIndex = 50;
         label14.Text = "Сб";
         // 
         // label15
         // 
         label15.AutoSize = true;
+        label15.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label15.ForeColor = Color.Firebrick;
-        label15.Location = new Point(923, 338);
+        label15.Location = new Point(904, 338);
         label15.Name = "label15";
-        label15.Size = new Size(33, 28);
+        label15.Size = new Size(40, 32);
         label15.TabIndex = 51;
         label15.Text = "Чт";
         // 
         // label16
         // 
         label16.AutoSize = true;
+        label16.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label16.ForeColor = Color.Firebrick;
-        label16.Location = new Point(926, 407);
+        label16.Location = new Point(907, 407);
         label16.Name = "label16";
-        label16.Size = new Size(34, 28);
+        label16.Size = new Size(41, 32);
         label16.TabIndex = 52;
         label16.Text = "Пт";
         // 
         // timeMonWorkBeginning
         // 
-        timeMonWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeMonWorkBeginning.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeMonWorkBeginning.Format = DateTimePickerFormat.Time;
-        timeMonWorkBeginning.Location = new Point(1011, 122);
+        timeMonWorkBeginning.Location = new Point(1003, 122);
         timeMonWorkBeginning.Name = "timeMonWorkBeginning";
         timeMonWorkBeginning.ShowUpDown = true;
-        timeMonWorkBeginning.Size = new Size(115, 34);
+        timeMonWorkBeginning.Size = new Size(115, 39);
         timeMonWorkBeginning.TabIndex = 54;
         // 
         // timeMonWorkEnd
         // 
-        timeMonWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeMonWorkEnd.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeMonWorkEnd.Format = DateTimePickerFormat.Time;
         timeMonWorkEnd.Location = new Point(1224, 121);
         timeMonWorkEnd.Name = "timeMonWorkEnd";
         timeMonWorkEnd.ShowUpDown = true;
-        timeMonWorkEnd.Size = new Size(115, 34);
+        timeMonWorkEnd.Size = new Size(115, 39);
         timeMonWorkEnd.TabIndex = 55;
         // 
         // timeWedWorkEnd
         // 
-        timeWedWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeWedWorkEnd.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeWedWorkEnd.Format = DateTimePickerFormat.Time;
         timeWedWorkEnd.Location = new Point(1226, 267);
         timeWedWorkEnd.Name = "timeWedWorkEnd";
         timeWedWorkEnd.ShowUpDown = true;
-        timeWedWorkEnd.Size = new Size(115, 34);
+        timeWedWorkEnd.Size = new Size(115, 39);
         timeWedWorkEnd.TabIndex = 56;
         // 
         // timeWedWorkBeginning
         // 
-        timeWedWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeWedWorkBeginning.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeWedWorkBeginning.Format = DateTimePickerFormat.Time;
-        timeWedWorkBeginning.Location = new Point(1011, 267);
+        timeWedWorkBeginning.Location = new Point(1003, 267);
         timeWedWorkBeginning.Name = "timeWedWorkBeginning";
         timeWedWorkBeginning.ShowUpDown = true;
-        timeWedWorkBeginning.Size = new Size(115, 34);
+        timeWedWorkBeginning.Size = new Size(115, 39);
         timeWedWorkBeginning.TabIndex = 57;
         // 
         // timeSatWorkEnd
         // 
-        timeSatWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeSatWorkEnd.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeSatWorkEnd.Format = DateTimePickerFormat.Time;
         timeSatWorkEnd.Location = new Point(1224, 473);
         timeSatWorkEnd.Name = "timeSatWorkEnd";
         timeSatWorkEnd.ShowUpDown = true;
-        timeSatWorkEnd.Size = new Size(115, 34);
+        timeSatWorkEnd.Size = new Size(115, 39);
         timeSatWorkEnd.TabIndex = 58;
         // 
         // timeSatWorkBeginning
         // 
-        timeSatWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeSatWorkBeginning.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeSatWorkBeginning.Format = DateTimePickerFormat.Time;
-        timeSatWorkBeginning.Location = new Point(1011, 473);
+        timeSatWorkBeginning.Location = new Point(1003, 473);
         timeSatWorkBeginning.Name = "timeSatWorkBeginning";
         timeSatWorkBeginning.ShowUpDown = true;
-        timeSatWorkBeginning.Size = new Size(115, 34);
+        timeSatWorkBeginning.Size = new Size(115, 39);
         timeSatWorkBeginning.TabIndex = 59;
         // 
         // timeFriWorkEnd
         // 
-        timeFriWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeFriWorkEnd.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeFriWorkEnd.Format = DateTimePickerFormat.Time;
         timeFriWorkEnd.Location = new Point(1224, 402);
         timeFriWorkEnd.Name = "timeFriWorkEnd";
         timeFriWorkEnd.ShowUpDown = true;
-        timeFriWorkEnd.Size = new Size(115, 34);
+        timeFriWorkEnd.Size = new Size(115, 39);
         timeFriWorkEnd.TabIndex = 60;
         // 
         // timeFriWorkBeginning
         // 
-        timeFriWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeFriWorkBeginning.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeFriWorkBeginning.Format = DateTimePickerFormat.Time;
-        timeFriWorkBeginning.Location = new Point(1011, 402);
+        timeFriWorkBeginning.Location = new Point(1003, 402);
         timeFriWorkBeginning.Name = "timeFriWorkBeginning";
         timeFriWorkBeginning.ShowUpDown = true;
-        timeFriWorkBeginning.Size = new Size(115, 34);
+        timeFriWorkBeginning.Size = new Size(115, 39);
         timeFriWorkBeginning.TabIndex = 61;
         // 
         // timeThursWorkEnd
         // 
-        timeThursWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeThursWorkEnd.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeThursWorkEnd.Format = DateTimePickerFormat.Time;
         timeThursWorkEnd.Location = new Point(1224, 338);
         timeThursWorkEnd.Name = "timeThursWorkEnd";
         timeThursWorkEnd.ShowUpDown = true;
-        timeThursWorkEnd.Size = new Size(115, 34);
+        timeThursWorkEnd.Size = new Size(115, 39);
         timeThursWorkEnd.TabIndex = 62;
         // 
         // timeThursWorkBeginning
         // 
-        timeThursWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeThursWorkBeginning.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeThursWorkBeginning.Format = DateTimePickerFormat.Time;
-        timeThursWorkBeginning.Location = new Point(1011, 338);
+        timeThursWorkBeginning.Location = new Point(1003, 338);
         timeThursWorkBeginning.Name = "timeThursWorkBeginning";
         timeThursWorkBeginning.ShowUpDown = true;
-        timeThursWorkBeginning.Size = new Size(115, 34);
+        timeThursWorkBeginning.Size = new Size(115, 39);
         timeThursWorkBeginning.TabIndex = 63;
         // 
         // timeTuesWorkEnd
         // 
-        timeTuesWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeTuesWorkEnd.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeTuesWorkEnd.Format = DateTimePickerFormat.Time;
         timeTuesWorkEnd.Location = new Point(1224, 196);
         timeTuesWorkEnd.Name = "timeTuesWorkEnd";
         timeTuesWorkEnd.ShowUpDown = true;
-        timeTuesWorkEnd.Size = new Size(115, 34);
+        timeTuesWorkEnd.Size = new Size(115, 39);
         timeTuesWorkEnd.TabIndex = 64;
         // 
         // timeTuesWorkBeginning
         // 
-        timeTuesWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeTuesWorkBeginning.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeTuesWorkBeginning.Format = DateTimePickerFormat.Time;
-        timeTuesWorkBeginning.Location = new Point(1011, 196);
+        timeTuesWorkBeginning.Location = new Point(1003, 196);
         timeTuesWorkBeginning.Name = "timeTuesWorkBeginning";
         timeTuesWorkBeginning.ShowUpDown = true;
-        timeTuesWorkBeginning.Size = new Size(115, 34);
+        timeTuesWorkBeginning.Size = new Size(115, 39);
         timeTuesWorkBeginning.TabIndex = 65;
         // 
         // timeSunWorkBeginning
         // 
-        timeSunWorkBeginning.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeSunWorkBeginning.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeSunWorkBeginning.Format = DateTimePickerFormat.Time;
-        timeSunWorkBeginning.Location = new Point(1011, 536);
+        timeSunWorkBeginning.Location = new Point(1003, 536);
         timeSunWorkBeginning.Name = "timeSunWorkBeginning";
         timeSunWorkBeginning.ShowUpDown = true;
-        timeSunWorkBeginning.Size = new Size(115, 34);
+        timeSunWorkBeginning.Size = new Size(115, 39);
         timeSunWorkBeginning.TabIndex = 66;
         // 
         // timeSunWorkEnd
         // 
-        timeSunWorkEnd.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeSunWorkEnd.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeSunWorkEnd.Format = DateTimePickerFormat.Time;
         timeSunWorkEnd.Location = new Point(1224, 537);
         timeSunWorkEnd.Name = "timeSunWorkEnd";
         timeSunWorkEnd.ShowUpDown = true;
-        timeSunWorkEnd.Size = new Size(115, 34);
+        timeSunWorkEnd.Size = new Size(115, 39);
         timeSunWorkEnd.TabIndex = 67;
         // 
         // checkIsWeekendMon
         // 
         checkIsWeekendMon.AutoSize = true;
-        checkIsWeekendMon.Location = new Point(821, 126);
+        checkIsWeekendMon.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+        checkIsWeekendMon.Location = new Point(802, 126);
         checkIsWeekendMon.Name = "checkIsWeekendMon";
-        checkIsWeekendMon.Size = new Size(72, 32);
+        checkIsWeekendMon.Size = new Size(83, 36);
         checkIsWeekendMon.TabIndex = 68;
         checkIsWeekendMon.Text = "Вых.";
         checkIsWeekendMon.UseVisualStyleBackColor = true;
@@ -578,9 +586,10 @@ partial class AddDoctorForm
         // checkIsWeekendSun
         // 
         checkIsWeekendSun.AutoSize = true;
-        checkIsWeekendSun.Location = new Point(821, 541);
+        checkIsWeekendSun.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+        checkIsWeekendSun.Location = new Point(802, 541);
         checkIsWeekendSun.Name = "checkIsWeekendSun";
-        checkIsWeekendSun.Size = new Size(72, 32);
+        checkIsWeekendSun.Size = new Size(83, 36);
         checkIsWeekendSun.TabIndex = 75;
         checkIsWeekendSun.Text = "Вых.";
         checkIsWeekendSun.UseVisualStyleBackColor = true;
@@ -589,9 +598,10 @@ partial class AddDoctorForm
         // checkIsWeekendSat
         // 
         checkIsWeekendSat.AutoSize = true;
-        checkIsWeekendSat.Location = new Point(821, 479);
+        checkIsWeekendSat.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+        checkIsWeekendSat.Location = new Point(802, 479);
         checkIsWeekendSat.Name = "checkIsWeekendSat";
-        checkIsWeekendSat.Size = new Size(72, 32);
+        checkIsWeekendSat.Size = new Size(83, 36);
         checkIsWeekendSat.TabIndex = 76;
         checkIsWeekendSat.Text = "Вых.";
         checkIsWeekendSat.UseVisualStyleBackColor = true;
@@ -600,9 +610,10 @@ partial class AddDoctorForm
         // checkIsWeekendFri
         // 
         checkIsWeekendFri.AutoSize = true;
-        checkIsWeekendFri.Location = new Point(821, 407);
+        checkIsWeekendFri.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+        checkIsWeekendFri.Location = new Point(802, 407);
         checkIsWeekendFri.Name = "checkIsWeekendFri";
-        checkIsWeekendFri.Size = new Size(72, 32);
+        checkIsWeekendFri.Size = new Size(83, 36);
         checkIsWeekendFri.TabIndex = 77;
         checkIsWeekendFri.Text = "Вых.";
         checkIsWeekendFri.UseVisualStyleBackColor = true;
@@ -611,9 +622,10 @@ partial class AddDoctorForm
         // checkIsWeekendThurs
         // 
         checkIsWeekendThurs.AutoSize = true;
-        checkIsWeekendThurs.Location = new Point(821, 342);
+        checkIsWeekendThurs.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+        checkIsWeekendThurs.Location = new Point(802, 342);
         checkIsWeekendThurs.Name = "checkIsWeekendThurs";
-        checkIsWeekendThurs.Size = new Size(72, 32);
+        checkIsWeekendThurs.Size = new Size(83, 36);
         checkIsWeekendThurs.TabIndex = 78;
         checkIsWeekendThurs.Text = "Вых.";
         checkIsWeekendThurs.UseVisualStyleBackColor = true;
@@ -622,9 +634,10 @@ partial class AddDoctorForm
         // checkIsWeekendWed
         // 
         checkIsWeekendWed.AutoSize = true;
-        checkIsWeekendWed.Location = new Point(821, 268);
+        checkIsWeekendWed.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+        checkIsWeekendWed.Location = new Point(802, 268);
         checkIsWeekendWed.Name = "checkIsWeekendWed";
-        checkIsWeekendWed.Size = new Size(72, 32);
+        checkIsWeekendWed.Size = new Size(83, 36);
         checkIsWeekendWed.TabIndex = 79;
         checkIsWeekendWed.Text = "Вых.";
         checkIsWeekendWed.UseVisualStyleBackColor = true;
@@ -633,9 +646,10 @@ partial class AddDoctorForm
         // checkIsWeekendTues
         // 
         checkIsWeekendTues.AutoSize = true;
-        checkIsWeekendTues.Location = new Point(821, 195);
+        checkIsWeekendTues.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+        checkIsWeekendTues.Location = new Point(802, 195);
         checkIsWeekendTues.Name = "checkIsWeekendTues";
-        checkIsWeekendTues.Size = new Size(72, 32);
+        checkIsWeekendTues.Size = new Size(83, 36);
         checkIsWeekendTues.TabIndex = 80;
         checkIsWeekendTues.Text = "Вых.";
         checkIsWeekendTues.UseVisualStyleBackColor = true;
@@ -644,31 +658,32 @@ partial class AddDoctorForm
         // label17
         // 
         label17.AutoSize = true;
+        label17.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label17.Location = new Point(776, 616);
         label17.Name = "label17";
-        label17.Size = new Size(329, 28);
+        label17.Size = new Size(398, 32);
         label17.TabIndex = 81;
         label17.Text = "Вых. - выходной (нерабочий день)";
         // 
         // timeDurationOfAppointment
         // 
-        timeDurationOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        timeDurationOfAppointment.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         timeDurationOfAppointment.Format = DateTimePickerFormat.Time;
         timeDurationOfAppointment.Location = new Point(413, 502);
         timeDurationOfAppointment.Name = "timeDurationOfAppointment";
         timeDurationOfAppointment.ShowUpDown = true;
-        timeDurationOfAppointment.Size = new Size(115, 34);
+        timeDurationOfAppointment.Size = new Size(115, 39);
         timeDurationOfAppointment.TabIndex = 82;
         // 
         // label18
         // 
         label18.AutoSize = true;
-        label18.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label18.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label18.ForeColor = Color.Firebrick;
         label18.Location = new Point(413, 456);
         label18.Margin = new Padding(4, 0, 4, 0);
         label18.Name = "label18";
-        label18.Size = new Size(276, 28);
+        label18.Size = new Size(331, 32);
         label18.TabIndex = 83;
         label18.Text = "Продолжительность приёма";
         // 
@@ -707,11 +722,11 @@ partial class AddDoctorForm
         // label19
         // 
         label19.AutoSize = true;
-        label19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label19.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label19.ForeColor = Color.Firebrick;
-        label19.Location = new Point(959, 87);
+        label19.Location = new Point(942, 87);
         label19.Name = "label19";
-        label19.Size = new Size(184, 28);
+        label19.Size = new Size(222, 32);
         label19.TabIndex = 84;
         label19.Text = "Начало рабоч. дня";
         label19.TextAlign = ContentAlignment.TopCenter;
@@ -719,11 +734,11 @@ partial class AddDoctorForm
         // label20
         // 
         label20.AutoSize = true;
-        label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+        label20.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
         label20.ForeColor = Color.Firebrick;
         label20.Location = new Point(1182, 87);
         label20.Name = "label20";
-        label20.Size = new Size(174, 28);
+        label20.Size = new Size(209, 32);
         label20.TabIndex = 85;
         label20.Text = "Конец рабоч. дня";
         label20.TextAlign = ContentAlignment.TopCenter;

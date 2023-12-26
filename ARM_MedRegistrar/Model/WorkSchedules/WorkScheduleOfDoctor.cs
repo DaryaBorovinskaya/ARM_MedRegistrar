@@ -1,4 +1,5 @@
 ﻿using ARM_MedRegistrar.Model.Formatter;
+using ARM_MedRegistrar.Model.WorksBeginningEnd;
 using ARM_MedRegistrar.Model.WorkSchedules;
 using System;
 using System.Collections.Generic;
@@ -30,28 +31,16 @@ namespace ARM_MedRegistrar.Model.WorkSchedules
         }
 
         
-        public DateTime WorkBeginning { get; set; }
-        
-        
-
-        public DateTime WorkEnd { get; set; }
-        
-
-        
-          
-        public WorkScheduleOfDoctor(string dayOfWeek, DateTime workBeginning, DateTime workEnd )
+        public IWorkBeginningEnd WorkBeginningEnd { get; set; }
+        public WorkScheduleOfDoctor(string dayOfWeek, IWorkBeginningEnd workBeginningEnd)
         {
             DayOfWeek = dayOfWeek;
-            workBeginning = workBeginning.Date +  new TimeSpan(workBeginning.TimeOfDay.Hours, workBeginning.TimeOfDay.Minutes, 0);
-            WorkBeginning = workBeginning;
-            workEnd = workEnd.Date +  new TimeSpan(workEnd.TimeOfDay.Hours, workEnd.TimeOfDay.Minutes, 0);
-            WorkEnd = workEnd;
-            
+            WorkBeginningEnd = workBeginningEnd;
         }
 
         public string Format()
         {
-            return $"День недели: {DayOfWeek}\nНачало рабоч. дня: {WorkBeginning.TimeOfDay}\nКонец рабоч. дня : {WorkEnd.TimeOfDay}\n\n";
+            return $"День недели: {DayOfWeek}\n{WorkBeginningEnd.Format()}\n";
         }
 
     }

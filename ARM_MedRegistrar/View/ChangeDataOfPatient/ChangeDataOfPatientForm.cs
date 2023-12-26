@@ -44,11 +44,11 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
 
 
         }
-        string IChangeDataOfPatientForm.DateOfBirth
+        DateOnly IChangeDataOfPatientForm.DateOfBirth
         {
             set
             {
-                dateTimeDateOfBirth.Value = DateTime.ParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture);
+                dateTimeDateOfBirth.Value = new DateTime(value.Year,value.Month,value.Day);
                 dateTimeDateOfBirth.Enabled = false;
             }
         }

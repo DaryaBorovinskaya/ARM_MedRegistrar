@@ -10,7 +10,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
     public interface IPatient : IIdentification, IFormatter
     {
         public IPersonalData PersonalData {  get; set; }
-        public string DateOfBirth { get; }
+        public DateOnly DateOfBirth { get; }
         public IPatientAddress Address { get; set; }
         public int PlotNumber { get; set; }
         public string NumbOfPatientCard { get; set; }
@@ -22,7 +22,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
         public string RhFactor { get; set; }
         public string? Allergies { get; set; }
 
-        public string Format();
+        
 
     }
 }

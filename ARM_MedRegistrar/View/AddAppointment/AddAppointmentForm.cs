@@ -147,12 +147,12 @@ namespace ARM_MedRegistrar.View.AddAppointment
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
             }
         }
-        string IAddAppointmentForm.PatientDateOfBirth
+        DateOnly IAddAppointmentForm.PatientDateOfBirth
         {
-            get => dateTimeDateOfBirth.Value.ToShortDateString();
+            get => DateOnly.FromDateTime(dateTimeDateOfBirth.Value);
             set
             {
-                listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
+                listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value.ToString());
             }
         }
 
@@ -168,7 +168,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
             }
         }
 
-        DateTime IAddAppointmentForm.DayOfAppointment => dateTimePickerDateOfAppointment.Value;
+        DateOnly IAddAppointmentForm.DayOfAppointment => DateOnly.FromDateTime(dateTimePickerDateOfAppointment.Value);
 
         string IAddAppointmentForm.GetTypeOfAppointment => comboBoxTypeOfAppointment.SelectedItem.ToString();
 
@@ -198,6 +198,13 @@ namespace ARM_MedRegistrar.View.AddAppointment
             _presenter = new(this);
 
         }
+
+
+        private void AddAppointmentForm_Load(object sender, EventArgs e)
+        {
+           
+        }
+
 
         private void buttAllPatients_Click(object sender, EventArgs e)
         {
@@ -254,7 +261,6 @@ namespace ARM_MedRegistrar.View.AddAppointment
         private void comboBoxFreeTimeOfAppointment_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxTypeOfAppointment.Enabled = true;
-            textPlace.Enabled = true;
         }
 
         private void buttSearchPatient_Click(object sender, EventArgs e)
@@ -336,20 +342,30 @@ namespace ARM_MedRegistrar.View.AddAppointment
                 if (!_presenter.SaveChangesOfPlaceOfAppointment())
                     MessageBox.Show("Не удалось сохранить изменения");
                 else
+                {
                     MessageBox.Show("Изменения в поле \"Место\" сохранены");
+                    textPlace.Enabled = false;
+                }
             }
         }
 
-        private void AddAppointmentForm_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void buttAllDataAboutPatient_Click(object sender, EventArgs e)
         {
             richTextBoxInfoAboutPatient.Clear();
 
             _presenter.ShowInfoAboutPatient();
+        }
+
+        private void buttChange_Click(object sender, EventArgs e)
+        {
+            textPlace.Enabled = true;
+        }
+
+        private void buttAddAppointment_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

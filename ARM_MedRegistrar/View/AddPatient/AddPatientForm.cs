@@ -16,7 +16,7 @@ namespace ARM_MedRegistrar
 
         string? IAddPatientForm.Patronymic => textPatr.Text;
 
-        string IAddPatientForm.DateOfBirth => dateTimeDateOfBirth.Value.ToShortDateString();
+        DateOnly IAddPatientForm.DateOfBirth => DateOnly.FromDateTime(dateTimeDateOfBirth.Value);
         string IAddPatientForm.PhoneNumber => textPhoneNumber.Text;
         string? IAddPatientForm.City => textCity.Text;
         string? IAddPatientForm.Region => textRegion.Text;

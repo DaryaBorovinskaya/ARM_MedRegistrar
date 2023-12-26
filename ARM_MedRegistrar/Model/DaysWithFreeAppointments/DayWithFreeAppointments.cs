@@ -3,50 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ARM_MedRegistrar.Model.WorksBeginningEnd;
 
 namespace ARM_MedRegistrar.Model.DaysWithFreeAppointments
 {
     public class DayWithFreeAppointments : IDayWithFreeAppointments
     {
-        private IList<DateTime> _timesOfAppointments = new List<DateTime>();
-        public IList<DateTime> TimeOfAppointments 
+        private IList<TimeOnly> _timesOfAppointments = new List<TimeOnly>();
+        public IList<TimeOnly> TimeOfAppointments 
         {
             get => _timesOfAppointments;
             set => _timesOfAppointments = value;
         }
-        public DateTime WorkBeginning { get; set; }
-        public DateTime WorkEnd { get; set; }
-        public DateTime DateOfAppointment { get; set; }
-        public DateTime DurationOfAppointment { get; set; }
-        public DayWithFreeAppointments(DateTime workBeginning, DateTime workEnd, DateTime durationOfAppointment, DateTime dateOfAppointment)
+        
+        public IWorkBeginningEnd WorkBeginningEnd { get; set; }
+        public DateOnly DateOfAppointment { get; set; }
+        public TimeOnly DurationOfAppointment { get; set; }
+        public DayWithFreeAppointments(IWorkBeginningEnd workBeginningEnd, TimeOnly durationOfAppointment, DateOnly dateOfAppointment)
         {
-            workBeginning = workBeginning.Date + new TimeSpan(workBeginning.TimeOfDay.Hours, workBeginning.TimeOfDay.Minutes, 0);
-            WorkBeginning = workBeginning;
-
-            workEnd = workEnd.Date + new TimeSpan(workEnd.TimeOfDay.Hours, workEnd.TimeOfDay.Minutes, 0);
-            WorkEnd = workEnd;
-
-            durationOfAppointment = durationOfAppointment.Date + new TimeSpan(durationOfAppointment.TimeOfDay.Hours, durationOfAppointment.TimeOfDay.Minutes, 0);
-            DurationOfAppointment = durationOfAppointment;
-
+            DateOfAppointment = dateOfAppointment;
+            WorkBeginningEnd = workBeginningEnd;
+            DurationOfAppointment = new TimeOnly(durationOfAppointment.Hour, durationOfAppointment.Minute, 0);
 
             CreateTimeOfAppointments();
-
-            DateOfAppointment = dateOfAppointment.Date;
         }
 
 
         public void CreateTimeOfAppointments()
         {
-            DateTime _timeOfAppointment = WorkBeginning;
+            _timesOfAppointments.Add(new TimeOnly(WorkBeginningEnd.WorkBeginning.Hour, WorkBeginningEnd.WorkBeginning.Minute));
 
-            _timesOfAppointments.Add(_timeOfAppointment);
+            TimeSpan _timeOfAppointment = new TimeSpan (WorkBeginningEnd.WorkBeginning.Hour, WorkBeginningEnd.WorkBeginning.Minute, 0);
+            TimeSpan _duration = new TimeSpan(DurationOfAppointment.Hour, DurationOfAppointment.Minute, 0);
+            TimeSpan _workEnd = new TimeSpan(WorkBeginningEnd.WorkEnd.Hour, WorkBeginningEnd.WorkEnd.Minute,0);
 
-            while (_timeOfAppointment.TimeOfDay + DurationOfAppointment.TimeOfDay < WorkEnd.TimeOfDay)
+            while (_timeOfAppointment + _duration < _workEnd)    
             {
-                _timeOfAppointment += DurationOfAppointment.TimeOfDay;
-                _timesOfAppointments.Add(_timeOfAppointment);
-
+                _timeOfAppointment += _duration;
+                _timesOfAppointments.Add(new TimeOnly(_timeOfAppointment.Hours, _timeOfAppointment.Minutes));
             }
 
         }

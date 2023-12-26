@@ -1,6 +1,7 @@
 ﻿using ARM_MedRegistrar.Data.Json.Dictionaries;
 using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
 using ARM_MedRegistrar.Model.Persons.Doctors;
+using ARM_MedRegistrar.Model.WorksBeginningEnd;
 using ARM_MedRegistrar.Model.WorkSchedules;
 using ARM_MedRegistrar.View.ChangeDataOfDoctor;
 
@@ -11,11 +12,11 @@ namespace ARM_MedRegistrar.Presenter
         IChangeDataOfDoctorForm _view;
         IBaseRepository<uint, IDoctor> _jsonDoctorRepository;
         IDictionary<uint, IDoctor> _doctors;
-        IList<DateTime> _timesOfWork;
+        IList<TimeOnly> _timesOfWork;
         IWorkSchedule _workSchedule;
         IList<IWorkSchedule> _workSchedules = new List<IWorkSchedule>();
         IDoctor _doctor ;
-        DateTime _nullTime = new(1753, 1, 1, 0, 0, 0);
+        TimeOnly _nullTime = new( 0, 0, 0);
 
         public ChangeDataOfDoctorPresenter(IChangeDataOfDoctorForm view) 
         { 
@@ -32,7 +33,7 @@ namespace ARM_MedRegistrar.Presenter
 
             if (_doctors != null && _doctors.Count != 0)
             {
-                _timesOfWork = new List<DateTime>(14)
+                _timesOfWork = new List<TimeOnly>(14)
                 {
                     _nullTime, _nullTime, _nullTime, _nullTime, _nullTime,_nullTime, _nullTime,
                     _nullTime, _nullTime, _nullTime, _nullTime, _nullTime,_nullTime, _nullTime
@@ -51,38 +52,38 @@ namespace ARM_MedRegistrar.Presenter
                         {
                             if (workSchedule.DayOfWeek == WorkScheduleOfDoctor.GetDaysOfWeek[0])
                             {
-                                _timesOfWork[0] = workSchedule.WorkBeginning;
-                                _timesOfWork[1] =  workSchedule.WorkEnd;
+                                _timesOfWork[0] = workSchedule.WorkBeginningEnd.WorkBeginning;
+                                _timesOfWork[1] =  workSchedule.WorkBeginningEnd.WorkEnd;
                             }
                             else if (workSchedule.DayOfWeek == WorkScheduleOfDoctor.GetDaysOfWeek[1])
                             {
-                                _timesOfWork[2] = workSchedule.WorkBeginning;
-                                _timesOfWork[3] = workSchedule.WorkEnd;
+                                _timesOfWork[2] = workSchedule.WorkBeginningEnd.WorkBeginning;
+                                _timesOfWork[3] = workSchedule.WorkBeginningEnd.WorkEnd;
                             }
                             else if(workSchedule.DayOfWeek == WorkScheduleOfDoctor.GetDaysOfWeek[2])
                             {
-                                _timesOfWork[4] = workSchedule.WorkBeginning;
-                                _timesOfWork[5] = workSchedule.WorkEnd;
+                                _timesOfWork[4] = workSchedule.WorkBeginningEnd.WorkBeginning;
+                                _timesOfWork[5] = workSchedule.WorkBeginningEnd.WorkEnd;
                             }
                             else if(workSchedule.DayOfWeek == WorkScheduleOfDoctor.GetDaysOfWeek[3])
                             {
-                                _timesOfWork[6] = workSchedule.WorkBeginning;
-                                _timesOfWork[7] = workSchedule.WorkEnd;
+                                _timesOfWork[6] = workSchedule.WorkBeginningEnd.WorkBeginning;
+                                _timesOfWork[7] = workSchedule.WorkBeginningEnd.WorkEnd;
                             }
                             else if(workSchedule.DayOfWeek == WorkScheduleOfDoctor.GetDaysOfWeek[4])
                             {
-                                _timesOfWork[8] = workSchedule.WorkBeginning;
-                                _timesOfWork[9] = workSchedule.WorkEnd;
+                                _timesOfWork[8] = workSchedule.WorkBeginningEnd.WorkBeginning;
+                                _timesOfWork[9] = workSchedule.WorkBeginningEnd.WorkEnd;
                             }
                             if (workSchedule.DayOfWeek == WorkScheduleOfDoctor.GetDaysOfWeek[5])
                             {
-                                _timesOfWork[10] = workSchedule.WorkBeginning;
-                                _timesOfWork[11] = workSchedule.WorkEnd;
+                                _timesOfWork[10] = workSchedule.WorkBeginningEnd.WorkBeginning;
+                                _timesOfWork[11] = workSchedule.WorkBeginningEnd.WorkEnd;
                             }
                             else if(workSchedule.DayOfWeek == WorkScheduleOfDoctor.GetDaysOfWeek[6])
                             {
-                                _timesOfWork[12] = workSchedule.WorkBeginning;
-                                _timesOfWork[13] = workSchedule.WorkEnd;
+                                _timesOfWork[12] = workSchedule.WorkBeginningEnd.WorkBeginning;
+                                _timesOfWork[13] = workSchedule.WorkBeginningEnd.WorkEnd;
                             }
                         }
 
@@ -125,7 +126,7 @@ namespace ARM_MedRegistrar.Presenter
 
                         else
                         {
-                            _workSchedule = new WorkScheduleOfDoctor(WorkScheduleOfDoctor.GetDaysOfWeek[i / 2], _timesOfWork[i], _timesOfWork[i + 1]);
+                            _workSchedule = new WorkScheduleOfDoctor(WorkScheduleOfDoctor.GetDaysOfWeek[i / 2], new WorkBeginningEnd( _timesOfWork[i], _timesOfWork[i + 1]));
                             _workSchedules.Add(_workSchedule);
                         }
 

@@ -20,6 +20,6 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
         public int PlotNumber { get; set; }
         public int Cabinet { get; set; }
 
-        public DateTime DurationOfAppointment { get; set; }
+        public TimeOnly DurationOfAppointment { get; set; }
     }
 }

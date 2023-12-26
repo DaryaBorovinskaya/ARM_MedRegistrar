@@ -604,6 +604,7 @@
             Name = "MainWindowForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ARM_MedRegistrar";
+            Load += MainWindowForm_Load;
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).EndInit();

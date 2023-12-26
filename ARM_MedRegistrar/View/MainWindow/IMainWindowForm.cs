@@ -12,7 +12,7 @@ namespace ARM_MedRegistrar.View.MainWindow
         public string Surname { get; set; }
         public string Name { get; set; }
         public string? Patronymic {  set; }
-        public string DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; }
         public string DocumentSeries {  set; }
         public string DocumentNumber {  set; }
         public int PlotNumber { set; }
