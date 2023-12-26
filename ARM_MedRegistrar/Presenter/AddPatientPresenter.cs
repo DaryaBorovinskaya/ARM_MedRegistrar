@@ -28,7 +28,6 @@ namespace ARM_MedRegistrar.Presenter
         { 
             _view = view;
             _jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
-            
             _jsonPatientRepository = new JsonPatientRepository();
         }
 

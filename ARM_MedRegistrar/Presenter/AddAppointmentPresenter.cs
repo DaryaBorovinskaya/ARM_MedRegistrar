@@ -244,14 +244,14 @@ namespace ARM_MedRegistrar.Presenter
             {
                 if (_view.GetTypeOfAppointment == "Вызов на дом")
                 { 
-                    _placeOfAppointment = _patients[_view.PatientSelectedId].Address.Format(); ;
-                    _view.PlaceOfAppointment = _patients[_view.PatientSelectedId].Address.Format();
+                    _placeOfAppointment = _patients[_view.PatientSelectedId].Address.FormatOneLine(); ;
+                    _view.PlaceOfAppointment = _patients[_view.PatientSelectedId].Address.FormatOneLine();
                     return true;
                 }
                 else
                 { 
                     _placeOfAppointment = _doctors[_view.DoctorSelectedId].Cabinet.ToString(); ;
-                    _view.PlaceOfAppointment = _doctors[_view.DoctorSelectedId].Cabinet.ToString();
+                    _view.PlaceOfAppointment = "кабинет " + _doctors[_view.DoctorSelectedId].Cabinet.ToString();
                     return true;
                 }
             }

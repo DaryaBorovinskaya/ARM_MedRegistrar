@@ -11,21 +11,26 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments
         private IDictionary<uint, IFreeTimeOfAppointment>? _freeTimeOfAppointments;
         private JsonSerializerSettings _settings;
 
-        public JsonFreeTimeOfAppointmentRepository()
-        {
-            _savePath = "freeTimeOfAppointment.json";
-            _freeTimeOfAppointments = new SortedDictionary<uint, IFreeTimeOfAppointment>();
-            _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-
-        }
-
-        public void Create( IFreeTimeOfAppointment value)
+        private void Load()
         {
             if (!File.Exists(_savePath))
                 _freeTimeOfAppointments = new SortedDictionary<uint, IFreeTimeOfAppointment>();
             else
                 _freeTimeOfAppointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IFreeTimeOfAppointment>>(File.ReadAllText(_savePath), _settings);
 
+        }
+        public JsonFreeTimeOfAppointmentRepository()
+        {
+            _savePath = "freeTimeOfAppointment.json";
+            _freeTimeOfAppointments = new SortedDictionary<uint, IFreeTimeOfAppointment>();
+            _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
+
+            
+        }
+
+        public void Create( IFreeTimeOfAppointment value)
+        {
+            Load();
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
             if (_freeTimeOfAppointments != null && _freeTimeOfAppointments.ContainsKey(value.Id))
@@ -39,22 +44,14 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments
 
         public IDictionary<uint, IFreeTimeOfAppointment>? Read()
         {
-            if (!File.Exists(_savePath))
-                _freeTimeOfAppointments = new SortedDictionary<uint, IFreeTimeOfAppointment>();
-            else
-                _freeTimeOfAppointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IFreeTimeOfAppointment>>(File.ReadAllText(_savePath), _settings);
-            return _freeTimeOfAppointments;
+            Load();
+            return _freeTimeOfAppointments; 
         }
+        
 
         public bool Update( IFreeTimeOfAppointment changedValue)
         {
-
-            if (!File.Exists(_savePath))
-                _freeTimeOfAppointments = new SortedDictionary<uint, IFreeTimeOfAppointment>();
-
-            else
-                _freeTimeOfAppointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IFreeTimeOfAppointment>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (_freeTimeOfAppointments != null && _freeTimeOfAppointments.Count != 0)
             {
                 _freeTimeOfAppointments[changedValue.Id] = changedValue;
@@ -65,12 +62,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments
         }
         public void Delete(uint key)
         {
-            if (!File.Exists(_savePath))
-                _freeTimeOfAppointments = new SortedDictionary<uint, IFreeTimeOfAppointment>();
-            else
-                _freeTimeOfAppointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IFreeTimeOfAppointment>>(File.ReadAllText(_savePath), _settings);
-
-
+            Load();
             if (_freeTimeOfAppointments == null)
                 throw new ArgumentNullException(nameof(_freeTimeOfAppointments));
             if (!_freeTimeOfAppointments.ContainsKey(key) || !File.Exists(_savePath))

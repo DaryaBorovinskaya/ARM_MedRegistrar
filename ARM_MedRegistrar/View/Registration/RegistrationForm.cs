@@ -47,7 +47,6 @@ namespace ARM_MedRegistrar
 
             _presenter = new(this);
 
-            _presenter.NoOneHeadDoctorEvent += NoOneHeadDoctorSet;
             _presenter.MatchedLogEvent += MatchedLogSet;
 
             _presenter.SetPost();

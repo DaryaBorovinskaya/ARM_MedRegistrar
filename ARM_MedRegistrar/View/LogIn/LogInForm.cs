@@ -8,7 +8,7 @@ namespace ARM_MedRegistrar
         private LogInPresenter _presenter;
         string ILogInForm.Login => textLog.Text;
 
-        string ILogInForm.Password => textLog.Text;
+        string ILogInForm.Password => textPassword.Text;
 
         public LogInForm()
         {
@@ -25,7 +25,6 @@ namespace ARM_MedRegistrar
             if (e.KeyChar == (int)Keys.Space)
                 e.KeyChar = '\0';
         }
-
 
         private void buttLogIn_Click(object sender, EventArgs e)
         {
@@ -53,11 +52,12 @@ namespace ARM_MedRegistrar
 
                 if (_presenter.LogIn() != null)
                 {
-                    MainWindowForm newForm = new(this, _presenter.LogIn());
-                    if (newForm.ShowDialog() == DialogResult.OK)
-                        Close();
-                }
+                    MainWindowForm newForm = new(this);  //this, _presenter.LogIn()
+                    newForm.ShowDialog();
+                    //if (newForm.ShowDialog() == DialogResult.OK)
+                    //    Close();
 
+                }
                 else
                     labelWrongLogOrPassword.Visible = true;
 

@@ -15,8 +15,7 @@ namespace ARM_MedRegistrar.Presenter
         IRegistrationForm _view;
         IBaseRepository<string, IUser> _jsonUserRepository;
         IDictionary<string, IUser>? _users;
-        byte[] _salt;
-        string _saltPassword;
+        
         public RegistrationPresenter(IRegistrationForm view)
         { 
             _view = view;
@@ -24,7 +23,6 @@ namespace ARM_MedRegistrar.Presenter
             
         }
 
-        public event EventHandler? NoOneHeadDoctorEvent;
         public event EventHandler? MatchedLogEvent;
 
         public void SetPost()
@@ -35,6 +33,8 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool IsSuccessRegistration()
         {
+            byte[] _salt;
+            string _saltPassword = string.Empty;
             _users = _jsonUserRepository.Read();
             
             bool _isSuccess = true;
@@ -42,17 +42,8 @@ namespace ARM_MedRegistrar.Presenter
             {
                 foreach (string key in _users.Keys)
                 {
-                    if (_users[key].Post == "главный врач" && _view.GetPost == "главный врач")
-                    {
-
-                        NoOneHeadDoctorEvent?.Invoke(this, EventArgs.Empty);
-                        _isSuccess = false;
-
-                    }
-
                     if (key == _view.Login)
                     {
-
                         MatchedLogEvent?.Invoke(this, EventArgs.Empty);
                         _isSuccess = false;
                     }

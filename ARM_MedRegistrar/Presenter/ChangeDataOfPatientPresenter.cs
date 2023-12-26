@@ -64,32 +64,39 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool SaveChanges()
         {
-            foreach (uint key in _patients.Keys)
-            {
-                if (key == _view.Id)  
-                {
-                    _patient = _patients[key];
-                    _patient.PersonalData.FullName.Surname = _view.Surname; 
-                    _patient.PersonalData.FullName.Name = _view.Name;
-                    _patient.PersonalData.FullName.Patronymic = _view.Patronymic;
-                    _patient.Address.AddressOfBuilding.City = _view.City;
-                    _patient.Address.AddressOfBuilding.Region = _view.Region;
-                    _patient.Address.AddressOfBuilding.Street = _view.Street;
-                    _patient.Address.AddressOfBuilding.NumbOfHouse = _view.NumbOfHouse;
-                    _patient.Address.NumbOfFlat = _view.NumbOfFlat;
-                    _patient.PersonalData.PhoneNumber = _view.PhoneNumber;
-                    _patient.PlotNumber = _view.PlotNumber;
-                    _patient.NumbOfPatientCard = _view.NumbOfPatientCard;
-                    _patient.PolicySeries = _view.PolicySeries;
-                    _patient.PolicyNumb = _view.PolicyNumb;
-                    _patient.DocumentSeries = _view.DocumentSeries;
-                    _patient.DocumentNumber = _view.DocumentNumber;
-                    _patient.BloodType = _view.BloodType;
-                    _patient.RhFactor = _view.RhFactor;
-                    _patient.Allergies = _view.Allergies;
+            _patients = _jsonPatientRepository.Read();
+            if (_patients == null || _patients.Count == 0)
+                return false;
 
-                    if (_jsonPatientRepository.Update(_patient)) 
-                        return true;
+            if (_patients != null && _patients.Count != 0)
+            {
+                foreach (uint key in _patients.Keys)
+                {
+                    if (key == _view.Id)
+                    {
+                        _patient = _patients[key];
+                        _patient.PersonalData.FullName.Surname = _view.Surname;
+                        _patient.PersonalData.FullName.Name = _view.Name;
+                        _patient.PersonalData.FullName.Patronymic = _view.Patronymic;
+                        _patient.Address.AddressOfBuilding.City = _view.City;
+                        _patient.Address.AddressOfBuilding.Region = _view.Region;
+                        _patient.Address.AddressOfBuilding.Street = _view.Street;
+                        _patient.Address.AddressOfBuilding.NumbOfHouse = _view.NumbOfHouse;
+                        _patient.Address.NumbOfFlat = _view.NumbOfFlat;
+                        _patient.PersonalData.PhoneNumber = _view.PhoneNumber;
+                        _patient.PlotNumber = _view.PlotNumber;
+                        _patient.NumbOfPatientCard = _view.NumbOfPatientCard;
+                        _patient.PolicySeries = _view.PolicySeries;
+                        _patient.PolicyNumb = _view.PolicyNumb;
+                        _patient.DocumentSeries = _view.DocumentSeries;
+                        _patient.DocumentNumber = _view.DocumentNumber;
+                        _patient.BloodType = _view.BloodType;
+                        _patient.RhFactor = _view.RhFactor;
+                        _patient.Allergies = _view.Allergies;
+
+                        if (_jsonPatientRepository.Update(_patient))
+                            return true;
+                    }
                 }
             }
             return false;

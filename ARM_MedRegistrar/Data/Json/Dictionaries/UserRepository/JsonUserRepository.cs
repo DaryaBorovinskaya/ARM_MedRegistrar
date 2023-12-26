@@ -12,6 +12,14 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
         private IDictionary<string, IUser>? _users;
         private JsonSerializerSettings _settings;
 
+        private void Load()
+        {
+            if (!File.Exists(_savePath))
+                _users = new SortedDictionary<string, IUser>();
+            else
+                _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), _settings);
+
+        }
         public JsonUserRepository()
         {
             _savePath = "users.json";
@@ -28,16 +36,13 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
                 _users?.Add("1", _user);
                 File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, _settings));
             }
+            
+                
         }
 
         public void Create(IUser value)
         {
-            if (!File.Exists(_savePath))
-                _users = new Dictionary<string, IUser>();
-
-            else
-                _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
@@ -52,25 +57,14 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
 
         public IDictionary<string, IUser>? Read()
         {
-
-
-            if (!File.Exists(_savePath))
-                _users = new Dictionary<string, IUser>();
-
-            else
-                _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), _settings);
+            Load();
             return _users;
         }
+        
 
         public bool Update(IUser changedValue)
         {
-
-            if (!File.Exists(_savePath))
-                _users = new Dictionary<string, IUser>();
-
-            else
-                _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (_users != null && _users.Count != 0)
             {
                 _users[changedValue.Login] = changedValue;
@@ -81,12 +75,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
         }
         public void Delete(string key)
         {
-            if (!File.Exists(_savePath))
-                _users = new Dictionary<string, IUser>();
-
-            else
-                _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (key == null)
                 throw new ArgumentNullException(nameof(key));
             if (_users == null)
@@ -97,7 +86,6 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
 
             _users?.Remove(key);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_users, Formatting.Indented, _settings));
-
 
         }
 

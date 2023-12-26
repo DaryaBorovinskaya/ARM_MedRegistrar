@@ -11,7 +11,6 @@
 
             ApplicationConfiguration.Initialize();
             Application.Run(new LogInForm());
-
         }
     }
 }

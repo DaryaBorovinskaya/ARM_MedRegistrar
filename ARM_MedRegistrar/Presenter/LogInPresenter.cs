@@ -21,7 +21,7 @@ namespace ARM_MedRegistrar.Presenter
         {
             string saltedPassword;
             _users = _jsonUserRepository.Read();
-            if (_users == null || _users.Count == 0) 
+            if (_users == null || _users.Count == 0)
                 return null;
             else
             {
@@ -33,13 +33,13 @@ namespace ARM_MedRegistrar.Presenter
                 //        if (saltedPassword == _users[key].Password)
                 //            return _users[key];
                 //    }
-                foreach (string login in _users.Keys)
+                foreach (IUser user in _users.Values)
 
-                    if (_users[login].Login == _view.Login)
+                    if ( Equals(user.Login.Length ,_view.Login.Length) && Equals(user.Login, _view.Login))
                     {
-                        saltedPassword = GeneratingSaltPassword.GenerateSaltPassword(_view.Password, _users[login].Salt);
-                        if (saltedPassword == _users[login].SaltPassword)
-                            return _users[login];
+                        saltedPassword = GeneratingSaltPassword.GenerateSaltPassword(_view.Password, user.Salt);
+                        if (saltedPassword == user.SaltPassword)
+                            return user;
                     }
                 return null;
             }

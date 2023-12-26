@@ -185,7 +185,7 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
         {
             return $"ID: {Id}\n{PersonalData.Format()}Дата рождения: {DateOfBirth}\nСерия документа: {DocumentSeries}\nНомер документа: " +
                 $"{DocumentNumber}\nНомер участка: {PlotNumber}\nНомер амбул. карты: { NumbOfPatientCard}\n{Address.Format()}" +
-                $"\nСерия мед. полиса: {PolicySeries}\nНомер мед. полиса: {PolicyNumb}\nГруппа крови: { BloodType}\nРезус-фактор: { RhFactor}\nАллергии: { Allergies}";
+                $"Серия мед. полиса: {PolicySeries}\nНомер мед. полиса: {PolicyNumb}\nГруппа крови: { BloodType}\nРезус-фактор: { RhFactor}\nАллергии: { Allergies}";
 
         }
     }

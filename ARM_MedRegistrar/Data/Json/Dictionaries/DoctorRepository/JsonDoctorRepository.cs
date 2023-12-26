@@ -9,21 +9,26 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
         private IDictionary<uint, IDoctor>? _doctors; 
         private JsonSerializerSettings _settings;
 
-        public JsonDoctorRepository()
-        {
-            _savePath = "doctors.json";
-            _doctors = new SortedDictionary<uint, IDoctor>();
-            _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-            
-        }
-
-        public void Create(IDoctor value)
+        private void Load()
         {
             if (!File.Exists(_savePath))
                 _doctors = new SortedDictionary<uint, IDoctor>();
             else
                 _doctors = JsonConvert.DeserializeObject<SortedDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
 
+        }
+        public JsonDoctorRepository()
+        {
+            _savePath = "doctors.json";
+            _doctors = new SortedDictionary<uint, IDoctor>();
+            _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
+
+            
+        }
+
+        public void Create(IDoctor value)
+        {
+            Load();
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
             if (_doctors != null && _doctors.ContainsKey(value.Id))
@@ -35,24 +40,16 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
 
         }
 
-        public IDictionary<uint,IDoctor>? Read()
+        public IDictionary<uint, IDoctor>? Read() 
         {
-            if (!File.Exists(_savePath))
-                _doctors = new SortedDictionary<uint, IDoctor>();
-            else
-                _doctors = JsonConvert.DeserializeObject<SortedDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
-            return _doctors;
+            Load();
+            return _doctors; 
         }
+        
 
         public bool Update(IDoctor changedValue)
         {
-
-            if (!File.Exists(_savePath))
-                _doctors = new SortedDictionary<uint, IDoctor>();
-
-            else
-                _doctors = JsonConvert.DeserializeObject<SortedDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (_doctors != null && _doctors.Count != 0)
             {
                 _doctors[changedValue.Id] = changedValue;
@@ -63,18 +60,13 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
         }
         public void Delete(uint key)
         {
-            if (!File.Exists(_savePath))
-                _doctors = new SortedDictionary<uint, IDoctor>();
-            else
-                _doctors = JsonConvert.DeserializeObject<SortedDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
-
-
+            Load();
             if (_doctors == null)
                 throw new ArgumentNullException(nameof(_doctors));
             if (!_doctors.ContainsKey(key) || !File.Exists(_savePath))
                 throw new Exception("Не удалось удалить объект из файла: удаляемый элемент или/и файл не найдены");
 
-           
+            
             _doctors?.Remove(key);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_doctors, Formatting.Indented, _settings));
 
@@ -82,13 +74,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
 
         public uint CreateID()
         {
-            if (!File.Exists(_savePath))
-                _doctors = new SortedDictionary<uint, IDoctor>();
-
-            else
-                _doctors = JsonConvert.DeserializeObject<SortedDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
-
-
+            Load();
             if (_doctors == null)
                 throw new ArgumentNullException(nameof(_doctors));
             else if (_doctors?.Count == 0)

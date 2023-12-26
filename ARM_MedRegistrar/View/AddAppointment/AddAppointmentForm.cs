@@ -194,7 +194,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
             InitializeComponent();
 
             comboBoxTypeOfAppointment.Items.AddRange(new string[] { "Первичный приём у врача", "Вторичный приём у врача", "Вызов на дом" });
-            toolTipShowFreeTimeOfAppointment.SetToolTip(buttShowFreeTimeOfAppointment, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку и выберите нужное время записи");
+            toolTipShowFreeTimeOfAppointment.SetToolTip(buttShowFreeTimeOfAppointment, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку и выберите нужное время записи\nв списке ниже");
             _presenter = new(this);
 
         }

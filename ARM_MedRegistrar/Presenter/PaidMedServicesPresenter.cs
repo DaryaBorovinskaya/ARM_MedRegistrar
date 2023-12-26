@@ -26,7 +26,6 @@ namespace ARM_MedRegistrar.Presenter
 
         public void AddPaidMedService()
         {
-            
             _id = _jsonPaidMedServiceRepository.CreateID();
             _paidMedService = new PaidMedService(_view.Title, _view.Price, _id);
             _jsonPaidMedServiceRepository.Create(_paidMedService);

@@ -63,7 +63,6 @@ namespace ARM_MedRegistrar.Presenter
 
             _jsonDoctorRepository.Create(_newDoctor);
 
-            
             return true;
         }
     }

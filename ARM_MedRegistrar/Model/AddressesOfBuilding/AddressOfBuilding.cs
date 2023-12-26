@@ -64,7 +64,7 @@ namespace ARM_MedRegistrar.Model.AddressesOfBuilding
 
         public string FormatOneLine()
         {
-            return $"г. {City}, р. {Region}, ул. {Street},д. {NumbOfHouse}";
+            return $"г. {City}, р-н {Region}, ул. {Street},д. {NumbOfHouse}";
         }
     }
 }

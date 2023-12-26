@@ -102,6 +102,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool SaveChanges()
         {
+            _doctors = _jsonDoctorRepository.Read();
             foreach (uint key in _doctors.Keys)
             {
                 if (key == _view.Id)

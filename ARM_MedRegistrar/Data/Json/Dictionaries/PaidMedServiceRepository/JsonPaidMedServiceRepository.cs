@@ -14,6 +14,16 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
         private readonly string _savePath;
         private IDictionary<uint, IPaidMedService>? _paidMedServices;
         private JsonSerializerSettings _settings;
+
+        private void Load()
+        {
+            if (!File.Exists(_savePath))
+                _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
+
+            else
+                _paidMedServices = JsonConvert.DeserializeObject<SortedDictionary<uint, IPaidMedService>>(File.ReadAllText(_savePath), _settings);
+
+        }
         public JsonPaidMedServiceRepository()
         {
             _savePath = "paidMedServices.json";
@@ -24,13 +34,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
 
         public void Create(IPaidMedService value)
         {
-            if (!File.Exists(_savePath))
-                _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
-
-            else
-                _paidMedServices = JsonConvert.DeserializeObject<SortedDictionary<uint, IPaidMedService>>(File.ReadAllText(_savePath), _settings);
-
-
+            Load();
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
@@ -45,24 +49,14 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
 
         public IDictionary<uint, IPaidMedService>? Read()
         {
-            if (!File.Exists(_savePath))
-                _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
-
-            else
-                _paidMedServices = JsonConvert.DeserializeObject<SortedDictionary<uint, IPaidMedService>>(File.ReadAllText(_savePath), _settings);
-
-            return _paidMedServices;
+            Load();
+            return _paidMedServices; 
         }
+        
 
         public bool Update(IPaidMedService changedValue)
         {
-
-            if (!File.Exists(_savePath))
-                _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
-
-            else
-                _paidMedServices = JsonConvert.DeserializeObject<SortedDictionary<uint, IPaidMedService>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (_paidMedServices != null && _paidMedServices.Count != 0)
             {
                 _paidMedServices[changedValue.Id] = changedValue;
@@ -73,12 +67,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
         }
         public void Delete(uint key)
         {
-            if (!File.Exists(_savePath))
-                _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
-
-            else
-                _paidMedServices = JsonConvert.DeserializeObject<SortedDictionary<uint, IPaidMedService>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (_paidMedServices == null)
                 throw new ArgumentNullException(nameof(_paidMedServices));
             if (!_paidMedServices.ContainsKey(key) || !File.Exists(_savePath))
@@ -93,13 +82,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
 
         public uint CreateID()
         {
-            if (!File.Exists(_savePath))
-                _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
-
-            else
-                _paidMedServices = JsonConvert.DeserializeObject<SortedDictionary<uint, IPaidMedService>>(File.ReadAllText(_savePath), _settings);
-
-
+            Load();
             if (_paidMedServices == null)
                 throw new ArgumentNullException(nameof(_paidMedServices));
             else if (_paidMedServices?.Count == 0)

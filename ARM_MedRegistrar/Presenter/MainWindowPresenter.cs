@@ -25,7 +25,6 @@ namespace ARM_MedRegistrar.Presenter
             _jsonPatientRepository = new JsonPatientRepository();
         }
 
-         
         public bool SearchPatient()
         {
             _countOfLine = -1;

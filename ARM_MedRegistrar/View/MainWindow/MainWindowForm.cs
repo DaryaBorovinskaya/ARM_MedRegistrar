@@ -124,19 +124,17 @@ namespace ARM_MedRegistrar
             }
         }
 
-        public MainWindowForm(Form form, IUserEmployee employee)
+        public MainWindowForm(Form form)   //Form form, IUserEmployee employee
         {
 
             _form = form;
             form.Hide();
-
+            FormClosed += OnClosed;
             InitializeComponent();
 
 
-            FormClosed += OnClosed;
-
-            _employee = employee;
-            textFullNameOfRegistr.Text = _employee.PersonalData.FullName.Surname;         //из файла (данные User)
+            //_employee = employee;
+            //textFullNameOfRegistr.Text = _employee.PersonalData.FullName.Surname;         //из файла (данные User)
 
             toolTipAllDataAboutPatients.SetToolTip(buttAllDataAboutPatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
             toolTipRemovePatient.SetToolTip(buttRemovePatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
@@ -182,7 +180,7 @@ namespace ARM_MedRegistrar
 
         private void buttInfoAboutUser_Click(object sender, EventArgs e)
         {
-            InfoAboutUserForm infoAboutUserForm = new(_employee);
+            InfoAboutUserForm infoAboutUserForm = new();
             infoAboutUserForm.ShowDialog();
         }
 

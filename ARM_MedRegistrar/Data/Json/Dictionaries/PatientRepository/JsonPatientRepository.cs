@@ -10,15 +10,8 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
         private readonly string _savePath;
         private IDictionary<uint, IPatient>? _patients;
         private JsonSerializerSettings _settings;
-        public JsonPatientRepository()
-        {
-            _savePath = "patients.json";
-            _patients = new SortedDictionary<uint, IPatient>();
-            _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-            
-        }
 
-        public void Create(IPatient value)
+        private void Load()
         {
             if (!File.Exists(_savePath))
                 _patients = new SortedDictionary<uint, IPatient>();
@@ -26,6 +19,19 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
             else
                 _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
 
+        }
+        public JsonPatientRepository()
+        {
+            _savePath = "patients.json";
+            _patients = new SortedDictionary<uint, IPatient>();
+            _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
+
+            
+        }
+
+        public void Create(IPatient value)
+        {
+            Load();
 
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
@@ -33,7 +39,6 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
             if (_patients != null && _patients.ContainsKey(value.Id))
                 throw new ArgumentException("ID занят");
 
-            
             _patients?.Add(value.Id, value);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, _settings));
 
@@ -41,24 +46,14 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
 
         public IDictionary<uint, IPatient>? Read()
         {
-            if (!File.Exists(_savePath))
-                _patients = new SortedDictionary<uint, IPatient>();
-
-            else
-                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             return _patients;
         }
+        
 
         public bool Update(IPatient changedValue)
         {
-
-            if (!File.Exists(_savePath))
-                _patients = new SortedDictionary<uint, IPatient>();
-
-            else
-                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (_patients != null && _patients.Count != 0)
             {
                 _patients[changedValue.Id] = changedValue;
@@ -69,18 +64,11 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
         }
         public void Delete(uint key)
         {
-            if (!File.Exists(_savePath))
-                _patients = new SortedDictionary<uint, IPatient>();
-
-            else
-                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
-
+            Load();
             if (_patients == null)
                 throw new ArgumentNullException(nameof(_patients));
             if (!_patients.ContainsKey(key) || !File.Exists(_savePath))
                 throw new Exception("Не удалось удалить объект из файла: удаляемый элемент или/и файл не найдены");
-
-            
 
             _patients?.Remove(key);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_patients, Formatting.Indented, _settings));
@@ -89,13 +77,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
 
         public uint CreateID()
         {
-            if (!File.Exists(_savePath))
-                _patients = new SortedDictionary<uint, IPatient>();
-
-            else
-                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
-
-
+            Load();
             if (_patients == null)
                 throw new ArgumentNullException(nameof(_patients));
             else if (_patients?.Count == 0) 
