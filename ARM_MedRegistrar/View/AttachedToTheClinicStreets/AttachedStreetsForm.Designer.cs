@@ -30,8 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             label1 = new Label();
-            buttOpenFile = new Button();
-            listBoxAttachedStreets = new ListBox();
+            buttAllAttStreets = new Button();
             buttAddDataToFile = new Button();
             buttRemoveDataToFile = new Button();
             textCity = new TextBox();
@@ -47,6 +46,7 @@
             label3 = new Label();
             errorNoNumbOfHouse = new ErrorProvider(components);
             textNumbOfHouse = new TextBox();
+            richTextBoxAttStreets = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)errorNoStreet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoCity).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoRegion).BeginInit();
@@ -64,36 +64,27 @@
             label1.TabIndex = 0;
             label1.Text = "Прикреплённые\r\nулицы";
             // 
-            // buttOpenFile
+            // buttAllAttStreets
             // 
-            buttOpenFile.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttOpenFile.ForeColor = Color.Black;
-            buttOpenFile.Location = new Point(488, 30);
-            buttOpenFile.Name = "buttOpenFile";
-            buttOpenFile.Size = new Size(180, 74);
-            buttOpenFile.TabIndex = 1;
-            buttOpenFile.Text = "Просмотреть файл";
-            buttOpenFile.UseVisualStyleBackColor = true;
-            // 
-            // listBoxAttachedStreets
-            // 
-            listBoxAttachedStreets.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listBoxAttachedStreets.FormattingEnabled = true;
-            listBoxAttachedStreets.ItemHeight = 28;
-            listBoxAttachedStreets.Location = new Point(684, 30);
-            listBoxAttachedStreets.Name = "listBoxAttachedStreets";
-            listBoxAttachedStreets.Size = new Size(624, 704);
-            listBoxAttachedStreets.TabIndex = 2;
+            buttAllAttStreets.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttAllAttStreets.ForeColor = Color.Black;
+            buttAllAttStreets.Location = new Point(330, 30);
+            buttAllAttStreets.Name = "buttAllAttStreets";
+            buttAllAttStreets.Size = new Size(299, 41);
+            buttAllAttStreets.TabIndex = 1;
+            buttAllAttStreets.Text = "Список прикреплённых улиц";
+            buttAllAttStreets.UseVisualStyleBackColor = true;
+            buttAllAttStreets.Click += buttAllAttStreets_Click;
             // 
             // buttAddDataToFile
             // 
             buttAddDataToFile.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttAddDataToFile.ForeColor = Color.Firebrick;
-            buttAddDataToFile.Location = new Point(29, 558);
+            buttAddDataToFile.Location = new Point(74, 550);
             buttAddDataToFile.Name = "buttAddDataToFile";
-            buttAddDataToFile.Size = new Size(179, 72);
+            buttAddDataToFile.Size = new Size(208, 72);
             buttAddDataToFile.TabIndex = 3;
-            buttAddDataToFile.Text = "Добавить данные в файл";
+            buttAddDataToFile.Text = "Добавить данные";
             buttAddDataToFile.UseVisualStyleBackColor = true;
             buttAddDataToFile.Click += buttAddDataToFile_Click;
             // 
@@ -101,37 +92,36 @@
             // 
             buttRemoveDataToFile.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             buttRemoveDataToFile.ForeColor = Color.Firebrick;
-            buttRemoveDataToFile.Location = new Point(385, 558);
+            buttRemoveDataToFile.Location = new Point(369, 550);
             buttRemoveDataToFile.Name = "buttRemoveDataToFile";
             buttRemoveDataToFile.Size = new Size(179, 72);
             buttRemoveDataToFile.TabIndex = 4;
-            buttRemoveDataToFile.Text = "Удалить данные из файла";
+            buttRemoveDataToFile.Text = "Удалить данные";
             buttRemoveDataToFile.UseVisualStyleBackColor = true;
+            buttRemoveDataToFile.Click += buttRemoveDataToFile_Click;
             // 
             // textCity
             // 
             textCity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textCity.Location = new Point(146, 195);
+            textCity.Location = new Point(12, 250);
             textCity.Name = "textCity";
             textCity.Size = new Size(313, 34);
             textCity.TabIndex = 51;
-            textCity.KeyPress += textBox_SpacePress;
             // 
             // textRegion
             // 
             textRegion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textRegion.Location = new Point(146, 316);
+            textRegion.Location = new Point(12, 361);
             textRegion.Name = "textRegion";
             textRegion.Size = new Size(313, 34);
             textRegion.TabIndex = 52;
-            textRegion.KeyPress += textBox_SpacePress;
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label14.ForeColor = Color.Firebrick;
-            label14.Location = new Point(267, 142);
+            label14.Location = new Point(12, 196);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new Size(68, 28);
@@ -143,7 +133,7 @@
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ForeColor = Color.Firebrick;
-            label13.Location = new Point(267, 261);
+            label13.Location = new Point(10, 310);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
             label13.Size = new Size(69, 28);
@@ -153,18 +143,17 @@
             // textStreet
             // 
             textStreet.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textStreet.Location = new Point(22, 424);
+            textStreet.Location = new Point(10, 473);
             textStreet.Name = "textStreet";
             textStreet.Size = new Size(313, 34);
             textStreet.TabIndex = 60;
-            textStreet.KeyPress += textBox_SpacePress;
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label12.ForeColor = Color.Firebrick;
-            label12.Location = new Point(122, 382);
+            label12.Location = new Point(13, 424);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(68, 28);
@@ -180,7 +169,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.Firebrick;
-            label2.Location = new Point(216, 91);
+            label2.Location = new Point(204, 140);
             label2.Name = "label2";
             label2.Size = new Size(188, 31);
             label2.TabIndex = 64;
@@ -199,7 +188,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(416, 382);
+            label3.Location = new Point(422, 310);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(126, 28);
@@ -213,11 +202,19 @@
             // textNumbOfHouse
             // 
             textNumbOfHouse.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textNumbOfHouse.Location = new Point(416, 424);
+            textNumbOfHouse.Location = new Point(422, 361);
             textNumbOfHouse.Name = "textNumbOfHouse";
             textNumbOfHouse.Size = new Size(125, 34);
             textNumbOfHouse.TabIndex = 106;
-            textNumbOfHouse.KeyPress += textBox_ContainsExceptNumbers;
+            // 
+            // richTextBoxAttStreets
+            // 
+            richTextBoxAttStreets.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxAttStreets.Location = new Point(635, 30);
+            richTextBoxAttStreets.Name = "richTextBoxAttStreets";
+            richTextBoxAttStreets.Size = new Size(673, 704);
+            richTextBoxAttStreets.TabIndex = 107;
+            richTextBoxAttStreets.Text = "";
             // 
             // AttachedStreetsForm
             // 
@@ -225,6 +222,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1320, 746);
+            Controls.Add(richTextBoxAttStreets);
             Controls.Add(textNumbOfHouse);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -236,8 +234,7 @@
             Controls.Add(textCity);
             Controls.Add(buttRemoveDataToFile);
             Controls.Add(buttAddDataToFile);
-            Controls.Add(listBoxAttachedStreets);
-            Controls.Add(buttOpenFile);
+            Controls.Add(buttAllAttStreets);
             Controls.Add(label1);
             ForeColor = SystemColors.ControlDarkDark;
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -256,8 +253,7 @@
         #endregion
 
         private Label label1;
-        private Button buttOpenFile;
-        private ListBox listBoxAttachedStreets;
+        private Button buttAllAttStreets;
         private Button buttAddDataToFile;
         private Button buttRemoveDataToFile;
         private TextBox textCity;
@@ -273,5 +269,6 @@
         private Label label3;
         private ErrorProvider errorNoNumbOfHouse;
         private TextBox textNumbOfHouse;
+        private RichTextBox richTextBoxAttStreets;
     }
 }

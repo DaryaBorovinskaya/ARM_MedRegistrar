@@ -25,7 +25,15 @@ namespace ARM_MedRegistrar
 
         string IAddDoctorForm.PhoneNumber => textPhoneNumber.Text;
 
-        int IAddDoctorForm.PlotNumber => int.Parse(textPlotNumber.Text);
+        int IAddDoctorForm.PlotNumber
+        {
+            get => int.Parse(textPlotNumber.Text);
+            set
+            {
+                textPlotNumber.Text = value.ToString();
+            }
+        }
+
 
         int IAddDoctorForm.Cabinet => int.Parse(textCabinet.Text);
 
@@ -115,14 +123,16 @@ namespace ARM_MedRegistrar
 
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
+            
+            
+            
             bool _isError = false;
-
+            errorNoPlotNumber.Clear();
             errorNoSurname.Clear();
             errorNoName.Clear();
             errorNoSpecial.Clear();
             errorNoCabinet.Clear();
             errorNoPhoneNumber.Clear();
-            errorNoPlotNumber.Clear();
             errorNoDurationOfAppointment.Clear();
             errorNoCorrectTimeMon.Clear();
             errorNoCorrectTimeTues.Clear();
@@ -156,6 +166,12 @@ namespace ARM_MedRegistrar
             {
                 _isError = true;
                 errorNoCabinet.SetError(textCabinet, "Поле не заполнено");
+            }
+
+            if (!_presenter.SetPlotNumber())
+            {
+                _isError = true;
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле заполнено неверно"); 
             }
             if (textPlotNumber.Text == string.Empty)
             {
@@ -220,7 +236,6 @@ namespace ARM_MedRegistrar
             if (!_isError)
             {
                 textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
-                textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
                 textCabinet.Text = textBoxWithoutNullInBeginning(textCabinet);
 
                 if (timeDurationOfAppointment.Value.Minute == _nullTime.Minute)

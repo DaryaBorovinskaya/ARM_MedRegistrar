@@ -335,7 +335,6 @@ partial class AddPatientForm
         textCity.Name = "textCity";
         textCity.Size = new Size(313, 34);
         textCity.TabIndex = 50;
-        textCity.KeyPress += textBox_SpacePress;
         // 
         // textRegion
         // 
@@ -344,7 +343,6 @@ partial class AddPatientForm
         textRegion.Name = "textRegion";
         textRegion.Size = new Size(313, 34);
         textRegion.TabIndex = 51;
-        textRegion.KeyPress += textBox_SpacePress;
         // 
         // textStreet
         // 
@@ -353,7 +351,6 @@ partial class AddPatientForm
         textStreet.Name = "textStreet";
         textStreet.Size = new Size(313, 34);
         textStreet.TabIndex = 52;
-        textStreet.KeyPress += textBox_SpacePress;
         // 
         // label12
         // 
@@ -652,7 +649,6 @@ partial class AddPatientForm
         textNumbOfHouse.Name = "textNumbOfHouse";
         textNumbOfHouse.Size = new Size(125, 34);
         textNumbOfHouse.TabIndex = 78;
-        textNumbOfHouse.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // textNumbOfFlat
         // 

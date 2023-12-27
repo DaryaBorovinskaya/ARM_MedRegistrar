@@ -13,7 +13,7 @@ namespace ARM_MedRegistrar.View.AddDoctor
         public string? Patronymic { get; }
         public string Specializations { get; }
         public string PhoneNumber { get;}
-        public int PlotNumber { get;  }
+        public int PlotNumber { get; set; }
         public int Cabinet { get;  }
         public IList<TimeOnly> TimesOfWork { get; }
         public TimeOnly DurationOfAppointment {  get; }

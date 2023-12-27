@@ -8,5 +8,10 @@ namespace ARM_MedRegistrar.View.AttachedToTheClinicStreets
 {
     public interface IAttachedStreetsForm
     {
+        public string City { get; }
+        public string Region {  get; }
+        public string Street {  get; }
+        public int NumbOfHouse {  get; }
+        public string AllAttStreets { set; }
     }
 }

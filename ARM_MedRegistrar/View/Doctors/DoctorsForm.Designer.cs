@@ -169,7 +169,6 @@
             richTextBoxInfoAboutDoctor.Size = new Size(596, 590);
             richTextBoxInfoAboutDoctor.TabIndex = 49;
             richTextBoxInfoAboutDoctor.Text = "";
-            richTextBoxInfoAboutDoctor.TextChanged += richTextBoxInfoAboutDoctor_TextChanged;
             // 
             // buttRemoveDoctor
             // 
@@ -214,7 +213,6 @@
             textSurname.Name = "textSurname";
             textSurname.Size = new Size(328, 39);
             textSurname.TabIndex = 53;
-            textSurname.TextChanged += textSurname_TextChanged;
             textSurname.KeyPress += textBox_SpacePress;
             // 
             // textName
@@ -224,7 +222,6 @@
             textName.Name = "textName";
             textName.Size = new Size(328, 39);
             textName.TabIndex = 54;
-            textName.TextChanged += textName_TextChanged;
             textName.KeyPress += textBox_SpacePress;
             // 
             // textPatr
@@ -234,7 +231,6 @@
             textPatr.Name = "textPatr";
             textPatr.Size = new Size(328, 39);
             textPatr.TabIndex = 55;
-            textPatr.TextChanged += textPatr_TextChanged;
             textPatr.KeyPress += textBox_SpacePress;
             // 
             // label6
@@ -248,7 +244,6 @@
             label6.Size = new Size(117, 32);
             label6.TabIndex = 60;
             label6.Text = "Отчество";
-            label6.Click += label6_Click;
             // 
             // label3
             // 
@@ -261,7 +256,6 @@
             label3.Size = new Size(113, 32);
             label3.TabIndex = 58;
             label3.Text = "Фамилия";
-            label3.Click += label3_Click;
             // 
             // label4
             // 
@@ -274,7 +268,6 @@
             label4.Size = new Size(61, 32);
             label4.TabIndex = 59;
             label4.Text = "Имя";
-            label4.Click += label4_Click;
             // 
             // comboBoxSpecializations
             // 
@@ -288,7 +281,6 @@
             comboBoxSpecializations.Name = "comboBoxSpecializations";
             comboBoxSpecializations.Size = new Size(328, 39);
             comboBoxSpecializations.TabIndex = 61;
-            comboBoxSpecializations.SelectedIndexChanged += comboBoxSpecializations_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -301,7 +293,6 @@
             label5.Size = new Size(186, 32);
             label5.TabIndex = 62;
             label5.Text = "Специализация";
-            label5.Click += label5_Click;
             // 
             // errorNoName
             // 

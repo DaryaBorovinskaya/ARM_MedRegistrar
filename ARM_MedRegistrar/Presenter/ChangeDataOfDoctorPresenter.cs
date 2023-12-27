@@ -17,6 +17,7 @@ namespace ARM_MedRegistrar.Presenter
         IList<IWorkSchedule> _workSchedules = new List<IWorkSchedule>();
         IDoctor _doctor ;
         TimeOnly _nullTime = new( 0, 0, 0);
+        int _plotNumber;
 
         public ChangeDataOfDoctorPresenter(IChangeDataOfDoctorForm view) 
         { 
@@ -24,7 +25,18 @@ namespace ARM_MedRegistrar.Presenter
             _jsonDoctorRepository = new JsonDoctorRepository();
         }
 
-
+        public bool SetPlotNumber()
+        {
+            if (_view.Specialization != "терапевт" && _view.Specialization != "педиатр" && _view.Specialization != "врач общей практики")
+            {
+                _plotNumber = 0;
+                _view.PlotNumber = _plotNumber;
+                return true;
+            }
+            else if (_view.PlotNumber == 0)
+                return false;
+            return true;
+        }
         public bool ShowDataAboutDoctor()
         {
             _doctors = _jsonDoctorRepository.Read();

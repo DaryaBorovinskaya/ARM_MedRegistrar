@@ -81,6 +81,7 @@
             buttAllDataAboutPatient = new Button();
             buttChange = new Button();
             checkNoCloseWindow = new CheckBox();
+            errorDifferentPlotNumbers = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)errorNoTime).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
@@ -88,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)errorNoSelectedPatient).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDoctor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPlace).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorDifferentPlotNumbers).BeginInit();
             SuspendLayout();
             // 
             // listViewPatients
@@ -519,6 +521,7 @@
             // 
             // buttChange
             // 
+            buttChange.Enabled = false;
             buttChange.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttChange.Location = new Point(964, 826);
             buttChange.Name = "buttChange";
@@ -539,6 +542,10 @@
             checkNoCloseWindow.TabIndex = 66;
             checkNoCloseWindow.Text = "Не закрывать окно ";
             checkNoCloseWindow.UseVisualStyleBackColor = true;
+            // 
+            // errorDifferentPlotNumbers
+            // 
+            errorDifferentPlotNumbers.ContainerControl = this;
             // 
             // AddAppointmentForm
             // 
@@ -584,7 +591,6 @@
             Name = "AddAppointmentForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ARM_MedRegistrar";
-            Load += AddAppointmentForm_Load;
             ((System.ComponentModel.ISupportInitialize)errorNoTime).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();
@@ -592,6 +598,7 @@
             ((System.ComponentModel.ISupportInitialize)errorNoSelectedPatient).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDoctor).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPlace).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorDifferentPlotNumbers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -650,5 +657,6 @@
         private Button buttAllDataAboutPatient;
         private Button buttChange;
         private CheckBox checkNoCloseWindow;
+        private ErrorProvider errorDifferentPlotNumbers;
     }
 }

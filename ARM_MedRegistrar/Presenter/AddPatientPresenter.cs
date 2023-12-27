@@ -22,6 +22,7 @@ namespace ARM_MedRegistrar.Presenter
         IDictionary<uint,IAttachedStreets>? _attStreets;
         uint _id;
         string _city, _region;
+        int _plotNumber;
         IBaseRepositoryWithCreatedID<uint, IPatient> _jsonPatientRepository;
         IAddressOfBuilding _addressOfBuilding;
         public AddPatientPresenter(IAddPatientForm view) 
@@ -35,17 +36,27 @@ namespace ARM_MedRegistrar.Presenter
 
         public event EventHandler? NoCityEvent;
         public event EventHandler? NoRegionEvent;
-        public bool AddPatient()
+
+
+        public void SetDataFromAttStreets()
         {
             _attStreets = _jsonAttachedStreetsRepository.Read();
-            _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
-            _personalData = new PersonalData(_fullName, _view.PhoneNumber);
-
             if (_attStreets != null && _attStreets.Count != 0)
             {
-                _city = _view.City == string.Empty ? _attStreets[0].AddressOfBuilding.City : _view.City;
-                _region = _view.Region == string.Empty ? _attStreets[0].AddressOfBuilding.Region : _view.Region;
-                
+                _city = _view.City == string.Empty ? _attStreets[_attStreets.First().Key].AddressOfBuilding.City : _view.City;
+                _region = _view.Region == string.Empty ? _attStreets[_attStreets.First().Key].AddressOfBuilding.Region : _view.Region;
+
+                _view.City = _city;
+                _view.Region = _region;
+                foreach(uint key in _attStreets.Keys)
+                {
+                    if (_attStreets[key].AddressOfBuilding.City == _view.City && _attStreets[key].AddressOfBuilding.Region == _view.Region
+                        && _attStreets[key].AddressOfBuilding.Street == _view.Street && _attStreets[key].AddressOfBuilding.NumbOfHouse == _view.NumbOfHouse)
+                    {
+                        _plotNumber = (int)key;
+                        _view.PlotNumber = _plotNumber;
+                    }
+                }
             }
 
             else if (_attStreets != null && _attStreets.Count == 0)
@@ -53,21 +64,30 @@ namespace ARM_MedRegistrar.Presenter
                 if (_view.City == string.Empty)
                 {
                     NoCityEvent?.Invoke(this, EventArgs.Empty);
-                    return false;
+                    return;
                 }
                 else
                     _city = _view.City;
-                
 
-                if (_view.Region == string.Empty) 
+
+                if (_view.Region == string.Empty)
                 {
                     NoRegionEvent?.Invoke(this, EventArgs.Empty);
-                    return false;
+                    return;
                 }
                 else
                     _region = _view.Region;
-                
+
             }
+        }
+
+        public bool AddPatient()
+        {
+            
+            _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
+            _personalData = new PersonalData(_fullName, _view.PhoneNumber);
+
+            
 
             _addressOfBuilding = new AddressOfBuilding(_city, _region, _view.Street, _view.NumbOfHouse);
             _address = new PatientAddress(_addressOfBuilding, _view.NumbOfFlat);

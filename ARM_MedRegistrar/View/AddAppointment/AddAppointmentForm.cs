@@ -255,6 +255,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
         private void comboBoxFreeTimeOfAppointment_SelectedIndexChanged(object sender, EventArgs e)
         {
             comboBoxTypeOfAppointment.Enabled = true;
+            buttChange.Enabled = true;
         }
 
         private void buttSearchPatient_Click(object sender, EventArgs e)
@@ -334,8 +335,9 @@ namespace ARM_MedRegistrar.View.AddAppointment
         {
             errorNoPlace.Clear();
             if (textPlace.Text == string.Empty)
-                errorNoPlace.SetError(textPlace, "Поле не заполнено");
-            else
+                errorNoPlace.SetError(textPlace, "Поле не заполнено"); 
+            
+            else 
             {
                 if (!_presenter.SaveChangesOfPlaceOfAppointment())
                     MessageBox.Show("Не удалось сохранить изменения");
@@ -344,6 +346,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
                     MessageBox.Show("Изменения в поле сохранены");
                     textPlace.Enabled = false;
                     buttAddAppointment.Enabled = true;
+                    buttChange.Enabled = false;
                 }
             }
         }
@@ -365,26 +368,33 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         private void buttAddAppointment_Click(object sender, EventArgs e)
         {
-            if (!_presenter.AddAppointment())
-                MessageBox.Show("Не удалось добавить запись на приём");
+            if (!_presenter.IsEqualPlotNumber())
+                errorDifferentPlotNumbers.SetError(listViewDoctors, "Номера участков у врача и пациента не совпадают");
+
             else
             {
-                MessageBox.Show("Добавление записи успешно выполнено!");
-                if (!checkNoCloseWindow.Checked)
-                    Close();
+                if (!_presenter.AddAppointment())
+                    MessageBox.Show("Не удалось добавить запись на приём");
                 else
                 {
-                    listViewDoctors.Clear();
-                    listViewPatients.Clear();
-                    textSurname.Clear();
-                    textName.Clear();
-                    textPatr.Clear();
-                    dateTimeDateOfBirth.Value = DateTime.Now;
-                    dateTimePickerDateOfAppointment.Value = DateTime.Now;
-                    richTextBoxInfoAboutDoctor.Clear();
-                    richTextBoxInfoAboutPatient.Clear();
-                    textPlace.Clear();
-                    comboBoxTypeOfAppointment.SelectedIndex = 0;
+                    MessageBox.Show("Добавление записи успешно выполнено!");
+                    if (!checkNoCloseWindow.Checked)
+                        Close();
+                    else
+                    {
+                        listViewDoctors.Clear();
+                        listViewPatients.Clear();
+                        textSurname.Clear();
+                        textName.Clear();
+                        textPatr.Clear();
+                        dateTimeDateOfBirth.Value = DateTime.Now;
+                        dateTimePickerDateOfAppointment.Value = DateTime.Now;
+                        richTextBoxInfoAboutDoctor.Clear();
+                        richTextBoxInfoAboutPatient.Clear();
+                        textPlace.Clear();
+                        comboBoxTypeOfAppointment.SelectedIndex = 0;
+                    }
+
                 }
             }
         }

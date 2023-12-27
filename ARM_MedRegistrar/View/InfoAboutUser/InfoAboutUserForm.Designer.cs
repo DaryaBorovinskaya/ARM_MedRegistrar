@@ -61,7 +61,6 @@
             textSurname.ReadOnly = true;
             textSurname.Size = new Size(375, 34);
             textSurname.TabIndex = 1;
-            textSurname.TextChanged += textSurname_TextChanged;
             // 
             // label3
             // 

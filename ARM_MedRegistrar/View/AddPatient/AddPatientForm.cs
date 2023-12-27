@@ -18,12 +18,27 @@ namespace ARM_MedRegistrar
 
         DateOnly IAddPatientForm.DateOfBirth => DateOnly.FromDateTime(dateTimeDateOfBirth.Value);
         string IAddPatientForm.PhoneNumber => textPhoneNumber.Text;
-        string? IAddPatientForm.City => textCity.Text;
-        string? IAddPatientForm.Region => textRegion.Text;
+        string? IAddPatientForm.City
+        { 
+            get => textCity.Text; 
+            set => textCity.Text = value;
+        }
+        string? IAddPatientForm.Region
+        {
+            get => textRegion.Text;
+            set => textRegion.Text = value;
+        }
         string IAddPatientForm.Street => textStreet.Text;
         int IAddPatientForm.NumbOfHouse => int.Parse(textNumbOfHouse.Text);
         int IAddPatientForm.NumbOfFlat => int.Parse(textNumbOfFlat.Text);
-        int IAddPatientForm.PlotNumber => int.Parse(textPlotNumber.Text);
+        int IAddPatientForm.PlotNumber
+        {
+            get => int.Parse(textPlotNumber.Text);
+            set
+            {
+                textPlotNumber.Text = value.ToString();
+            }
+        }
         string IAddPatientForm.NumbOfPatientCard => textNumbOfPatientCard.Text;
         int IAddPatientForm.PolicySeries => int.Parse(textPolicySeries.Text);
         string IAddPatientForm.PolicyNumb => textPolicyNumb.Text;
@@ -119,10 +134,12 @@ namespace ARM_MedRegistrar
             errorNoNumbOfPatientCard.Clear();
             errorNoDocumentSeries.Clear();
             errorNoDocumentNumber.Clear();
-            errorNoCity.Clear();
-            errorNoRegion.Clear();
-            errorNoPlotNumber.Clear();
+            //errorNoCity.Clear();
+            //errorNoRegion.Clear();
+            //errorNoPlotNumber.Clear();
             errorNoPhoneNumber.Clear();
+
+            _presenter.SetDataFromAttStreets();
 
             if (textSurname.Text == string.Empty)
             {
@@ -202,11 +219,11 @@ namespace ARM_MedRegistrar
                 _isError = true;
                 errorNoDocumentNumber.SetError(textDocumentNumber, "Поле не заполнено");
             }
-            if (textPlotNumber.Text == string.Empty)
-            {
-                _isError = true;
-                errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
-            }
+            //if (textPlotNumber.Text == string.Empty)
+            //{
+            //    _isError = true;
+            //    errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
+            //}
             if (textPhoneNumber.Text == string.Empty)
             {
                 _isError = true;
@@ -222,9 +239,9 @@ namespace ARM_MedRegistrar
                 textPolicyNumb.Text = textBoxWithoutNullInBeginning(textPolicyNumb);
                 textDocumentSeries.Text = textBoxWithoutNullInBeginning(textDocumentSeries);
                 textDocumentNumber.Text = textBoxWithoutNullInBeginning(textDocumentNumber);
-                textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
+                //textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
                 textNumbOfFlat.Text = textBoxWithoutNullInBeginning(textNumbOfFlat);
-                textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
+                //textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
                 textNumbOfPatientCard.Text = textBoxWithoutNullInBeginning(textNumbOfPatientCard);
 
                 if (_presenter.AddPatient())
@@ -248,6 +265,7 @@ namespace ARM_MedRegistrar
                         textDocumentNumber.Clear();
                         textPlotNumber.Clear();
                         textPhoneNumber.Clear();
+                        
                     }
                 }
             }

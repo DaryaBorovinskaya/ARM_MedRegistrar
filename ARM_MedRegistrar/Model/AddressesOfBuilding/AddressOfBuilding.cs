@@ -10,28 +10,32 @@ namespace ARM_MedRegistrar.Model.AddressesOfBuilding
 
         public string City
         {
-            get => _city; set
+            get => _city; 
+            set
             {
-                if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Город не задан");
+                if (value == "" || value == " " || value == null)   
+                    throw new ArgumentNullException(nameof(value));
+                    
                 _city = value;
             }
         }
         public string Region
         {
-            get => _region; set
+            get => _region; 
+            set
             {
                 if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Район не задан");
+                    throw new ArgumentNullException(nameof(value));
                 _region = value;
             }
         }
         public string Street
         {
-            get => _street; set
+            get => _street; 
+            set
             {
                 if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Улица не задана");
+                    throw new ArgumentNullException(nameof(value));
                 _street = value;
             }
         }
@@ -64,7 +68,7 @@ namespace ARM_MedRegistrar.Model.AddressesOfBuilding
 
         public string FormatOneLine()
         {
-            return $"г. {City}, р-н {Region}, ул. {Street},д. {NumbOfHouse}";
+            return $"г. {City}, р-н {Region}, ул. {Street}, д. {NumbOfHouse}";
         }
     }
 }

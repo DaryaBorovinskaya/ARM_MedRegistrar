@@ -21,6 +21,7 @@ namespace ARM_MedRegistrar.Presenter
         IBaseRepositoryWithCreatedID<uint, IDoctor> _jsonDoctorRepository;
         IBaseRepository<uint, IFreeTimeOfAppointment> _jsonFreeTimeOfAppointmentRepository;
         uint _id;
+        int _plotNumber;
         TimeOnly _nullTime = new(0, 0, 0);
         IWorkSchedule _workSchedule;
         IList<TimeOnly> _timesOfWork;
@@ -36,7 +37,20 @@ namespace ARM_MedRegistrar.Presenter
             _jsonFreeTimeOfAppointmentRepository = new JsonFreeTimeOfAppointmentRepository();
         }
 
-        
+        public bool SetPlotNumber()
+        {
+            if (_view.Specializations != "терапевт" && _view.Specializations != "педиатр" && _view.Specializations != "врач общей практики")
+            {
+                _plotNumber = 0;
+                _view.PlotNumber = _plotNumber;
+                return true;
+            }
+            else if (_view.PlotNumber == 0)
+                return false;
+            return true;
+        }
+
+
         public bool AddDoctor()
         {
             _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
@@ -57,7 +71,9 @@ namespace ARM_MedRegistrar.Presenter
                 
             }
 
-            _newDoctor = new Doctor(new DoctorDataOfAppointment( _id, _personalData, _view.Specializations, _view.PlotNumber,
+            
+
+            _newDoctor = new Doctor(new DoctorDataOfAppointment( _id, _personalData, _view.Specializations, _plotNumber,
                 _view.Cabinet, _view.DurationOfAppointment) , _workSchedules);
 
             _jsonDoctorRepository.Create(_newDoctor);

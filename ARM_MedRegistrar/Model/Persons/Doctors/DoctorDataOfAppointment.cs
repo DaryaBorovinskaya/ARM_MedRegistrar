@@ -42,8 +42,8 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
             get => _plotNumber;
             set
             {
-                if (value <= 0)
-                    throw new ArgumentException("Номер участка не может быть меньше или равным нулю");
+                if (value < 0)
+                    throw new ArgumentException("Номер участка не может быть меньше нуля");
                 _plotNumber = value;
             }
         }

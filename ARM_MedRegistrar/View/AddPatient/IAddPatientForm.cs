@@ -8,12 +8,12 @@ namespace ARM_MedRegistrar.View.AddPatient
         public string? Patronymic { get; }
         public DateOnly DateOfBirth { get; }
         public string PhoneNumber {  get; }
-        public string? City { get;  }
-        public string? Region { get;  }
+        public string? City { get; set; }
+        public string? Region { get; set; }
         public string Street { get; }
         public int NumbOfHouse { get; }
         public int NumbOfFlat { get; }
-        public int PlotNumber { get; }
+        public int PlotNumber { get; set; }
         public string NumbOfPatientCard { get; }
         public int PolicySeries { get; }
         public string PolicyNumb { get; }

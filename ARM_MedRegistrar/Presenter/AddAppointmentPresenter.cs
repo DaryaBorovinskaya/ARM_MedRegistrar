@@ -364,6 +364,24 @@ namespace ARM_MedRegistrar.Presenter
                 _view.InfoAboutPatient = _patients[_view.PatientSelectedId].Format();
         }
 
+        public bool IsEqualPlotNumber()
+        {
+            _doctors = _jsonDoctorRepository.Read();
+            _patients = _jsonPatientRepository.Read();
+
+            if (_patients == null || _patients.Count == 0)
+                return false;
+            if (_doctors == null || _doctors.Count == 0)
+                return false;
+
+            if (_patients != null && _patients.Count != 0 && _doctors != null && _doctors.Count != 0)
+            {
+                if (_doctors[_view.DoctorSelectedId].DoctorDataOfAppointment.PlotNumber == 0 || _doctors[_view.DoctorSelectedId].DoctorDataOfAppointment.PlotNumber == _patients[_view.PatientSelectedId].PlotNumber)
+                    return true;
+                return false;
+            }
+            return false;
+        }
 
 
         public bool AddAppointment()

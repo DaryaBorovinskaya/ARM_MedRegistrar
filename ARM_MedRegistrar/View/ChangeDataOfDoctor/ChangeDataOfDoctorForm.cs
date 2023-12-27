@@ -233,6 +233,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
 
         private void buttSaveChanges_Click(object sender, EventArgs e)
         {
+            
             buttSaveChanges.Enabled = false;
             bool _isError = false;
 
@@ -278,11 +279,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
                 _isError = true;
                 errorNoCabinet.SetError(textCabinet, "Поле не заполнено");
             }
-            if (textPlotNumber.Text == string.Empty)
-            {
-                _isError = true;
-                errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
-            }
+            
 
             if (timeDurationOfAppointment.Value.Hour > 1 || (timeDurationOfAppointment.Value.Hour == DateTime.Now.Hour && timeDurationOfAppointment.Value.Minute == DateTime.Now.Minute))
             {
@@ -332,12 +329,23 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
                 errorNoCorrectTimeSun.SetError(timeSunWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
             }
 
+            if (!_presenter.SetPlotNumber())
+            {
+                _isError = true;
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле заполнено неверно");
+            }
+            if (textPlotNumber.Text == string.Empty)
+            {
+                _isError = true;
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
+            }
+
+
+
             if (!_isError)
             {
                 textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
-                textPlotNumber.Text = textBoxWithoutNullInBeginning(textPlotNumber);
                 textCabinet.Text = textBoxWithoutNullInBeginning(textCabinet);
-
                 if (timeDurationOfAppointment.Value.Minute == _nullTime.Minute)
                     timeDurationOfAppointment.Value = new DateTime(1753, 1, 1, 0, 12, 0);
 
