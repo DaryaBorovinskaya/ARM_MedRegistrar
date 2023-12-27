@@ -31,11 +31,11 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
             Load();
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
-            if (_doctors != null && _doctors.ContainsKey(value.Id))
+            if (_doctors != null && _doctors.ContainsKey(value.DoctorDataOfAppointment.Id))
                 throw new ArgumentException("ID занят");
 
             
-            _doctors?.Add(value.Id, value);
+            _doctors?.Add(value.DoctorDataOfAppointment.Id, value);
             File.WriteAllText(_savePath, JsonConvert.SerializeObject(_doctors, Formatting.Indented, _settings));
 
         }
@@ -52,7 +52,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
             Load();
             if (_doctors != null && _doctors.Count != 0)
             {
-                _doctors[changedValue.Id] = changedValue;
+                _doctors[changedValue.DoctorDataOfAppointment.Id] = changedValue;
                 File.WriteAllText(_savePath, JsonConvert.SerializeObject(_doctors, Formatting.Indented, _settings));
                 return true;
             }
@@ -80,7 +80,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
             else if (_doctors?.Count == 0)
                 return 1;
             else if (_doctors != null && _doctors?.Count != 0)
-                return _doctors[_doctors.Keys.Max()].Id + 1;
+                return _doctors[_doctors.Keys.Max()].DoctorDataOfAppointment.Id + 1;
 
             return 0;
         }

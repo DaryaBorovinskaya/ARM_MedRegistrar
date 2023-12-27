@@ -32,11 +32,12 @@
             buttAddPatient = new Button();
             textFullNameOfRegistr = new TextBox();
             label1 = new Label();
-            listViewSchedule = new ListView();
+            listViewAppointments = new ListView();
             columnHeader20 = new ColumnHeader();
             columnHeader7 = new ColumnHeader();
-            columnHeader22 = new ColumnHeader();
+            columnHeader23 = new ColumnHeader();
             columnHeader8 = new ColumnHeader();
+            columnHeader22 = new ColumnHeader();
             columnHeader21 = new ColumnHeader();
             columnHeader13 = new ColumnHeader();
             columnHeader9 = new ColumnHeader();
@@ -80,7 +81,7 @@
             errorNoSurname = new ErrorProvider(components);
             errorWrongDate = new ErrorProvider(components);
             toolTipRemovePatient = new ToolTip(components);
-            buttChangeData = new Button();
+            buttChangeDataOfPatient = new Button();
             toolTipSaveData = new ToolTip(components);
             buttAllDataAboutAppointment = new Button();
             buttAllAppointments = new Button();
@@ -88,6 +89,11 @@
             buttPaidMedServices = new Button();
             checkIsMultiSelect = new CheckBox();
             errorMultiSelect = new ErrorProvider(components);
+            richTextBoxInfoAboutAppointment = new RichTextBox();
+            buttChangeDataOfAppointment = new Button();
+            checkMultiSelectcheckIsMultiSelectAppointments = new CheckBox();
+            dateTimePickerDateOfAppointment = new DateTimePicker();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorWrongDate).BeginInit();
@@ -122,24 +128,24 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Firebrick;
-            label1.Location = new Point(12, 627);
+            label1.Location = new Point(10, 560);
             label1.Name = "label1";
-            label1.Size = new Size(309, 41);
+            label1.Size = new Size(121, 41);
             label1.TabIndex = 5;
-            label1.Text = "Расписание записей";
+            label1.Text = "Записи";
             // 
-            // listViewSchedule
+            // listViewAppointments
             // 
-            listViewSchedule.Columns.AddRange(new ColumnHeader[] { columnHeader20, columnHeader7, columnHeader22, columnHeader8, columnHeader21, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
-            listViewSchedule.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewSchedule.Location = new Point(12, 680);
-            listViewSchedule.MultiSelect = false;
-            listViewSchedule.Name = "listViewSchedule";
-            listViewSchedule.Size = new Size(1878, 341);
-            listViewSchedule.Sorting = SortOrder.Ascending;
-            listViewSchedule.TabIndex = 6;
-            listViewSchedule.UseCompatibleStateImageBehavior = false;
-            listViewSchedule.View = System.Windows.Forms.View.Details;
+            listViewAppointments.Columns.AddRange(new ColumnHeader[] { columnHeader20, columnHeader7, columnHeader23, columnHeader8, columnHeader22, columnHeader21, columnHeader13, columnHeader9, columnHeader10, columnHeader11, columnHeader14, columnHeader16, columnHeader17, columnHeader18 });
+            listViewAppointments.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            listViewAppointments.Location = new Point(12, 680);
+            listViewAppointments.MultiSelect = false;
+            listViewAppointments.Name = "listViewAppointments";
+            listViewAppointments.Size = new Size(1466, 341);
+            listViewAppointments.Sorting = SortOrder.Ascending;
+            listViewAppointments.TabIndex = 6;
+            listViewAppointments.UseCompatibleStateImageBehavior = false;
+            listViewAppointments.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader20
             // 
@@ -149,17 +155,22 @@
             // columnHeader7
             // 
             columnHeader7.Text = "Дата";
-            columnHeader7.Width = 100;
+            columnHeader7.Width = 150;
             // 
-            // columnHeader22
+            // columnHeader23
             // 
-            columnHeader22.Text = "Время";
-            columnHeader22.Width = 100;
+            columnHeader23.Text = "Время";
+            columnHeader23.Width = 100;
             // 
             // columnHeader8
             // 
             columnHeader8.Text = "Место приёма";
             columnHeader8.Width = 300;
+            // 
+            // columnHeader22
+            // 
+            columnHeader22.Text = "Специализация врача";
+            columnHeader22.Width = 200;
             // 
             // columnHeader21
             // 
@@ -210,7 +221,7 @@
             // 
             buttSearchPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttSearchPatient.ForeColor = Color.Firebrick;
-            buttSearchPatient.Location = new Point(1292, 189);
+            buttSearchPatient.Location = new Point(1292, 142);
             buttSearchPatient.Name = "buttSearchPatient";
             buttSearchPatient.Size = new Size(186, 73);
             buttSearchPatient.TabIndex = 9;
@@ -222,9 +233,9 @@
             // 
             buttAddAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAddAppointment.ForeColor = Color.Firebrick;
-            buttAddAppointment.Location = new Point(448, 636);
+            buttAddAppointment.Location = new Point(148, 566);
             buttAddAppointment.Name = "buttAddAppointment";
-            buttAddAppointment.Size = new Size(267, 37);
+            buttAddAppointment.Size = new Size(184, 37);
             buttAddAppointment.TabIndex = 11;
             buttAddAppointment.Text = "Добавить запись";
             buttAddAppointment.UseVisualStyleBackColor = true;
@@ -234,12 +245,13 @@
             // 
             buttRemoveAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttRemoveAppointment.ForeColor = Color.Firebrick;
-            buttRemoveAppointment.Location = new Point(1714, 637);
+            buttRemoveAppointment.Location = new Point(1029, 638);
             buttRemoveAppointment.Name = "buttRemoveAppointment";
             buttRemoveAppointment.Size = new Size(176, 37);
             buttRemoveAppointment.TabIndex = 13;
             buttRemoveAppointment.Text = "Удалить запись\r\n";
             buttRemoveAppointment.UseVisualStyleBackColor = true;
+            buttRemoveAppointment.Click += buttRemoveAppointment_Click;
             // 
             // buttAttachedStreets
             // 
@@ -269,7 +281,7 @@
             // 
             listViewPatients.Columns.AddRange(new ColumnHeader[] { columnHeader12, columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader15, columnHeader19, columnHeader5, columnHeader6 });
             listViewPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewPatients.Location = new Point(12, 284);
+            listViewPatients.Location = new Point(10, 230);
             listViewPatients.MultiSelect = false;
             listViewPatients.Name = "listViewPatients";
             listViewPatients.Size = new Size(1466, 262);
@@ -326,7 +338,7 @@
             // textSurname
             // 
             textSurname.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textSurname.Location = new Point(13, 228);
+            textSurname.Location = new Point(13, 181);
             textSurname.Name = "textSurname";
             textSurname.Size = new Size(271, 34);
             textSurname.TabIndex = 21;
@@ -335,7 +347,7 @@
             // textName
             // 
             textName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textName.Location = new Point(318, 228);
+            textName.Location = new Point(318, 181);
             textName.Name = "textName";
             textName.Size = new Size(225, 34);
             textName.TabIndex = 23;
@@ -344,7 +356,7 @@
             // textPatr
             // 
             textPatr.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textPatr.Location = new Point(586, 228);
+            textPatr.Location = new Point(586, 181);
             textPatr.Name = "textPatr";
             textPatr.Size = new Size(328, 34);
             textPatr.TabIndex = 24;
@@ -355,7 +367,7 @@
             dateTimeDateOfBirth.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimeDateOfBirth.CalendarTitleBackColor = Color.White;
             dateTimeDateOfBirth.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimeDateOfBirth.Location = new Point(938, 226);
+            dateTimeDateOfBirth.Location = new Point(938, 179);
             dateTimeDateOfBirth.Name = "dateTimeDateOfBirth";
             dateTimeDateOfBirth.Size = new Size(328, 34);
             dateTimeDateOfBirth.TabIndex = 36;
@@ -365,7 +377,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.Firebrick;
-            label5.Location = new Point(938, 177);
+            label5.Location = new Point(938, 150);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(153, 28);
@@ -377,7 +389,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.Firebrick;
-            label3.Location = new Point(13, 177);
+            label3.Location = new Point(12, 150);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(96, 28);
@@ -389,7 +401,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label4.ForeColor = Color.Firebrick;
-            label4.Location = new Point(318, 177);
+            label4.Location = new Point(318, 150);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(51, 28);
@@ -401,7 +413,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label6.ForeColor = Color.Firebrick;
-            label6.Location = new Point(586, 177);
+            label6.Location = new Point(586, 150);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(96, 28);
@@ -435,7 +447,7 @@
             // 
             buttRemovePatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttRemovePatient.ForeColor = Color.Firebrick;
-            buttRemovePatient.Location = new Point(12, 556);
+            buttRemovePatient.Location = new Point(10, 502);
             buttRemovePatient.Name = "buttRemovePatient";
             buttRemovePatient.Size = new Size(186, 36);
             buttRemovePatient.TabIndex = 45;
@@ -448,7 +460,7 @@
             buttAllPatients.BackColor = Color.MistyRose;
             buttAllPatients.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAllPatients.ForeColor = Color.Firebrick;
-            buttAllPatients.Location = new Point(1175, 556);
+            buttAllPatients.Location = new Point(1175, 498);
             buttAllPatients.Name = "buttAllPatients";
             buttAllPatients.Size = new Size(303, 36);
             buttAllPatients.TabIndex = 46;
@@ -459,7 +471,7 @@
             // buttAllDataAboutPatient
             // 
             buttAllDataAboutPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttAllDataAboutPatient.Location = new Point(1513, 233);
+            buttAllDataAboutPatient.Location = new Point(1511, 179);
             buttAllDataAboutPatient.Name = "buttAllDataAboutPatient";
             buttAllDataAboutPatient.Size = new Size(355, 45);
             buttAllDataAboutPatient.TabIndex = 47;
@@ -471,7 +483,7 @@
             // 
             richTextBoxInfoAboutPatient.BackColor = SystemColors.Window;
             richTextBoxInfoAboutPatient.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            richTextBoxInfoAboutPatient.Location = new Point(1500, 284);
+            richTextBoxInfoAboutPatient.Location = new Point(1498, 230);
             richTextBoxInfoAboutPatient.Name = "richTextBoxInfoAboutPatient";
             richTextBoxInfoAboutPatient.ReadOnly = true;
             richTextBoxInfoAboutPatient.Size = new Size(379, 262);
@@ -490,50 +502,53 @@
             // 
             errorWrongDate.ContainerControl = this;
             // 
-            // buttChangeData
+            // buttChangeDataOfPatient
             // 
-            buttChangeData.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttChangeData.Location = new Point(1602, 556);
-            buttChangeData.Name = "buttChangeData";
-            buttChangeData.Size = new Size(277, 36);
-            buttChangeData.TabIndex = 49;
-            buttChangeData.Text = "Изменить данные пациента\r\n";
-            buttChangeData.UseVisualStyleBackColor = true;
-            buttChangeData.Click += buttChangeData_Click;
+            buttChangeDataOfPatient.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttChangeDataOfPatient.Location = new Point(1602, 498);
+            buttChangeDataOfPatient.Name = "buttChangeDataOfPatient";
+            buttChangeDataOfPatient.Size = new Size(277, 36);
+            buttChangeDataOfPatient.TabIndex = 49;
+            buttChangeDataOfPatient.Text = "Изменить данные пациента\r\n";
+            buttChangeDataOfPatient.UseVisualStyleBackColor = true;
+            buttChangeDataOfPatient.Click += buttChangeData_Click;
             // 
             // buttAllDataAboutAppointment
             // 
             buttAllDataAboutAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttAllDataAboutAppointment.ForeColor = Color.Firebrick;
-            buttAllDataAboutAppointment.Location = new Point(1366, 637);
+            buttAllDataAboutAppointment.ForeColor = Color.Black;
+            buttAllDataAboutAppointment.Location = new Point(1554, 633);
             buttAllDataAboutAppointment.Name = "buttAllDataAboutAppointment";
             buttAllDataAboutAppointment.Size = new Size(325, 37);
             buttAllDataAboutAppointment.TabIndex = 50;
             buttAllDataAboutAppointment.Text = "Все данные о выбранной записи";
             buttAllDataAboutAppointment.UseVisualStyleBackColor = true;
+            buttAllDataAboutAppointment.Click += buttAllDataAboutAppointment_Click;
             // 
             // buttAllAppointments
             // 
-            buttAllAppointments.BackColor = SystemColors.Window;
+            buttAllAppointments.BackColor = Color.MistyRose;
             buttAllAppointments.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttAllAppointments.ForeColor = Color.Firebrick;
-            buttAllAppointments.Location = new Point(760, 638);
+            buttAllAppointments.Location = new Point(1211, 638);
             buttAllAppointments.Name = "buttAllAppointments";
             buttAllAppointments.Size = new Size(267, 36);
             buttAllAppointments.TabIndex = 51;
             buttAllAppointments.Text = "Обновить список записей\r\n\r\n";
             buttAllAppointments.UseVisualStyleBackColor = false;
+            buttAllAppointments.Click += buttAllAppointments_Click;
             // 
             // buttSearchAppointment
             // 
             buttSearchAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             buttSearchAppointment.ForeColor = Color.Firebrick;
-            buttSearchAppointment.Location = new Point(1062, 638);
+            buttSearchAppointment.Location = new Point(329, 624);
             buttSearchAppointment.Name = "buttSearchAppointment";
-            buttSearchAppointment.Size = new Size(267, 37);
+            buttSearchAppointment.Size = new Size(177, 50);
             buttSearchAppointment.TabIndex = 52;
             buttSearchAppointment.Text = "Найти запись";
             buttSearchAppointment.UseVisualStyleBackColor = true;
+            buttSearchAppointment.Click += buttSearchAppointment_Click;
             // 
             // buttPaidMedServices
             // 
@@ -552,7 +567,7 @@
             checkIsMultiSelect.AutoSize = true;
             checkIsMultiSelect.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             checkIsMultiSelect.ForeColor = Color.Firebrick;
-            checkIsMultiSelect.Location = new Point(842, 556);
+            checkIsMultiSelect.Location = new Point(844, 502);
             checkIsMultiSelect.Name = "checkIsMultiSelect";
             checkIsMultiSelect.Size = new Size(309, 32);
             checkIsMultiSelect.TabIndex = 54;
@@ -564,18 +579,79 @@
             // 
             errorMultiSelect.ContainerControl = this;
             // 
+            // richTextBoxInfoAboutAppointment
+            // 
+            richTextBoxInfoAboutAppointment.BackColor = SystemColors.Window;
+            richTextBoxInfoAboutAppointment.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            richTextBoxInfoAboutAppointment.Location = new Point(1500, 680);
+            richTextBoxInfoAboutAppointment.Name = "richTextBoxInfoAboutAppointment";
+            richTextBoxInfoAboutAppointment.ReadOnly = true;
+            richTextBoxInfoAboutAppointment.Size = new Size(379, 299);
+            richTextBoxInfoAboutAppointment.TabIndex = 55;
+            richTextBoxInfoAboutAppointment.Text = "";
+            // 
+            // buttChangeDataOfAppointment
+            // 
+            buttChangeDataOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttChangeDataOfAppointment.Location = new Point(1602, 985);
+            buttChangeDataOfAppointment.Name = "buttChangeDataOfAppointment";
+            buttChangeDataOfAppointment.Size = new Size(277, 36);
+            buttChangeDataOfAppointment.TabIndex = 56;
+            buttChangeDataOfAppointment.Text = "Изменить данные записи\r\n";
+            buttChangeDataOfAppointment.UseVisualStyleBackColor = true;
+            buttChangeDataOfAppointment.Click += buttChangeDataOfAppointment_Click;
+            // 
+            // checkMultiSelectcheckIsMultiSelectAppointments
+            // 
+            checkMultiSelectcheckIsMultiSelectAppointments.AutoSize = true;
+            checkMultiSelectcheckIsMultiSelectAppointments.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkMultiSelectcheckIsMultiSelectAppointments.ForeColor = Color.Firebrick;
+            checkMultiSelectcheckIsMultiSelectAppointments.Location = new Point(739, 638);
+            checkMultiSelectcheckIsMultiSelectAppointments.Name = "checkMultiSelectcheckIsMultiSelectAppointments";
+            checkMultiSelectcheckIsMultiSelectAppointments.Size = new Size(284, 32);
+            checkMultiSelectcheckIsMultiSelectAppointments.TabIndex = 57;
+            checkMultiSelectcheckIsMultiSelectAppointments.Text = "Выбор нескольких записей";
+            checkMultiSelectcheckIsMultiSelectAppointments.UseVisualStyleBackColor = true;
+            checkMultiSelectcheckIsMultiSelectAppointments.CheckedChanged += checkMultiSelectcheckIsMultiSelectAppointments_CheckedChanged;
+            // 
+            // dateTimePickerDateOfAppointment
+            // 
+            dateTimePickerDateOfAppointment.CustomFormat = "dd.MM.yyyy - dddd";
+            dateTimePickerDateOfAppointment.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePickerDateOfAppointment.Format = DateTimePickerFormat.Custom;
+            dateTimePickerDateOfAppointment.Location = new Point(13, 636);
+            dateTimePickerDateOfAppointment.Name = "dateTimePickerDateOfAppointment";
+            dateTimePickerDateOfAppointment.Size = new Size(284, 34);
+            dateTimePickerDateOfAppointment.TabIndex = 58;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = Color.Firebrick;
+            label2.Location = new Point(13, 605);
+            label2.Name = "label2";
+            label2.Size = new Size(129, 28);
+            label2.TabIndex = 59;
+            label2.Text = "Дата приёма";
+            // 
             // MainWindowForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1902, 1033);
+            Controls.Add(label2);
+            Controls.Add(dateTimePickerDateOfAppointment);
+            Controls.Add(checkMultiSelectcheckIsMultiSelectAppointments);
+            Controls.Add(buttChangeDataOfAppointment);
+            Controls.Add(richTextBoxInfoAboutAppointment);
             Controls.Add(checkIsMultiSelect);
             Controls.Add(buttPaidMedServices);
             Controls.Add(buttSearchAppointment);
             Controls.Add(buttAllAppointments);
             Controls.Add(buttAllDataAboutAppointment);
-            Controls.Add(buttChangeData);
+            Controls.Add(buttChangeDataOfPatient);
             Controls.Add(richTextBoxInfoAboutPatient);
             Controls.Add(buttAllDataAboutPatient);
             Controls.Add(buttAllPatients);
@@ -596,7 +672,7 @@
             Controls.Add(buttRemoveAppointment);
             Controls.Add(buttAddAppointment);
             Controls.Add(buttSearchPatient);
-            Controls.Add(listViewSchedule);
+            Controls.Add(listViewAppointments);
             Controls.Add(label1);
             Controls.Add(textFullNameOfRegistr);
             Controls.Add(buttAddPatient);
@@ -622,7 +698,7 @@
         private Button buttAddPatient;
         private TextBox textFullNameOfRegistr;
         private Label label1;
-        private ListView listViewSchedule;
+        private ListView listViewAppointments;
         private Button buttSearchPatient;
         private Button buttAddAppointment;
         private Button buttRemoveAppointment;
@@ -667,7 +743,7 @@
         private ColumnHeader columnHeader19;
         private ErrorProvider errorWrongDate;
         private ToolTip toolTipRemovePatient;
-        private Button buttChangeData;
+        private Button buttChangeDataOfPatient;
         private ToolTip toolTipSaveData;
         private ColumnHeader columnHeader20;
         private Button buttAllDataAboutAppointment;
@@ -677,6 +753,12 @@
         private CheckBox checkIsMultiSelect;
         private ErrorProvider errorMultiSelect;
         private ColumnHeader columnHeader21;
+        private RichTextBox richTextBoxInfoAboutAppointment;
+        private Button buttChangeDataOfAppointment;
+        private CheckBox checkMultiSelectcheckIsMultiSelectAppointments;
+        private ColumnHeader columnHeader23;
+        private DateTimePicker dateTimePickerDateOfAppointment;
+        private Label label2;
         private ColumnHeader columnHeader22;
     }
 }

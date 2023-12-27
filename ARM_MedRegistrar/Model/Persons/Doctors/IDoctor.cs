@@ -11,15 +11,10 @@ using ARM_MedRegistrar.Model.WorkSchedules;
 
 namespace ARM_MedRegistrar.Model.Persons.Doctors
 {
-    public interface IDoctor: IIdentification, IFormatter
+    public interface IDoctor: IFormatter
     {
-        public IPersonalData PersonalData { get; set; }
+        public IDoctorDataOfAppointment DoctorDataOfAppointment { get; set; }
         public IList<IWorkSchedule> WorkSchedule { get; set; }
        
-        public string Specialization { get; set; }
-        public int PlotNumber { get; set; }
-        public int Cabinet { get; set; }
-
-        public TimeOnly DurationOfAppointment { get; set; }
     }
 }

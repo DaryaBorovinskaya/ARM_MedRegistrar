@@ -11,75 +11,37 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 {
     public class Doctor : IDoctor
     {
-        private IPersonalData _personalData;
-        private string _specialization;
-        private int _plotNumber;  //номер участка
-        private int _cabinet;
-
-
-
-        public IPersonalData PersonalData
+        private IDoctorDataOfAppointment _doctorDataOfAppointment;
+        private IList<IWorkSchedule> _workSchedules;
+        
+        public IDoctorDataOfAppointment DoctorDataOfAppointment 
         {
-            get => _personalData;
+            get => _doctorDataOfAppointment;
             set
             {
                 if (value == null)
-                    throw new ArgumentException("Попытка присвоить значение null полю Персональные данные");
-                _personalData = value;
+                    throw new ArgumentNullException(nameof(value));
+                _doctorDataOfAppointment = value;
             }
         }
 
-        public IList<IWorkSchedule> WorkSchedule { get; set; }
+        public IList<IWorkSchedule> WorkSchedule
+        {
+            get => _workSchedules;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException(nameof(value));
+                _workSchedules = value;
+            }
+        }
         
-        public string Specialization
+        
+
+        public Doctor(IDoctorDataOfAppointment doctorDataOfAppointment,  IList<IWorkSchedule> workSchedule )
         {
-            get => _specialization; set
-            {
-                if (value == "" || value == " " || value == null)
-                    throw new ArgumentException("Специализация не задана");
-                _specialization = value;
-            }
-        }
-
-        public int PlotNumber
-        {
-            get => _plotNumber;
-            set
-            {
-                if (value <= 0)
-                    throw new ArgumentException("Номер участка не может быть меньше или равным нулю");
-                _plotNumber = value;
-            }
-        }
-
-        public int Cabinet
-        {
-            get => _cabinet;
-            set
-            {
-                if (value <= 0)
-                    throw new ArgumentException("Номер кабинета не может быть меньше или равным нулю");
-                _cabinet = value;
-            }
-        }
-
-
-        public uint Id { get; }
-
-        public TimeOnly DurationOfAppointment { get; set; }
-
-        public Doctor(uint id, IPersonalData personalData, IList<IWorkSchedule> workSchedule , string specialization, int plotNumber, int cabinet , TimeOnly durationOfAppointment)
-        {
-            Id = id;
-            PersonalData = personalData;
+            DoctorDataOfAppointment = doctorDataOfAppointment;
             WorkSchedule = workSchedule;
-            Specialization = specialization;
-            PlotNumber = plotNumber;
-            Cabinet = cabinet;
-
-            durationOfAppointment = new TimeOnly(durationOfAppointment.Hour, durationOfAppointment.Minute,0);
-            DurationOfAppointment = durationOfAppointment;
-
         }
 
         public string Format()
@@ -89,8 +51,7 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
                  _lineSchedule += workSchedule.Format();
 
 
-            return $"ID: {Id}\n{PersonalData.Format()}Специализация: {Specialization}\nНомер участка: {PlotNumber}\n" +
-                $"Номер кабинета: {Cabinet}\n\nГРАФИК РАБОТЫ\n\n{_lineSchedule}\nПродолжит. приёма: {DurationOfAppointment}";
+            return $"{DoctorDataOfAppointment.Format()}ГРАФИК РАБОТЫ\n\n{_lineSchedule}";
         }
     }
 }

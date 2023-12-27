@@ -2,10 +2,7 @@
 using ARM_MedRegistrar.View.MainWindow;
 using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View;
-using ARM_MedRegistrar.View.InfoAboutUser;
-using ARM_MedRegistrar.View.AttachedToTheClinicStreets;
-using ARM_MedRegistrar.Model.Persons.Patients;
-using ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository;
+using ARM_MedRegistrar.View.ChangeDataOfAppointment;
 using ARM_MedRegistrar.Presenter;
 using ARM_MedRegistrar.View.ChangeDataOfPatient;
 using ARM_MedRegistrar.View.AddAppointment;
@@ -21,7 +18,8 @@ namespace ARM_MedRegistrar
 
         MainWindowPresenter _presenter;
         int _lineOfListViewPatients;
-        uint IMainWindowForm.Id
+        int _lineOfListViewAppointments;
+        uint IMainWindowForm.PatientId
         {
             set
             {
@@ -29,7 +27,7 @@ namespace ARM_MedRegistrar
             }
         }
 
-        int IMainWindowForm.CountOfLine
+        int IMainWindowForm.PatientCountOfLine
         {
             set
             {
@@ -37,7 +35,7 @@ namespace ARM_MedRegistrar
             }
         }
 
-        string IMainWindowForm.Surname
+        string IMainWindowForm.PatientSurname
         {
             get => textSurname.Text;
             set
@@ -45,7 +43,7 @@ namespace ARM_MedRegistrar
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
             }
         }
-        string IMainWindowForm.Name
+        string IMainWindowForm.PatientName
         {
             get => textName.Text;
             set
@@ -54,7 +52,7 @@ namespace ARM_MedRegistrar
             }
         }
 
-        string? IMainWindowForm.Patronymic
+        string? IMainWindowForm.PatientPatronymic
         {
             set
             {
@@ -62,7 +60,7 @@ namespace ARM_MedRegistrar
             }
         }
 
-        DateOnly IMainWindowForm.DateOfBirth
+        DateOnly IMainWindowForm.PatientDateOfBirth
         {
             get => DateOnly.FromDateTime(dateTimeDateOfBirth.Value);
             set
@@ -71,7 +69,7 @@ namespace ARM_MedRegistrar
             }
         }
 
-        string IMainWindowForm.DocumentSeries
+        string IMainWindowForm.PatientDocumentSeries
         {
 
             set
@@ -80,7 +78,7 @@ namespace ARM_MedRegistrar
             }
         }
 
-        string IMainWindowForm.DocumentNumber
+        string IMainWindowForm.PatientDocumentNumber
         {
 
             set
@@ -88,7 +86,7 @@ namespace ARM_MedRegistrar
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value);
             }
         }
-        uint IMainWindowForm.SelectedId
+        uint IMainWindowForm.PatientSelectedId
         {
             get
             {
@@ -101,14 +99,14 @@ namespace ARM_MedRegistrar
         }
 
 
-        int IMainWindowForm.PlotNumber
+        int IMainWindowForm.PatientPlotNumber
         {
             set
             {
                 listViewPatients.Items[_lineOfListViewPatients].SubItems.Add(value.ToString());
             }
         }
-        string IMainWindowForm.NumbOfPatientCard
+        string IMainWindowForm.PatientNumbOfPatientCard
         {
             set
             {
@@ -123,6 +121,146 @@ namespace ARM_MedRegistrar
                 richTextBoxInfoAboutPatient.Text = value;
             }
         }
+
+        uint IMainWindowForm.AppointmentId
+        {
+            set
+            {
+                listViewAppointments.Items.Add(value.ToString());
+            }
+        }
+
+        int IMainWindowForm.AppointmentCountOfLine
+        {
+            set
+            {
+                _lineOfListViewAppointments = value;
+            }
+        }
+
+        DateOnly IMainWindowForm.DateOfAppointment
+        {
+            get => DateOnly.FromDateTime(dateTimePickerDateOfAppointment.Value);
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value.ToString());
+            }
+        }
+        TimeOnly IMainWindowForm.TimeOfAppointment
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value.ToString());
+            }
+        }
+        string IMainWindowForm.PlaceOfAppointment
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+
+        string IMainWindowForm.AppointmentDoctorSpecialization
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+        string IMainWindowForm.TypeOfAppointment
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+
+
+
+        uint IMainWindowForm.AppointmentDoctorId
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value.ToString());
+            }
+        }
+        string IMainWindowForm.AppointmentDoctorSurname
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+        string IMainWindowForm.AppointmentDoctorName
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+        string? IMainWindowForm.AppointmentDoctorPatronymic
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+
+
+        uint IMainWindowForm.AppointmentPatientId
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value.ToString());
+            }
+        }
+        string IMainWindowForm.AppointmentPatientSurname
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+        string IMainWindowForm.AppointmentPatientName
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+        string? IMainWindowForm.AppointmentPatientPatronymic
+        {
+            set
+            {
+                listViewAppointments.Items[_lineOfListViewAppointments].SubItems.Add(value);
+            }
+        }
+
+        uint IMainWindowForm.AppointmentSelectedId
+        {
+            get
+            {
+                if (listViewAppointments.SelectedItems.Count == 0)
+                {
+                    return 0;
+                }
+                return uint.Parse(listViewAppointments.SelectedItems[0].Text);
+            }
+
+        }
+
+        string IMainWindowForm.InfoAboutAppointment
+        {
+            set
+            {
+                richTextBoxInfoAboutAppointment.Text = value;
+            }
+        }
+
+
+
+
 
         public MainWindowForm(Form form)   //Form form, IUserEmployee employee
         {
@@ -140,7 +278,7 @@ namespace ARM_MedRegistrar
             toolTipRemovePatient.SetToolTip(buttRemovePatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
 
             _presenter = new(this);
-
+            //_presenter.ClearFreeAppointments();
         }
 
         private void OnClosed(object? sender, FormClosedEventArgs e)
@@ -328,7 +466,98 @@ namespace ARM_MedRegistrar
 
         private void MainWindowForm_Load(object sender, EventArgs e)
         {
-            _presenter.ClearFreeAppointments();
+
+        }
+
+        private void buttRemoveAppointment_Click(object sender, EventArgs e)
+        {
+            IList<uint> _selectedId = new List<uint>();
+            if (checkMultiSelectcheckIsMultiSelectAppointments.Checked)
+            {
+                if (listViewAppointments.SelectedItems.Count != 0)
+                {
+                    for (int i = 0; i < listViewAppointments.SelectedItems.Count; i++)
+                    {
+                        uint selectItemValue = uint.Parse(listViewAppointments.SelectedItems[i].Text);
+                        _selectedId.Add(selectItemValue);
+
+                    }
+
+                    string _lineOfId = "";
+
+                    foreach (uint id in _selectedId)
+                        _lineOfId += id.ToString() + "  ";
+
+                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление записей с ID: {_lineOfId}", " ", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (_presenter.RemoveAppointment(_selectedId))
+                            MessageBox.Show("Записи успешно удалены");
+                        else
+                            MessageBox.Show("Не удалось удалить записи");
+                    }
+
+                }
+            }
+            else
+            {
+                uint _selIndex = listViewAppointments.SelectedItems.Count != 0 ? uint.Parse(listViewAppointments.SelectedItems[0].Text) : 0;
+
+                if (_selIndex != 0)
+                {
+                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление записи с ID: {_selIndex}", " ", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        _selectedId.Add(_selIndex);
+                        if (_presenter.RemoveAppointment(_selectedId))
+                            MessageBox.Show("Запись успешно удалена");
+                        else
+                            MessageBox.Show("Не удалось удалить запись");
+                    }
+                }
+            }
+        }
+
+        private void checkMultiSelectcheckIsMultiSelectAppointments_CheckedChanged(object sender, EventArgs e)
+        {
+            listViewAppointments.MultiSelect = true;
+        }
+
+        private void buttSearchAppointment_Click(object sender, EventArgs e)
+        {
+            listViewAppointments.Items.Clear();
+
+            if (!_presenter.SearchAppointment())
+                MessageBox.Show("Записи не найдены");
+
+            dateTimeDateOfBirth.Value = DateTime.Today;
+
+        }
+
+        private void buttAllAppointments_Click(object sender, EventArgs e)
+        {
+            listViewAppointments.Items.Clear();
+            if (!_presenter.ShowAllAppointments())
+                MessageBox.Show("Список записей пуст");
+        }
+
+        private void buttAllDataAboutAppointment_Click(object sender, EventArgs e)
+        {
+            errorMultiSelect.Clear();
+            if (!checkMultiSelectcheckIsMultiSelectAppointments.Checked)
+            {
+                richTextBoxInfoAboutAppointment.Clear();
+
+                _presenter.ShowInfoAboutAppointment();
+            }
+            else
+                errorMultiSelect.SetError(checkMultiSelectcheckIsMultiSelectAppointments, "Нельзя выполнить действие, т.к. \nвыбрано несколько записей");
+        }
+
+        private void buttChangeDataOfAppointment_Click(object sender, EventArgs e)
+        {
+            ChangeDataOfAppointmentForm changeDataOfAppointmentForm = new();
+            changeDataOfAppointmentForm.ShowDialog();
         }
     }
 }

@@ -33,19 +33,19 @@ namespace ARM_MedRegistrar.Presenter
             {
                 foreach (IDoctor doctor in _doctors.Values)
                 {
-                    if (doctor.PersonalData.FullName.Surname == _view.Surname && doctor.PersonalData.FullName.Name == _view.Name 
-                        && doctor.Specialization == _view.Specialization)
+                    if (doctor.DoctorDataOfAppointment.PersonalData.FullName.Surname == _view.Surname && doctor.DoctorDataOfAppointment.PersonalData.FullName.Name == _view.Name 
+                        && doctor.DoctorDataOfAppointment.Specialization == _view.Specialization)
                     {
                         _isSuccess = true;
                         _countOfLine++;
                         _view.CountOfLine = _countOfLine;
-                        _view.Id = doctor.Id;
-                        _view.Surname = doctor.PersonalData.FullName.Surname;
-                        _view.Name = doctor.PersonalData.FullName.Name;
-                        _view.Patronymic = doctor.PersonalData.FullName.Patronymic;
-                        _view.Specialization = doctor.Specialization;
-                        _view.Cabinet = doctor.Cabinet;
-                        _view.PlotNumber = doctor.PlotNumber;
+                        _view.Id = doctor.DoctorDataOfAppointment.Id;
+                        _view.Surname = doctor.DoctorDataOfAppointment.PersonalData.FullName.Surname;
+                        _view.Name = doctor.DoctorDataOfAppointment.PersonalData.FullName.Name;
+                        _view.Patronymic = doctor.DoctorDataOfAppointment.PersonalData.FullName.Patronymic;
+                        _view.Specialization = doctor.DoctorDataOfAppointment.Specialization;
+                        _view.Cabinet = doctor.DoctorDataOfAppointment.Cabinet;
+                        _view.PlotNumber = doctor.DoctorDataOfAppointment.PlotNumber;
                     }
                 }
                 if (_isSuccess)
@@ -72,13 +72,13 @@ namespace ARM_MedRegistrar.Presenter
                     _isSuccess = true;
                     _countOfLine++;
                     _view.CountOfLine = _countOfLine; 
-                    _view.Id = doctor.Id;
-                    _view.Surname = doctor.PersonalData.FullName.Surname;
-                    _view.Name = doctor.PersonalData.FullName.Name;
-                    _view.Patronymic = doctor.PersonalData.FullName.Patronymic;
-                    _view.Specialization = doctor.Specialization;
-                    _view.Cabinet = doctor.Cabinet;
-                    _view.PlotNumber = doctor.PlotNumber;
+                    _view.Id = doctor.DoctorDataOfAppointment.Id;
+                    _view.Surname = doctor.DoctorDataOfAppointment.PersonalData.FullName.Surname;
+                    _view.Name = doctor.DoctorDataOfAppointment.PersonalData.FullName.Name;
+                    _view.Patronymic = doctor.DoctorDataOfAppointment.PersonalData.FullName.Patronymic;
+                    _view.Specialization = doctor.DoctorDataOfAppointment.Specialization;
+                    _view.Cabinet = doctor.DoctorDataOfAppointment.Cabinet;
+                    _view.PlotNumber = doctor.DoctorDataOfAppointment.PlotNumber;
                 }
                 if (_isSuccess)
                     return true;

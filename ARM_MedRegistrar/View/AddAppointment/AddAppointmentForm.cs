@@ -202,7 +202,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
         private void AddAppointmentForm_Load(object sender, EventArgs e)
         {
-           
+
         }
 
 
@@ -315,11 +315,13 @@ namespace ARM_MedRegistrar.View.AddAppointment
             {
                 _isError = true;
                 errorNoSelectedPatient.SetError(listViewPatients, "Сначала выберите пациента из списка, нажав на его ID");
+
             }
             if (!_presenter.IsDoctorCanTakeAtHome())
             {
                 _isError = true;
                 errorWrongDoctor.SetError(listViewDoctors, "Этот врач не принимает на дому");
+
             }
 
 
@@ -328,6 +330,8 @@ namespace ARM_MedRegistrar.View.AddAppointment
 
                 if (!_presenter.GetPlaseOfAppointment())
                     MessageBox.Show("Не удалось получить место приёма");
+
+                buttAddAppointment.Enabled = true;
             }
 
         }
@@ -345,6 +349,7 @@ namespace ARM_MedRegistrar.View.AddAppointment
                 {
                     MessageBox.Show("Изменения в поле \"Место\" сохранены");
                     textPlace.Enabled = false;
+                    buttAddAppointment.Enabled = true;
                 }
             }
         }
@@ -361,11 +366,33 @@ namespace ARM_MedRegistrar.View.AddAppointment
         private void buttChange_Click(object sender, EventArgs e)
         {
             textPlace.Enabled = true;
+            buttAddAppointment.Enabled = false;
         }
 
         private void buttAddAppointment_Click(object sender, EventArgs e)
         {
-
+            if (!_presenter.AddAppointment())
+                MessageBox.Show("Не удалось добавить запись на приём");
+            else
+            {
+                MessageBox.Show("Добавление записи успешно выполнено!");
+                if (!checkNoCloseWindow.Checked)
+                    Close();
+                else
+                {
+                    listViewDoctors.Clear();
+                    listViewPatients.Clear();
+                    textSurname.Clear();
+                    textName.Clear();
+                    textPatr.Clear();
+                    dateTimeDateOfBirth.Value = DateTime.Now;
+                    dateTimePickerDateOfAppointment.Value = DateTime.Now;
+                    richTextBoxInfoAboutDoctor.Clear();
+                    richTextBoxInfoAboutPatient.Clear();
+                    textPlace.Clear();
+                    comboBoxTypeOfAppointment.SelectedIndex = 0;
+                }
+            }
         }
     }
 }

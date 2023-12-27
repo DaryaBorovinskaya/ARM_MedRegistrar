@@ -44,9 +44,9 @@ namespace ARM_MedRegistrar.Presenter
                     {
                         _doctor = _doctors[key];
                          
-                        _view.Surname = _doctor.PersonalData.FullName.Surname;
-                        _view.Name = _doctor.PersonalData.FullName.Name;
-                        _view.Patronymic = _doctor.PersonalData.FullName.Patronymic;
+                        _view.Surname = _doctor.DoctorDataOfAppointment.PersonalData.FullName.Surname;
+                        _view.Name = _doctor.DoctorDataOfAppointment.PersonalData.FullName.Name;
+                        _view.Patronymic = _doctor.DoctorDataOfAppointment.PersonalData.FullName.Patronymic;
                         
                         foreach(IWorkSchedule workSchedule in _doctor.WorkSchedule)
                         {
@@ -89,11 +89,11 @@ namespace ARM_MedRegistrar.Presenter
 
                         _view.TimesOfWork = _timesOfWork;
                         _view.TimesOfWork = _timesOfWork;
-                        _view.PhoneNumber = _doctor.PersonalData.PhoneNumber;
-                        _view.PlotNumber = _doctor.PlotNumber;
-                        _view.Specialization = _doctor.Specialization;
-                        _view.Cabinet = _doctor.Cabinet;
-                        _view.DurationOfAppointment = _doctor.DurationOfAppointment;
+                        _view.PhoneNumber = _doctor.DoctorDataOfAppointment.PersonalData.PhoneNumber;
+                        _view.PlotNumber = _doctor.DoctorDataOfAppointment.PlotNumber;
+                        _view.Specialization = _doctor.DoctorDataOfAppointment.Specialization;
+                        _view.Cabinet = _doctor.DoctorDataOfAppointment.Cabinet;
+                        _view.DurationOfAppointment = _doctor.DoctorDataOfAppointment.DurationOfAppointment;
                         return true;
                     }
 
@@ -109,14 +109,14 @@ namespace ARM_MedRegistrar.Presenter
                 if (key == _view.Id)
                 {
                     _doctor = _doctors[key];
-                    _doctor.PersonalData.FullName.Surname = _view.Surname;
-                    _doctor.PersonalData.FullName.Name = _view.Name;
-                    _doctor.PersonalData.FullName.Patronymic = _view.Patronymic;
-                    _doctor.PersonalData.PhoneNumber = _view.PhoneNumber;
-                    _doctor.PlotNumber = _view.PlotNumber;
-                    _doctor.Specialization = _view.Specialization;
-                    _doctor.Cabinet = _view.Cabinet;
-                    _doctor.DurationOfAppointment = _view.DurationOfAppointment;
+                    _doctor.DoctorDataOfAppointment.PersonalData.FullName.Surname = _view.Surname;
+                    _doctor.DoctorDataOfAppointment.PersonalData.FullName.Name = _view.Name;
+                    _doctor.DoctorDataOfAppointment.PersonalData.FullName.Patronymic = _view.Patronymic;
+                    _doctor.DoctorDataOfAppointment.PersonalData.PhoneNumber = _view.PhoneNumber;
+                    _doctor.DoctorDataOfAppointment.PlotNumber = _view.PlotNumber;
+                    _doctor.DoctorDataOfAppointment.Specialization = _view.Specialization;
+                    _doctor.DoctorDataOfAppointment.Cabinet = _view.Cabinet;
+                    _doctor.DoctorDataOfAppointment.DurationOfAppointment = _view.DurationOfAppointment;
 
                     _timesOfWork = _view.TimesOfWork;
                     for (int i = 0; i < _timesOfWork.Count; i += 2)

@@ -11,7 +11,8 @@ namespace ARM_MedRegistrar.Model.Appointments
     public class Appointment : IAppointment
     {
         private IPatient _patient;
-        private IDoctor _doctor;
+        private IDoctorDataOfAppointment _doctorDataOfAppointment;
+        private string _typeOfAppointment;
         private string _place;
         public DateTime DateAndTime { get; set; }
         
@@ -26,16 +27,28 @@ namespace ARM_MedRegistrar.Model.Appointments
             }
         }
 
-        public IDoctor Doctor
+        public IDoctorDataOfAppointment DoctorDataOfAppointment
         {
-            get => _doctor;
+            get => _doctorDataOfAppointment;
             set
             {
                 if (value == null)
                     throw new ArgumentException("Попытка присвоить значение null полю Доктор");
-                _doctor = value;
+                _doctorDataOfAppointment = value;
             }
         }
+
+        public string TypeOfAppointment
+        {
+            get => _typeOfAppointment;
+            set
+            {
+                if (value == "" || value == " " || value == null)
+                    throw new ArgumentNullException(nameof(value));
+                _typeOfAppointment = value;
+            }
+        }
+
 
         public string Place
         {
@@ -44,21 +57,29 @@ namespace ARM_MedRegistrar.Model.Appointments
             {
                 if (value == "" || value == " " || value == null)
                     throw new ArgumentException("Место приёма врача не задано");
+                _place = value;
             }
         }
         public uint Id { get; }
-        public Appointment(uint id, IPatient patient, IDoctor doctor, DateTime dateAndTime, string place)
+        public Appointment(uint id, IPatient patient, IDoctorDataOfAppointment doctorDataOfAppointment, string typeOfAppointment, DateTime dateAndTime, string place)
         {
             Id = id;
             DateAndTime = dateAndTime.Date + new TimeSpan(dateAndTime.Hour,dateAndTime.Minute,0);
             Patient = patient;
-            Doctor = doctor;
+            DoctorDataOfAppointment = doctorDataOfAppointment;
+            TypeOfAppointment = typeOfAppointment;
             Place = place;
         }
 
         public string Format()
         {
-            return $"ID: {Id}\nДата и время: {DateAndTime}\nМесто приёма: {Place} ";
+            //return $"ID: {Id}\nДата и время: {DateAndTime}\nМесто приёма: {Place}\nТип записи: {TypeOfAppointment}" +
+            //    $"\nID врача: {DoctorDataOfAppointment.Id}\nФамилия врача: {DoctorDataOfAppointment.PersonalData.FullName.Surname}\n" +
+            //    $"Имя врача: {DoctorDataOfAppointment.PersonalData.FullName.Name}\nОтчество врача: {DoctorDataOfAppointment.PersonalData.FullName.Patronymic}\n" +
+            //    $"\nID пациента: {Patient.Id}\nФамилия пациента: {Patient.PersonalData.FullName.Surname}\nИмя пациента: {Patient.PersonalData.FullName.Surname}\nОтчество пациента: {Patient.PersonalData.FullName.Surname}\n";
+
+            return $"ID: {Id}\nДата и время: {DateAndTime}\nМесто приёма: {Place}\nТип записи: {TypeOfAppointment}" +
+                $"\n\nДанные о враче\n\n{DoctorDataOfAppointment.Format()}\nДанные о пациенте\n\n{Patient.Format()}";
         }
     }
 }

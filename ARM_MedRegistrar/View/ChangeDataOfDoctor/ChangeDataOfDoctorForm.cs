@@ -104,56 +104,56 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
                     checkIsWeekendMon.Checked = true;
                 else
                 {
-                    timeMonWorkBeginning.Value = new DateTime(_timesOfWork[0].Hour, _timesOfWork[0].Minute,0);
-                    timeMonWorkEnd.Value = new DateTime(_timesOfWork[1].Hour, _timesOfWork[1].Minute, 0);
+                    timeMonWorkBeginning.Value = new DateTime(1753,1,1, _timesOfWork[0].Hour, _timesOfWork[0].Minute,0);
+                    timeMonWorkEnd.Value = new DateTime(1753, 1, 1, _timesOfWork[1].Hour, _timesOfWork[1].Minute, 0);
                 }
 
                 if (_timesOfWork[2] == _nullTime && _timesOfWork[3] == _nullTime)
                     checkIsWeekendTues.Checked = true;
                 else
                 {
-                    timeTuesWorkBeginning.Value = new DateTime(_timesOfWork[2].Hour, _timesOfWork[2].Minute, 0);
-                    timeTuesWorkEnd.Value = new DateTime(_timesOfWork[3].Hour, _timesOfWork[3].Minute, 0);
+                    timeTuesWorkBeginning.Value = new DateTime(1753, 1, 1, _timesOfWork[2].Hour, _timesOfWork[2].Minute, 0);
+                    timeTuesWorkEnd.Value = new DateTime(1753, 1, 1, _timesOfWork[3].Hour, _timesOfWork[3].Minute, 0);
                 }
 
                 if (_timesOfWork[4] == _nullTime && _timesOfWork[5] == _nullTime)
                     checkIsWeekendWed.Checked = true;
                 else
                 {
-                    timeWedWorkBeginning.Value = new DateTime(_timesOfWork[4].Hour, _timesOfWork[4].Minute, 0);
-                    timeWedWorkEnd.Value = new DateTime(_timesOfWork[5].Hour, _timesOfWork[5].Minute, 0);
+                    timeWedWorkBeginning.Value = new DateTime(1753, 1, 1, _timesOfWork[4].Hour, _timesOfWork[4].Minute, 0);
+                    timeWedWorkEnd.Value = new DateTime(1753, 1, 1, _timesOfWork[5].Hour, _timesOfWork[5].Minute, 0);
                 }
 
                 if (_timesOfWork[6] == _nullTime && _timesOfWork[7] == _nullTime)
                     checkIsWeekendThurs.Checked = true;
                 else
                 {
-                    timeThursWorkBeginning.Value = new DateTime(_timesOfWork[6].Hour, _timesOfWork[6].Minute, 0);
-                    timeThursWorkEnd.Value = new DateTime(_timesOfWork[7].Hour, _timesOfWork[7].Minute, 0);
+                    timeThursWorkBeginning.Value = new DateTime(1753, 1, 1, _timesOfWork[6].Hour, _timesOfWork[6].Minute, 0);
+                    timeThursWorkEnd.Value = new DateTime(1753, 1, 1, _timesOfWork[7].Hour, _timesOfWork[7].Minute, 0);
                 }
 
                 if (_timesOfWork[8] == _nullTime && _timesOfWork[9] == _nullTime)
                     checkIsWeekendFri.Checked = true;
                 else
                 {
-                    timeFriWorkBeginning.Value = new DateTime(_timesOfWork[8].Hour, _timesOfWork[8].Minute, 0);
-                    timeFriWorkEnd.Value = new DateTime(_timesOfWork[9].Hour, _timesOfWork[9].Minute, 0);
+                    timeFriWorkBeginning.Value = new DateTime(1753, 1, 1, _timesOfWork[8].Hour, _timesOfWork[8].Minute, 0);
+                    timeFriWorkEnd.Value = new DateTime(1753, 1, 1, _timesOfWork[9].Hour, _timesOfWork[9].Minute, 0);
                 }
 
                 if (_timesOfWork[10] == _nullTime && _timesOfWork[11] == _nullTime)
                     checkIsWeekendSat.Checked = true;
                 else
                 {
-                    timeSatWorkBeginning.Value = new DateTime(_timesOfWork[10].Hour, _timesOfWork[10].Minute, 0);
-                    timeSatWorkEnd.Value = new DateTime(_timesOfWork[11].Hour, _timesOfWork[11].Minute, 0);
+                    timeSatWorkBeginning.Value = new DateTime(1753, 1, 1, _timesOfWork[10].Hour, _timesOfWork[10].Minute, 0);
+                    timeSatWorkEnd.Value = new DateTime(1753, 1, 1, _timesOfWork[11].Hour, _timesOfWork[11].Minute, 0);
                 }
 
                 if (_timesOfWork[12] == _nullTime && _timesOfWork[13] == _nullTime)
                     checkIsWeekendSun.Checked = true;
                 else
                 {
-                    timeSunWorkBeginning.Value = new DateTime(_timesOfWork[12].Hour, _timesOfWork[12].Minute, 0);
-                    timeSunWorkEnd.Value = new DateTime(_timesOfWork[13].Hour, _timesOfWork[13].Minute, 0);
+                    timeSunWorkBeginning.Value = new DateTime(1753, 1, 1, _timesOfWork[12].Hour, _timesOfWork[12].Minute, 0);
+                    timeSunWorkEnd.Value = new DateTime(1753, 1, 1, _timesOfWork[13].Hour, _timesOfWork[13].Minute, 0);
                 }
 
             }
@@ -164,7 +164,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
             get => TimeOnly.FromDateTime(timeDurationOfAppointment.Value);
             set
             {
-                timeDurationOfAppointment.Value = new DateTime(value.Hour,value.Minute,0);
+                timeDurationOfAppointment.Value = new DateTime(1753, 1, 1, value.Hour,value.Minute,0);
             }
         }
         public ChangeDataOfDoctorForm()

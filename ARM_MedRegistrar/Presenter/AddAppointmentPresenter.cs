@@ -10,6 +10,9 @@ using ARM_MedRegistrar.Model.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.DaysWithFreeAppointments;
 using ARM_MedRegistrar.Data.Json.Dictionaries;
 using ARM_MedRegistrar.Model.WorksBeginningEnd;
+using ARM_MedRegistrar.Model.Appointments;
+using ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository;
+using System.Globalization;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -23,13 +26,16 @@ namespace ARM_MedRegistrar.Presenter
         IBaseRepositoryWithCreatedID<uint, IPatient> _jsonPatientRepository;
         IDictionary<uint, IPatient>? _patients;
         IBaseRepository<uint, IFreeTimeOfAppointment> _jsonFreeTimeOfAppointmentRepository;
+        IBaseRepositoryWithCreatedID<uint, IAppointment> _jsonAppointmentRepository;
+        IAppointment _appointment;
         IDayWithFreeAppointments _dayWithFreeAppointments;
         IList<IDayWithFreeAppointments> _daysWithFreeAppointments;
+        IList<TimeOnly> _delTimeOfAppointments;
         ITranslator _translator;
         string _placeOfAppointment;
-        string _lineSchedule = "";
         int _countOfLine = -1;
         bool _isSuccess;
+        uint _id;
 
         public AddAppointmentPresenter(IAddAppointmentForm view)
         {
@@ -38,7 +44,7 @@ namespace ARM_MedRegistrar.Presenter
             _jsonDoctorRepository = new JsonDoctorRepository();
             _jsonPatientRepository = new JsonPatientRepository();
             _jsonFreeTimeOfAppointmentRepository = new JsonFreeTimeOfAppointmentRepository();
-            
+            _jsonAppointmentRepository = new JsonAppointmentRepository();
         }
 
         
@@ -58,13 +64,13 @@ namespace ARM_MedRegistrar.Presenter
                     _isSuccess = true;
                     _countOfLine++;
                     _view.DoctorCountOfLine = _countOfLine;
-                    _view.DoctorId = doctor.Id;
-                    _view.DoctorSurname = doctor.PersonalData.FullName.Surname;
-                    _view.DoctorName = doctor.PersonalData.FullName.Name;
-                    _view.DoctorPatronymic = doctor.PersonalData.FullName.Patronymic;
-                    _view.DoctorSpecialization = doctor.Specialization;
-                    _view.DoctorCabinet = doctor.Cabinet;
-                    _view.DoctorPlotNumber = doctor.PlotNumber;
+                    _view.DoctorId = doctor.DoctorDataOfAppointment.Id;
+                    _view.DoctorSurname = doctor.DoctorDataOfAppointment.PersonalData.FullName.Surname;
+                    _view.DoctorName = doctor.DoctorDataOfAppointment.PersonalData.FullName.Name;
+                    _view.DoctorPatronymic = doctor.DoctorDataOfAppointment.PersonalData.FullName.Patronymic;
+                    _view.DoctorSpecialization = doctor.DoctorDataOfAppointment.Specialization;
+                    _view.DoctorCabinet = doctor.DoctorDataOfAppointment.Cabinet;
+                    _view.DoctorPlotNumber = doctor.DoctorDataOfAppointment.PlotNumber;
                 }
                 if (_isSuccess)
                     return true;
@@ -123,13 +129,13 @@ namespace ARM_MedRegistrar.Presenter
                             
                             _countOfLine++;
                             _view.DoctorCountOfLine = _countOfLine;
-                            _view.DoctorId = doctor.Id;
-                            _view.DoctorSurname = doctor.PersonalData.FullName.Surname;
-                            _view.DoctorName = doctor.PersonalData.FullName.Name;
-                            _view.DoctorPatronymic = doctor.PersonalData.FullName.Patronymic;
-                            _view.DoctorSpecialization = doctor.Specialization;
-                            _view.DoctorCabinet = doctor.Cabinet;
-                            _view.DoctorPlotNumber = doctor.PlotNumber;
+                            _view.DoctorId = doctor.DoctorDataOfAppointment.Id;
+                            _view.DoctorSurname = doctor.DoctorDataOfAppointment.PersonalData.FullName.Surname;
+                            _view.DoctorName = doctor.DoctorDataOfAppointment.PersonalData.FullName.Name;
+                            _view.DoctorPatronymic = doctor.DoctorDataOfAppointment.PersonalData.FullName.Patronymic;
+                            _view.DoctorSpecialization = doctor.DoctorDataOfAppointment.Specialization;
+                            _view.DoctorCabinet = doctor.DoctorDataOfAppointment.Cabinet;
+                            _view.DoctorPlotNumber = doctor.DoctorDataOfAppointment.PlotNumber;
                             _isSuccess = true;
                         }
                     }
@@ -167,7 +173,7 @@ namespace ARM_MedRegistrar.Presenter
                             foreach (IWorkSchedule workSchedule in _doctors[key].WorkSchedule)
                                 if (workSchedule.DayOfWeek == _translator.Translate(_view.DayOfAppointment.DayOfWeek.ToString()))   //если день недели желаемой записи совпадает с рабочим днём врача
                                 {
-                                    _dayWithFreeAppointments = new DayWithFreeAppointments(new WorkBeginningEnd( workSchedule.WorkBeginningEnd.WorkBeginning, workSchedule.WorkBeginningEnd.WorkEnd), _doctors[key].DurationOfAppointment, _view.DayOfAppointment); //создание записей на выбранный в части view день
+                                    _dayWithFreeAppointments = new DayWithFreeAppointments(new WorkBeginningEnd( workSchedule.WorkBeginningEnd.WorkBeginning, workSchedule.WorkBeginningEnd.WorkEnd), _doctors[key].DoctorDataOfAppointment.DurationOfAppointment, _view.DayOfAppointment); //создание записей на выбранный в части view день
                                     foreach (TimeOnly time in _dayWithFreeAppointments.TimeOfAppointments)
                                         _result.Add(time.ToString());                     //запись всех свободных записей в итоговый List<string>
 
@@ -181,7 +187,7 @@ namespace ARM_MedRegistrar.Presenter
                         }
                         else 
                         { 
-                            foreach (uint id in _dictFreeTimeOfAppointments.Keys)  //IFreeTimeOfAppointment freeTimeOfAppointments in _dictFreeTimeOfAppointments.Values
+                            foreach (uint id in _dictFreeTimeOfAppointments.Keys) 
                             {
                                 if (id == _view.DoctorSelectedId)
                                 {
@@ -191,7 +197,7 @@ namespace ARM_MedRegistrar.Presenter
                                             foreach (IWorkSchedule workSchedule in _doctors[key].WorkSchedule)
                                                 if (workSchedule.DayOfWeek == _translator.Translate(_view.DayOfAppointment.DayOfWeek.ToString()))
                                                 {
-                                                    _dayWithFreeAppointments = new DayWithFreeAppointments(new WorkBeginningEnd(workSchedule.WorkBeginningEnd.WorkBeginning, workSchedule.WorkBeginningEnd.WorkEnd), _doctors[key].DurationOfAppointment, _view.DayOfAppointment);
+                                                    _dayWithFreeAppointments = new DayWithFreeAppointments(new WorkBeginningEnd(workSchedule.WorkBeginningEnd.WorkBeginning, workSchedule.WorkBeginningEnd.WorkEnd), _doctors[key].DoctorDataOfAppointment.DurationOfAppointment, _view.DayOfAppointment);
                                                     foreach (TimeOnly time in _dayWithFreeAppointments.TimeOfAppointments)
                                                         _result.Add(time.ToString());
 
@@ -225,8 +231,6 @@ namespace ARM_MedRegistrar.Presenter
             return false;
         }
 
-
-
         public void ShowInfoAboutDoctor()
         {
             _doctors = _jsonDoctorRepository.Read();
@@ -250,14 +254,14 @@ namespace ARM_MedRegistrar.Presenter
             {
                 if (_view.GetTypeOfAppointment == "Вызов на дом")
                 { 
-                    _placeOfAppointment = _patients[_view.PatientSelectedId].Address.FormatOneLine(); ;
+                    _placeOfAppointment = "кабинет " + _patients[_view.PatientSelectedId].Address.FormatOneLine(); ;
                     _view.PlaceOfAppointment = _patients[_view.PatientSelectedId].Address.FormatOneLine();
                     return true;
                 }
                 else
                 { 
-                    _placeOfAppointment = _doctors[_view.DoctorSelectedId].Cabinet.ToString(); ;
-                    _view.PlaceOfAppointment = "кабинет " + _doctors[_view.DoctorSelectedId].Cabinet.ToString();
+                    _placeOfAppointment = "кабинет " + _doctors[_view.DoctorSelectedId].DoctorDataOfAppointment.Cabinet.ToString(); ;
+                    _view.PlaceOfAppointment = "кабинет " + _doctors[_view.DoctorSelectedId].DoctorDataOfAppointment.Cabinet.ToString();
                     return true;
                 }
             }
@@ -289,8 +293,8 @@ namespace ARM_MedRegistrar.Presenter
 
             if (_doctors != null && _doctors.Count != 0)
             {
-                if (_view.GetTypeOfAppointment == "Вызов на дом" && !(_doctors[_view.DoctorSelectedId].Specialization == "терапевт"
-                    || _doctors[_view.DoctorSelectedId].Specialization == "педиатр" || _doctors[_view.DoctorSelectedId].Specialization == "врач общей практики"))
+                if (_view.GetTypeOfAppointment == "Вызов на дом" && !(_doctors[_view.DoctorSelectedId].DoctorDataOfAppointment.Specialization == "терапевт"
+                    || _doctors[_view.DoctorSelectedId].DoctorDataOfAppointment.Specialization == "педиатр" || _doctors[_view.DoctorSelectedId].DoctorDataOfAppointment.Specialization == "врач общей практики"))
                     return false;
                 else 
                     return true;
@@ -344,6 +348,61 @@ namespace ARM_MedRegistrar.Presenter
                 _view.InfoAboutPatient = _patients[_view.PatientSelectedId].Format();
         }
 
+
+
+        public bool AddAppointment()
+        {
+            _doctors = _jsonDoctorRepository.Read();
+            _patients = _jsonPatientRepository.Read();
+
+            if (_patients == null || _patients.Count == 0)
+                return false;
+            if (_doctors == null || _doctors.Count == 0)
+                return false;
+
+            if (_patients != null && _patients.Count != 0 && _doctors != null && _doctors.Count != 0) 
+            {
+                DateTime _timeOfAppointment = DateTime.Parse(_view.GetFreeTimeOfAppointment, CultureInfo.InvariantCulture);
+                _id = _jsonAppointmentRepository.CreateID();
+                _appointment = new Appointment(_id, _patients[_view.PatientSelectedId], _doctors[_view.DoctorSelectedId].DoctorDataOfAppointment, _view.GetTypeOfAppointment, 
+                    new DateTime(_view.DayOfAppointment.Year, _view.DayOfAppointment.Month, _view.DayOfAppointment.Day,
+                    _timeOfAppointment.Hour, _timeOfAppointment.Minute, 0), _placeOfAppointment);
+
+
+
+                _dictFreeTimeOfAppointments = _jsonFreeTimeOfAppointmentRepository.Read();
+                if (_dictFreeTimeOfAppointments != null)
+                {
+                    foreach (IDayWithFreeAppointments dayWithFreeAppointments in _dictFreeTimeOfAppointments[_view.DoctorSelectedId].FreeTimeOfAppointments)
+                    {
+                        if (dayWithFreeAppointments.DateOfAppointment == _view.DayOfAppointment)
+                        {
+                            _delTimeOfAppointments = dayWithFreeAppointments.TimeOfAppointments;
+                            for (int i = 0; i < dayWithFreeAppointments.TimeOfAppointments.Count; i++)
+                            {
+                                if (dayWithFreeAppointments.TimeOfAppointments[i] == TimeOnly.FromDateTime(_timeOfAppointment))
+                                    _delTimeOfAppointments.Remove(TimeOnly.FromDateTime(_timeOfAppointment));
+                            }
+                        }
+                    }
+
+
+                    foreach (IDayWithFreeAppointments dayWithFreeAppointments in _dictFreeTimeOfAppointments[_view.DoctorSelectedId].FreeTimeOfAppointments)
+                    {
+                        if (dayWithFreeAppointments.DateOfAppointment == _view.DayOfAppointment)
+                        {
+                            dayWithFreeAppointments.TimeOfAppointments = _delTimeOfAppointments;
+                        }
+                    }
+
+                    _jsonFreeTimeOfAppointmentRepository.Update(_dictFreeTimeOfAppointments[_view.DoctorSelectedId]);
+
+                }
+                _jsonAppointmentRepository.Create(_appointment);
+                return true;
+            }
+            return false;
+        }
 
     }
 }

@@ -1,9 +1,6 @@
-﻿using ARM_MedRegistrar.Model.Addresses;
+﻿
 using ARM_MedRegistrar.Model.Appointments;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-//using System.Text.Json;
-using System.Collections.ObjectModel;
 
 namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
 {
@@ -16,10 +13,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
         private void Load()
         {
             if (!File.Exists(_savePath))
-            {
-                File.Create(_savePath);
                 _appointments = new SortedDictionary<uint, IAppointment>();
-            }
             else
                 _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
 

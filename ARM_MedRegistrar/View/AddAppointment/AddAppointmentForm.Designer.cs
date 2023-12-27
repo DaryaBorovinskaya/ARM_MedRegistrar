@@ -80,6 +80,7 @@
             richTextBoxInfoAboutPatient = new RichTextBox();
             buttAllDataAboutPatient = new Button();
             buttChange = new Button();
+            checkNoCloseWindow = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)errorNoTime).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
@@ -483,6 +484,7 @@
             // buttAddAppointment
             // 
             buttAddAppointment.BackColor = Color.FromArgb(255, 192, 192);
+            buttAddAppointment.Enabled = false;
             buttAddAppointment.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             buttAddAppointment.ForeColor = Color.Firebrick;
             buttAddAppointment.Location = new Point(1435, 785);
@@ -526,12 +528,25 @@
             buttChange.UseVisualStyleBackColor = true;
             buttChange.Click += buttChange_Click;
             // 
+            // checkNoCloseWindow
+            // 
+            checkNoCloseWindow.AutoSize = true;
+            checkNoCloseWindow.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            checkNoCloseWindow.ForeColor = Color.Black;
+            checkNoCloseWindow.Location = new Point(1516, 745);
+            checkNoCloseWindow.Name = "checkNoCloseWindow";
+            checkNoCloseWindow.Size = new Size(213, 32);
+            checkNoCloseWindow.TabIndex = 66;
+            checkNoCloseWindow.Text = "Не закрывать окно ";
+            checkNoCloseWindow.UseVisualStyleBackColor = true;
+            // 
             // AddAppointmentForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(1792, 880);
+            Controls.Add(checkNoCloseWindow);
             Controls.Add(buttChange);
             Controls.Add(buttAllDataAboutPatient);
             Controls.Add(richTextBoxInfoAboutPatient);
@@ -634,5 +649,6 @@
         private RichTextBox richTextBoxInfoAboutPatient;
         private Button buttAllDataAboutPatient;
         private Button buttChange;
+        private CheckBox checkNoCloseWindow;
     }
 }

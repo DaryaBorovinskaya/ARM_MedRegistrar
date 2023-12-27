@@ -53,14 +53,12 @@ namespace ARM_MedRegistrar.Presenter
                 {
                     _workSchedule = new WorkScheduleOfDoctor(WorkScheduleOfDoctor.GetDaysOfWeek[i / 2], new WorkBeginningEnd(  _timesOfWork[i], _timesOfWork[i + 1]));
                     _workSchedules.Add(_workSchedule);
-                    
-                    
                 }
                 
             }
 
-            _newDoctor = new Doctor(_id, _personalData, _workSchedules, _view.Specializations, _view.PlotNumber,
-                _view.Cabinet, _view.DurationOfAppointment);
+            _newDoctor = new Doctor(new DoctorDataOfAppointment( _id, _personalData, _view.Specializations, _view.PlotNumber,
+                _view.Cabinet, _view.DurationOfAppointment) , _workSchedules);
 
             _jsonDoctorRepository.Create(_newDoctor);
 

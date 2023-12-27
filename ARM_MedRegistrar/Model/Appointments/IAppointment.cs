@@ -6,10 +6,11 @@ using ARM_MedRegistrar.Model.Persons.Patients;
 namespace ARM_MedRegistrar.Model.Appointments
 {
     public interface IAppointment : IIdentification, IFormatter
-    {
+    { 
         public DateTime DateAndTime { get; set; }
         public IPatient Patient { get; set; }
-        public IDoctor Doctor { get; set; }
+        public IDoctorDataOfAppointment DoctorDataOfAppointment { get; set; }
+        public string TypeOfAppointment { get; set; }
 
         public string Place {  get; set; }   //место, где будет приём врача - дома или в кабинете
     }

@@ -182,8 +182,6 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
             comboBoxBloodType.Items.AddRange(new string[] { "Неизвестно", "I", "II", "III", "IV" });
             comboBoxRhFactor.Items.AddRange(new string[] { "Неизвестно", "Положит.", "Отрицат." });
 
-
-
             _presenter = new(this);
         }
 

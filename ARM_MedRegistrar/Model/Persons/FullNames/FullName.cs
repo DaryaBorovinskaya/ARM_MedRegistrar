@@ -45,5 +45,9 @@ namespace ARM_MedRegistrar.Model.Persons
         {
             return $"Фамилия: {Surname}\nИмя: {Name}\nОтчество: {Patronymic}\n";
         }
+        public string FormatOneLine()
+        {
+            return $"{Surname} {Name} {Patronymic}";
+        }
     }
 }
