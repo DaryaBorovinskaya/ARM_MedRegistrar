@@ -2,21 +2,20 @@
 using ARM_MedRegistrar.Data.Json.Dictionaries;
 using ARM_MedRegistrar.Model.AttachedStreets;
 using ARM_MedRegistrar.View.AttachedToTheClinicStreets;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ARM_MedRegistrar.Presenter.AttachedStreets;
 using ARM_MedRegistrar.Model.AddressesOfBuilding;
 
 namespace ARM_MedRegistrar.Presenter
 {
-    public class AttachedStreetsPresenter
+    public class AttachedStreetsPresenter : IAttachedStreetsPresenter
     {
         IAttachedStreetsForm _view;
         IAttachedStreets _newAttachedStreet;
         IBaseRepositoryWithCreatedID<uint, IAttachedStreets> _jsonAttachedStreetsRepository; 
         IDictionary<uint, IAttachedStreets>? _attachedStreets;
+
+        string IAttachedStreetsPresenter.AllAttStreets { set => _view.AllAttStreets = value; }
+
         public AttachedStreetsPresenter(IAttachedStreetsForm view) 
         {
             _view = view;
@@ -24,14 +23,14 @@ namespace ARM_MedRegistrar.Presenter
             
         }
 
-        public void AddAttStreets()
+        public string AddAttStreets()
         {
             _newAttachedStreet = new AttachedStreets(new AddressOfBuilding( _view.City, _view.Region, _view.Street ,_view.NumbOfHouse), _jsonAttachedStreetsRepository.CreateID());
             _jsonAttachedStreetsRepository.Create(_newAttachedStreet);
         }
 
 
-        public bool DeleteAttStreets()
+        public string DeleteAttStreets()
         {
             _attachedStreets = _jsonAttachedStreetsRepository.Read();
             if (_attachedStreets == null || _attachedStreets.Count == 0)
@@ -52,7 +51,7 @@ namespace ARM_MedRegistrar.Presenter
             return false;
         }
 
-        public void AllAttStreets()
+        public string AllAttStreets()
         {
             string _result = string.Empty;
             _attachedStreets = _jsonAttachedStreetsRepository.Read();

@@ -95,7 +95,8 @@ namespace ARM_MedRegistrar.View.PaidMedServices
             else
             {
                 result = _presenter.IsSearchPaidMedService();
-                MessageBox.Show(result);
+                if (result != string.Empty)
+                    MessageBox.Show(result);
                 textSearchingTitle.Clear();
             }
         }
@@ -103,8 +104,9 @@ namespace ARM_MedRegistrar.View.PaidMedServices
         private void buttAllPaidMedServices_Click(object sender, EventArgs e)
         {
             listViewPaidMedServices.Items.Clear();
-            if (!_presenter.ShowAllPaidMedServices())
-                MessageBox.Show(_presenter.EmptyList());
+            result = _presenter.ShowAllPaidMedServices();
+            if (result != string.Empty)
+                MessageBox.Show(result);
         }
 
         private void buttRemoveMedService_Click(object sender, EventArgs e)
@@ -127,8 +129,6 @@ namespace ARM_MedRegistrar.View.PaidMedServices
                     foreach (uint id in _selectedId)
                         _lineOfId += id.ToString() + "  ";
 
-
-
                     DialogResult dialogResult = MessageBox.Show(_presenter.ConfirmationRemove(_lineOfId), " ", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -149,14 +149,15 @@ namespace ARM_MedRegistrar.View.PaidMedServices
 
                 if (_selIndex != 0)
                 {
-                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление врача с ID: {_selIndex}", " ", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show(_presenter.ConfirmationRemove(_selIndex.ToString()), " ", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         _selectedId.Add(_selIndex);
-                        if (_presenter.RemovePaidMedService(_selectedId))
-                            MessageBox.Show("Услуга успешно удалена");
+                        result = _presenter.IsRemovePaidMedService(_selectedId);
+                        if (result == string.Empty)
+                            MessageBox.Show(_presenter.SuccessRemove());
                         else
-                            MessageBox.Show("Не удалось удалить услугу");
+                            MessageBox.Show(_presenter.FailureRemove());
                     }
                 }
             }
@@ -177,8 +178,9 @@ namespace ARM_MedRegistrar.View.PaidMedServices
 
                 }
 
-                if (!_presenter.CalculateTotalPrice(_selectedId))
-                    MessageBox.Show("Не удалось посчитать итоговую стоимость");
+                result = _presenter.CalculateTotalPrice(_selectedId);
+                if (result != string.Empty)
+                    MessageBox.Show(result);
 
             }
 

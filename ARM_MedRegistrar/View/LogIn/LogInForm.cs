@@ -44,7 +44,7 @@ namespace ARM_MedRegistrar
                 result = _presenter.IsSuccessLogIn();
                 if (result == string.Empty)
                 {
-                    MainWindowForm newForm = new(this);  
+                    MainWindowForm newForm = new(this);
                     newForm.ShowDialog();
                 }
                 else
@@ -61,8 +61,6 @@ namespace ARM_MedRegistrar
             registrationForm.ShowDialog();
         }
 
-
-
         private void checkViewPassword_CheckedChanged(object sender, EventArgs e)
         {
             if (checkViewPassword.Checked)
@@ -72,10 +70,6 @@ namespace ARM_MedRegistrar
                 textPassword.UseSystemPasswordChar = true;
         }
 
-        private void buttChangeDataOfUser_Click(object sender, EventArgs e)
-        {
-            ChangeDataOfUserForm changeDataOfUserForm = new(this);
-            changeDataOfUserForm.ShowDialog();
-        }
+
     }
 }

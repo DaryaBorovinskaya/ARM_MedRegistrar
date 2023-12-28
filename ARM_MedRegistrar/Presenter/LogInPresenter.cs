@@ -9,7 +9,7 @@ namespace ARM_MedRegistrar.Presenter
     public class LogInPresenter
     {
         ILogInForm _view;
-        
+        string result;
         public LogInPresenter(ILogInForm view)
         {
             _view = view;
@@ -17,7 +17,6 @@ namespace ARM_MedRegistrar.Presenter
 
         public string IsSuccessLogIn()
         {
-            string result;
             try
             {
                 result = User.IsSuccessLogIn( _view.Login, _view.Password);
@@ -30,5 +29,6 @@ namespace ARM_MedRegistrar.Presenter
 
             return result;
         }
+
     }
 }

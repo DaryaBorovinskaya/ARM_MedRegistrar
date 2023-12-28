@@ -2,6 +2,7 @@
 using ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository;
 using ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans;
 using ARM_MedRegistrar.Presenter.ChangeDataOfUsers;
+using ARM_MedRegistrar.Presenter.InfoAboutUserPresenter;
 using Newtonsoft.Json;
 using System.Windows.Forms;
 
@@ -10,6 +11,7 @@ namespace ARM_MedRegistrar.Model.Persons.Users
 
     public class User : IUser
     {
+        static IInfoAboutUserPresenter _infoPresenter;
         static IChangeDataOfUserPresenter _presenter;
         private IPersonalData _personalData;
         private string _post;
@@ -64,7 +66,10 @@ namespace ARM_MedRegistrar.Model.Persons.Users
         {
             _presenter = presenter;
         }
-
+        public User(IInfoAboutUserPresenter infoPresenter)
+        {
+            _infoPresenter = infoPresenter;
+        }
 
         [JsonConstructor]
         public User(IPersonalData personalData, string login, byte[] salt, string saltPassword, string post)
@@ -253,7 +258,7 @@ namespace ARM_MedRegistrar.Model.Persons.Users
         {
             IBaseRepository<string, IUser> _jsonUserRepository = new JsonUserRepository();
             IDictionary<string, IUser>? _users;
-
+            JsonCurrentUserRepository _jsonCurrentUserRepository = new ();
 
             for (int i = 0; i < login.Length; i++)
                 if (login[i] == (int)Keys.Space)
@@ -272,7 +277,10 @@ namespace ARM_MedRegistrar.Model.Persons.Users
                     {
                         saltedPassword = GeneratingSaltPassword.GenerateSaltPassword(password, _users[key].Salt);
                         if (saltedPassword == _users[key].SaltPassword)
+                        {
+                            _jsonCurrentUserRepository.Create((User)_users[key]);
                             return string.Empty;
+                        }
                     }
             }
             throw new ArgumentException("Список пользователей пуст");
@@ -283,6 +291,34 @@ namespace ARM_MedRegistrar.Model.Persons.Users
         public static IList<string> SetPost()
         {
             return new List<string> { "медицинский регистратор", "заведующий регистратурой" };
+        }
+
+
+        public static string ShowInfoAboutUser()
+        {
+            JsonCurrentUserRepository _jsonCurrentUserRepository = new();
+            User? _user = _jsonCurrentUserRepository.Read();
+            if (_user == null)
+                throw new ArgumentException("Нулевое значение пользователя");
+
+            _infoPresenter.InfoSurname = _user.PersonalData.FullName.Surname;
+            _infoPresenter.InfoName = _user.PersonalData.FullName.Name;
+            _infoPresenter.InfoPatronymic = _user.PersonalData.FullName.Patronymic;
+            _infoPresenter.InfoPhoneNumber = _user.PersonalData.PhoneNumber;
+            _infoPresenter.InfoPost = _user.Post;
+            return string.Empty;
+        }
+
+        public static string CheckAccessLevel()
+        {
+            JsonCurrentUserRepository _jsonCurrentUserRepository = new();
+            User? _user = _jsonCurrentUserRepository.Read();
+            if (_user == null)
+                throw new ArgumentException("Нулевое значение пользователя");
+
+            if (_user.Post == "системный администратор")
+                return string.Empty;
+            throw new ArgumentException("Ошибка: данная функция Вам недоступна");
         }
 
     }

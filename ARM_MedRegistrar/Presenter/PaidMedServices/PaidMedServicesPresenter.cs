@@ -34,11 +34,19 @@ namespace ARM_MedRegistrar.Presenter.PaidMedServices
         }
 
 
-        public void AddPaidMedService()
+        public string AddPaidMedService()
         {
-            _id = _jsonPaidMedServiceRepository.CreateID();
-            _paidMedService = new PaidMedService(_view.Title, _view.Price, _id);
-            _jsonPaidMedServiceRepository.Create(_paidMedService);
+            try
+            {
+                result = PaidMedService.AddPaidMedService(_view.Title,_view.Price);
+            }
+
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
+
+            return result;
         }
 
 
@@ -66,31 +74,19 @@ namespace ARM_MedRegistrar.Presenter.PaidMedServices
 
 
 
-        public bool ShowAllPaidMedServices()
+        public  string ShowAllPaidMedServices()
         {
-            _countOfLine = -1;
-            _isSuccess = false;
-            _paidMedServices = _jsonPaidMedServiceRepository.Read();
-            if (_paidMedServices == null || _paidMedServices.Count == 0)
-                return false;
-
-            if (_paidMedServices != null && _paidMedServices.Count != 0)
+            try
             {
-                foreach (IPaidMedService paidMedService in _paidMedServices.Values)
-                {
-                    _isSuccess = true;
-                    _countOfLine++;
-                    _view.CountOfLine = _countOfLine;
-                    _view.Id = paidMedService.Id;
-                    _view.Title = paidMedService.Title;
-                    _view.Price = paidMedService.Price;
-                }
-                if (_isSuccess)
-                    return true;
-                else
-                    return false;
+                result = PaidMedService.ShowAllPaidMedServices();
             }
-            return false;
+
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
+
+            return result;
         }
 
 
@@ -129,30 +125,19 @@ namespace ARM_MedRegistrar.Presenter.PaidMedServices
 
 
 
-        public bool CalculateTotalPrice(IList<uint> _listOfId)
+        public string CalculateTotalPrice(IList<uint> _listOfId)
         {
-            _paidMedServices = _jsonPaidMedServiceRepository.Read();
-            if (_paidMedServices == null || _paidMedServices.Count == 0 || _listOfId.Count == 0)
-                return false;
-
-            if (_paidMedServices != null && _paidMedServices.Count != 0)
+            try
             {
-                decimal _totalPrice = 0;
-                foreach (uint key in _paidMedServices.Keys)
-                {
-                    foreach (uint id in _listOfId)
-                    {
-                        if (key == id)
-                        {
-                            _totalPrice += _paidMedServices[id].Price;
-                        }
-                    }
-
-                }
-                _view.TotalPrice = _totalPrice;
-                return true;
+                result = PaidMedService.CalculateTotalPrice(_listOfId);
             }
-            return false;
+
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
+
+            return result;
         }
     }
 }

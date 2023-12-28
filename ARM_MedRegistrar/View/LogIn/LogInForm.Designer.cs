@@ -39,7 +39,6 @@ partial class LogInForm
         errorNoLog = new ErrorProvider(components);
         errorNoPassword = new ErrorProvider(components);
         checkViewPassword = new CheckBox();
-        buttChangeDataOfUser = new Button();
         errorWrongLogOrPassword = new ErrorProvider(components);
         errorWrongPassword = new ErrorProvider(components);
         labelWrongLogOrPassword = new Label();
@@ -107,9 +106,9 @@ partial class LogInForm
         // 
         buttonRegistration.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point);
         buttonRegistration.ForeColor = Color.Black;
-        buttonRegistration.Location = new Point(113, 450);
+        buttonRegistration.Location = new Point(255, 446);
         buttonRegistration.Name = "buttonRegistration";
-        buttonRegistration.Size = new Size(238, 38);
+        buttonRegistration.Size = new Size(298, 38);
         buttonRegistration.TabIndex = 5;
         buttonRegistration.Text = "Зарегистрироваться";
         buttonRegistration.UseVisualStyleBackColor = true;
@@ -147,18 +146,6 @@ partial class LogInForm
         checkViewPassword.UseVisualStyleBackColor = true;
         checkViewPassword.CheckedChanged += checkViewPassword_CheckedChanged;
         // 
-        // buttChangeDataOfUser
-        // 
-        buttChangeDataOfUser.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point);
-        buttChangeDataOfUser.ForeColor = Color.Black;
-        buttChangeDataOfUser.Location = new Point(464, 450);
-        buttChangeDataOfUser.Name = "buttChangeDataOfUser";
-        buttChangeDataOfUser.Size = new Size(238, 38);
-        buttChangeDataOfUser.TabIndex = 8;
-        buttChangeDataOfUser.Text = "Сменить данные";
-        buttChangeDataOfUser.UseVisualStyleBackColor = true;
-        buttChangeDataOfUser.Click += buttChangeDataOfUser_Click;
-        // 
         // errorWrongLogOrPassword
         // 
         errorWrongLogOrPassword.ContainerControl = this;
@@ -172,7 +159,7 @@ partial class LogInForm
         labelWrongLogOrPassword.AutoSize = true;
         labelWrongLogOrPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
         labelWrongLogOrPassword.ForeColor = Color.Red;
-        labelWrongLogOrPassword.Location = new Point(268, 408);
+        labelWrongLogOrPassword.Location = new Point(268, 406);
         labelWrongLogOrPassword.Name = "labelWrongLogOrPassword";
         labelWrongLogOrPassword.Size = new Size(279, 28);
         labelWrongLogOrPassword.TabIndex = 9;
@@ -186,7 +173,6 @@ partial class LogInForm
         BackColor = Color.Snow;
         ClientSize = new Size(830, 523);
         Controls.Add(labelWrongLogOrPassword);
-        Controls.Add(buttChangeDataOfUser);
         Controls.Add(checkViewPassword);
         Controls.Add(labelName);
         Controls.Add(buttonRegistration);
@@ -220,7 +206,6 @@ partial class LogInForm
     private ErrorProvider errorNoLog;
     private ErrorProvider errorNoPassword;
     private CheckBox checkViewPassword;
-    private Button buttChangeDataOfUser;
     private ErrorProvider errorWrongLogOrPassword;
     private ErrorProvider errorWrongPassword;
     private Label labelWrongLogOrPassword;

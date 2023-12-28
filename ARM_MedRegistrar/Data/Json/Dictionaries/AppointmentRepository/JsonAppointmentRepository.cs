@@ -23,7 +23,6 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
             _savePath = "appointments.json";
             _appointments = new Dictionary<uint, IAppointment>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
-
         }
 
         public void Create(IAppointment value)

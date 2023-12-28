@@ -39,6 +39,7 @@
             textPhoneNumber = new TextBox();
             label5 = new Label();
             label6 = new Label();
+            buttChangeDataOfUser = new Button();
             SuspendLayout();
             // 
             // label1
@@ -157,12 +158,25 @@
             label6.TabIndex = 32;
             label6.Text = "Номер телефона";
             // 
+            // buttChangeDataOfUser
+            // 
+            buttChangeDataOfUser.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point);
+            buttChangeDataOfUser.ForeColor = Color.Black;
+            buttChangeDataOfUser.Location = new Point(504, 251);
+            buttChangeDataOfUser.Name = "buttChangeDataOfUser";
+            buttChangeDataOfUser.Size = new Size(238, 38);
+            buttChangeDataOfUser.TabIndex = 33;
+            buttChangeDataOfUser.Text = "Сменить данные";
+            buttChangeDataOfUser.UseVisualStyleBackColor = true;
+            buttChangeDataOfUser.Click += buttChangeDataOfUser_Click;
+            // 
             // InfoAboutUserForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(819, 317);
+            Controls.Add(buttChangeDataOfUser);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(textPhoneNumber);
@@ -197,5 +211,6 @@
         private TextBox textPhoneNumber;
         private Label label5;
         private Label label6;
+        private Button buttChangeDataOfUser;
     }
 }
