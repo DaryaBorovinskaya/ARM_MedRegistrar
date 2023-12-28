@@ -20,6 +20,11 @@ namespace ARM_MedRegistrar.View
             result = _presenter.ShowData();
             if (result != string.Empty)
                 MessageBox.Show(result);
+            result = _presenter.CheckAccessLevel();
+            if (result != string.Empty)
+            { 
+                buttChangeDataOfUser.Visible = false;
+            }
         }
 
         private void buttChangeDataOfUser_Click(object sender, EventArgs e)

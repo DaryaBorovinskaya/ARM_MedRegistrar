@@ -213,7 +213,6 @@
             textSurname.Name = "textSurname";
             textSurname.Size = new Size(328, 39);
             textSurname.TabIndex = 53;
-            textSurname.KeyPress += textBox_SpacePress;
             // 
             // textName
             // 
@@ -222,7 +221,6 @@
             textName.Name = "textName";
             textName.Size = new Size(328, 39);
             textName.TabIndex = 54;
-            textName.KeyPress += textBox_SpacePress;
             // 
             // textPatr
             // 
@@ -231,7 +229,6 @@
             textPatr.Name = "textPatr";
             textPatr.Size = new Size(328, 39);
             textPatr.TabIndex = 55;
-            textPatr.KeyPress += textBox_SpacePress;
             // 
             // label6
             // 

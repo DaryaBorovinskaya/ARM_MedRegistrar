@@ -1,15 +1,13 @@
 ﻿using ARM_MedRegistrar.View.AddDoctor;
-using ARM_MedRegistrar.Presenter;
+using ARM_MedRegistrar.Presenter.AddDoctor;
 
 namespace ARM_MedRegistrar
 {
-
-
     public partial class AddDoctorForm : Form, IAddDoctorForm
     {
-        //private BindingList<IWorkSchedule> _schedules;
         IList<TimeOnly> _timesOfWork;
         AddDoctorPresenter _presenter;
+        string result;   
         DateTime _nullTime = new(1753, 1, 1, 0, 0, 0);
         string IAddDoctorForm.Surname => textSurname.Text;
 
@@ -68,55 +66,8 @@ namespace ARM_MedRegistrar
             comboBoxSpecializations.Items.AddRange(_presenter.SetSpecializations().ToArray());
         }
 
-
-        private void textBox_SpacePress(object sender, KeyPressEventArgs e)
-        {
-            //char ch = e.KeyChar;
-
-            if (e.KeyChar == (int)Keys.Space)
-                e.KeyChar = '\0';
-        }
-
-        private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
-        {
-            //char ch = e.KeyChar;
-
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
-                e.KeyChar = '\0';
-        }
-
-        private string textBoxWithoutNullInBeginning(TextBox textBox)
-        {
-            string _newTextOfTextBox = textBox.Text;
-            int _length = _newTextOfTextBox.Length;
-            if (_newTextOfTextBox[0] == '0')
-            {
-                if (_length == 1)
-                    _newTextOfTextBox = "1";
-                else
-                {
-                    while (_newTextOfTextBox.Length >= 1 && _newTextOfTextBox[0] == '0')
-                        _newTextOfTextBox = _newTextOfTextBox.Remove(0, 1);
-                    if (_newTextOfTextBox.Length == 0) _newTextOfTextBox = "1";
-                }
-            }
-            return _newTextOfTextBox;
-        }
-
-        private static bool IsCorrectTime(DateTime timeBeginning, DateTime timeEnd)
-        {
-            if ((timeEnd.Hour - timeBeginning.Hour < 1) && (timeEnd.Minute - timeBeginning.Minute <= 1))
-                return false;
-            return true;
-        }
-
-
-
         private void buttAddDoctor_Click(object sender, EventArgs e)
         {
-            
-            
-            
             bool _isError = false;
             errorNoPlotNumber.Clear();
             errorNoSurname.Clear();
@@ -159,7 +110,8 @@ namespace ARM_MedRegistrar
                 errorNoCabinet.SetError(textCabinet, "Поле не заполнено");
             }
 
-            if (!_presenter.SetPlotNumber())
+            result = _presenter.SetPlotNumber();
+            if (result != string.Empty)
             {
                 _isError = true;
                 errorNoPlotNumber.SetError(textPlotNumber, "Поле заполнено неверно"); 
@@ -182,57 +134,59 @@ namespace ARM_MedRegistrar
                 errorNoDurationOfAppointment.SetError(timeDurationOfAppointment, "Поле заполнено некорректно");
             }
 
-            if (!IsCorrectTime(timeMonWorkBeginning.Value, timeMonWorkEnd.Value) && !checkIsWeekendMon.Checked)
+            if (!_presenter.IsCorrectTime(timeMonWorkBeginning.Value, timeMonWorkEnd.Value) && !checkIsWeekendMon.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeMon.SetError(timeMonWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeMon.SetError(timeMonWorkBeginning, _presenter.NoCorrectTime());
             }
 
-            if (!IsCorrectTime(timeTuesWorkBeginning.Value, timeTuesWorkEnd.Value) && !checkIsWeekendTues.Checked)
+            if (!_presenter.IsCorrectTime(timeTuesWorkBeginning.Value, timeTuesWorkEnd.Value) && !checkIsWeekendTues.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeTues.SetError(timeTuesWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeTues.SetError(timeTuesWorkBeginning, _presenter.NoCorrectTime());
             }
 
-            if (!IsCorrectTime(timeWedWorkBeginning.Value, timeWedWorkEnd.Value) && !checkIsWeekendWed.Checked)
+            if (!_presenter.IsCorrectTime(timeWedWorkBeginning.Value, timeWedWorkEnd.Value) && !checkIsWeekendWed.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeWed.SetError(timeWedWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeWed.SetError(timeWedWorkBeginning, _presenter.NoCorrectTime());
             }
 
-            if (!IsCorrectTime(timeThursWorkBeginning.Value, timeThursWorkEnd.Value) && !checkIsWeekendThurs.Checked)
+            if (!_presenter.IsCorrectTime(timeThursWorkBeginning.Value, timeThursWorkEnd.Value) && !checkIsWeekendThurs.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeThurs.SetError(timeThursWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeThurs.SetError(timeThursWorkBeginning, _presenter.NoCorrectTime());
             }
 
-            if (!IsCorrectTime(timeFriWorkBeginning.Value, timeFriWorkEnd.Value) && !checkIsWeekendFri.Checked)
+            if (!_presenter.IsCorrectTime(timeFriWorkBeginning.Value, timeFriWorkEnd.Value) && !checkIsWeekendFri.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeFri.SetError(timeFriWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeFri.SetError(timeFriWorkBeginning, _presenter.NoCorrectTime());
             }
 
-            if (!IsCorrectTime(timeSatWorkBeginning.Value, timeSatWorkEnd.Value) && !checkIsWeekendSat.Checked)
+            if (!_presenter.IsCorrectTime(timeSatWorkBeginning.Value, timeSatWorkEnd.Value) && !checkIsWeekendSat.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeSat.SetError(timeSatWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeSat.SetError(timeSatWorkBeginning, _presenter.NoCorrectTime());
             }
 
-            if (!IsCorrectTime(timeSunWorkBeginning.Value, timeSunWorkEnd.Value) && !checkIsWeekendSun.Checked)
+            if (!_presenter.IsCorrectTime(timeSunWorkBeginning.Value, timeSunWorkEnd.Value) && !checkIsWeekendSun.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeSun.SetError(timeSunWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeSun.SetError(timeSunWorkBeginning, _presenter.NoCorrectTime());
             }
 
             if (!_isError)
             {
-                textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
-                textCabinet.Text = textBoxWithoutNullInBeginning(textCabinet);
-
+                
                 if (timeDurationOfAppointment.Value.Minute == _nullTime.Minute)
                     timeDurationOfAppointment.Value = new DateTime(1753, 1, 1, 0, 12, 0);
 
-                _presenter.AddDoctor();
+                result = _presenter.AddDoctor();
+                if (result != string.Empty)
+                    MessageBox.Show(result);
+                else 
+                    MessageBox.Show(_presenter.SuccessAdd());
 
                 if (!checkNoCloseWindow.Checked)
                     Close();
@@ -260,16 +214,12 @@ namespace ARM_MedRegistrar
                     timeSunWorkBeginning.Value = DateTime.Now;
                     timeSunWorkEnd.Value = DateTime.Now;
                 }
-
-                MessageBox.Show("Добавление врача успешно выполнено!");
+                
+                
             }
 
         }
 
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void checkIsWeekendMon_CheckedChanged(object sender, EventArgs e)
         {

@@ -33,6 +33,7 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
             {
                 if (value == "" || value == " " || value == null)
                     throw new ArgumentException("Специализация не задана");
+
                 _specialization = value;
             }
         }

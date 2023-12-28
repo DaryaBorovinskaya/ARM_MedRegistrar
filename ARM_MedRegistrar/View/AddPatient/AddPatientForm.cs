@@ -1,5 +1,5 @@
 ﻿using ARM_MedRegistrar.View.AddPatient;
-using ARM_MedRegistrar.Presenter;
+using ARM_MedRegistrar.Presenter.AddPatient;
 
 namespace ARM_MedRegistrar
 {

@@ -9,27 +9,31 @@ using ARM_MedRegistrar.Data.Json.Dictionaries.AttachedStreets;
 using ARM_MedRegistrar.Model.AddressesOfBuilding;
 using ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans;
 
-namespace ARM_MedRegistrar.Presenter
+namespace ARM_MedRegistrar.Presenter.AddPatient
 {
-    public class AddPatientPresenter
+    public class AddPatientPresenter : IAddPatientPresenter
     {
+
         IFullName _fullName;
         IPersonalData _personalData;
         IPatient _newPatient;
         IPatientAddress _address;
         IAddPatientForm _view;
         IBaseRepositoryWithCreatedID<uint, IAttachedStreets> _jsonAttachedStreetsRepository;
-        IDictionary<uint,IAttachedStreets>? _attStreets;
+        IDictionary<uint, IAttachedStreets>? _attStreets;
         uint _id;
         string _city, _region;
         int _plotNumber;
         IBaseRepositoryWithCreatedID<uint, IPatient> _jsonPatientRepository;
         IAddressOfBuilding _addressOfBuilding;
-        public AddPatientPresenter(IAddPatientForm view) 
-        { 
+
+        string? IAddPatientPresenter.City {  set => _view.City = value; }
+        string? IAddPatientPresenter.Region { set => _view.Region = value; }
+        int IAddPatientPresenter.PlotNumber {  set => _view.PlotNumber = value; }
+
+        public AddPatientPresenter(IAddPatientForm view)
+        {
             _view = view;
-            _jsonAttachedStreetsRepository = new JsonAttachedStreetsRepository();
-            _jsonPatientRepository = new JsonPatientRepository();
         }
 
 
@@ -59,7 +63,7 @@ namespace ARM_MedRegistrar.Presenter
 
                 _view.City = _city;
                 _view.Region = _region;
-                foreach(uint key in _attStreets.Keys)
+                foreach (uint key in _attStreets.Keys)
                 {
                     if (_attStreets[key].AddressOfBuilding.City == _view.City && _attStreets[key].AddressOfBuilding.Region == _view.Region
                         && _attStreets[key].AddressOfBuilding.Street == _view.Street && _attStreets[key].AddressOfBuilding.NumbOfHouse == _view.NumbOfHouse)
@@ -94,11 +98,11 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool AddPatient()
         {
-            
+
             _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
             _personalData = new PersonalData(_fullName, _view.PhoneNumber);
 
-            
+
 
             _addressOfBuilding = new AddressOfBuilding(_city, _region, _view.Street, _view.NumbOfHouse);
             _address = new PatientAddress(_addressOfBuilding, _view.NumbOfFlat);

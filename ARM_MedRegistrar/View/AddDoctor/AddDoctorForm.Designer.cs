@@ -147,7 +147,6 @@ partial class AddDoctorForm
         textSurname.Name = "textSurname";
         textSurname.Size = new Size(312, 39);
         textSurname.TabIndex = 20;
-        textSurname.KeyPress += textBox_SpacePress;
         // 
         // textName
         // 
@@ -158,7 +157,6 @@ partial class AddDoctorForm
         textName.Name = "textName";
         textName.Size = new Size(312, 39);
         textName.TabIndex = 21;
-        textName.KeyPress += textBox_SpacePress;
         // 
         // textPatr
         // 
@@ -169,7 +167,6 @@ partial class AddDoctorForm
         textPatr.Name = "textPatr";
         textPatr.Size = new Size(315, 39);
         textPatr.TabIndex = 22;
-        textPatr.KeyPress += textBox_SpacePress;
         // 
         // buttAddDoctor
         // 
@@ -293,7 +290,6 @@ partial class AddDoctorForm
         textPhoneNumber.Name = "textPhoneNumber";
         textPhoneNumber.Size = new Size(315, 39);
         textPhoneNumber.TabIndex = 36;
-        textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // label8
         // 
@@ -320,7 +316,6 @@ partial class AddDoctorForm
         textPlotNumber.Name = "textPlotNumber";
         textPlotNumber.Size = new Size(198, 39);
         textPlotNumber.TabIndex = 38;
-        textPlotNumber.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // textCabinet
         // 
@@ -331,7 +326,6 @@ partial class AddDoctorForm
         textCabinet.Name = "textCabinet";
         textCabinet.Size = new Size(198, 39);
         textCabinet.TabIndex = 39;
-        textCabinet.KeyPress += textBox_ContainsExceptNumbers;
         // 
         // errorNoPlotNumber
         // 
@@ -385,7 +379,6 @@ partial class AddDoctorForm
         label12.Size = new Size(43, 32);
         label12.TabIndex = 48;
         label12.Text = "Ср";
-        label12.Click += label12_Click;
         // 
         // label13
         // 

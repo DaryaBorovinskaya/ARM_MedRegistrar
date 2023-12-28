@@ -9,17 +9,11 @@ namespace ARM_MedRegistrar.Presenter
 {
     public class RegistrationPresenter
     {
-        IFullName _fullName;
-        IPersonalData _personalData;
-        IUser _newUser;
         IRegistrationForm _view;
-        IBaseRepository<string, IUser> _jsonUserRepository;
-        IDictionary<string, IUser>? _users;
         
         public RegistrationPresenter(IRegistrationForm view)
         { 
             _view = view;
-            _jsonUserRepository = new JsonUserRepository();
             
         }
 

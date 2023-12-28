@@ -1,10 +1,9 @@
 ﻿using ARM_MedRegistrar.Data.Json.Dictionaries;
 using ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository;
+using ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository;
 using ARM_MedRegistrar.Presenter.PaidMedServices;
 using Newtonsoft.Json;
-using System.Security.Cryptography;
-using System.Windows.Forms;
-
+using ARM_MedRegistrar.Model.Persons.Users;
 namespace ARM_MedRegistrar.Model.PaidMedServices
 {
     public class PaidMedService : IPaidMedService
@@ -144,7 +143,7 @@ namespace ARM_MedRegistrar.Model.PaidMedServices
             if (_paidMedServices == null || _paidMedServices.Count == 0 || _listOfId.Count == 0)
                 throw new ArgumentException("Список платных мед. услу пуст");
 
-            if (_listOfId.Count == _paidMedServices.Count)
+            if (_listOfId.Count == _paidMedServices.Count && CheckAccessLevel() != string.Empty)
                 throw new ArgumentException("Нельзя удалить все платные мед. услуги");
 
             foreach (uint key in _paidMedServices.Keys)
@@ -164,6 +163,21 @@ namespace ARM_MedRegistrar.Model.PaidMedServices
             throw new ArgumentException("Hе удалось удалить");
 
         }
+
+
+        public static string CheckAccessLevel()
+        {
+            JsonCurrentUserRepository _jsonCurrentUserRepository = new();
+            User? _user = _jsonCurrentUserRepository.Read();
+            if (_user == null)
+                throw new ArgumentException("Нулевое значение пользователя");
+
+            if (_user.Post != User.SetPost()[0] )
+                return string.Empty;
+            throw new ArgumentException("Ошибка: данная функция Вам недоступна");
+        }
+
+
 
         public static string SuccessRemove()
         {

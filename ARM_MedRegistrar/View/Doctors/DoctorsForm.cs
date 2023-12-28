@@ -1,10 +1,11 @@
-﻿using ARM_MedRegistrar.Presenter;
+﻿using ARM_MedRegistrar.Presenter.Doctors;
 using ARM_MedRegistrar.View.ChangeDataOfDoctor;
 namespace ARM_MedRegistrar.View.Doctors
 {
     public partial class DoctorsForm : Form, IDoctorsForm
     {
         Form _form;
+        string result;
         DoctorsPresenter _presenter;
         int _lineOfListViewDoctors;
         uint IDoctorsForm.Id
@@ -99,20 +100,17 @@ namespace ARM_MedRegistrar.View.Doctors
 
             _presenter = new(this);
             comboBoxSpecializations.Items.AddRange(_presenter.SetSpecialization().ToArray());
+            result = _presenter.CheckAccessLevel();
+            if (result != string.Empty)
+            {
+                buttAddDoctor.Visible = false;
+                buttRemoveDoctor.Visible = false;
+                checkIsMultiSelect.Visible = false;
+                buttChangeData.Visible = false;
+            }
         }
 
-        private void textBox_SpacePress(object sender, KeyPressEventArgs e)
-        {
-
-            if (e.KeyChar == (int)Keys.Space)
-                e.KeyChar = '\0';
-        }
-
-        private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
-                e.KeyChar = '\0';
-        }
+        
         private void OnClosed(object? sender, FormClosedEventArgs e)
         {
             _form.Visible = true;
@@ -153,8 +151,9 @@ namespace ARM_MedRegistrar.View.Doctors
 
             if (!_isError)
             {
-                if (!_presenter.SearchDoctor())
-                    MessageBox.Show("Врач не найден");
+                result = _presenter.SearchDoctor();
+                if (result != string.Empty)
+                    MessageBox.Show(result);
                 textSurname.Clear();
                 textName.Clear();
                 textPatr.Clear();
@@ -181,13 +180,14 @@ namespace ARM_MedRegistrar.View.Doctors
                     foreach (uint id in _selectedId)
                         _lineOfId += id.ToString() + "  ";
 
-                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление врачей с ID: {_lineOfId}", " ", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show(_presenter.ConfirmationRemove(_lineOfId), " ", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        if (_presenter.RemoveDoctor(_selectedId))
-                            MessageBox.Show("Врачи успешно удалены");
+                        result = _presenter.RemoveDoctor(_selectedId);
+                        if (result == string.Empty)
+                            MessageBox.Show(_presenter.SuccessRemove());
                         else
-                            MessageBox.Show("Не удалось удалить врачей");
+                            MessageBox.Show(_presenter.FailureRemove());
                     }
 
                 }
@@ -202,14 +202,15 @@ namespace ARM_MedRegistrar.View.Doctors
 
                 if (_selIndex != 0)
                 {
-                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление врача с ID: {_selIndex}", " ", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show(_presenter.ConfirmationRemove(_selIndex.ToString()), " ", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
                         _selectedId.Add(_selIndex);
-                        if (_presenter.RemoveDoctor(_selectedId))
-                            MessageBox.Show("Врач успешно удалён");
+                        result = _presenter.RemoveDoctor(_selectedId);
+                        if (result == string.Empty)
+                            MessageBox.Show(_presenter.SuccessRemove());
                         else
-                            MessageBox.Show("Не удалось удалить врача");
+                            MessageBox.Show(_presenter.FailureRemove());
                     }
                 }
             }
@@ -217,8 +218,9 @@ namespace ARM_MedRegistrar.View.Doctors
         private void buttAllDoctors_Click(object sender, EventArgs e)
         {
             listViewDoctors.Items.Clear();
-            if (!_presenter.ShowAllDoctors())
-                MessageBox.Show("Список врачей пуст");
+            result = _presenter.ShowAllDoctors();
+            if (result != string.Empty)
+                MessageBox.Show(_presenter.EmptyList());
         }
 
         private void buttChangeData_Click(object sender, EventArgs e)
@@ -234,10 +236,12 @@ namespace ARM_MedRegistrar.View.Doctors
             {
                 richTextBoxInfoAboutDoctor.Clear();
 
-                _presenter.ShowInfoAboutDoctor();
+                result = _presenter.ShowInfoAboutDoctor();
+                if (result != string.Empty)
+                    MessageBox.Show(result);
             }
             else
-                errorMultiSelect.SetError(checkIsMultiSelect, "Нельзя выполнить действие, т.к. \nвыбрано несколько врачей");
+                errorMultiSelect.SetError(checkIsMultiSelect, _presenter.MultiSelect());
 
         }
 

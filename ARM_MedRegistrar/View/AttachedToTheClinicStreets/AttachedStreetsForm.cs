@@ -1,4 +1,4 @@
-﻿using ARM_MedRegistrar.Presenter.AttachedStreets;
+﻿using ARM_MedRegistrar.Presenter;
 using ARM_MedRegistrar.View.AttachedToTheClinicStreets;
 
 namespace ARM_MedRegistrar.View
@@ -6,6 +6,7 @@ namespace ARM_MedRegistrar.View
     public partial class AttachedStreetsForm : Form, IAttachedStreetsForm
     {
         AttachedStreetsPresenter _presenter;
+        string result;
 
         string IAttachedStreetsForm.City => textCity.Text;
 
@@ -21,21 +22,24 @@ namespace ARM_MedRegistrar.View
         {
             InitializeComponent();
             _presenter = new(this);
+            result = _presenter.CheckAccessLevel();
+            if (result != string.Empty)
+            {
+                buttAddDataToFile.Visible = false;
+                buttRemoveDataToFile.Visible = false;
+                label2.Visible = false;
+                label14.Visible = false;
+                label13.Visible = false;
+                label12.Visible = false;
+                label3.Visible = false;
+                textCity.Visible = false;
+                textRegion.Visible = false; 
+                textStreet.Visible = false;
+                textNumbOfHouse.Visible = false;
+            }
         }
 
-        private string textBoxWithoutNullInBeginning(TextBox textBox)
-        {
-            string _newTextOfTextBox = textBox.Text;
-            int _length = _newTextOfTextBox.Length;
-            if (_newTextOfTextBox[0] == '0')
-            {
-                if (_length == 1)
-                    _newTextOfTextBox = "1";
-                else
-                    _newTextOfTextBox = _newTextOfTextBox.Remove(0, 1);
-            }
-            return _newTextOfTextBox;
-        }
+        
 
         private void buttAddDataToFile_Click(object sender, EventArgs e)
         {
@@ -71,18 +75,23 @@ namespace ARM_MedRegistrar.View
 
             if (!_isError)
             {
-                textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
-                _presenter.AddAttStreets();
-                MessageBox.Show("Успешно добавлено");
+                result = _presenter.AddAttStreets();
+                if (result == string.Empty)
+                    MessageBox.Show(_presenter.SuccessAdd());
+                else
+                    MessageBox.Show(result);
                 textStreet.Clear();
                 textNumbOfHouse.Clear();
             }
-
-
+            
+            
+                
         }
 
         private void buttRemoveDataToFile_Click(object sender, EventArgs e)
         {
+            
+            
             bool _isError = false;
             errorNoStreet.Clear();
             errorNoCity.Clear();
@@ -115,20 +124,24 @@ namespace ARM_MedRegistrar.View
 
             if (!_isError)
             {
-                textNumbOfHouse.Text = textBoxWithoutNullInBeginning(textNumbOfHouse);
-                if (_presenter.DeleteAttStreets())
-                    MessageBox.Show("Удаление выполнено успешно");
+                result = _presenter.DeleteAttStreets();
+                if (result == string.Empty)
+                    MessageBox.Show(_presenter.SuccessRemove());
                 else
-                    MessageBox.Show("Не удалось удалить");
+                    MessageBox.Show(_presenter.FailureRemove());
                 textStreet.Clear();
                 textNumbOfHouse.Clear();
             }
+            
+           
         }
 
         private void buttAllAttStreets_Click(object sender, EventArgs e)
         {
             richTextBoxAttStreets.Clear();
-            _presenter.AllAttStreets();
+            result = _presenter.AllAttStreets();
+            if (result != string.Empty)
+                MessageBox.Show(result);
         }
     }
 }
