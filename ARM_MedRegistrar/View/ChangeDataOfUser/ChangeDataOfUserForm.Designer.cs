@@ -61,6 +61,7 @@ namespace ARM_MedRegistrar
             textPhoneNumber = new TextBox();
             errorNoPhoneNumber = new ErrorProvider(components);
             buttRemoveUser = new Button();
+            textPost = new TextBox();
             ((System.ComponentModel.ISupportInitialize)errorNoOldLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPost).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).BeginInit();
@@ -89,7 +90,6 @@ namespace ARM_MedRegistrar
             textOldLog.Name = "textOldLog";
             textOldLog.Size = new Size(278, 34);
             textOldLog.TabIndex = 10;
-            textOldLog.KeyPress += textBox_SpacePress;
             // 
             // buttChangeData
             // 
@@ -113,7 +113,6 @@ namespace ARM_MedRegistrar
             textPatr.Name = "textPatr";
             textPatr.Size = new Size(329, 34);
             textPatr.TabIndex = 17;
-            textPatr.KeyPress += textBox_SpacePress;
             // 
             // textName
             // 
@@ -123,7 +122,6 @@ namespace ARM_MedRegistrar
             textName.Name = "textName";
             textName.Size = new Size(329, 34);
             textName.TabIndex = 18;
-            textName.KeyPress += textBox_SpacePress;
             // 
             // textSurname
             // 
@@ -133,7 +131,6 @@ namespace ARM_MedRegistrar
             textSurname.Name = "textSurname";
             textSurname.Size = new Size(329, 34);
             textSurname.TabIndex = 19;
-            textSurname.KeyPress += textBox_SpacePress;
             // 
             // label1
             // 
@@ -202,7 +199,6 @@ namespace ARM_MedRegistrar
             textNewLog.Name = "textNewLog";
             textNewLog.Size = new Size(329, 34);
             textNewLog.TabIndex = 27;
-            textNewLog.KeyPress += textBox_SpacePress;
             // 
             // textNewPassword
             // 
@@ -213,7 +209,6 @@ namespace ARM_MedRegistrar
             textNewPassword.Size = new Size(329, 34);
             textNewPassword.TabIndex = 28;
             textNewPassword.UseSystemPasswordChar = true;
-            textNewPassword.KeyPress += textBox_SpacePress;
             // 
             // checkViewNewPassword
             // 
@@ -264,7 +259,7 @@ namespace ARM_MedRegistrar
             comboBoxPost.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             comboBoxPost.ForeColor = Color.Firebrick;
             comboBoxPost.FormattingEnabled = true;
-            comboBoxPost.Location = new Point(395, 204);
+            comboBoxPost.Location = new Point(395, 267);
             comboBoxPost.Name = "comboBoxPost";
             comboBoxPost.Size = new Size(329, 36);
             comboBoxPost.TabIndex = 36;
@@ -336,6 +331,15 @@ namespace ARM_MedRegistrar
             buttRemoveUser.UseVisualStyleBackColor = true;
             buttRemoveUser.Click += buttRemoveUser_Click;
             // 
+            // textPost
+            // 
+            textPost.BackColor = Color.White;
+            textPost.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textPost.Location = new Point(395, 204);
+            textPost.Name = "textPost";
+            textPost.Size = new Size(329, 34);
+            textPost.TabIndex = 108;
+            // 
             // ChangeDataOfUserForm
             // 
             AllowDrop = true;
@@ -343,6 +347,7 @@ namespace ARM_MedRegistrar
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
             ClientSize = new Size(780, 695);
+            Controls.Add(textPost);
             Controls.Add(buttRemoveUser);
             Controls.Add(label8);
             Controls.Add(textPhoneNumber);
@@ -417,5 +422,6 @@ namespace ARM_MedRegistrar
         private TextBox textPhoneNumber;
         private ErrorProvider errorNoPhoneNumber;
         private Button buttRemoveUser;
+        private TextBox textPost;
     }
 }

@@ -96,11 +96,9 @@ namespace ARM_MedRegistrar.View.Doctors
             _form.Hide();
             FormClosed += OnClosed;
             InitializeComponent();
-            comboBoxSpecializations.Items.AddRange(new string[] { "терапевт", "педиатр", "врач общей практики", "хирург", "невролог", "оториноларинголог", "офтальмолог", "травматолог", "акушер-гинеколог", "уролог", "инфекционист", "онколог", "гастроэнтеролог", "кардиолог", "эндокринолог" });
-            toolTipAllDataAboutDoctors.SetToolTip(buttAllDataAboutDoctor, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку");
-            toolTipRemoveDoctor.SetToolTip(buttRemoveDoctor, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку");
 
             _presenter = new(this);
+            comboBoxSpecializations.Items.AddRange(_presenter.SetSpecialization().ToArray());
         }
 
         private void textBox_SpacePress(object sender, KeyPressEventArgs e)

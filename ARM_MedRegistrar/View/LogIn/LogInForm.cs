@@ -5,6 +5,7 @@ namespace ARM_MedRegistrar
 {
     public partial class LogInForm : Form, ILogInForm
     {
+        string result;
         private LogInPresenter _presenter;
         string ILogInForm.Login => textLog.Text;
 
@@ -12,20 +13,10 @@ namespace ARM_MedRegistrar
 
         public LogInForm()
         {
-
             InitializeComponent();
-
             _presenter = new(this);
-
         }
 
-        private void TextBox_SpacePress(object sender, KeyPressEventArgs e)
-        {
-            //char ch = e.KeyChar;
-
-            if (e.KeyChar == (int)Keys.Space)
-                e.KeyChar = '\0';
-        }
 
         private void buttLogIn_Click(object sender, EventArgs e)
         {
@@ -50,14 +41,11 @@ namespace ARM_MedRegistrar
 
             if (!_isError)
             {
-
-                if (_presenter.LogIn() != null)
+                result = _presenter.IsSuccessLogIn();
+                if (result == string.Empty)
                 {
                     MainWindowForm newForm = new(this);  
                     newForm.ShowDialog();
-                    //if (newForm.ShowDialog() == DialogResult.OK)
-                    //    Close();
-
                 }
                 else
                     labelWrongLogOrPassword.Visible = true;
@@ -71,7 +59,6 @@ namespace ARM_MedRegistrar
         {
             RegistrationForm registrationForm = new(this);
             registrationForm.ShowDialog();
-            //if (newForm.ShowDialog() == DialogResult.OK) Close();
         }
 
 
@@ -89,7 +76,6 @@ namespace ARM_MedRegistrar
         {
             ChangeDataOfUserForm changeDataOfUserForm = new(this);
             changeDataOfUserForm.ShowDialog();
-            //if (newForm.ShowDialog() == DialogResult.OK) Close();
         }
     }
 }

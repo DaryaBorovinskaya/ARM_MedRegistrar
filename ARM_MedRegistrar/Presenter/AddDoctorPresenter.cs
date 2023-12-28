@@ -37,6 +37,12 @@ namespace ARM_MedRegistrar.Presenter
             _jsonFreeTimeOfAppointmentRepository = new JsonFreeTimeOfAppointmentRepository();
         }
 
+
+        public IList<string> SetSpecializations()
+        {
+            return Doctor.SetSpecialization();
+        }
+
         public bool SetPlotNumber()
         {
             if (_view.Specializations != "терапевт" && _view.Specializations != "педиатр" && _view.Specializations != "врач общей практики")

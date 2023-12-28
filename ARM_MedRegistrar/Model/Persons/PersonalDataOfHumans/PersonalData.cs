@@ -32,6 +32,10 @@ namespace ARM_MedRegistrar.Model.Persons.PersonalDataOfHumans
                 if (value[0] == '0')
                     throw new ArgumentException("Номер телефона не может начинаться с нуля");
 
+                for (int i = 0; i < value.Length; i++)
+                    if (!char.IsDigit(value[i]) && value[i] != 8)
+                        throw new ArgumentException("Номер телефона не может содержать иные символы, кроме цифр");
+                
                 _phoneNumber = value;
             }
         }

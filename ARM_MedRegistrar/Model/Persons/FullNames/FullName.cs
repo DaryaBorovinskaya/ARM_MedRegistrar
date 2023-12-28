@@ -17,6 +17,9 @@ namespace ARM_MedRegistrar.Model.Persons
             {
                 if (value == "" || value == " " || value == null)
                     throw new ArgumentException("Фамилия не задана");
+                for (int i = 0; i < value.Length; i++)
+                    if (value[i] == (int)Keys.Space)
+                        throw new ArgumentException("Фамилия не должна содержать пробелы");
                 _surname = value;
             }
         }
@@ -24,10 +27,14 @@ namespace ARM_MedRegistrar.Model.Persons
 
         public string Name 
         {
-            get => _name; set
+            get => _name; 
+            set
             {
                 if (value == "" || value == " " || value == null)
                     throw new ArgumentException("Имя не задано");
+                for (int i = 0; i < value.Length; i++)
+                    if (value[i] == (int)Keys.Space)
+                        throw new ArgumentException("Имя не должно содержать пробелы");
                 _name = value;
             }
         }

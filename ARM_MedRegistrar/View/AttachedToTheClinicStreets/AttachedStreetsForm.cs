@@ -1,7 +1,4 @@
-﻿
-
-
-using ARM_MedRegistrar.Presenter;
+﻿using ARM_MedRegistrar.Presenter;
 using ARM_MedRegistrar.View.AttachedToTheClinicStreets;
 
 namespace ARM_MedRegistrar.View

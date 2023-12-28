@@ -1,7 +1,4 @@
-﻿
-using ARM_MedRegistrar.Presenter;
-using ARM_MedRegistrar.View.MainWindow;
-using Newtonsoft.Json.Linq;
+﻿using ARM_MedRegistrar.Presenter;
 
 namespace ARM_MedRegistrar.View.AddAppointment
 {
@@ -192,11 +189,8 @@ namespace ARM_MedRegistrar.View.AddAppointment
         public AddAppointmentForm()
         {
             InitializeComponent();
-
-            comboBoxTypeOfAppointment.Items.AddRange(new string[] { "Первичный приём у врача", "Вторичный приём у врача", "Вызов на дом" });
-            toolTipShowFreeTimeOfAppointment.SetToolTip(buttShowFreeTimeOfAppointment, "Выберите врача из списка, нажав на его ID. \nЗатем нажмите кнопку и выберите нужное время записи\nв списке ниже");
             _presenter = new(this);
-
+            comboBoxTypeOfAppointment.Items.AddRange(_presenter.SetTypeOfAppointment().ToArray());
         }
 
 

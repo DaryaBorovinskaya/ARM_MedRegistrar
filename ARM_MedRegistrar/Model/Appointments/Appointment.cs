@@ -81,5 +81,11 @@ namespace ARM_MedRegistrar.Model.Appointments
             return $"ID: {Id}\nДата и время: {DateAndTime}\nМесто приёма: {Place}\nТип записи: {TypeOfAppointment}" +
                 $"\n\nДанные о враче\n\n{DoctorDataOfAppointment.Format()}\nДанные о пациенте\n\n{Patient.Format()}";
         }
+
+
+        public static IList<string> SetTypeOfAppointment()
+        {
+            return new List<string> { "Первичный приём у врача", "Вторичный приём у врача", "Вызов на дом" };
+        }
     }
 }

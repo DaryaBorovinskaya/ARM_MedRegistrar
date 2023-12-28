@@ -20,6 +20,11 @@ namespace ARM_MedRegistrar.Presenter
             _jsonDoctorRepository = new JsonDoctorRepository();
         }
 
+        public IList<string> SetSpecialization()
+        {
+            return Doctor.SetSpecialization();
+        }
+
 
         public bool SearchDoctor()
         {

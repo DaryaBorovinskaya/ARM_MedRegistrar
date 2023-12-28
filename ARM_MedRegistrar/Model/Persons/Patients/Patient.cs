@@ -185,5 +185,17 @@ namespace ARM_MedRegistrar.Model.Persons.Patients
                 $"Серия мед. полиса: {PolicySeries}\nНомер мед. полиса: {PolicyNumb}\nГруппа крови: { BloodType}\nРезус-фактор: { RhFactor}\nАллергии: { Allergies}";
 
         }
+
+
+        public static IList<string> SetBloodType()
+        {
+            return new List<string>() { "Неизвестно", "I", "II", "III", "IV" };
+        }
+
+
+        public static IList<string> SetRhFactor()
+        {
+            return new List<string>() { "Неизвестно", "Положит.", "Отрицат." };
+        }
     }
 }

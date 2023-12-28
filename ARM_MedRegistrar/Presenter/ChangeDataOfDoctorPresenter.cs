@@ -25,6 +25,12 @@ namespace ARM_MedRegistrar.Presenter
             _jsonDoctorRepository = new JsonDoctorRepository();
         }
 
+
+        public IList<string> SetSpecializations()
+        {
+            return Doctor.SetSpecialization();
+        }
+
         public bool SetPlotNumber()
         {
             if (_view.Specialization != "терапевт" && _view.Specialization != "педиатр" && _view.Specialization != "врач общей практики")

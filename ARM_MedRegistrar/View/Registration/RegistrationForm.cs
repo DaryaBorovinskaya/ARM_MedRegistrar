@@ -20,14 +20,6 @@ namespace ARM_MedRegistrar
 
         string IRegistrationForm.GetPost => comboBoxPost.SelectedItem.ToString();
 
-        IList<string> IRegistrationForm.SetPost
-        {
-            set
-            {
-                comboBoxPost.Items.AddRange(value.ToArray());
-            }
-        }
-
         string IRegistrationForm.PhoneNumber => textPhoneNumber.Text;
 
 
@@ -37,81 +29,26 @@ namespace ARM_MedRegistrar
             _form = form;
             _form.Hide();
             InitializeComponent();
-            //DialogResult = DialogResult.Cancel;
             FormClosed += OnClosed;
-
-
-
-
             _presenter = new(this);
-
-            _presenter.MatchedLogEvent += MatchedLogSet;
-
-            _presenter.SetPost();
-
+            comboBoxPost.Items.AddRange(_presenter.SetPost().ToArray());
         }
 
-
-        private void MatchedLogSet(object? sender, EventArgs e)
-        {
-            errorMatchedLog.SetError(textLog, "Такой логин уже используется");
-        }
-
-        private void NoOneHeadDoctorSet(object? sender, EventArgs e)
-        {
-            errorNoOneHeadDoctor.SetError(comboBoxPost, "Пользователь с должностью \"главный врач\" уже есть");
-
-        }
 
         private void OnClosed(object? sender, FormClosedEventArgs e)
         {
             _form.Visible = true;
-            //DialogResult = DialogResult.OK;
         }
-
-        private void textBox_SpacePress(object sender, KeyPressEventArgs e)
-        {
-            //char ch = e.KeyChar;
-
-            if (e.KeyChar == (int)Keys.Space)
-                e.KeyChar = '\0';
-        }
-        private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
-        {
-            //char ch = e.KeyChar;
-
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
-                e.KeyChar = '\0';
-
-        }
-
-        private string textBoxWithoutNullInBeginning(TextBox textBox)
-        {
-            string _newTextOfTextBox = textBox.Text;
-            int _length = _newTextOfTextBox.Length;
-            if (_newTextOfTextBox[0] == '0')
-            {
-                if (_length == 1)
-                    _newTextOfTextBox = "1";
-                else
-                    _newTextOfTextBox = _newTextOfTextBox.Remove(0, 1);
-            }
-            return _newTextOfTextBox;
-        }
-
 
         private void buttRegistration_Click(object sender, EventArgs e)
         {
-
-
             errorNoSurname.Clear();
             errorNoName.Clear();
             errorNoLog.Clear();
             errorNoPassword.Clear();
             errorNoPost.Clear();
             errorMatchedLog.Clear();
-            errorMatchedPassword.Clear();
-            errorNoOneHeadDoctor.Clear();
+            errorNoOneHeadOfRegistry.Clear();
             errorNoPhoneNumber.Clear();
 
 
@@ -155,17 +92,16 @@ namespace ARM_MedRegistrar
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле не заполнено");
             }
 
-
-
             if (!_isError)
             {
-                textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
-                if (_presenter.IsSuccessRegistration())
+                string result = _presenter.IsSuccessRegistration();
+                if ( result == string.Empty)
                 {
-                    MessageBox.Show($"Вы успешно зарегистрированы (должность {comboBoxPost.SelectedItem})");
-
+                    MessageBox.Show(_presenter.SuccessRegistration());
                     Close();
                 }
+                else
+                    MessageBox.Show(result);
             }
         }
 

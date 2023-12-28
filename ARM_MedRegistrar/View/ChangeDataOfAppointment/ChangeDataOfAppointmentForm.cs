@@ -1,5 +1,4 @@
 ﻿using ARM_MedRegistrar.Presenter;
-using ARM_MedRegistrar.View.AddAppointment;
 
 namespace ARM_MedRegistrar.View.ChangeDataOfAppointment
 {
@@ -82,9 +81,8 @@ namespace ARM_MedRegistrar.View.ChangeDataOfAppointment
         public ChangeDataOfAppointmentForm()
         {
             InitializeComponent();
-            comboBoxTypeOfAppointment.Items.AddRange(new string[] { "Первичный приём у врача", "Вторичный приём у врача", "Вызов на дом" });
-
             _presenter = new(this);
+            comboBoxTypeOfAppointment.Items.AddRange(_presenter.SetTypeOfAppointment().ToArray());
         }
 
         private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)

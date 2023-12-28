@@ -1,10 +1,11 @@
-﻿using ARM_MedRegistrar.Presenter;
+﻿using ARM_MedRegistrar.Presenter.PaidMedServices;
 
 namespace ARM_MedRegistrar.View.PaidMedServices
 {
     public partial class PaidMedServicesForm : Form, IPaidMedServicesForm
     {
         Form _form;
+        string result;
         PaidMedServicesPresenter _presenter;
         int _lineOfListViewPaidMedServices;
 
@@ -65,7 +66,6 @@ namespace ARM_MedRegistrar.View.PaidMedServices
         }
 
 
-
         public PaidMedServicesForm(Form form)
         {
             _form = form;
@@ -82,19 +82,6 @@ namespace ARM_MedRegistrar.View.PaidMedServices
             _form.Visible = true;
         }
 
-        private void textBox_SpacePress(object sender, KeyPressEventArgs e)
-        {
-
-            if (e.KeyChar == (int)Keys.Space)
-                e.KeyChar = '\0';
-        }
-
-        private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
-                e.KeyChar = '\0';
-        }
-
         private void buttSearchPaidMedService_Click(object sender, EventArgs e)
         {
             listViewPaidMedServices.Items.Clear();
@@ -107,8 +94,8 @@ namespace ARM_MedRegistrar.View.PaidMedServices
 
             else
             {
-                if (!_presenter.SearchPaidMedService())
-                    MessageBox.Show("Услуга не найдена");
+                result = _presenter.IsSearchPaidMedService();
+                MessageBox.Show(result);
                 textSearchingTitle.Clear();
             }
         }
@@ -117,7 +104,7 @@ namespace ARM_MedRegistrar.View.PaidMedServices
         {
             listViewPaidMedServices.Items.Clear();
             if (!_presenter.ShowAllPaidMedServices())
-                MessageBox.Show("Список услуг пуст");
+                MessageBox.Show(_presenter.EmptyList());
         }
 
         private void buttRemoveMedService_Click(object sender, EventArgs e)
@@ -125,8 +112,6 @@ namespace ARM_MedRegistrar.View.PaidMedServices
             IList<uint> _selectedId = new List<uint>();
             if (checkIsMultiSelect.Checked)
             {
-
-
 
                 if (listViewPaidMedServices.SelectedItems.Count != 0)
                 {
@@ -142,13 +127,16 @@ namespace ARM_MedRegistrar.View.PaidMedServices
                     foreach (uint id in _selectedId)
                         _lineOfId += id.ToString() + "  ";
 
-                    DialogResult dialogResult = MessageBox.Show($"Подтвердите действие: удаление услуг с ID: {_lineOfId}", " ", MessageBoxButtons.YesNo);
+
+
+                    DialogResult dialogResult = MessageBox.Show(_presenter.ConfirmationRemove(_lineOfId), " ", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        if (_presenter.RemovePaidMedService(_selectedId))
-                            MessageBox.Show("Услуги успешно удалены");
+                        result = _presenter.IsRemovePaidMedService(_selectedId);
+                        if (result == string.Empty)
+                            MessageBox.Show(_presenter.SuccessRemove());
                         else
-                            MessageBox.Show("Не удалось удалить услуги");
+                            MessageBox.Show(_presenter.FailureRemove());
                     }
 
                 }
@@ -233,7 +221,7 @@ namespace ARM_MedRegistrar.View.PaidMedServices
 
         private void numericPrice_ValueChanged(object sender, EventArgs e)
         {
-            numericPrice.Maximum = 10000;
+            numericPrice.Maximum = _presenter.MaxPrice();  
         }
 
         private void checkIsMultiSelect_CheckedChanged(object sender, EventArgs e)

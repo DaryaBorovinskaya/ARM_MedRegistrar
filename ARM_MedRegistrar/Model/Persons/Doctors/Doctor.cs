@@ -53,5 +53,16 @@ namespace ARM_MedRegistrar.Model.Persons.Doctors
 
             return $"{DoctorDataOfAppointment.Format()}ГРАФИК РАБОТЫ\n\n{_lineSchedule}";
         }
-    }
+
+        public static IList<string> SetSpecialization()
+        {
+            return new List<string> { "терапевт", "педиатр", "врач общей практики", "хирург", "невролог", "оториноларинголог", "офтальмолог", "травматолог", "акушер-гинеколог", "уролог", "инфекционист", "онколог", "гастроэнтеролог", "кардиолог", "эндокринолог" };
+        }
+
+
+        
+
+
+        
+}
 }

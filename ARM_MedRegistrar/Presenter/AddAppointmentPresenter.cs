@@ -48,7 +48,10 @@ namespace ARM_MedRegistrar.Presenter
         }
 
         
-
+        public IList<string> SetTypeOfAppointment()
+        {
+            return Appointment.SetTypeOfAppointment();
+        }
         public bool ShowAllDoctors()
         {
             _countOfLine = -1;

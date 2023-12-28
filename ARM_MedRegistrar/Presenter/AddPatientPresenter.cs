@@ -38,6 +38,17 @@ namespace ARM_MedRegistrar.Presenter
         public event EventHandler? NoRegionEvent;
 
 
+        public IList<string> SetBloodType()
+        {
+            return Patient.SetBloodType();
+        }
+
+        public IList<string> SetRhFactor()
+        {
+            return Patient.SetRhFactor();
+        }
+
+
         public void SetDataFromAttStreets()
         {
             _attStreets = _jsonAttachedStreetsRepository.Read();

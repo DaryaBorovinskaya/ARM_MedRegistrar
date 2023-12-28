@@ -54,8 +54,7 @@ namespace ARM_MedRegistrar
             label5 = new Label();
             errorNoPost = new ErrorProvider(components);
             errorMatchedLog = new ErrorProvider(components);
-            errorMatchedPassword = new ErrorProvider(components);
-            errorNoOneHeadDoctor = new ErrorProvider(components);
+            errorNoOneHeadOfRegistry = new ErrorProvider(components);
             label6 = new Label();
             errorNoPhoneNumber = new ErrorProvider(components);
             textPhoneNumber = new TextBox();
@@ -65,8 +64,7 @@ namespace ARM_MedRegistrar
             ((System.ComponentModel.ISupportInitialize)errorNoName).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPost).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorMatchedLog).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorMatchedPassword).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorNoOneHeadDoctor).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoOneHeadOfRegistry).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).BeginInit();
             SuspendLayout();
             // 
@@ -111,7 +109,6 @@ namespace ARM_MedRegistrar
             textLog.Name = "textLog";
             textLog.Size = new Size(329, 34);
             textLog.TabIndex = 10;
-            textLog.KeyPress += textBox_SpacePress;
             // 
             // textPassword
             // 
@@ -122,7 +119,6 @@ namespace ARM_MedRegistrar
             textPassword.Size = new Size(329, 34);
             textPassword.TabIndex = 11;
             textPassword.UseSystemPasswordChar = true;
-            textPassword.KeyPress += textBox_SpacePress;
             // 
             // buttRegistration
             // 
@@ -145,7 +141,6 @@ namespace ARM_MedRegistrar
             textPatr.Name = "textPatr";
             textPatr.Size = new Size(329, 34);
             textPatr.TabIndex = 17;
-            textPatr.KeyPress += textBox_SpacePress;
             // 
             // textName
             // 
@@ -155,7 +150,6 @@ namespace ARM_MedRegistrar
             textName.Name = "textName";
             textName.Size = new Size(329, 34);
             textName.TabIndex = 18;
-            textName.KeyPress += textBox_SpacePress;
             // 
             // textSurname
             // 
@@ -165,7 +159,6 @@ namespace ARM_MedRegistrar
             textSurname.Name = "textSurname";
             textSurname.Size = new Size(329, 34);
             textSurname.TabIndex = 19;
-            textSurname.KeyPress += textBox_SpacePress;
             // 
             // label1
             // 
@@ -269,13 +262,9 @@ namespace ARM_MedRegistrar
             // 
             errorMatchedLog.ContainerControl = this;
             // 
-            // errorMatchedPassword
+            // errorNoOneHeadOfRegistry
             // 
-            errorMatchedPassword.ContainerControl = this;
-            // 
-            // errorNoOneHeadDoctor
-            // 
-            errorNoOneHeadDoctor.ContainerControl = this;
+            errorNoOneHeadOfRegistry.ContainerControl = this;
             // 
             // label6
             // 
@@ -299,7 +288,6 @@ namespace ARM_MedRegistrar
             textPhoneNumber.Name = "textPhoneNumber";
             textPhoneNumber.Size = new Size(329, 34);
             textPhoneNumber.TabIndex = 29;
-            textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
             // 
             // RegistrationForm
             // 
@@ -337,8 +325,7 @@ namespace ARM_MedRegistrar
             ((System.ComponentModel.ISupportInitialize)errorNoName).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPost).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorMatchedLog).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorMatchedPassword).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorNoOneHeadDoctor).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorNoOneHeadOfRegistry).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPhoneNumber).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -374,7 +361,7 @@ namespace ARM_MedRegistrar
         private ErrorProvider errorNoPost;
         private ErrorProvider errorMatchedLog;
         private ErrorProvider errorMatchedPassword;
-        private ErrorProvider errorNoOneHeadDoctor;
+        private ErrorProvider errorNoOneHeadOfRegistry;
         private TextBox text1;
         private Label label6;
         private ErrorProvider errorNoPhoneNumber;

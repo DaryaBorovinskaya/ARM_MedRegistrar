@@ -40,7 +40,10 @@ namespace ARM_MedRegistrar.Presenter
             _jsonFreeTimeOfAppointmentRepository = new JsonFreeTimeOfAppointmentRepository();
         }
 
-
+        public IList<string> SetTypeOfAppointment()
+        {
+            return Appointment.SetTypeOfAppointment();
+        }
         public bool IsDoctorCanTakeAtHome()
         {
             _doctors = _jsonDoctorRepository.Read();

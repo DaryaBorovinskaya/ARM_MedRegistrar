@@ -1,9 +1,5 @@
 ﻿using ARM_MedRegistrar.View.AddDoctor;
 using ARM_MedRegistrar.Presenter;
-using ARM_MedRegistrar.Model.WorkSchedules;
-using ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository;
-using System.ComponentModel;
-using System;
 
 namespace ARM_MedRegistrar
 {
@@ -68,13 +64,8 @@ namespace ARM_MedRegistrar
         public AddDoctorForm()
         {
             InitializeComponent();
-            comboBoxSpecializations.Items.AddRange(new string[] { "терапевт", "педиатр", "врач общей практики", "хирург", "невролог", "оториноларинголог", "офтальмолог", "травматолог", "акушер-гинеколог", "уролог", "инфекционист", "онколог", "гастроэнтеролог", "кардиолог", "эндокринолог" });
-            toolEnterPhoneNumb.SetToolTip(textPhoneNumber, "Ввод цифр без иных символов");
-
             _presenter = new(this);
-
-
-
+            comboBoxSpecializations.Items.AddRange(_presenter.SetSpecializations().ToArray());
         }
 
 

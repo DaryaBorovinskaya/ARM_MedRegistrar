@@ -166,9 +166,8 @@ namespace ARM_MedRegistrar.View.ChangeDataOfDoctor
         public ChangeDataOfDoctorForm()
         {
             InitializeComponent();
-            comboBoxSpecializations.Items.AddRange(new string[] { "терапевт", "педиатр", "врач общей практики", "хирург", "невролог", "оториноларинголог", "офтальмолог", "травматолог", "акушер-гинеколог", "уролог", "инфекционист", "онколог", "гастроэнтеролог", "кардиолог", "эндокринолог" });
-
             _presenter = new(this);
+            comboBoxSpecializations.Items.AddRange(_presenter.SetSpecializations().ToArray());
         }
 
         private void textBox_SpacePress(object sender, KeyPressEventArgs e)

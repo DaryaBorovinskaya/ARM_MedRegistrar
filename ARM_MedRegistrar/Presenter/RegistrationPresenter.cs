@@ -23,47 +23,32 @@ namespace ARM_MedRegistrar.Presenter
             
         }
 
-        public event EventHandler? MatchedLogEvent;
-
-        public void SetPost()
+        public IList<string> SetPost() 
         {
-           _view.SetPost = new List<string> { "медицинский регистратор", "заведующий регистратурой", "главный врач" };
+            return User.SetPost();   
+        }
+
+        public string IsSuccessRegistration()
+        {
+            string result;
+            try 
+            {
+                result = User.IsSuccessRegistration(_view.Surname, _view.Name, _view.Patronymic, _view.Login, _view.Password, _view.PhoneNumber, _view.GetPost);
+            }
+
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
+
+            return result;
+            
         }
 
 
-        public bool IsSuccessRegistration()
+        public string SuccessRegistration()
         {
-            byte[] _salt;
-            string _saltPassword = string.Empty;
-            _users = _jsonUserRepository.Read();
-            
-            bool _isSuccess = true;
-            if (_users != null && _users.Count != 0)
-            {
-                foreach (string key in _users.Keys)
-                {
-                    if (key == _view.Login)
-                    {
-                        MatchedLogEvent?.Invoke(this, EventArgs.Empty);
-                        _isSuccess = false;
-                    }
-
-                }
-                
-            }
-            if (_isSuccess)
-            {
-                _fullName = new FullName(_view.Surname, _view.Name, _view.Patronymic);
-                _personalData = new PersonalData(_fullName, _view.PhoneNumber);
-                _salt = GeneratingSalt.GenerateSalt();
-                _saltPassword = GeneratingSaltPassword.GenerateSaltPassword(_view.Password, _salt);
-                _newUser = new User(_personalData, _view.Login, _salt, _saltPassword, _view.GetPost);
-                _jsonUserRepository.Create( _newUser);
-                
-                return true;
-            }
-            return false;
-
+            return User.SuccessRegistration(_view.GetPost);
         }
     }
 }

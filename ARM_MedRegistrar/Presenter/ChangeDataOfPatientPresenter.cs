@@ -21,6 +21,16 @@ namespace ARM_MedRegistrar.Presenter
             _jsonPatientRepository = new JsonPatientRepository();
         }
 
+
+        public IList<string> SetBloodType()
+        {
+            return Patient.SetBloodType();
+        }
+
+        public IList<string> SetRhFactor()
+        {
+            return Patient.SetRhFactor();
+        }
         public bool ShowDataAboutPatient()
         {
             _patients = _jsonPatientRepository.Read();

@@ -267,12 +267,8 @@ namespace ARM_MedRegistrar
             FormClosed += OnClosed;
             InitializeComponent();
 
-
             //_employee = employee;
             //textFullNameOfRegistr.Text = _employee.PersonalData.FullName.Surname;         //из файла (данные User)
-
-            toolTipAllDataAboutPatients.SetToolTip(buttAllDataAboutPatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
-            toolTipRemovePatient.SetToolTip(buttRemovePatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
 
             _presenter = new(this);
             Load += OnFormStarted;

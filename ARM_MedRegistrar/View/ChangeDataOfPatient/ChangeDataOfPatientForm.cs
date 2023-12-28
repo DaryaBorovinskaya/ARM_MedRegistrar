@@ -169,11 +169,9 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
         public ChangeDataOfPatientForm()
         {
             InitializeComponent();
-
-            comboBoxBloodType.Items.AddRange(new string[] { "Неизвестно", "I", "II", "III", "IV" });
-            comboBoxRhFactor.Items.AddRange(new string[] { "Неизвестно", "Положит.", "Отрицат." });
-
             _presenter = new(this);
+            comboBoxBloodType.Items.AddRange(_presenter.SetBloodType().ToArray());
+            comboBoxRhFactor.Items.AddRange(_presenter.SetRhFactor().ToArray());
         }
 
         private void textBox_SpacePress(object sender, KeyPressEventArgs e)

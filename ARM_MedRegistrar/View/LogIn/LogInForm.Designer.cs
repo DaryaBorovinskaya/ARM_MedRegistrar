@@ -70,7 +70,6 @@ partial class LogInForm
         textLog.Name = "textLog";
         textLog.Size = new Size(329, 34);
         textLog.TabIndex = 1;
-        textLog.KeyPress += TextBox_SpacePress;
         // 
         // textPassword
         // 
@@ -81,7 +80,6 @@ partial class LogInForm
         textPassword.Size = new Size(329, 34);
         textPassword.TabIndex = 2;
         textPassword.UseSystemPasswordChar = true;
-        textPassword.KeyPress += TextBox_SpacePress;
         // 
         // labelLog
         // 

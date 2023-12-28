@@ -1,8 +1,4 @@
-﻿
-using ARM_MedRegistrar.Model.Addresses;
-using ARM_MedRegistrar.Model.Persons;
-using ARM_MedRegistrar.Model.Persons.Patients;
-using ARM_MedRegistrar.View.AddPatient;
+﻿using ARM_MedRegistrar.View.AddPatient;
 using ARM_MedRegistrar.Presenter;
 
 namespace ARM_MedRegistrar
@@ -50,13 +46,10 @@ namespace ARM_MedRegistrar
 
         public AddPatientForm()
         {
-
             InitializeComponent();
-            comboBoxBloodType.Items.AddRange(new string[] { "Неизвестно", "I", "II", "III", "IV" });
-            comboBoxRhFactor.Items.AddRange(new string[] { "Неизвестно", "Положит.", "Отрицат." });
-
             _presenter = new(this);
-
+            comboBoxBloodType.Items.AddRange(_presenter.SetBloodType().ToArray());
+            comboBoxRhFactor.Items.AddRange(_presenter.SetRhFactor().ToArray());
             _presenter.NoCityEvent += NoCitySet;
             _presenter.NoRegionEvent += NoRegionSet;
         }
@@ -136,7 +129,7 @@ namespace ARM_MedRegistrar
             errorNoDocumentNumber.Clear();
             //errorNoCity.Clear();
             //errorNoRegion.Clear();
-            //errorNoPlotNumber.Clear();
+            errorNoPlotNumber.Clear();
             errorNoPhoneNumber.Clear();
 
             _presenter.SetDataFromAttStreets();
@@ -219,11 +212,11 @@ namespace ARM_MedRegistrar
                 _isError = true;
                 errorNoDocumentNumber.SetError(textDocumentNumber, "Поле не заполнено");
             }
-            //if (textPlotNumber.Text == string.Empty)
-            //{
-            //    _isError = true;
-            //    errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
-            //}
+            if (textPlotNumber.Text == string.Empty)
+            {
+                _isError = true;
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
+            }
             if (textPhoneNumber.Text == string.Empty)
             {
                 _isError = true;

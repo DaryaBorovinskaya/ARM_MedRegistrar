@@ -1,4 +1,4 @@
-using ARM_MedRegistrar.Presenter;
+using ARM_MedRegistrar.Presenter.ChangeDataOfUsers;
 using ARM_MedRegistrar.View.ChangeDataOfUser;
 
 namespace ARM_MedRegistrar
@@ -6,6 +6,7 @@ namespace ARM_MedRegistrar
     public partial class ChangeDataOfUserForm : Form, IChangeDataOfUserForm
     {
         Form _form;
+        string result;
         ChangeDataOfUserPresenter _presenter;
 
         string IChangeDataOfUserForm.OldLogin => textOldLog.Text;
@@ -48,7 +49,7 @@ namespace ARM_MedRegistrar
             get => comboBoxPost.SelectedItem.ToString();
             set
             {
-                comboBoxPost.SelectedItem = value;
+                textPost.Text = value;
             }
         }
         string IChangeDataOfUserForm.NewPassword => textNewPassword.Text;
@@ -69,7 +70,7 @@ namespace ARM_MedRegistrar
             InitializeComponent();
 
             _presenter = new(this);
-            comboBoxPost.Items.AddRange(new string[] { "медицинский регистратор", "заведующий регистратурой", "главный врач" });
+            comboBoxPost.Items.AddRange(_presenter.SetPost().ToArray());
         }
 
         private void OnClosed(object? sender, FormClosedEventArgs e)
@@ -77,23 +78,8 @@ namespace ARM_MedRegistrar
             _form.Visible = true;
         }
 
-
-        private void textBox_SpacePress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (int)Keys.Space)
-                e.KeyChar = '\0';
-        }
-
-        private void textBox_ContainsExceptNumbers(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 8)     //(8 - это Backspace)
-                e.KeyChar = '\0';
-
-        }
-
         private void buttChangeData_Click(object sender, EventArgs e)
         {
-
             bool _isError = false;
 
             errorNoPost.Clear();
@@ -140,33 +126,27 @@ namespace ARM_MedRegistrar
                 errorNoPhoneNumber.SetError(textPhoneNumber, "Поле не заполнено");
             }
 
+            if (comboBoxPost.SelectedIndex == -1)
+            {
+                _isError = true;
+                errorNoPost.SetError(comboBoxPost, "Поле не заполнено");
+            }
+
             if (!_isError)
             {
-                textPhoneNumber.Text = textBoxWithoutNullInBeginning(textPhoneNumber);
-                if (_presenter.SaveChanges())
+                result = _presenter.SaveChanges();
+                if (result == string.Empty)
                 {
-                    MessageBox.Show("Данные успешно обновлены");
+                    MessageBox.Show(_presenter.Success());
                     Close();
                 }
                 else
-                    MessageBox.Show("Не удалось внести изменения");
+                    MessageBox.Show(result);
+                textOldLog.Enabled = true;
             }
 
         }
 
-        private string textBoxWithoutNullInBeginning(TextBox textBox)
-        {
-            string _newTextOfTextBox = textBox.Text;
-            int _length = _newTextOfTextBox.Length;
-            if (_newTextOfTextBox[0] == '0')
-            {
-                if (_length == 1)
-                    _newTextOfTextBox = "1";
-                else
-                    _newTextOfTextBox = _newTextOfTextBox.Remove(0, 1);
-            }
-            return _newTextOfTextBox;
-        }
 
 
         private void checkViewNewPassword_CheckedChanged(object sender, EventArgs e)
@@ -178,10 +158,9 @@ namespace ARM_MedRegistrar
                 textNewPassword.UseSystemPasswordChar = true;
         }
 
-
-
         private void buttSearch_Click(object sender, EventArgs e)
         {
+            textOldLog.Enabled = false;
             buttChangeData.Enabled = true;
             errorNoOldLog.Clear();
 
@@ -190,23 +169,25 @@ namespace ARM_MedRegistrar
 
             else
             {
-                textOldLog.Text = textBoxWithoutNullInBeginning(textOldLog);
-                if (!_presenter.ShowDataAboutPatient())
-                {
+                result = _presenter.IsSuccessSearch();
+                if (result == string.Empty)
                     textOldLog.ReadOnly = false;
-                    MessageBox.Show($"Не удалось найти ");
-                }
+
                 else
+                {
+                    MessageBox.Show(_presenter.FailureSearch());
                     textOldLog.ReadOnly = true;
+                }
             }
         }
 
         private void buttRemoveUser_Click(object sender, EventArgs e)
         {
-            if (_presenter.RemoveUser())
-                MessageBox.Show("Удаление выполнено успешно");
+            result = _presenter.IsRemoveUser();
+            if (result == string.Empty)
+                MessageBox.Show(_presenter.SuccessRemove());
             else
-                MessageBox.Show("Не удалось удалить");
+                MessageBox.Show(_presenter.FailureRemove());
 
         }
     }
