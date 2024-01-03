@@ -12,6 +12,7 @@ namespace ARM_MedRegistrar
 
         public LogInForm()
         {
+
             InitializeComponent();
 
             _presenter = new(this);
@@ -37,14 +38,14 @@ namespace ARM_MedRegistrar
             if (textLog.Text == string.Empty)
             {
                 _isError = true;
-                errorNoLog.SetError(textLog, "Поле \"Логин\" не заполнено");
+                errorNoLog.SetError(textLog, "Поле не заполнено");
             }
 
 
             if (textPassword.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPassword.SetError(textPassword, "Поле \"Пароль\" не заполнено");
+                errorNoPassword.SetError(textPassword, "Поле не заполнено");
             }
 
             if (!_isError)
@@ -52,7 +53,7 @@ namespace ARM_MedRegistrar
 
                 if (_presenter.LogIn() != null)
                 {
-                    MainWindowForm newForm = new(this);  //this, _presenter.LogIn()
+                    MainWindowForm newForm = new(this);  
                     newForm.ShowDialog();
                     //if (newForm.ShowDialog() == DialogResult.OK)
                     //    Close();

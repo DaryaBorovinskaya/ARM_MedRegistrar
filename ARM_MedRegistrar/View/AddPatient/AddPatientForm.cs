@@ -48,12 +48,12 @@ namespace ARM_MedRegistrar
 
         private void NoRegionSet(object? sender, EventArgs e)
         {
-            errorNoRegion.SetError(textRegion, "Поле \"Район\" не заполнено");
+            errorNoRegion.SetError(textRegion, "Поле не заполнено");
         }
 
         private void NoCitySet(object? sender, EventArgs e)
         {
-            errorNoCity.SetError(textCity, "Поле \"Город\" не заполнено");
+            errorNoCity.SetError(textCity, "Поле не заполнено");
         }
 
         private void textBox_SpacePress(object sender, KeyPressEventArgs e)
@@ -102,12 +102,6 @@ namespace ARM_MedRegistrar
             numeric.Maximum = 9999;
         }
 
-
-
-
-
-
-
         private void buttAddPatient_Click(object sender, EventArgs e)
         {
             bool _isError = false;
@@ -133,90 +127,90 @@ namespace ARM_MedRegistrar
             if (textSurname.Text == string.Empty)
             {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
+                errorNoSurname.SetError(textSurname, "Поле не заполнено");
             }
 
             if (textName.Text == string.Empty)
             {
                 _isError = true;
-                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
+                errorNoName.SetError(textName, "Поле не заполнено");
             }
 
             if (textPolicySeries.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPolicySeries.SetError(textPolicySeries, "Поле \"Серия полиса\" не заполнено");
+                errorNoPolicySeries.SetError(textPolicySeries, "Поле не заполнено");
             }
 
             if (textPolicyNumb.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPolicyNumber.SetError(textPolicyNumb, "Поле \"Номер полиса\" не заполнено");
+                errorNoPolicyNumber.SetError(textPolicyNumb, "Поле не заполнено");
             }
 
             if (dateTimeDateOfBirth.Value.Day >= DateTime.Today.Day && dateTimeDateOfBirth.Value.Month >= DateTime.Today.Month
                 && dateTimeDateOfBirth.Value.Year >= DateTime.Today.Year || dateTimeDateOfBirth.Value.Year > DateTime.Today.Year)
             {
                 _isError = true;
-                errorWrongDate.SetError(dateTimeDateOfBirth, "Поле \"Дата рождения\" заполнено неверно");
+                errorWrongDate.SetError(dateTimeDateOfBirth, "Поле заполнено неверно");
             }
 
             if (textStreet.Text == string.Empty)
             {
                 _isError = true;
-                errorNoStreet.SetError(textStreet, "Поле \"Улица\" не заполнено");
+                errorNoStreet.SetError(textStreet, "Поле не заполнено");
             }
 
             if (textNumbOfHouse.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Дом\" не заполнено");
+                errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле не заполнено");
             }
 
             if (textNumbOfFlat.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfFlat.SetError(textNumbOfFlat, "Поле \"Квартира\" не заполнено");
+                errorNoNumbOfFlat.SetError(textNumbOfFlat, "Поле не заполнено");
             }
 
             if (comboBoxBloodType.SelectedIndex == -1)
             {
                 _isError = true;
-                errorNoBloodType.SetError(comboBoxBloodType, "Поле \"Группа крови\" не заполнено");
+                errorNoBloodType.SetError(comboBoxBloodType, "Поле не заполнено");
             }
 
             if (comboBoxRhFactor.SelectedIndex == -1)
             {
                 _isError = true;
-                errorNoRhFactor.SetError(comboBoxRhFactor, "Поле \"Резус-фактор\" не заполнено");
+                errorNoRhFactor.SetError(comboBoxRhFactor, "Поле не заполнено");
             }
 
             if (textNumbOfPatientCard.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfPatientCard.SetError(textNumbOfPatientCard, "Поле \"Номер амбулаторной карты\" не заполнено");
+                errorNoNumbOfPatientCard.SetError(textNumbOfPatientCard, "Поле не заполнено");
             }
 
             if (textDocumentSeries.Text == string.Empty)
             {
                 _isError = true;
-                errorNoDocumentSeries.SetError(textDocumentSeries, "Поле \"Серия документа\" не заполнено");
+                errorNoDocumentSeries.SetError(textDocumentSeries, "Поле не заполнено");
             }
 
             if (textDocumentNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoDocumentNumber.SetError(textDocumentNumber, "Поле \"Номер документа\" не заполнено");
+                errorNoDocumentNumber.SetError(textDocumentNumber, "Поле не заполнено");
             }
             if (textPlotNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPlotNumber.SetError(textPlotNumber, "Поле \"Номер участка\" не заполнено");
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
             }
             if (textPhoneNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
+                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле не заполнено");
             }
 
 

@@ -18,16 +18,16 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PaidMedicalServiceRepository
         private void Load()
         {
             if (!File.Exists(_savePath))
-                _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
+                _paidMedServices = new Dictionary<uint, IPaidMedService>();
 
             else
-                _paidMedServices = JsonConvert.DeserializeObject<SortedDictionary<uint, IPaidMedService>>(File.ReadAllText(_savePath), _settings);
+                _paidMedServices = JsonConvert.DeserializeObject<IDictionary<uint, IPaidMedService>>(File.ReadAllText(_savePath), _settings);
 
         }
         public JsonPaidMedServiceRepository()
         {
             _savePath = "paidMedServices.json";
-            _paidMedServices = new SortedDictionary<uint, IPaidMedService>();
+            _paidMedServices = new Dictionary<uint, IPaidMedService>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 
         }

@@ -10,21 +10,21 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AttachedStreets
     public class JsonAttachedStreetsRepository : IBaseRepositoryWithCreatedID<uint, IAttachedStreets>
     {
         private readonly string _savePath;
-        private IDictionary<uint, IAttachedStreets>? _attachedStreets = new SortedDictionary<uint,IAttachedStreets>();
+        private IDictionary<uint, IAttachedStreets>? _attachedStreets = new Dictionary<uint,IAttachedStreets>();
         private JsonSerializerSettings _settings;
 
         private void Load()
         {
             if (!File.Exists(_savePath))
-                _attachedStreets = new SortedDictionary<uint, IAttachedStreets>();
+                _attachedStreets = new Dictionary<uint, IAttachedStreets>();
             else
-                _attachedStreets = JsonConvert.DeserializeObject<SortedDictionary<uint, IAttachedStreets>>(File.ReadAllText(_savePath), _settings);
+                _attachedStreets = JsonConvert.DeserializeObject<IDictionary<uint, IAttachedStreets>>(File.ReadAllText(_savePath), _settings);
 
         }
         public JsonAttachedStreetsRepository()
         {
             _savePath = "attachedStreets.json";
-            _attachedStreets = new SortedDictionary<uint, IAttachedStreets>();
+            _attachedStreets = new Dictionary<uint, IAttachedStreets>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 
             

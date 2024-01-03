@@ -1,6 +1,5 @@
 ﻿using ARM_MedRegistrar.View.Doctors;
 using ARM_MedRegistrar.View.MainWindow;
-using ARM_MedRegistrar.Model.Persons;
 using ARM_MedRegistrar.View;
 using ARM_MedRegistrar.View.ChangeDataOfAppointment;
 using ARM_MedRegistrar.Presenter;
@@ -13,8 +12,6 @@ namespace ARM_MedRegistrar
     public partial class MainWindowForm : Form, IMainWindowForm
     {
         Form _form;
-
-        IUserEmployee _employee;
 
         MainWindowPresenter _presenter;
         int _lineOfListViewPatients;
@@ -278,7 +275,13 @@ namespace ARM_MedRegistrar
             toolTipRemovePatient.SetToolTip(buttRemovePatient, "Выберите пациента из списка, нажав на его ID. \nЗатем нажмите кнопку");
 
             _presenter = new(this);
-            //_presenter.ClearFreeAppointments();
+            Load += OnFormStarted;
+
+        }
+
+        private void OnFormStarted(object? sender, EventArgs e)
+        {
+            _presenter.ClearFreeAppointments();
         }
 
         private void OnClosed(object? sender, FormClosedEventArgs e)
@@ -362,20 +365,20 @@ namespace ARM_MedRegistrar
             if (textSurname.Text == string.Empty)
             {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
+                errorNoSurname.SetError(textSurname, "Поле не заполнено");
             }
 
             if (textName.Text == string.Empty)
             {
                 _isError = true;
-                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
+                errorNoName.SetError(textName, "Поле не заполнено");
             }
 
             if ((dateTimeDateOfBirth.Value.Day >= DateTime.Today.Day && dateTimeDateOfBirth.Value.Month >= DateTime.Today.Month
                 && dateTimeDateOfBirth.Value.Year >= DateTime.Today.Year) || dateTimeDateOfBirth.Value.Year > DateTime.Today.Year)
             {
                 _isError = true;
-                errorWrongDate.SetError(dateTimeDateOfBirth, "Поле \"Дата рождения\" заполнено неверно");
+                errorWrongDate.SetError(dateTimeDateOfBirth, "Поле заполнено неверно");
             }
 
             if (!_isError)
@@ -464,11 +467,7 @@ namespace ARM_MedRegistrar
             listViewPatients.MultiSelect = true;
         }
 
-        private void MainWindowForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void buttRemoveAppointment_Click(object sender, EventArgs e)
         {
             IList<uint> _selectedId = new List<uint>();
@@ -536,11 +535,9 @@ namespace ARM_MedRegistrar
 
         private void buttAllAppointments_Click(object sender, EventArgs e)
         {
-            listViewAppointments.Items.Clear();
             if (!_presenter.ShowAllAppointments())
                 MessageBox.Show("Список записей пуст");
         }
-
         private void buttAllDataAboutAppointment_Click(object sender, EventArgs e)
         {
             errorMultiSelect.Clear();

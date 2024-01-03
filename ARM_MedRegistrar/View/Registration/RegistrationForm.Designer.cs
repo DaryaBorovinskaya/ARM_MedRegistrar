@@ -188,7 +188,6 @@ namespace ARM_MedRegistrar
             label2.Size = new Size(51, 28);
             label2.TabIndex = 21;
             label2.Text = "Имя";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -250,7 +249,6 @@ namespace ARM_MedRegistrar
             comboBoxPost.Name = "comboBoxPost";
             comboBoxPost.Size = new Size(329, 36);
             comboBoxPost.TabIndex = 27;
-            comboBoxPost.SelectedIndexChanged += comboBoxPost_SelectedIndexChanged;
             // 
             // label5
             // 
@@ -301,7 +299,6 @@ namespace ARM_MedRegistrar
             textPhoneNumber.Name = "textPhoneNumber";
             textPhoneNumber.Size = new Size(329, 34);
             textPhoneNumber.TabIndex = 29;
-            textPhoneNumber.TextChanged += textBox1_TextChanged;
             textPhoneNumber.KeyPress += textBox_ContainsExceptNumbers;
             // 
             // RegistrationForm
@@ -334,7 +331,6 @@ namespace ARM_MedRegistrar
             Name = "RegistrationForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ARM_MedRegistrar";
-            Load += RegistrationForm_Load;
             ((System.ComponentModel.ISupportInitialize)errorNoLog).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoPassword).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorNoSurname).EndInit();

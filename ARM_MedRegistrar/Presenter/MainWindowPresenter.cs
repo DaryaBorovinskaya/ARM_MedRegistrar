@@ -7,6 +7,7 @@ using ARM_MedRegistrar.Model.DaysWithFreeAppointments;
 using ARM_MedRegistrar.Model.FreeTimeOfAppointments;
 using ARM_MedRegistrar.Model.Appointments;
 using ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository;
+using System.Windows.Forms;
 
 namespace ARM_MedRegistrar.Presenter
 {
@@ -31,7 +32,7 @@ namespace ARM_MedRegistrar.Presenter
         }
 
 
-        public void ClearFreeAppointments()
+        public void ClearFreeAppointments() 
         {
             _dictFreeTimeOfAppointments = _jsonFreeTimeOfAppointmentRepository.Read();
 
@@ -40,22 +41,28 @@ namespace ARM_MedRegistrar.Presenter
                 return;
             }
 
-            foreach (uint key in _dictFreeTimeOfAppointments.Keys)
+            DateTime dateTime = DateTime.Now.AddDays(-1);
+            if (_dictFreeTimeOfAppointments != null && _dictFreeTimeOfAppointments.Count != 0)
             {
-                _resultListOfDaysWithAppointments = _dictFreeTimeOfAppointments[key].FreeTimeOfAppointments;
-                foreach (IDayWithFreeAppointments dayWithFreeAppointments in _dictFreeTimeOfAppointments[key].FreeTimeOfAppointments)
+                foreach (uint key in _dictFreeTimeOfAppointments.Keys)
                 {
-                    if (dayWithFreeAppointments.DateOfAppointment < DateOnly.FromDateTime(DateTime.Now))
+                    _resultListOfDaysWithAppointments = _dictFreeTimeOfAppointments[key].FreeTimeOfAppointments;
+                    foreach (IDayWithFreeAppointments dayWithFreeAppointments in _dictFreeTimeOfAppointments[key].FreeTimeOfAppointments)
                     {
-                        _resultListOfDaysWithAppointments.Remove(dayWithFreeAppointments);
+                        if (dayWithFreeAppointments.DateOfAppointment < DateOnly.FromDateTime(dateTime))   //Equals(dayWithFreeAppointments.DateOfAppointment, DateOnly.FromDateTime(dateTime))
+                        {
+                            _resultListOfDaysWithAppointments.Remove(dayWithFreeAppointments);
+                            break;
+                        }
+
                     }
 
+                    _jsonFreeTimeOfAppointmentRepository.Update(_dictFreeTimeOfAppointments[key]);
+
+
                 }
-                _dictFreeTimeOfAppointments[key].FreeTimeOfAppointments = _resultListOfDaysWithAppointments;
 
-                _jsonFreeTimeOfAppointmentRepository.Update(_dictFreeTimeOfAppointments[key]);
             }
-
 
         }
 
@@ -213,7 +220,7 @@ namespace ARM_MedRegistrar.Presenter
 
         public bool ShowAllAppointments()
         {
-            _countOfLine = -1;
+            _countOfLine = 0;
             _isSuccess = false;
             _appointments = _jsonAppointmentRepository.Read();
             if (_appointments == null || _appointments.Count == 0)
@@ -224,7 +231,7 @@ namespace ARM_MedRegistrar.Presenter
                 foreach (IAppointment appointment in _appointments.Values)
                 {
                     _isSuccess = true;
-                    _countOfLine++;
+                    
                     _view.AppointmentCountOfLine = _countOfLine;
                     _view.AppointmentId = appointment.Id;
                     _view.DateOfAppointment = new DateOnly(appointment.DateAndTime.Year, appointment.DateAndTime.Month, appointment.DateAndTime.Day);
@@ -242,6 +249,7 @@ namespace ARM_MedRegistrar.Presenter
                     _view.AppointmentPatientSurname = appointment.Patient.PersonalData.FullName.Surname;
                     _view.AppointmentPatientName = appointment.Patient.PersonalData.FullName.Name;
                     _view.AppointmentPatientPatronymic = appointment.Patient.PersonalData.FullName.Patronymic;
+                    _countOfLine++;
                 }
                 if (_isSuccess)
                     return true;

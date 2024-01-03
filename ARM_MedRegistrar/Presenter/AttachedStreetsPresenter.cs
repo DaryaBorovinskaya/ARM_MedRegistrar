@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ARM_MedRegistrar.View.AttachedToTheClinicStreets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,13 @@ namespace ARM_MedRegistrar.Presenter
 {
     public class AttachedStreetsPresenter
     {
+        IAttachedStreetsForm _view;
+        public AttachedStreetsPresenter(IAttachedStreetsForm view) 
+        {
+            _view = view;
+        }
+
+
+
     }
 }

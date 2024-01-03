@@ -12,15 +12,15 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.DoctorRepository
         private void Load()
         {
             if (!File.Exists(_savePath))
-                _doctors = new SortedDictionary<uint, IDoctor>();
+                _doctors = new Dictionary<uint, IDoctor>();
             else
-                _doctors = JsonConvert.DeserializeObject<SortedDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
+                _doctors = JsonConvert.DeserializeObject<IDictionary<uint, IDoctor>>(File.ReadAllText(_savePath), _settings);
 
         }
         public JsonDoctorRepository()
         {
             _savePath = "doctors.json";
-            _doctors = new SortedDictionary<uint, IDoctor>();
+            _doctors = new Dictionary<uint, IDoctor>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 
             

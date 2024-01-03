@@ -200,12 +200,6 @@ namespace ARM_MedRegistrar.View.AddAppointment
         }
 
 
-        private void AddAppointmentForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void buttAllPatients_Click(object sender, EventArgs e)
         {
             listViewPatients.Items.Clear();
@@ -275,20 +269,20 @@ namespace ARM_MedRegistrar.View.AddAppointment
             if (textSurname.Text == string.Empty)
             {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
+                errorNoSurname.SetError(textSurname, "Поле не заполнено");
             }
 
             if (textName.Text == string.Empty)
             {
                 _isError = true;
-                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
+                errorNoName.SetError(textName, "Поле не заполнено");
             }
 
             if ((dateTimeDateOfBirth.Value.Day >= DateTime.Today.Day && dateTimeDateOfBirth.Value.Month >= DateTime.Today.Month
                 && dateTimeDateOfBirth.Value.Year >= DateTime.Today.Year) || dateTimeDateOfBirth.Value.Year > DateTime.Today.Year)
             {
                 _isError = true;
-                errorWrongDate.SetError(dateTimeDateOfBirth, "Поле \"Дата рождения\" заполнено неверно");
+                errorWrongDate.SetError(dateTimeDateOfBirth, "Поле заполнено неверно");
             }
 
             if (!_isError)
@@ -340,14 +334,14 @@ namespace ARM_MedRegistrar.View.AddAppointment
         {
             errorNoPlace.Clear();
             if (textPlace.Text == string.Empty)
-                errorNoPlace.SetError(textPlace, "Поле \"Место\" не заполнено");
+                errorNoPlace.SetError(textPlace, "Поле не заполнено");
             else
             {
                 if (!_presenter.SaveChangesOfPlaceOfAppointment())
                     MessageBox.Show("Не удалось сохранить изменения");
                 else
                 {
-                    MessageBox.Show("Изменения в поле \"Место\" сохранены");
+                    MessageBox.Show("Изменения в поле сохранены");
                     textPlace.Enabled = false;
                     buttAddAppointment.Enabled = true;
                 }

@@ -14,15 +14,15 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.FreeTimeOfAppointments
         private void Load()
         {
             if (!File.Exists(_savePath))
-                _freeTimeOfAppointments = new SortedDictionary<uint, IFreeTimeOfAppointment>();
+                _freeTimeOfAppointments = new Dictionary<uint, IFreeTimeOfAppointment>();
             else
-                _freeTimeOfAppointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IFreeTimeOfAppointment>>(File.ReadAllText(_savePath), _settings);
+                _freeTimeOfAppointments = JsonConvert.DeserializeObject<IDictionary<uint, IFreeTimeOfAppointment>>(File.ReadAllText(_savePath), _settings);
 
         }
         public JsonFreeTimeOfAppointmentRepository()
         {
             _savePath = "freeTimeOfAppointment.json";
-            _freeTimeOfAppointments = new SortedDictionary<uint, IFreeTimeOfAppointment>();
+            _freeTimeOfAppointments = new Dictionary<uint, IFreeTimeOfAppointment>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 
             

@@ -15,7 +15,7 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.UserRepository
         private void Load()
         {
             if (!File.Exists(_savePath))
-                _users = new SortedDictionary<string, IUser>();
+                _users = new Dictionary<string, IUser>();
             else
                 _users = JsonConvert.DeserializeObject<IDictionary<string, IUser>>(File.ReadAllText(_savePath), _settings);
 

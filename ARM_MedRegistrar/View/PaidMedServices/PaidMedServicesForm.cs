@@ -1,7 +1,4 @@
 ﻿using ARM_MedRegistrar.Presenter;
-using ARM_MedRegistrar.View.Doctors;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ARM_MedRegistrar.View.PaidMedServices
 {
@@ -40,7 +37,7 @@ namespace ARM_MedRegistrar.View.PaidMedServices
         }
         decimal IPaidMedServicesForm.Price
         {
-            get => numericPrice.Value;  //decimal.Parse(textTotalPrice.Text);
+            get => numericPrice.Value;  
             set
             {
                 listViewPaidMedServices.Items[_lineOfListViewPaidMedServices].SubItems.Add(value.ToString());
@@ -106,7 +103,7 @@ namespace ARM_MedRegistrar.View.PaidMedServices
             errorNoTitle.Clear();
 
             if (textSearchingTitle.Text == string.Empty)
-                errorNoTitle.SetError(textSearchingTitle, "Поле \"Наименование услуги\" не заполнено");
+                errorNoTitle.SetError(textSearchingTitle, "Поле не заполнено");
 
             else
             {
@@ -213,13 +210,13 @@ namespace ARM_MedRegistrar.View.PaidMedServices
             if (textTitle.Text == string.Empty)
             {
                 _isError = true;
-                errorNoTitle.SetError(textTitle, "Поле \"Наименование услуги\" не заполнено");
+                errorNoTitle.SetError(textTitle, "Поле не заполнено");
             }
 
             if (numericPrice.Value == 0)
             {
                 _isError = true;
-                errorNoTitle.SetError(numericPrice, "Поле \"Цена\" не заполнено");
+                errorNoTitle.SetError(numericPrice, "Поле не заполнено");
             }
 
 

@@ -35,7 +35,6 @@
             label4 = new Label();
             textName = new TextBox();
             textPatr = new TextBox();
-            buttExit = new Button();
             textPost = new TextBox();
             textPhoneNumber = new TextBox();
             label5 = new Label();
@@ -117,18 +116,6 @@
             textPatr.Size = new Size(375, 34);
             textPatr.TabIndex = 27;
             // 
-            // buttExit
-            // 
-            buttExit.BackColor = Color.FromArgb(255, 192, 192);
-            buttExit.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            buttExit.ForeColor = Color.Firebrick;
-            buttExit.Location = new Point(332, 326);
-            buttExit.Name = "buttExit";
-            buttExit.Size = new Size(165, 54);
-            buttExit.TabIndex = 28;
-            buttExit.Text = "Выйти";
-            buttExit.UseVisualStyleBackColor = false;
-            // 
             // textPost
             // 
             textPost.BackColor = Color.White;
@@ -176,12 +163,11 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Snow;
-            ClientSize = new Size(819, 406);
+            ClientSize = new Size(819, 317);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(textPhoneNumber);
             Controls.Add(textPost);
-            Controls.Add(buttExit);
             Controls.Add(textPatr);
             Controls.Add(textName);
             Controls.Add(label4);
@@ -208,7 +194,6 @@
         private Label label4;
         private TextBox textName;
         private TextBox textPatr;
-        private Button buttExit;
         private TextBox textPost;
         private TextBox textPhoneNumber;
         private Label label5;

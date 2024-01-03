@@ -1,25 +1,22 @@
-﻿using ARM_MedRegistrar.Model.Persons;
+﻿using ARM_MedRegistrar.Presenter;
+using ARM_MedRegistrar.View.InfoAboutUser;
 
 namespace ARM_MedRegistrar.View
 {
-    public partial class InfoAboutUserForm : Form
+    public partial class InfoAboutUserForm : Form, IInfoAboutUserForm
     {
-        IUserEmployee _employee;
+        InfoAboutUserPresenter _presenter;
+        string IInfoAboutUserForm.Surname { set => textSurname.Text = value; }
+        string IInfoAboutUserForm.Name { set => textName.Text = value; }
+        string IInfoAboutUserForm.Patronymic { set => textPatr.Text = value; }
+        string IInfoAboutUserForm.PhoneNumber { set => textPhoneNumber.Text = value; }
+        string IInfoAboutUserForm.Post { set => textPost.Text = value; }
+
         public InfoAboutUserForm()
         {
             InitializeComponent();
-            //_employee = employee;
-
-            //textSurname.Text = _employee.PersonalData.FullName.Surname;
-            //textName.Text = _employee.PersonalData.FullName.Name;
-            //textPatr.Text = _employee.PersonalData.FullName.Patronymic;
-            //textPost.Text = _employee.Post;
-            //textPhoneNumber.Text = _employee.PersonalData.PhoneNumber;
+            _presenter = new(this);
         }
 
-        private void textSurname_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

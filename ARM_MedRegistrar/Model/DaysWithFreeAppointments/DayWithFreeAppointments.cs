@@ -25,7 +25,9 @@ namespace ARM_MedRegistrar.Model.DaysWithFreeAppointments
             WorkBeginningEnd = workBeginningEnd;
             DurationOfAppointment = new TimeOnly(durationOfAppointment.Hour, durationOfAppointment.Minute, 0);
 
-            CreateTimeOfAppointments();
+            if (_timesOfAppointments.Count == 0)
+                CreateTimeOfAppointments();
+
         }
 
 

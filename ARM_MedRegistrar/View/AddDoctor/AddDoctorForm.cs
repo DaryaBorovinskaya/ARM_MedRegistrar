@@ -136,85 +136,85 @@ namespace ARM_MedRegistrar
             if (textSurname.Text == string.Empty)
             {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
+                errorNoSurname.SetError(textSurname, "Поле не заполнено");
             }
 
             if (textName.Text == string.Empty)
             {
                 _isError = true;
-                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
+                errorNoName.SetError(textName, "Поле не заполнено");
             }
 
             if (comboBoxSpecializations.SelectedIndex == -1)
             {
                 _isError = true;
-                errorNoSpecial.SetError(comboBoxSpecializations, "Поле \"Специализация\" не заполнено");
+                errorNoSpecial.SetError(comboBoxSpecializations, "Поле не заполнено");
             }
 
 
             if (textCabinet.Text == string.Empty)
             {
                 _isError = true;
-                errorNoCabinet.SetError(textCabinet, "Поле \"Номер кабинета\" не заполнено");
+                errorNoCabinet.SetError(textCabinet, "Поле не заполнено");
             }
             if (textPlotNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPlotNumber.SetError(textPlotNumber, "Поле \"Номер участка\" не заполнено");
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
             }
 
             if (textPhoneNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
+                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле не заполнено");
             }
 
             if (timeDurationOfAppointment.Value.Hour > 1 || (timeDurationOfAppointment.Value.Hour == DateTime.Now.Hour && timeDurationOfAppointment.Value.Minute == DateTime.Now.Minute))
             {
                 _isError = true;
-                errorNoDurationOfAppointment.SetError(timeDurationOfAppointment, "Поле \"Продолжительность приёма\" заполнено некорректно");
+                errorNoDurationOfAppointment.SetError(timeDurationOfAppointment, "Поле заполнено некорректно");
             }
 
             if (!IsCorrectTime(timeMonWorkBeginning.Value, timeMonWorkEnd.Value) && !checkIsWeekendMon.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeMon.SetError(timeMonWorkBeginning, "Рабочее время заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeMon.SetError(timeMonWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
             }
 
             if (!IsCorrectTime(timeTuesWorkBeginning.Value, timeTuesWorkEnd.Value) && !checkIsWeekendTues.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeTues.SetError(timeTuesWorkBeginning, "Рабочее время заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeTues.SetError(timeTuesWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
             }
 
             if (!IsCorrectTime(timeWedWorkBeginning.Value, timeWedWorkEnd.Value) && !checkIsWeekendWed.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeWed.SetError(timeWedWorkBeginning, "Рабочее время заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeWed.SetError(timeWedWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
             }
 
             if (!IsCorrectTime(timeThursWorkBeginning.Value, timeThursWorkEnd.Value) && !checkIsWeekendThurs.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeThurs.SetError(timeThursWorkBeginning, "Рабочее время заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeThurs.SetError(timeThursWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
             }
 
             if (!IsCorrectTime(timeFriWorkBeginning.Value, timeFriWorkEnd.Value) && !checkIsWeekendFri.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeFri.SetError(timeFriWorkBeginning, "Рабочее время заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeFri.SetError(timeFriWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
             }
 
             if (!IsCorrectTime(timeSatWorkBeginning.Value, timeSatWorkEnd.Value) && !checkIsWeekendSat.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeSat.SetError(timeSatWorkBeginning, "Рабочее время заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeSat.SetError(timeSatWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
             }
 
             if (!IsCorrectTime(timeSunWorkBeginning.Value, timeSunWorkEnd.Value) && !checkIsWeekendSun.Checked)
             {
                 _isError = true;
-                errorNoCorrectTimeSun.SetError(timeSunWorkBeginning, "Рабочее время заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
+                errorNoCorrectTimeSun.SetError(timeSunWorkBeginning, "Поле заполнено некорректно\n(нажмите \"Вых.\", если врач в этот день не работает)");
             }
 
             if (!_isError)

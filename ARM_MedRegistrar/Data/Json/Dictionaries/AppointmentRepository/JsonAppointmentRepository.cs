@@ -13,15 +13,15 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.AppointmentRepository
         private void Load()
         {
             if (!File.Exists(_savePath))
-                _appointments = new SortedDictionary<uint, IAppointment>();
+                _appointments = new Dictionary<uint, IAppointment>();
             else
-                _appointments = JsonConvert.DeserializeObject<SortedDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
+                _appointments = JsonConvert.DeserializeObject<IDictionary<uint, IAppointment>>(File.ReadAllText(_savePath), _settings);
 
         }
         public JsonAppointmentRepository()
         {
             _savePath = "appointments.json";
-            _appointments = new SortedDictionary<uint, IAppointment>();
+            _appointments = new Dictionary<uint, IAppointment>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 
         }

@@ -138,19 +138,19 @@ namespace ARM_MedRegistrar.View.Doctors
             if (textSurname.Text == string.Empty)
             {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
+                errorNoSurname.SetError(textSurname, "Поле не заполнено");
             }
 
             if (textName.Text == string.Empty)
             {
                 _isError = true;
-                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
+                errorNoName.SetError(textName, "Поле не заполнено");
             }
 
             if (comboBoxSpecializations.SelectedIndex == -1)
             {
                 _isError = true;
-                errorNoSpecialization.SetError(comboBoxSpecializations, "Поле \"Специализация\" не заполнено");
+                errorNoSpecialization.SetError(comboBoxSpecializations, "Поле не заполнено");
             }
 
             if (!_isError)
@@ -248,42 +248,5 @@ namespace ARM_MedRegistrar.View.Doctors
             listViewDoctors.MultiSelect = true;
         }
 
-        private void richTextBoxInfoAboutDoctor_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxSpecializations_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void textPatr_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void textName_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void textSurname_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-        }
     }
 }

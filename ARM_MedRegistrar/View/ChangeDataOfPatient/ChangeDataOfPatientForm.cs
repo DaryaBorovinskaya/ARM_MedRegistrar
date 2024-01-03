@@ -1,14 +1,5 @@
 ﻿using ARM_MedRegistrar.Presenter;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace ARM_MedRegistrar.View.ChangeDataOfPatient
 {
@@ -219,7 +210,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
             errorNoId.Clear();
 
             if (textId.Text == string.Empty)
-                errorNoId.SetError(textId, "Поле \"ID\" не заполнено");
+                errorNoId.SetError(textId, "Поле не заполнено");
 
             else
             {
@@ -259,96 +250,96 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
             if (textSurname.Text == string.Empty)
             {
                 _isError = true;
-                errorNoSurname.SetError(textSurname, "Поле \"Фамилия\" не заполнено");
+                errorNoSurname.SetError(textSurname, "Поле не заполнено");
             }
 
             if (textName.Text == string.Empty)
             {
                 _isError = true;
-                errorNoName.SetError(textName, "Поле \"Имя\" не заполнено");
+                errorNoName.SetError(textName, "Поле не заполнено");
             }
 
             if (textPolicySeries.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPolicySeries.SetError(textPolicySeries, "Поле \"Серия полиса\" не заполнено");
+                errorNoPolicySeries.SetError(textPolicySeries, "Поле не заполнено");
             }
 
             if (textPolicyNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPolicyNumber.SetError(textPolicyNumber, "Поле \"Номер полиса\" не заполнено");
+                errorNoPolicyNumber.SetError(textPolicyNumber, "Поле не заполнено");
             }
 
             
             if (textCity.Text == string.Empty)
             {
                 _isError = true;
-                errorNoCity.SetError(textCity, "Поле \"Город\" не заполнено");
+                errorNoCity.SetError(textCity, "Поле не заполнено");
             }
 
             if (textRegion.Text == string.Empty)
             {
                 _isError = true;
-                errorNoRegion.SetError(textRegion, "Поле \"Район\" не заполнено");
+                errorNoRegion.SetError(textRegion, "Поле не заполнено");
             }
 
             if (textStreet.Text == string.Empty)
             {
                 _isError = true;
-                errorNoStreet.SetError(textStreet, "Поле \"Улица\" не заполнено");
+                errorNoStreet.SetError(textStreet, "Поле не заполнено");
             }
 
             if (textNumbOfHouse.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Дом\" не заполнено");
+                errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле не заполнено");
             }
 
             if (textNumbOfFlat.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfFlat.SetError(textNumbOfFlat, "Поле \"Квартира\" не заполнено");
+                errorNoNumbOfFlat.SetError(textNumbOfFlat, "Поле не заполнено");
             }
 
             if (comboBoxBloodType.SelectedIndex == -1)
             {
                 _isError = true;
-                errorNoBloodType.SetError(comboBoxBloodType, "Поле \"Группа крови\" не заполнено");
+                errorNoBloodType.SetError(comboBoxBloodType, "Поле не заполнено");
             }
 
             if (comboBoxRhFactor.SelectedIndex == -1)
             {
                 _isError = true;
-                errorNoRhFactor.SetError(comboBoxRhFactor, "Поле \"Резус-фактор\" не заполнено");
+                errorNoRhFactor.SetError(comboBoxRhFactor, "Поле не заполнено");
             }
 
             if (textNumbOfPatientCard.Text == string.Empty)
             {
                 _isError = true;
-                errorNoNumbOfPatientCard.SetError(textNumbOfPatientCard, "Поле \"Номер амбулаторной карты\" не заполнено");
+                errorNoNumbOfPatientCard.SetError(textNumbOfPatientCard, "Поле не заполнено");
             }
 
             if (textDocumentSeries.Text == string.Empty)
             {
                 _isError = true;
-                errorNoDocumentSeries.SetError(textDocumentSeries, "Поле \"Серия документа\" не заполнено");
+                errorNoDocumentSeries.SetError(textDocumentSeries, "Поле не заполнено");
             }
 
             if (textDocumentNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoDocumentNumber.SetError(textDocumentNumber, "Поле \"Номер документа\" не заполнено");
+                errorNoDocumentNumber.SetError(textDocumentNumber, "Поле не заполнено");
             }
             if (textPlotNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPlotNumber.SetError(textPlotNumber, "Поле \"Номер участка\" не заполнено");
+                errorNoPlotNumber.SetError(textPlotNumber, "Поле не заполнено");
             }
             if (textPhoneNumber.Text == string.Empty)
             {
                 _isError = true;
-                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле \"Номер телефона\" не заполнено");
+                errorNoPhoneNumber.SetError(textPhoneNumber, "Поле не заполнено");
             }
 
 
@@ -367,7 +358,7 @@ namespace ARM_MedRegistrar.View.ChangeDataOfPatient
 
                 if (_presenter.SaveChanges())
                 {
-                    MessageBox.Show("Данные пациента успешно изменены");
+                    MessageBox.Show("Данные успешно изменены");
 
                     textId.ReadOnly = false;
                     if (!checkNoCloseWindow.Checked)

@@ -65,25 +65,25 @@ namespace ARM_MedRegistrar.View
                 if (textCity.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoCity.SetError(textCity, "Поле \"Город\" не заполнено");
+                    errorNoCity.SetError(textCity, "Поле не заполнено");
                 }
 
                 if (textRegion.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoRegion.SetError(textRegion, "Поле \"Регион\" не заполнено");
+                    errorNoRegion.SetError(textRegion, "Поле не заполнено");
                 }
 
                 if (textStreet.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoStreet.SetError(textStreet, "Поле \"Улица\" не заполнено");
+                    errorNoStreet.SetError(textStreet, "Поле не заполнено");
                 }
 
                 if (textNumbOfHouse.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Номер дома\" не заполнено");
+                    errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле не заполнено");
                 }
 
 
@@ -108,13 +108,13 @@ namespace ARM_MedRegistrar.View
                 if (textStreet.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoStreet.SetError(textStreet, "Поле \"Улица\" не заполнено");
+                    errorNoStreet.SetError(textStreet, "Поле не заполнено");
                 }
 
                 if (textNumbOfHouse.Text == string.Empty)
                 {
                     _isError = true;
-                    errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле \"Номер дома\" не заполнено");
+                    errorNoNumbOfHouse.SetError(textNumbOfHouse, "Поле не заполнено");
                 }
 
                 if (!_isError)

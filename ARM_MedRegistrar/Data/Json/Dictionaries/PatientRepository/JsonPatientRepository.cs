@@ -14,16 +14,16 @@ namespace ARM_MedRegistrar.Data.Json.Dictionaries.PatientRepository
         private void Load()
         {
             if (!File.Exists(_savePath))
-                _patients = new SortedDictionary<uint, IPatient>();
+                _patients = new Dictionary<uint, IPatient>();
 
             else
-                _patients = JsonConvert.DeserializeObject<SortedDictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
+                _patients = JsonConvert.DeserializeObject<Dictionary<uint, IPatient>>(File.ReadAllText(_savePath), _settings);
 
         }
         public JsonPatientRepository()
         {
             _savePath = "patients.json";
-            _patients = new SortedDictionary<uint, IPatient>();
+            _patients = new Dictionary<uint, IPatient>();
             _settings = new() { TypeNameHandling = TypeNameHandling.Auto };
 
             
